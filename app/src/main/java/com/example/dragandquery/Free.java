@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 /***
  * TODO
@@ -23,6 +25,11 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //remove title
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_free);
 
         fragQuery = new Fragment_Query();
@@ -38,8 +45,8 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     }
 
     @Override
-    public void onBlockDragged(View view) {
-        fragQuery.createView(view);
+    public void onBlockDragged(View view, int x, int y) {
+        fragQuery.createView(view, x, y);
     }
 
     @Override

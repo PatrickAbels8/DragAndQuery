@@ -116,13 +116,11 @@ public class Fragment_Query extends Fragment {
         return v;
     }
 
-    public void createView(View view){
-        //get a new iv todo send position via listener
+    public void createView(View view, int x, int y){
+        //make a new iv todo send position via listener
         cur_view = new ImageView(getContext());
-
-        //align curview on top of box
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        cur_view.setLayoutParams(lp);
+        //cur_view.setX(x);
+        //cur_view.setY(y);
 
         //set drawable
         cur_view.setImageResource(getDrawableId(view));
@@ -130,6 +128,17 @@ public class Fragment_Query extends Fragment {
         //add teh new iv to rl and blocklist
         rl_query.addView(cur_view);
         blocks_in_rl.add(cur_view);
+
+        /*cur_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
+                shadow.getView().setBackgroundResource(R.color.invisible);
+                view.startDrag(data, shadow, view, 0);
+            }
+        });*/
+
 
         cur_view.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -166,7 +175,7 @@ public class Fragment_Query extends Fragment {
 
     public void goInclickable(){
         for(ImageView iv: blocks_in_rl){
-            iv.setActivated(false);
+            iv.setClickable(false);
         }
         btn_go.setVisibility(View.INVISIBLE);
         btn_clear.setVisibility(View.INVISIBLE);
@@ -178,7 +187,7 @@ public class Fragment_Query extends Fragment {
 
     public void goClickable(){
         for(ImageView iv: blocks_in_rl){
-            iv.setActivated(true);
+            iv.setClickable(true);
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);

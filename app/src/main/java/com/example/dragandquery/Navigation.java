@@ -124,7 +124,6 @@ public class Navigation extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "onBackPressed", Toast.LENGTH_LONG).show();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -135,8 +134,6 @@ public class Navigation extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Toast.makeText(getApplicationContext(), "onCreateOptionsMenu", Toast.LENGTH_LONG).show();
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation, menu);
         return true;
     }
@@ -160,6 +157,7 @@ public class Navigation extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
+    //TODO back stack + add all the navi stuff to the other main activities after creating the main activities each
     public boolean onNavigationItemSelected(MenuItem item) {
         Toast.makeText(getApplicationContext(), "onNavigationItemSelected", Toast.LENGTH_LONG).show();
         // Handle navigation view item clicks here.
@@ -168,7 +166,6 @@ public class Navigation extends AppCompatActivity
         if (id == R.id.nav_home) {
             Intent i = new Intent(getApplicationContext(), Navigation.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //TODO back stack
             startActivity(i);
 
         } else if (id == R.id.nav_free) {

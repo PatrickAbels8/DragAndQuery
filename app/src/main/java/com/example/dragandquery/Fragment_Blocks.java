@@ -38,12 +38,12 @@ public class Fragment_Blocks extends Fragment {
 
     //vars
     private Fragment_Blocks_Listener listener;
-    boolean blocks_open;
-
+    private boolean blocks_open;
+    private int current_category_index;
 
     //interface
     public interface Fragment_Blocks_Listener{
-        void onBlockDragged(View view);
+        void onBlockDragged(View view, int x, int y);
     }
 
     @Nullable
@@ -64,8 +64,8 @@ public class Fragment_Blocks extends Fragment {
 
         //testing
         ImageView select = new ImageView(getContext());
-        select.setImageResource(R.drawable.from_block);
-        select.setTag(R.drawable.from_block);
+        select.setImageResource(R.drawable.buttonthreedee);
+        select.setTag(R.drawable.buttonthreedee);
         blocks_of_categories[0].add(select);
         ImageView and = new ImageView(getContext());
         and.setImageResource(R.drawable.select_block);
@@ -107,7 +107,8 @@ public class Fragment_Blocks extends Fragment {
             category.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showOrHideBlocks(blocks_of_categories[findIndex(categories, view)]);
+                    int index = findIndex(categories, view);
+                    showOrHideBlocks(blocks_of_categories[index], index);
                 }
             });
         }
@@ -118,8 +119,10 @@ public class Fragment_Blocks extends Fragment {
                 iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        showOrHideBlocks(null);
-                        listener.onBlockDragged(view);
+                        showOrHideBlocks(null, -1);
+                        int[] location = new int[2];
+                        view.getLocationOnScreen(location);
+                        listener.onBlockDragged(view, location[0], location[1]);
                     }
                 });
             }
@@ -129,13 +132,21 @@ public class Fragment_Blocks extends Fragment {
     }
 
     //open ll verti by adding all blocks / close it b removing all views of category x
-    public void showOrHideBlocks(List<ImageView> blocks_to_show){
-        if(!blocks_open){
+    public void showOrHideBlocks(List<ImageView> blocks_to_show, int index){
+        if(!blocks_open){ //no cat opened yet
             for(ImageView iv: blocks_to_show){
                 ll_blocks.addView(iv);
             }
             blocks_open = true;
-        }else{
+            current_category_index = index;
+        }else if(index>-1&&current_category_index!=index) { //another cat was already opened
+            ll_blocks.removeAllViews();
+            for(ImageView iv: blocks_to_show){
+                ll_blocks.addView(iv);
+            }
+            blocks_open = true;
+            current_category_index = index;
+        }else{ //same clicked as openend
             ll_blocks.removeAllViews();
             blocks_open = false;
         }
