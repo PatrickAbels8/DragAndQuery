@@ -52,7 +52,6 @@ public class Navigation extends AppCompatActivity
     TextView mail;
     ProgressBar tscore;
     ProgressBar pscore;
-    ImageButton profile_settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,6 @@ public class Navigation extends AppCompatActivity
         mail = (TextView) findViewById(R.id.tv_mail);
         tscore = (ProgressBar) findViewById(R.id.pb_tutorial);
         pscore = (ProgressBar) findViewById(R.id.pb_practise);
-        profile_settings = (ImageButton) findViewById(R.id.btn_profile_settings);
 
         //key value store
         if(i.hasExtra(LoginActivity.UNAME)){
@@ -89,15 +87,6 @@ public class Navigation extends AppCompatActivity
         mail.setText(user_mail);
         tscore.setProgress(tutorial_exp);
         pscore.setProgress(practise_exp);
-
-        //profile settings
-        profile_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(i);
-            }
-        });
 
         //navigation stuff TODO first time show right swipe
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -193,7 +182,8 @@ public class Navigation extends AppCompatActivity
             //TODO int var for number of solved
 
         } else if (id == R.id.nav_settings) {
-            //TODO
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_impressum) {
             //TODO basic scrollpage with text and links to mail etc
