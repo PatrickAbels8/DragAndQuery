@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">DragAndQuery</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Drag And Query</string>
+    <string name="nav_header_subtitle">pkoetz, vruss u. pabels</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_free">Freier Modus</string>
+    <string name="menu_tutorial">Tutorial</string>
+    <string name="menu_practice">Übungen</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_impressum">Impressum</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="others">Sonstiges</string>
+    <string name="welcome">Hallo! Bitte gib deinen Namen und deine Mail an.</string>
+    <string name="start_btn_go">Go!</string>
+    <string name="loginName_hint">Login Name</string>
+    <string name="loginMail_hint">Login Mail</string>
+    <string name="userName_key">userName</string>
+    <string name="userMail_key">userMail</string>
+    <string name="tutScore_key">tutScore</string>
+    <string name="pracScore_key">pracScore</string>
+    <string name="default_name">admin</string>
+    <string name="default_mail">admin@dnq.de</string>
+    <string name="pb_tutorial">Tutorial-Fortschritt</string>
+    <string name="pb_practise">Übungs-Fortschritt</string>
+    <string name="btn_retry">Retry!</string>
+    <string name="table_msg_well_done">Gut gemacht!</string>
+
+    <string name="block_select">Select </string>
+    <string name="block_from">From </string>
+    <string name="block_where">Where </string>
+    <string name="block_star">* </string>
+</resources>
