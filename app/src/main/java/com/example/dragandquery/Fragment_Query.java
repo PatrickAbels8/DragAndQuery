@@ -41,14 +41,12 @@ public class Fragment_Query extends Fragment {
     private RelativeLayout rl_query;
     private Button btn_go;
     private ImageButton btn_clear;
-    private TextView numBlocks;
 
     //vars
     private Fragment_Query_Listener listener;
     private int xDelta;
     private int yDelta;
     private List<ImageView> blocks_in_rl;
-    private int num_blocks;
 
     //interface
     public interface Fragment_Query_Listener{
@@ -65,8 +63,6 @@ public class Fragment_Query extends Fragment {
         btn_go = (Button) v.findViewById(R.id.frag_go);
         btn_clear = (ImageButton) v.findViewById(R.id.frag_clear);
         blocks_in_rl = new ArrayList<>();
-        numBlocks = (TextView) v.findViewById(R.id.numBlocks);
-        num_blocks = 0;
 
         //send query to db
         btn_go.setOnClickListener(new View.OnClickListener() {
@@ -118,14 +114,6 @@ public class Fragment_Query extends Fragment {
             }
         });
 
-        //testing
-        numBlocks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                numBlocks.setText("counter: "+num_blocks+", rl: "+blocks_in_rl.size());
-            }
-        });
-
         return v;
     }
 
@@ -141,7 +129,6 @@ public class Fragment_Query extends Fragment {
         //add teh new iv to rl and blocklist
         rl_query.addView(cur_view);
         blocks_in_rl.add(cur_view);
-        num_blocks++;
 
         /*cur_view.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -80,7 +80,7 @@ public class Fragment_Blocks extends Fragment {
         from.setImageResource(R.drawable.star_block);
         from.setTag(R.drawable.star_block);
         blocks_of_categories[1].add(from);
-        
+
         ImageView star = new ImageView(getContext());
         star.setImageResource(R.drawable.select_block);
         star.setTag(R.drawable.select_block);
