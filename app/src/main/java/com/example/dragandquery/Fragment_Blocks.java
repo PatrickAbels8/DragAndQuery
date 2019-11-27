@@ -1,24 +1,20 @@
 package com.example.dragandquery;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.dragandquery.block.BlockAttribute;
 import com.example.dragandquery.block.BlockSelect;
+import com.example.dragandquery.block.BlockWhere;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,17 +62,25 @@ public class Fragment_Blocks extends Fragment {
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
         //testing
-        ImageView and = new ImageView(getContext());
-        and.setImageResource(R.drawable.select_block);
-        and.setTag(R.drawable.select_block);
-        blocks_of_categories[0].add(and);
+        BlockSelect blockSelect = new BlockSelect();
+        ImageView select = blockSelect.createView(getContext());
+        blocks_of_categories[0].add(select);
 
-        ImageView students = new ImageView(getContext());
-        students.setImageResource(R.drawable.where_block);
-        students.setTag(R.drawable.where_block);
-        blocks_of_categories[1].add(students);
+        BlockAttribute blockAttribute = new BlockAttribute();
+        ImageView attribute = blockAttribute.createView(getContext());
+        blocks_of_categories[0].add(attribute);
 
-        ImageView from = new ImageView(getContext());
+        BlockWhere blockWhere1 = new BlockWhere();
+        ImageView where1 = blockWhere1.createView(getContext());
+        blocks_of_categories[1].add(where1);
+
+        BlockWhere blockWhere2 = new BlockWhere();
+        ImageView where2 = blockWhere2.createView(getContext());
+        blocks_of_categories[1].add(where2);
+
+
+
+        /*ImageView from = new ImageView(getContext());
         from.setImageResource(R.drawable.star_block);
         from.setTag(R.drawable.star_block);
         blocks_of_categories[1].add(from);
@@ -84,7 +88,7 @@ public class Fragment_Blocks extends Fragment {
         ImageView star = new ImageView(getContext());
         star.setImageResource(R.drawable.select_block);
         star.setTag(R.drawable.select_block);
-        blocks_of_categories[1].add(star);
+        blocks_of_categories[1].add(star);*/
 
 
         //drag

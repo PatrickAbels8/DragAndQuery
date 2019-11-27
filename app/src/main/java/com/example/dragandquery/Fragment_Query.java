@@ -1,6 +1,5 @@
 package com.example.dragandquery;
 
-import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,10 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +19,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.dragandquery.block.Block;
+import com.example.dragandquery.block.BlockAttribute;
 import com.example.dragandquery.block.BlockSelect;
+import com.example.dragandquery.block.BlockWhere;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /***
  * TODO
- * - garbage collector (one view ok, several views bug, drag bug)
+ * - switch touch to click and xy to shadow
+ * - garbage collector (one view ok, several views ok, drag bug)
  * - appearence depending on view pos
  * - putting pieces together, before need to specify types of blocks in own classes maybe
  * - show code (via button click)
@@ -41,6 +42,8 @@ public class Fragment_Query extends Fragment {
     private RelativeLayout rl_query;
     private Button btn_go;
     private ImageButton btn_clear;
+    private TextView bigL;
+    private TextView bigR;
 
     //vars
     private Fragment_Query_Listener listener;
@@ -63,6 +66,8 @@ public class Fragment_Query extends Fragment {
         btn_go = (Button) v.findViewById(R.id.frag_go);
         btn_clear = (ImageButton) v.findViewById(R.id.frag_clear);
         blocks_in_rl = new ArrayList<>();
+        bigL = (TextView) v.findViewById(R.id.bigL);
+        bigR = (TextView) v.findViewById(R.id.bigR);
 
         //send query to db
         btn_go.setOnClickListener(new View.OnClickListener() {
@@ -119,12 +124,27 @@ public class Fragment_Query extends Fragment {
 
     public void createView(View view, int x, int y){
         //make a new iv todo send position via listener
-        ImageView cur_view = new ImageView(getContext());
+        Block block;
+        switch(((Block) view.getTag()).getDesign()){
+            case R.drawable.select_block:
+                block = new BlockSelect();
+                break;
+            case R.drawable.attribute_block:
+                block = new BlockAttribute();
+                break;
+            case R.drawable.where_block:
+                block = new BlockWhere();
+                break;
+                default:
+                    block = new BlockSelect();
+        }
+
+        ImageView cur_view = block.createView(getContext());
         //cur_view.setX(x);
         //cur_view.setY(y);
 
         //set drawable
-        cur_view.setImageResource(getDrawableId(view));
+        //cur_view.setImageResource(getDrawableId(view));
 
         //add teh new iv to rl and blocklist
         rl_query.addView(cur_view);
@@ -139,7 +159,6 @@ public class Fragment_Query extends Fragment {
                 view.startDrag(data, shadow, view, 0);
             }
         });*/
-
 
         cur_view.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -170,6 +189,60 @@ public class Fragment_Query extends Fragment {
                     rl_query.invalidate();
                     return true;
                 }
+        });
+
+        //the whole glue animation stuff
+        cur_view.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent dragEvent) {
+                boolean viewFitsRight = false;
+                boolean viewFitsLeft = false;
+
+                Class<? extends Block> viewBlock = (Class<? extends Block>) view.getTag();
+                Class<? extends Block> curViewBlock = (Class<? extends Block>) cur_view.getTag();
+
+                for(Class<? extends Block> b: ((Block) cur_view.getTag()).getSuccessors()){
+                    if(viewBlock.equals(b)){
+                        viewFitsRight = true;
+                    }
+                }
+
+                for(Class<? extends Block> b: ((Block) view.getTag()).getSuccessors()){
+                    if(curViewBlock.equals(b)){
+                        viewFitsLeft = true;
+                    }
+                }
+
+                int dragID = dragEvent.getAction();
+                switch(dragID) {
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        //if pres and sucs match, make an animation
+                        if(viewFitsLeft){
+                            bigL.setVisibility(View.VISIBLE);
+                        }
+                        if(viewFitsRight){
+                            bigR.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        //if there was, end the animation
+                        bigL.setVisibility(View.INVISIBLE);
+                        bigR.setVisibility(View.INVISIBLE);
+                        break;
+                    case DragEvent.ACTION_DROP:
+                        //if prex and sucs match, glue them together
+                        if(viewFitsLeft){
+                            bigL.setText("fits left");
+                        }else{
+                            bigL.setText("L");
+                        }
+                        if(viewFitsRight){
+                            bigR.setText("R");
+                        }
+                        break;
+                }
+                return true;
+            }
         });
 
     }
