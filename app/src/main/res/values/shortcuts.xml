@@ -8,5 +8,7 @@
     cl: ConstraintLayout
     tl: TableLayout
     lp: LayoutParams
+    successor: Nachfolger
+    predecessor: Vorgänger
 
 </resources>

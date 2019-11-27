@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.dragandquery.block.BlockSelect;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,16 +38,17 @@ import java.util.List;
 public class Fragment_Query extends Fragment {
 
     //coms
-    RelativeLayout rl_query;
-    Button btn_go;
-    ImageButton btn_clear;
-    ImageView cur_view;
+    private RelativeLayout rl_query;
+    private Button btn_go;
+    private ImageButton btn_clear;
+    private TextView numBlocks;
 
     //vars
     private Fragment_Query_Listener listener;
     private int xDelta;
     private int yDelta;
-    List<ImageView> blocks_in_rl;
+    private List<ImageView> blocks_in_rl;
+    private int num_blocks;
 
     //interface
     public interface Fragment_Query_Listener{
@@ -62,6 +65,8 @@ public class Fragment_Query extends Fragment {
         btn_go = (Button) v.findViewById(R.id.frag_go);
         btn_clear = (ImageButton) v.findViewById(R.id.frag_clear);
         blocks_in_rl = new ArrayList<>();
+        numBlocks = (TextView) v.findViewById(R.id.numBlocks);
+        num_blocks = 0;
 
         //send query to db
         btn_go.setOnClickListener(new View.OnClickListener() {
@@ -105,11 +110,19 @@ public class Fragment_Query extends Fragment {
             @Override
             public boolean onLongClick(View view) {
                 //TODO ask again in popup
-                for (ImageView iv: blocks_in_rl){
-                    ((ViewGroup) iv.getParent()).removeView(iv);
-                    blocks_in_rl.remove(iv);
+                for (int i=0; i<blocks_in_rl.size(); i++){
+                    rl_query.removeView(blocks_in_rl.get(i));
                 }
+                blocks_in_rl.clear();
                 return false;
+            }
+        });
+
+        //testing
+        numBlocks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                numBlocks.setText("counter: "+num_blocks+", rl: "+blocks_in_rl.size());
             }
         });
 
@@ -118,7 +131,7 @@ public class Fragment_Query extends Fragment {
 
     public void createView(View view, int x, int y){
         //make a new iv todo send position via listener
-        cur_view = new ImageView(getContext());
+        ImageView cur_view = new ImageView(getContext());
         //cur_view.setX(x);
         //cur_view.setY(y);
 
@@ -128,6 +141,7 @@ public class Fragment_Query extends Fragment {
         //add teh new iv to rl and blocklist
         rl_query.addView(cur_view);
         blocks_in_rl.add(cur_view);
+        num_blocks++;
 
         /*cur_view.setOnClickListener(new View.OnClickListener() {
             @Override

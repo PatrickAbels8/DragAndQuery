@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.dragandquery.block.BlockSelect;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,7 @@ public class Fragment_Blocks extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_blocks, container, false);
+        Context context = getContext();
 
         //init stuff
         ll_blocks = v.findViewById(R.id.ll_blocks);
@@ -63,22 +66,21 @@ public class Fragment_Blocks extends Fragment {
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
         //testing
-        ImageView select = new ImageView(getContext());
-        select.setImageResource(R.drawable.buttonthreedee);
-        select.setTag(R.drawable.buttonthreedee);
-        blocks_of_categories[0].add(select);
         ImageView and = new ImageView(getContext());
         and.setImageResource(R.drawable.select_block);
         and.setTag(R.drawable.select_block);
         blocks_of_categories[0].add(and);
+
         ImageView students = new ImageView(getContext());
         students.setImageResource(R.drawable.where_block);
         students.setTag(R.drawable.where_block);
         blocks_of_categories[1].add(students);
+
         ImageView from = new ImageView(getContext());
         from.setImageResource(R.drawable.star_block);
         from.setTag(R.drawable.star_block);
         blocks_of_categories[1].add(from);
+        
         ImageView star = new ImageView(getContext());
         star.setImageResource(R.drawable.select_block);
         star.setTag(R.drawable.select_block);
