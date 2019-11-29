@@ -50,6 +50,8 @@ public class Fragment_Query extends Fragment {
     private int xDelta;
     private int yDelta;
     private List<ImageView> blocks_in_rl;
+    //private Context context;
+    //ViewGroup _container;
 
     //interface
     public interface Fragment_Query_Listener{
@@ -68,6 +70,8 @@ public class Fragment_Query extends Fragment {
         blocks_in_rl = new ArrayList<>();
         bigL = (TextView) v.findViewById(R.id.bigL);
         bigR = (TextView) v.findViewById(R.id.bigR);
+        //context = getContext();
+        //_container = container;
 
         //send query to db
         btn_go.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +159,7 @@ public class Fragment_Query extends Fragment {
             public void onClick(View view) {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                shadow.getView().setBackgroundResource(R.color.invisible);
+                //shadow.getView().setBackgroundResource(R.color.invisible);
                 view.startDrag(data, shadow, view, 0);
             }
         });*/
@@ -244,7 +248,6 @@ public class Fragment_Query extends Fragment {
                 return true;
             }
         });
-
     }
 
     public void goInclickable(){
