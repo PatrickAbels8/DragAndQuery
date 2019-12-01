@@ -176,7 +176,8 @@ public class Navigation extends AppCompatActivity
             //TODO int var for current level
 
         } else if (id == R.id.nav_practice) {
-            //TODO int var for number of solved
+            Intent i = new Intent(getApplicationContext(), Practice.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_settings) {
             Intent i = new Intent(getApplicationContext(), LoginActivity.class);

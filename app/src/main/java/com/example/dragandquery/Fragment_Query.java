@@ -154,13 +154,17 @@ public class Fragment_Query extends Fragment {
         rl_query.addView(cur_view);
         blocks_in_rl.add(cur_view);
 
-        /*cur_view.setOnClickListener(new View.OnClickListener() {
+        /*cur_view.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                //shadow.getView().setBackgroundResource(R.color.invisible);
-                view.startDrag(data, shadow, view, 0);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)&&((ImageView)view).getDrawable()!=null){
+                    ClipData data = ClipData.newPlainText("", "");
+                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
+                    view.startDrag(data, shadow, view, 0);
+                    return true;
+                }else{
+                    return false;
+                }
             }
         });*/
 
