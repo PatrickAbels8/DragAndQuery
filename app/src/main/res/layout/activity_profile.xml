@@ -110,7 +110,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/pb_practise" />
 
-
     </LinearLayout>
 
 
