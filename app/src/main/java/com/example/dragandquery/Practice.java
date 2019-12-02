@@ -21,6 +21,7 @@ import com.example.dragandquery.block.BlockSelect;
 
 public class Practice extends AppCompatActivity {
 
+    //coms
     ImageButton btn;
     ImageView iv1;
     ImageView iv2;
@@ -28,20 +29,27 @@ public class Practice extends AppCompatActivity {
     TextView text;
     RelativeLayout layout;
 
+    //vars
+    BlockSelect bs;
+    BlockAttribute ba;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
         context = getApplicationContext();
 
+        //init stuff
         btn = (ImageButton) findViewById(R.id.button);
         //iv1 = (ImageView) findViewById(R.id.iv1);
         //iv2 = (ImageView) findViewById(R.id.iv2);
         text = (TextView) findViewById(R.id.text);
         layout = (RelativeLayout) findViewById(R.id.layout);
 
-        iv1 = (new BlockSelect()).createView(context);
-        iv2 = (new BlockAttribute()).createView(context);
+        bs = new BlockSelect();
+        ba = new BlockAttribute();
+        iv1 = (bs).createView(context);
+        iv2 = (ba).createView(context);
         layout.addView(iv1);
         layout.addView(iv2);
 

@@ -12,7 +12,9 @@ import java.util.List;
 
 public class BlockSelect implements Block {
 
-    private static final Class<? extends Block>[] sucs = new Class[]{BlockAttribute.class};
+    private static final Class<? extends Block>[] sucs = new Class[]{
+            BlockAttribute.class,
+            BlockStar.class};
 
     @Override
     public String getName() {

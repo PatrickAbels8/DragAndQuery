@@ -1,24 +1,15 @@
 package com.example.dragandquery.block;
 
-import android.content.Context;
-import android.provider.ContactsContract;
-import android.view.View;
-import android.widget.ImageView;
-
 import com.example.dragandquery.R;
-import com.example.dragandquery.block.Block;
 
-import java.util.List;
-
-public class BlockSelect implements Block {
+public class BlockFrom implements Block {
 
     private static final Class<? extends Block>[] sucs = new Class[]{
-            BlockAttribute.class,
-            BlockStar.class};
+            BlockTable.class};
 
     @Override
     public String getName() {
-        return "SELECT";
+        return "FROM";
     }
 
     @Override
