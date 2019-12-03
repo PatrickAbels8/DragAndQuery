@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Practice"></activity>
+        <activity
+            android:name=".Tutorial"
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Practice" />
         <activity
             android:name=".Free"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />

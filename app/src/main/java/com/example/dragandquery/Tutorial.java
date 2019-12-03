@@ -10,7 +10,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+/***
+ * TODO:
+ * - shared pref for each category
+ * - pb+tv clicklistener to open overview on corresponding lections
+ */
+
 public class Tutorial extends AppCompatActivity {
+
+    //coms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

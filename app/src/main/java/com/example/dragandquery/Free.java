@@ -45,7 +45,7 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     }
 
     @Override
-    public void onBlockDragged(View view, int x, int y) {
+    public void onBlockDragged(View view, float x, float y) {
         fragQuery.createView(view, x, y);
     }
 

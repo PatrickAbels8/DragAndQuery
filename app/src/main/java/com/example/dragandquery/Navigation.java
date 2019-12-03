@@ -173,7 +173,8 @@ public class Navigation extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_tutorial) {
-            //TODO int var for current level
+            Intent i = new Intent(getApplicationContext(), Tutorial.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_practice) {
             Intent i = new Intent(getApplicationContext(), Practice.class);

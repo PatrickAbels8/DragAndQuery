@@ -1,7 +1,9 @@
 package com.example.dragandquery;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.dragandquery.block.BlockAttribute;
-import com.example.dragandquery.block.BlockSelect;
-import com.example.dragandquery.block.BlockWhere;
+import com.example.dragandquery.block.Block;
+import com.example.dragandquery.block.BlockFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /***
  * TODO
- * - categories: logic, db, ...
- * - classes for every block and category
- * - when cat1 open and cat2 clicked, dont close cat1 but open cat2
+ * -
  */
 
 public class Fragment_Blocks extends Fragment {
@@ -38,17 +37,18 @@ public class Fragment_Blocks extends Fragment {
     private Fragment_Blocks_Listener listener;
     private boolean blocks_open;
     private int current_category_index;
+    private Context context;
 
     //interface
     public interface Fragment_Blocks_Listener{
-        void onBlockDragged(View view, int x, int y);
+        void onBlockDragged(View view, float x, float y);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_blocks, container, false);
-        Context context = getContext();
+        context = getContext();
 
         //init stuff
         ll_blocks = v.findViewById(R.id.ll_blocks);
@@ -61,34 +61,20 @@ public class Fragment_Blocks extends Fragment {
         blocks_open = false;
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
-        //testing
-        BlockSelect blockSelect = new BlockSelect();
-        ImageView select = blockSelect.createView(getContext());
-        blocks_of_categories[0].add(select);
+        /***
+         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUEL BE ADDED HERE!!!!!!!!!!!
+         */
+        Block b_select = BlockFactory.getInstance().SELECT;
+        ImageView iv_select = b_select.createView(context);
+        blocks_of_categories[0].add(iv_select);
 
-        BlockAttribute blockAttribute = new BlockAttribute();
-        ImageView attribute = blockAttribute.createView(getContext());
-        blocks_of_categories[0].add(attribute);
+        Block b_star = BlockFactory.getInstance().STAR;
+        ImageView iv_star = b_star.createView(context);
+        blocks_of_categories[0].add(iv_star);
 
-        BlockWhere blockWhere1 = new BlockWhere();
-        ImageView where1 = blockWhere1.createView(getContext());
-        blocks_of_categories[1].add(where1);
-
-        BlockWhere blockWhere2 = new BlockWhere();
-        ImageView where2 = blockWhere2.createView(getContext());
-        blocks_of_categories[1].add(where2);
-
-
-
-        /*ImageView from = new ImageView(getContext());
-        from.setImageResource(R.drawable.star_block);
-        from.setTag(R.drawable.star_block);
-        blocks_of_categories[1].add(from);
-
-        ImageView star = new ImageView(getContext());
-        star.setImageResource(R.drawable.select_block);
-        star.setTag(R.drawable.select_block);
-        blocks_of_categories[1].add(star);*/
+        Block b_where = BlockFactory.getInstance().WHERE;
+        ImageView iv_where = b_where.createView(context);
+        blocks_of_categories[1].add(iv_where);
 
 
         //drag
@@ -126,9 +112,7 @@ public class Fragment_Blocks extends Fragment {
                     @Override
                     public void onClick(View view) {
                         showOrHideBlocks(null, -1);
-                        int[] location = new int[2];
-                        view.getLocationOnScreen(location);
-                        listener.onBlockDragged(view, location[0], location[1]);
+                        listener.onBlockDragged(view, 500f, 10f);
                     }
                 });
             }

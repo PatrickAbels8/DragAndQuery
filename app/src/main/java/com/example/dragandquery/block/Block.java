@@ -1,24 +1,36 @@
 package com.example.dragandquery.block;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.graphics.BlendMode;
+import android.graphics.Canvas;
+import android.media.MediaPlayer;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
 
+import com.example.dragandquery.Fragment_Query;
 import com.example.dragandquery.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Blockv2 {
+
+/***
+ * TODO:
+ * - draglistener should draw whole blocksection instead of a single block, when he already has successors
+ */
+public class Block {
     private final String name;
     @DrawableRes private final int design;
-    private final List<Blockv2> successors;
+    private final List<Block> successors;
 
-    public Blockv2(String name, @DrawableRes int design, Blockv2 ... sucs) {
+    public Block(String name, @DrawableRes int design, Block... sucs) {
         this.name = name;
         this.design = design;
         this.successors = new ArrayList<>(sucs.length);
@@ -33,13 +45,13 @@ public class Blockv2 {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Blockv2 blockv2 = (Blockv2) o;
+        Block blockv2 = (Block) o;
         return Objects.equals(name, blockv2.name);
     }
 
     @Override
     public String toString() {
-        return "Blockv2{" +
+        return "Block{" +
                 "name='" + name + '\'' +
                 ", successors=" + successors +
                 '}';
@@ -65,29 +77,62 @@ public class Blockv2 {
         return view;
     }
 
-    public boolean hasSuccessor(Blockv2 draggedBlock){
+    public boolean hasSuccessor(Block draggedBlock){
         return this.successors.contains((draggedBlock));
     }
 
-    public class OnDragListener implements View.OnDragListener {
-
+    public static class OnDragListener implements View.OnDragListener {
         @Override
         public boolean onDrag(View view, DragEvent dragEvent) {
-            switch (dragEvent.getAction()) {
-                case DragEvent.ACTION_DROP:
-                    Object o = dragEvent.getLocalState();
-                    if(o instanceof ImageView) {
-                        ImageView iv = (ImageView) o;
-                        Blockv2 draggedBlock = (Blockv2) iv.getTag(); //TODO save cast
-                        Blockv2 thisBlock = (Blockv2) view.getTag();  //TODO save cast
+            Object o = dragEvent.getLocalState();
+            if(o instanceof ImageView) {
+                ImageView iv = (ImageView) o;
+                Block draggedBlock = (Block) iv.getTag();
+                Block thisBlock = (Block) view.getTag();
+                switch (dragEvent.getAction()) {
+                    case DragEvent.ACTION_DRAG_ENTERED:
                         if (thisBlock.hasSuccessor(draggedBlock)) {
+                            iv.setVisibility(View.VISIBLE);
+                            iv.setAlpha(0.5f);
                             iv.setX(view.getX()+view.getWidth());
                             iv.setY(view.getY());
                         }
-                    }
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        iv.setVisibility(View.INVISIBLE);
+                        iv.setAlpha(1f);
+                        break;
+                    case DragEvent.ACTION_DROP:
+                        iv.setAlpha(1f);
+                        if (thisBlock.hasSuccessor(draggedBlock)) {
+                            iv.setX(view.getX()+view.getWidth()); //todo has to fit to drawables
+                            iv.setY(view.getY()); //todo also left of thisBlock
+                            //sounds
+                            MediaPlayer.create(iv.getContext(), R.raw.dropblock).start();
+                        }else{
+                            iv.setX(view.getX());
+                            iv.setY(view.getY()+view.getHeight()); //todo maybe somewhere else
+                        }
+                        iv.setVisibility(View.VISIBLE);
+                        break;
+                }
             }
+            return true;
+        }
+    }
 
-            return false;
+    public static class OnTouchListener implements View.OnTouchListener{
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)&&((ImageView)view).getDrawable()!=null){
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
+                view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
+                view.setVisibility(View.INVISIBLE);
+                //todo remove img while dragging and shadow not transparent
+                return true;
+            }else
+                return false;
         }
     }
 }
