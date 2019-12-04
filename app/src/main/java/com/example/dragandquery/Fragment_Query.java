@@ -74,7 +74,7 @@ public class Fragment_Query extends Fragment {
 
         //remove all blocks
         btn_clear.setOnLongClickListener(view -> {
-            //TODO ask again in popup
+            //TODO ask again in popup fragment
             for (int i=0; i<blocks_in_rl.size(); i++){
                 rl_query.removeView(blocks_in_rl.get(i));
             }
@@ -101,6 +101,8 @@ public class Fragment_Query extends Fragment {
                         ImageView draggedView = (ImageView) o;
                         rl_query.removeView(draggedView);
                         blocks_in_rl.remove(draggedView);
+                        //sounds
+                        MediaPlayer.create(context, R.raw.clearblock).start();
                     }
                     break;
             }
