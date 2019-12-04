@@ -30,7 +30,10 @@ public class Fragment_Blocks extends Fragment {
     //coms
     LinearLayout ll_blocks;
     LinearLayout ll_categories;
-    ImageView [] categories;
+    ImageView [] categories; //0: DB
+                             //1: Logic
+                             //2: KeyWords
+                             //3: Others
     List<ImageView> [] blocks_of_categories;
 
     //vars
@@ -66,7 +69,7 @@ public class Fragment_Blocks extends Fragment {
          */
         Block b_select = BlockFactory.getInstance().SELECT;
         ImageView iv_select = b_select.createView(context);
-        blocks_of_categories[0].add(iv_select);
+        blocks_of_categories[2].add(iv_select);
 
         Block b_star = BlockFactory.getInstance().STAR;
         ImageView iv_star = b_star.createView(context);
@@ -74,7 +77,19 @@ public class Fragment_Blocks extends Fragment {
 
         Block b_where = BlockFactory.getInstance().WHERE;
         ImageView iv_where = b_where.createView(context);
-        blocks_of_categories[1].add(iv_where);
+        blocks_of_categories[2].add(iv_where);
+
+        Block b_attribute = BlockFactory.getInstance().ATTRIBUTE;
+        ImageView iv_attribute = b_attribute.createView(context);
+        blocks_of_categories[0].add(iv_attribute);
+
+        Block b_from = BlockFactory.getInstance().FROM;
+        ImageView iv_from = b_from.createView(context);
+        blocks_of_categories[2].add(iv_from);
+
+        Block b_table = BlockFactory.getInstance().TABLE;
+        ImageView iv_table = b_table.createView(context);
+        blocks_of_categories[0].add(iv_table);
 
 
         //drag

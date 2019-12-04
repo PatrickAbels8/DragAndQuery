@@ -31,6 +31,10 @@
     <string name="btn_retry">Retry!</string>
     <string name="table_msg_well_done">Gut gemacht!</string>
 
+    <string name="block_cat1">DB</string>
+    <string name="block_cat2">Logik</string>
+    <string name="block_cat3">Schlüssel Worte</string>
+    <string name="block_cat4">Sonstige</string>
     <string name="block_select">Select </string>
     <string name="block_from">From </string>
     <string name="block_where">Where </string>

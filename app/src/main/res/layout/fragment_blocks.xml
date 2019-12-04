@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_light"
+    android:background="#47250E"
     android:gravity="center_horizontal"
     android:id="@+id/cl_blocks">
 
@@ -30,25 +30,57 @@
             android:id="@+id/block_category1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/select_block" />
+            android:background="@drawable/cat1_block" />
 
         <ImageView
             android:id="@+id/block_category2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/attribute_block" />
+            android:background="@drawable/cat2_block" />
 
         <ImageView
             android:id="@+id/block_category3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/where_block" />
+            app:srcCompat="@drawable/cat3_block" />
 
         <ImageView
             android:id="@+id/block_category4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/star_block"/>
+            app:srcCompat="@drawable/cat4_block"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat1"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat2"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat3"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat4"/>
     </LinearLayout>
 
 

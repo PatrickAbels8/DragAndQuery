@@ -17,6 +17,7 @@ import com.example.dragandquery.Fragment_Query;
 import com.example.dragandquery.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,18 +27,18 @@ import java.util.Objects;
  * - draglistener should draw whole blocksection instead of a single block, when he already has successors
  */
 public class Block {
-    private final String name;
-    @DrawableRes private final int design;
-    private final List<Block> successors;
+    private String name; //actual syntax in sql query
+    @DrawableRes private final int design; //just the drawable
+    private final List<Block> successors; //who can connect to the right?
+    private List<Block> follower;
 
     public Block(String name, @DrawableRes int design, Block... sucs) {
         this.name = name;
         this.design = design;
         this.successors = new ArrayList<>(sucs.length);
+        this.follower = new ArrayList<>();
 
-        for(int i=0; i<sucs.length; i++){
-            successors.add(sucs[i]);
-        }
+        successors.addAll(Arrays.asList(sucs));
     }
 
 
@@ -66,8 +67,28 @@ public class Block {
         return name;
     }
 
+    //when parser wants to know the tablename
+    public void setName(String name){
+        this.name = name;
+    }
+
     public int getDesign() {
         return design;
+    }
+
+    //helper for dragging
+    public List<Block> getFollower(){
+        return this.follower;
+    }
+
+    //helper for dragging
+    public boolean hasFollower(){
+        return !this.follower.isEmpty();
+    }
+
+    //helper for dragging
+    public void addFollower(Block b){
+        this.follower.add(b);
     }
 
     public ImageView createView(Context context){
@@ -89,12 +110,21 @@ public class Block {
                 ImageView iv = (ImageView) o;
                 Block draggedBlock = (Block) iv.getTag();
                 Block thisBlock = (Block) view.getTag();
+                boolean fits_right = thisBlock.hasSuccessor(draggedBlock);
+                boolean fits_left = draggedBlock.hasSuccessor(thisBlock);
+                boolean isOnRightSide = iv.getX() > view.getX();
+
                 switch (dragEvent.getAction()) {
                     case DragEvent.ACTION_DRAG_ENTERED:
-                        if (thisBlock.hasSuccessor(draggedBlock)) {
+                        if (isOnRightSide && fits_right) {
                             iv.setVisibility(View.VISIBLE);
                             iv.setAlpha(0.5f);
                             iv.setX(view.getX()+view.getWidth());
+                            iv.setY(view.getY());
+                        } else if(!isOnRightSide && fits_left){
+                            iv.setVisibility(View.VISIBLE);
+                            iv.setAlpha(0.5f);
+                            iv.setX(view.getX()-view.getWidth());
                             iv.setY(view.getY());
                         }
                         break;
@@ -104,12 +134,19 @@ public class Block {
                         break;
                     case DragEvent.ACTION_DROP:
                         iv.setAlpha(1f);
-                        if (thisBlock.hasSuccessor(draggedBlock)) {
+                        if (isOnRightSide && fits_right) {
                             iv.setX(view.getX()+view.getWidth()); //todo has to fit to drawables
-                            iv.setY(view.getY()); //todo also left of thisBlock
+                            iv.setY(view.getY());
+                            //todo thisBlock.addFollower(draggedBlock);
                             //sounds
                             MediaPlayer.create(iv.getContext(), R.raw.dropblock).start();
-                        }else{
+                        } else if(!isOnRightSide && fits_left){
+                            iv.setX(view.getX()-view.getWidth()); //todo has to fit to drawables
+                            iv.setY(view.getY());
+                            //todo thisBlock.addFollower(draggedBlock);
+                            //sounds
+                            MediaPlayer.create(iv.getContext(), R.raw.dropblock).start();
+                        } else{
                             iv.setX(view.getX());
                             iv.setY(view.getY()+view.getHeight()); //todo maybe somewhere else
                         }

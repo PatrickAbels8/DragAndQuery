@@ -75,6 +75,10 @@ public class Fragment_Query extends Fragment {
         //remove all blocks
         btn_clear.setOnLongClickListener(view -> {
             //TODO ask again in popup fragment
+            //sounds
+            if(!blocks_in_rl.isEmpty()){
+                //MediaPlayer.create(context, R.raw.clearblock).start();
+            }
             for (int i=0; i<blocks_in_rl.size(); i++){
                 rl_query.removeView(blocks_in_rl.get(i));
             }
@@ -88,21 +92,22 @@ public class Fragment_Query extends Fragment {
             switch(dragID) {
                 //what if night enters d4
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    btn_clear.setHovered(true); //todo animate bin opened
+                    btn_clear.setImageResource(R.drawable.garbage_collector_x);
                     break;
                 //what if night exited d4
                 case DragEvent.ACTION_DRAG_EXITED:
-                    btn_clear.setHovered(false); //todo animate bin closed
+                    btn_clear.setImageResource(R.drawable.garbage_collector);
                     break;
                 //what if night is finally dropped on d4
                 case DragEvent.ACTION_DROP:
+                    btn_clear.setImageResource(R.drawable.garbage_collector);
                     Object o = dragEvent.getLocalState();
                     if(o instanceof ImageView) {
                         ImageView draggedView = (ImageView) o;
                         rl_query.removeView(draggedView);
                         blocks_in_rl.remove(draggedView);
                         //sounds
-                        MediaPlayer.create(context, R.raw.clearblock).start();
+                        //MediaPlayer.create(context, R.raw.clearblock).start();
                     }
                     break;
             }
@@ -144,14 +149,23 @@ public class Fragment_Query extends Fragment {
         Block block = null;
 
         /***
-         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUEL BE CHOSEN HERE!!!!!!!!!!!
+         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE CHOSEN HERE!!!!!!!!!!!
          */
         switch(((Block) view.getTag()).getDesign()){
+            case R.drawable.attribute_block:
+                block = BlockFactory.getInstance().ATTRIBUTE;
+                break;
+            case R.drawable.from_block:
+                block = BlockFactory.getInstance().FROM;
+                break;
             case R.drawable.select_block:
                 block = BlockFactory.getInstance().SELECT;
                 break;
             case R.drawable.star_block:
                 block = BlockFactory.getInstance().STAR;
+                break;
+            case R.drawable.table_block:
+                block = BlockFactory.getInstance().TABLE;
                 break;
             case R.drawable.where_block:
                 block = BlockFactory.getInstance().WHERE;
