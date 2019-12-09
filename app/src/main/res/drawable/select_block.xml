@@ -1,8 +1,38 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-   <solid android:color="@color/design_default_color_primary"/>
-    <stroke android:width="2pt" android:color="@color/cardview_light_background"/>
-    <corners android:radius="18pt"/>
-    <size android:width="50dp" android:height="30dp"/>
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape>
+                    <corners android:radius="3dp"/>
+                    <solid android:color="#090E09"/>
+                    <size android:width="40dp" android:height="20dp"/>
+                </shape>
+            </item>
+            <item android:bottom="1dp">
+                <shape>
+                    <corners android:radius="3dp"/>
+                    <solid android:color="#b0ff0000"/>
+                </shape>
+            </item>
+            <item android:bottom="3dp">
+                <shape>
+                    <solid android:color="#ff0000" />
+                    <corners android:radius="3dp"/>
+                </shape>
+            </item>
+            <item android:bottom="12dp" android:left="1dp" android:right="1dp" android:top="1dp">
+                <shape>
+                    <solid android:color="#6FDF6868"/>
+                    <corners android:radius="2dp"/>
+                </shape>
+            </item>
+            <item android:right="2dp" android:top="1dp" android:left="37dp" android:bottom="18dp">
+                <shape android:shape="oval">
+                    <solid android:color="#A6FFFFFF"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
 
-</shape>
+</selector>

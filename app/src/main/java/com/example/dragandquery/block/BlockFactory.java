@@ -29,6 +29,33 @@ public  class BlockFactory {
         SELECT = new Block("SELECT", R.drawable.select_block, STAR, ATTRIBUTE);
     }
 
+    public Block createBlock(String name){
+        Block block = new Block("", R.drawable.ic_golf);
+
+        switch(name){
+            case "SELECT":
+                block = new Block("SELECT", R.drawable.select_block, STAR, ATTRIBUTE);
+                break;
+            case "FROM":
+                block = new Block("FROM", R.drawable.from_block, TABLE);
+                break;
+            case "WHERE":
+                block = new Block("WHERE", R.drawable.where_block);
+                break;
+            case "STAR":
+                block = new Block("*", R.drawable.star_block);
+                break;
+            case "ATTRIBUTE":
+                block = new Block("", R.drawable.attribute_block, ATTRIBUTE);
+                break;
+            case "TABLE":
+                block = new Block("", R.drawable.table_block);
+                break;
+        }
+
+        return block;
+    }
+
     public static BlockFactory getInstance() {
         if (INSTANCE==null)
             INSTANCE = new BlockFactory();

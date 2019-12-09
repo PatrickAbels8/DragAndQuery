@@ -74,7 +74,9 @@ public class Navigation extends AppCompatActivity
         if(i.hasExtra(LoginActivity.UMAIL)) {
             saveData(getString(R.string.userMail_key), i.getStringExtra(LoginActivity.UMAIL));
         }
-        saveData(getString(R.string.tutScore_key), Integer.toString(30)); //just for now
+        if(i.hasExtra(Tutorial.EXP_AVG)) {
+            saveData(getString(R.string.tutScore_key), Integer.toString(i.getIntExtra(Tutorial.EXP_AVG, 0)));
+        }
         saveData(getString(R.string.pracScore_key), Integer.toString(70)); //just for now
 
         user_name = loadData(getString(R.string.userName_key), "Name");

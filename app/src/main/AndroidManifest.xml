@@ -10,9 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".TutorialCategory"
+            android:label="@string/title_activity_tutorial_category"
+            android:parentActivityName=".Tutorial"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.dragandquery.Tutorial" />
+        </activity>
+        <activity
             android:name=".Tutorial"
             android:label="@string/title_activity_tutorial"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Practice" />
         <activity
             android:name=".Free"
