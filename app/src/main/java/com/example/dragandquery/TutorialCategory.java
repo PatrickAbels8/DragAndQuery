@@ -13,7 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
+import java.util.Arrays;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
@@ -24,16 +26,12 @@ public class TutorialCategory extends AppCompatActivity {
 
     //coms
     Button[] cats;
+    ImageButton reset;
 
     //vars
-    public static final String CAT1_EXP = "com.example.dragandquery.TutorialCategory.CAT1_EXP";
-    public static final String CAT2_EXP = "com.example.dragandquery.TutorialCategory.CAT2_EXP";
-    public static final String CAT3_EXP = "com.example.dragandquery.TutorialCategory.CAT3_EXP";
-    public static final String CAT4_EXP = "com.example.dragandquery.TutorialCategory.CAT4_EXP";
-    public static final String CAT5_EXP = "com.example.dragandquery.TutorialCategory.CAT5_EXP";
     private int[] exps;
     private int num_cats = 5;
-    private int cat_id;
+    private int cat_id; //1-5
     private int cat_exp;
 
     @Override
@@ -44,51 +42,80 @@ public class TutorialCategory extends AppCompatActivity {
         //intent stuff
         Intent intent = getIntent();
 
-
         //init coms&vars
-        exps = new int[num_cats];
-        cats = new Button[num_cats];
-        cats[0] = (Button) findViewById(R.id.btn1);
-        cats[1] = (Button) findViewById(R.id.btn2);
-        cats[2] = (Button) findViewById(R.id.btn3);
-        cats[3] = (Button) findViewById(R.id.btn4);
-        cats[4] = (Button) findViewById(R.id.btn5);
+        exps = new int[]{
+                loadData(getString(R.string.tutScore1_key), 10),
+                loadData(getString(R.string.tutScore2_key), 20),
+                loadData(getString(R.string.tutScore3_key), 30),
+                loadData(getString(R.string.tutScore4_key), 40),
+                loadData(getString(R.string.tutScore5_key), 50)};
+        cats = new Button[]{
+                (Button) findViewById(R.id.btn1),
+                (Button) findViewById(R.id.btn2),
+                (Button) findViewById(R.id.btn3),
+                (Button) findViewById(R.id.btn4),
+                (Button) findViewById(R.id.btn5)};
+        reset = (ImageButton) findViewById(R.id.reset);
 
+        //show which category is currently open
         if(intent.hasExtra(Tutorial.CAT_ID)){
             cat_id = intent.getIntExtra(Tutorial.CAT_ID, 1);
-            String d = Integer.toString(cat_exp);
-            Log.d("##############################", d);
-        }
-        if(intent.hasExtra(Tutorial.CAT_EXP)){
-            cat_exp = intent.getIntExtra(Tutorial.CAT_EXP, 1);
-            String s = Integer.toString(cat_exp);
-            Log.d("##############################", s);
+            cat_exp = exps[cat_id-1];
+            cats[cat_id-1].setAlpha(0.7f);
         }
 
-        //key value store
+        //show exps for testing
         for(int i=0; i<num_cats; i++){
-            if(i==cat_id){
-                cats[i].setText(cat_exp); //error
-            }else{
-                cats[i].setText("-1");
-            }
+            cats[i].setText(Integer.toString(exps[i]));
         }
 
-        //testing
-
+        //what if someone advanced their experience on some category
         for(int i=0; i<num_cats; i++){
             cats[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String cat_name = view.getResources().getResourceName(view.getId());
-                    int cat_id = Integer.parseInt(Character.toString(cat_name.charAt(cat_name.length()-1))) -1;
-                    int new_exp = Integer.parseInt(cats[cat_id].getText().toString())+1;
-                    cats[cat_id].setText(new_exp);
-                    exps[cat_id] = new_exp;
+                    int btn_id = Integer.parseInt(Character.toString(cat_name.charAt(cat_name.length()-1))) -1; //0-4
+                    int new_exp = Integer.parseInt(cats[btn_id].getText().toString())+10;
+                    cats[btn_id].setText(Integer.toString(new_exp));
+                    exps[btn_id] = new_exp;
+                    switch (btn_id){
+                        case 0:
+                            saveData(getString(R.string.tutScore1_key), new_exp);
+                            break;
+                        case 1:
+                            saveData(getString(R.string.tutScore2_key), new_exp);
+                            break;
+                        case 2:
+                            saveData(getString(R.string.tutScore3_key), new_exp);
+                            break;
+                        case 3:
+                            saveData(getString(R.string.tutScore4_key), new_exp);
+                            break;
+                        case 4:
+                            saveData(getString(R.string.tutScore5_key), new_exp);
+                            break;
+                    }
                 }
             });
         }
 
+        //reset exps
+        reset.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                for(int i=0; i<num_cats; i++){
+                    cats[i].setText("0");
+                    exps[i] = 0;
+                }
+                saveData(getString(R.string.tutScore1_key), 0);
+                saveData(getString(R.string.tutScore2_key), 0);
+                saveData(getString(R.string.tutScore3_key), 0);
+                saveData(getString(R.string.tutScore4_key), 0);
+                saveData(getString(R.string.tutScore5_key), 0);
+                return true;
+            }
+        });
 
         //toolbar stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -105,15 +132,19 @@ public class TutorialCategory extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public void onBackPressed(){
-        Intent i = new Intent(getApplicationContext(), Tutorial.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //todo maybe wrong flag
-        i.putExtra(CAT1_EXP, exps[0]);
-        i.putExtra(CAT2_EXP, exps[1]);
-        i.putExtra(CAT3_EXP, exps[2]);
-        i.putExtra(CAT4_EXP, exps[3]);
-        i.putExtra(CAT5_EXP, exps[4]);
-        startActivity(i);
+    //key value store
+    public void saveData(String key, int data){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(key, data);
+        editor.apply();
+        Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
+    }
+
+    //key value store
+    public int loadData(String key, int default_value){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int data = sharedPref.getInt(key, default_value);
+        return data;
     }
 }

@@ -38,6 +38,13 @@
            android:layout_height="wrap_content"
            android:text="exp5"
            android:id="@+id/btn5"/>
+       <ImageButton
+           android:id="@+id/reset"
+           android:src="@drawable/btn_retry"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+       </ImageButton>
+
    </LinearLayout>
 
 

@@ -23,13 +23,12 @@
 
     <string name="userName_key">userName</string>
     <string name="userMail_key">userMail</string>
-    <string name="tutScore_key">tutScore</string>
+    <string name="tutScore1_key">tutScore1</string>
+    <string name="tutScore2_key">tutScore2</string>
+    <string name="tutScore3_key">tutScore3</string>
+    <string name="tutScore4_key">tutScore4</string>
+    <string name="tutScore5_key">tutScore5</string>
     <string name="pracScore_key">pracScore</string>
-    <string name="tutCat1_key">tutCat1_key</string>
-    <string name="tutCat2_key">tutCat2_key</string>
-    <string name="tutCat3_key">tutCat3_key</string>
-    <string name="tutCat4_key">tutCat4_key</string>
-    <string name="tutCat5_key">tutCat5_key</string>
 
     <string name="default_name">admin</string>
     <string name="default_mail">admin@dnq.de</string>

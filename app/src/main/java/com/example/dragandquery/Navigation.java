@@ -33,8 +33,11 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 /***
- * TODO:
- * -
+ * TODO
+ * -prac score
+ * -title big+small in nd
+ * -outsource sp to settings
+ * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
  */
 
 public class Navigation extends AppCompatActivity
@@ -44,14 +47,17 @@ public class Navigation extends AppCompatActivity
     public static final String SHARED_PREFS = "sharedPrefs";
     private String user_name;
     private String user_mail;
-    private int tutorial_exp;
+    private int tutorial_exp_avg;
+    private int[] tutorial_exps;
     private int practise_exp;
 
     //coms
     TextView name;
     TextView mail;
-    ProgressBar tscore;
-    ProgressBar pscore;
+    TextView tv_tutorial;
+    TextView tv_practise;
+    ProgressBar pb_tutorial;
+    ProgressBar pb_practise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +70,10 @@ public class Navigation extends AppCompatActivity
         //components
         name = (TextView) findViewById(R.id.tv_name);
         mail = (TextView) findViewById(R.id.tv_mail);
-        tscore = (ProgressBar) findViewById(R.id.pb_tutorial);
-        pscore = (ProgressBar) findViewById(R.id.pb_practise);
+        tv_tutorial = (TextView) findViewById(R.id.tv_tutorial);
+        tv_practise = (TextView) findViewById(R.id.tv_practise);
+        pb_tutorial = (ProgressBar) findViewById(R.id.pb_tutorial);
+        pb_practise = (ProgressBar) findViewById(R.id.pb_practise);
 
         //key value store
         if(i.hasExtra(LoginActivity.UNAME)){
@@ -74,21 +82,28 @@ public class Navigation extends AppCompatActivity
         if(i.hasExtra(LoginActivity.UMAIL)) {
             saveData(getString(R.string.userMail_key), i.getStringExtra(LoginActivity.UMAIL));
         }
-        if(i.hasExtra(Tutorial.EXP_AVG)) {
-            saveData(getString(R.string.tutScore_key), Integer.toString(i.getIntExtra(Tutorial.EXP_AVG, 0)));
-        }
         saveData(getString(R.string.pracScore_key), Integer.toString(70)); //just for now
 
-        user_name = loadData(getString(R.string.userName_key), "Name");
-        user_mail = loadData(getString(R.string.userMail_key), "Mail");
-        tutorial_exp = Integer.parseInt(loadData(getString(R.string.tutScore_key), Integer.toString(0)));
-        practise_exp = Integer.parseInt(loadData(getString(R.string.pracScore_key), Integer.toString(0)));
+        user_name = loadDataString(getString(R.string.userName_key), "Name");
+        user_mail = loadDataString(getString(R.string.userMail_key), "Mail");
+        tutorial_exps = new int[]{
+                loadDataInt(getString(R.string.tutScore1_key), 10),
+                loadDataInt(getString(R.string.tutScore2_key), 20),
+                loadDataInt(getString(R.string.tutScore3_key), 30),
+                loadDataInt(getString(R.string.tutScore4_key), 40),
+                loadDataInt(getString(R.string.tutScore5_key), 50)};
+        tutorial_exp_avg = calcAvg(tutorial_exps);
+        practise_exp = Integer.parseInt(loadDataString(getString(R.string.pracScore_key), Integer.toString(0)));
 
         //show user details
         name.setText(user_name);
         mail.setText(user_mail);
-        tscore.setProgress(tutorial_exp);
-        pscore.setProgress(practise_exp);
+        pb_tutorial.setProgress(tutorial_exp_avg);
+        pb_practise.setProgress(practise_exp);
+
+        //open tutorial (and practise) via pb/tv
+        tv_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
+        pb_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
 
         //navigation stuff TODO first time show right swipe
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -118,10 +133,27 @@ public class Navigation extends AppCompatActivity
         Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
     }
 
-    public String loadData(String key, String default_value){
+    //key value store
+    public String loadDataString(String key, String default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String data = sharedPref.getString(key, default_value);
         return data;
+    }
+
+    //key value store
+    public int loadDataInt(String key, int default_value){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int data = sharedPref.getInt(key, default_value);
+        return data;
+    }
+
+    public int calcAvg(int[] partialExps){
+        int num_cats = partialExps.length;
+        int sum = 0;
+        for (int partialExp : partialExps) {
+            sum += partialExp;
+        }
+        return sum/num_cats;
     }
 
     @Override
@@ -176,6 +208,7 @@ public class Navigation extends AppCompatActivity
 
         } else if (id == R.id.nav_tutorial) {
             Intent i = new Intent(getApplicationContext(), Tutorial.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
 
         } else if (id == R.id.nav_practice) {
@@ -194,5 +227,14 @@ public class Navigation extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public class OnTutorialClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getApplicationContext(), Tutorial.class);
+            startActivity(i);
+        }
     }
 }
