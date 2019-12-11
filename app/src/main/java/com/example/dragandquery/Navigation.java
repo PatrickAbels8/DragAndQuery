@@ -36,7 +36,7 @@ import java.util.HashMap;
  * TODO
  * -prac score
  * -title big+small in nd
- * -outsource sp to settings
+ * (-outsource sp to settings)
  * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
  */
 

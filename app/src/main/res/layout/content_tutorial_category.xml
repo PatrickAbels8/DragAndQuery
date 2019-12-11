@@ -9,35 +9,12 @@
     tools:showIn="@layout/activity_tutorial_category">
 
    <LinearLayout
+       android:id="@+id/ll_tutorial_lections"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:orientation="vertical">
+       android:orientation="vertical"
+       android:layout_gravity="center_horizontal">
 
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="exp1"
-           android:id="@+id/btn1"/>
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="exp2"
-           android:id="@+id/btn2"/>
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="exp3"
-           android:id="@+id/btn3"/>
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="exp4"
-           android:id="@+id/btn4"/>
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="exp5"
-           android:id="@+id/btn5"/>
        <ImageButton
            android:id="@+id/reset"
            android:src="@drawable/btn_retry"

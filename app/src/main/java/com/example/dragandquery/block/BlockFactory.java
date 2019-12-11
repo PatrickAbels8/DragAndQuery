@@ -29,7 +29,7 @@ public  class BlockFactory {
         SELECT = new Block("SELECT", R.drawable.select_block, STAR, ATTRIBUTE);
     }
 
-    public Block createBlock(String name){
+   /* public Block createBlock(String name){
         Block block = new Block("", R.drawable.ic_golf);
 
         switch(name){
@@ -54,7 +54,7 @@ public  class BlockFactory {
         }
 
         return block;
-    }
+    }*/
 
     public static BlockFactory getInstance() {
         if (INSTANCE==null)
