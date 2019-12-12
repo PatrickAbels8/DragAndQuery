@@ -1,10 +1,12 @@
-package com.example.dragandquery;
+package com.example.dragandquery.tutorial;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.dragandquery.R;
+import com.example.dragandquery.Tutorial;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -36,6 +38,8 @@ public class TutorialCategory extends AppCompatActivity {
     ImageButton reset;
 
     //vars
+    public static final String LECTION_ID = "com.example.dragandquery.tutorial.TutorialCategory.LECTION_ID";
+    private int cat_id;
     private List<Integer> lections_achievement;
     private int cat_exp;
     private int cat_exp_unlocked;
@@ -63,19 +67,22 @@ public class TutorialCategory extends AppCompatActivity {
 
         //show which category is currently open and open corresponding lections
         if(intent.hasExtra(Tutorial.CAT_ID)){
-            int cat_id = intent.getIntExtra(Tutorial.CAT_ID, 1); //1-5
+            cat_id = intent.getIntExtra(Tutorial.CAT_ID, 1); //1-5
             loadLections(cat_id);
         }
+
+        //reset for testing
+        resetLocks();
 
         //what if someone advanced their experience on some lection
         for(Button b: cat_lections){
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int lection_id = cat_lections.indexOf(view);
+                    int lection_id = cat_lections.indexOf(view); //0-9
                     int level_of_achievement = lections_achievement.get(lection_id);
                     if(level_of_achievement == UNLOCKED){
-                        setLectionDone(lection_id);
+                        startLection(lection_id);
                     }else if(level_of_achievement == DONE){
                         setLectionLocked(lection_id);
                     }else if(level_of_achievement == LOCKED){
@@ -89,10 +96,7 @@ public class TutorialCategory extends AppCompatActivity {
         reset.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                setLectionUnlocked(0);
-                for(int i=1; i<lections_achievement.size(); i++){
-                    setLectionLocked(i);
-                }
+                resetLocks();
                 return true;
             }
         });
@@ -109,6 +113,13 @@ public class TutorialCategory extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    //start lection
+    public void startLection(int lection_id){
+        Intent i = new Intent(context, TutorialCategoryLection.class);
+        i.putExtra(LECTION_ID, getLectionID(lection_id));
+        startActivity(i);
     }
 
     //save new achievement in layout and in sharedPrefs (later start lection activity)
@@ -259,5 +270,30 @@ public class TutorialCategory extends AppCompatActivity {
         int numTotal = lections_achievement.size();
         int ach = numTotal*cat_exp_unlocked/100;
         return ach;
+    }
+
+    //when in cat1 return lec3 as "01_04"
+    public String getLectionID(int lection_id){
+        String ID = "";
+        if(cat_id>9){
+            ID += Integer.toString(cat_id);
+        }else{
+            ID += "0"+Integer.toString(cat_id);
+        }
+        ID += "_";
+        if(lection_id+1>9){
+            ID += Integer.toString(lection_id+1);
+        }else{
+            ID += "0"+Integer.toString(lection_id+1);
+        }
+        return ID;
+    }
+
+    //reset everything
+    public void resetLocks(){
+        setLectionUnlocked(0);
+        for(int i=1; i<lections_achievement.size(); i++){
+            setLectionLocked(i);
+        }
     }
 }

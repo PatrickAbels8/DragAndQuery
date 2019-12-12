@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".tutorial.TutorialCategoryLection"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
         <activity
-            android:name=".TutorialCategory"
+            android:name=".tutorial.TutorialCategory"
             android:label="@string/title_activity_tutorial_category"
             android:parentActivityName=".Tutorial"
             android:theme="@style/AppTheme.NoActionBar">

@@ -2,18 +2,14 @@ package com.example.dragandquery.block;
 
 import android.content.ClipData;
 import android.content.Context;
-import android.graphics.BlendMode;
-import android.graphics.Canvas;
 import android.media.MediaPlayer;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
 
-import com.example.dragandquery.Fragment_Query;
 import com.example.dragandquery.R;
 
 import java.util.ArrayList;

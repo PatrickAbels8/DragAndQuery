@@ -1,4 +1,4 @@
-package com.example.dragandquery;
+package com.example.dragandquery.free;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.dragandquery.R;
 import com.example.dragandquery.block.Block;
 import com.example.dragandquery.block.BlockFactory;
 
