@@ -71,9 +71,6 @@ public class TutorialCategory extends AppCompatActivity {
             loadLections(cat_id);
         }
 
-        //reset for testing
-        resetLocks();
-
         //what if someone advanced their experience on some lection
         for(Button b: cat_lections){
             b.setOnClickListener(new View.OnClickListener() {
@@ -84,9 +81,9 @@ public class TutorialCategory extends AppCompatActivity {
                     if(level_of_achievement == UNLOCKED){
                         startLection(lection_id);
                     }else if(level_of_achievement == DONE){
-                        setLectionLocked(lection_id);
+                        showLectionDone();
                     }else if(level_of_achievement == LOCKED){
-                        setLectionUnlocked(lection_id);
+                        showLectionLocked();
                     }
                 }
             });
@@ -122,15 +119,7 @@ public class TutorialCategory extends AppCompatActivity {
         startActivity(i);
     }
 
-    //save new achievement in layout and in sharedPrefs (later start lection activity)
-    public void setLectionDone(int lection_id){
-        lections_achievement.set(lection_id, DONE);
-        saveData(exp_key, achievementsToExperience());
-        saveData(exp_unlocked_key, unlockedachievementsToExperience());
-        viewLectionDone(lection_id);
-    }
-
-    //save new achievement in layout and in sharedPrefs (later: show user that lection has to be unlocked yet)
+    //save new achievement in layout and in sharedPrefs
     public void setLectionUnlocked(int lection_id){
         lections_achievement.set(lection_id, UNLOCKED);
         saveData(exp_key, achievementsToExperience());
@@ -138,13 +127,22 @@ public class TutorialCategory extends AppCompatActivity {
         viewLectionUnlocked(lection_id);
     }
 
-    //set locked agein for testing only (later: remind user that lection is already finished)
+    //show user that lection has to be unlocked yet
+    public void showLectionLocked(){
+        Toast.makeText(context, getString(R.string.toast_notUnlockedYet), Toast.LENGTH_SHORT).show();
+    }
+
+    //show user that lection is already finished
+    public void showLectionDone(){
+        Toast.makeText(context, getString(R.string.toast_alreadyDone), Toast.LENGTH_SHORT).show();
+    }
+
+    //set locked agein
     public void setLectionLocked(int lection_id){
         lections_achievement.set(lection_id, LOCKED);
         saveData(exp_key, achievementsToExperience());
         saveData(exp_unlocked_key, unlockedachievementsToExperience());
         viewLectionLocked(lection_id);
-        //Toast.makeText(context, "lection already done", Toast.LENGTH_SHORT).show();
     }
 
     //set drawable and stuff
@@ -182,15 +180,22 @@ public class TutorialCategory extends AppCompatActivity {
     public void loadLections(int cat_id){
         switch(cat_id){
             case 1:
-                exp_key = getString(R.string.tutScore1_key);
-                exp_unlocked_key = getString(R.string.tutScore1_unlocked_key);
-                cat_exp = loadData(exp_key, 40);
-                cat_exp_unlocked = loadData(exp_unlocked_key, 80);
-
                 //todo make via menu/list
                 addLection(getString(R.string.cat1_lec1));
                 addLection(getString(R.string.cat1_lec2));
                 addLection(getString(R.string.cat1_lec3));
+                addLection("another");
+                addLection("one more");
+                addLection("take that");
+                addLection("not enough");
+                addLection("3 left");
+                addLection("almost done");
+                addLection("last one");
+
+                exp_key = getString(R.string.tutScore1_key);
+                exp_unlocked_key = getString(R.string.tutScore1_unlocked_key);
+                cat_exp = loadData(exp_key, 1); //default 0 lections done yet
+                cat_exp_unlocked = loadData(exp_unlocked_key, 100/lections_achievement.size()+1); //default 1 lection unlocked yet
 
                 for(int i=0; i<lections_achievement.size(); i++){
                     lections_achievement.set(i, LOCKED);
@@ -206,7 +211,6 @@ public class TutorialCategory extends AppCompatActivity {
                     lections_achievement.set(i, DONE);
                     viewLectionDone(i);
                 }
-
                 break;
             case 2:
                 cat_exp = loadData(getString(R.string.tutScore2_key), 10);
@@ -223,6 +227,15 @@ public class TutorialCategory extends AppCompatActivity {
         }
     }
 
+    //print achievements
+    public String toStringAch(){
+        String a = "";
+        for (int i = 0; i < lections_achievement.size(); i++) {
+            a += Integer.toString(lections_achievement.get(i));
+        }
+        return a;
+    }
+
     //add a new lection to every list and layout
     public void addLection(String name){
         Button l = new Button(context);
@@ -232,7 +245,7 @@ public class TutorialCategory extends AppCompatActivity {
         lections.addView(l);
     }
 
-    //when 3 out of 5 lections are done, saved exp should be 60 (.6)
+    //when 3 out of 5 lections are done, saved exp should be 61
     public int achievementsToExperience(){
         int numDone = 0;
         for(int a: lections_achievement){
@@ -245,7 +258,7 @@ public class TutorialCategory extends AppCompatActivity {
         return exp;
     }
 
-    //when 3 out of 5 lections are unlocked or done, saved unlocked exp should be 60 (.6)
+    //when 3 out of 5 lections are unlocked or done, saved unlocked exp should be 61
     public int unlockedachievementsToExperience(){
         int numDone = 0;
         for(int a: lections_achievement){
@@ -258,22 +271,24 @@ public class TutorialCategory extends AppCompatActivity {
         return exp;
     }
 
-    //when exp is 60 (.6), 3 out of 5 lections should be done
+    //when exp is 61 , 3 out of 5 lections should be done
     public int experienceToAchievements(){
         int numTotal = lections_achievement.size();
         int ach = numTotal*cat_exp/100;
         return ach;
     }
 
-    //when unlocked exp is 60 (.6), 3 out of 5 lections should be unlocked
+    //when unlocked exp is 61 , 3 out of 5 lections should be unlocked
     public int unlockedexperienceToAchievements(){
         int numTotal = lections_achievement.size();
         int ach = numTotal*cat_exp_unlocked/100;
         return ach;
     }
 
-    //when in cat1 return lec3 as "01_04"
+    //when in cat1 return lec 4 (index = 3) out of 5 as "01_04_05"
     public String getLectionID(int lection_id){
+        int size = lections_achievement.size();
+
         String ID = "";
         if(cat_id>9){
             ID += Integer.toString(cat_id);
@@ -286,6 +301,13 @@ public class TutorialCategory extends AppCompatActivity {
         }else{
             ID += "0"+Integer.toString(lection_id+1);
         }
+        ID += "_";
+        if(size>9){
+            ID += Integer.toString(size);
+        }else{
+            ID += "0"+Integer.toString(size);
+        }
+
         return ID;
     }
 

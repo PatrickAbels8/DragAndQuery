@@ -65,4 +65,7 @@
     <string name="tutorial_category5">Verschachtelte Anfragen</string>
     <string name="title_activity_tutorial_category">TutorialCategory</string>
     <string name="title_activity_tutorial">Tutorial</string>
+
+    <string name="toast_notUnlockedYet">Noch nicht freigeschaltet!</string>
+    <string name="toast_alreadyDone">Bereits erledigt!</string>
 </resources>
