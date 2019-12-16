@@ -17,7 +17,7 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * - more than one lection (implements, fragments, declaration of fragment, Container manager, onBack, (onForth,) onGo, setLectionDone)
+ * -
  */
 
 public class TutorialCategoryLection
@@ -25,13 +25,22 @@ public class TutorialCategoryLection
         implements
             Fragment_Feedback.Fragment_Feedback_Listener,
             Fragment_LectionContent_0101.Fragment_LectionContent_0101_Listener,
-            Fragment_LectionContent_0102.Fragment_LectionContent_0102_Listener {
+            Fragment_LectionContent_0102.Fragment_LectionContent_0102_Listener,
+            Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
+            Fragment_LectionContent_0104.Fragment_LectionContent_0104_Listener,
+            Fragment_LectionContent_0105.Fragment_LectionContent_0105_Listener,
+            Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener
+{
 
     //fragments
     Fragment curFrag;
     Fragment_Feedback fragFeedback;
     Fragment_LectionContent_0101 fragLectionContent_0101;
     Fragment_LectionContent_0102 fragLectionContent_0102;
+    Fragment_LectionContent_0103 fragLectionContent_0103;
+    Fragment_LectionContent_0104 fragLectionContent_0104;
+    Fragment_LectionContent_0105 fragLectionContent_0105;
+    Fragment_LectionContent_0106 fragLectionContent_0106;
 
     //vars
     private String lection_id; //of type "01_03_05" when its the 3rd out of 5 lections in cat 01
@@ -48,6 +57,10 @@ public class TutorialCategoryLection
         fragFeedback = new Fragment_Feedback();
         fragLectionContent_0101 = new Fragment_LectionContent_0101();
         fragLectionContent_0102 = new Fragment_LectionContent_0102();
+        fragLectionContent_0103 = new Fragment_LectionContent_0103();
+        fragLectionContent_0104 = new Fragment_LectionContent_0104();
+        fragLectionContent_0105 = new Fragment_LectionContent_0105();
+        fragLectionContent_0106 = new Fragment_LectionContent_0106();
 
         //intent stuff
         Intent i = getIntent();
@@ -64,6 +77,14 @@ public class TutorialCategoryLection
             curFrag = fragLectionContent_0101;
         }else if(lection_id.substring(0, 5).equals("01_02")){
             curFrag = fragLectionContent_0102;
+        }else if(lection_id.substring(0, 5).equals("01_03")){
+            curFrag = fragLectionContent_0103;
+        }else if(lection_id.substring(0, 5).equals("01_04")){
+            curFrag = fragLectionContent_0104;
+        }else if(lection_id.substring(0, 5).equals("01_05")){
+            curFrag = fragLectionContent_0105;
+        }else if(lection_id.substring(0, 5).equals("01_06")){
+            curFrag = fragLectionContent_0106;
         }
 
         //open current lection
@@ -92,7 +113,7 @@ public class TutorialCategoryLection
             startActivity(i);
         }else{
             Intent i2 = new Intent(getApplicationContext(), TutorialCategory.class);
-            i2.putExtra(Tutorial.CAT_ID, Integer.parseInt(lection_id.substring(0, 2)));
+            i2.putExtra(Tutorial.CAT_ID, numCat);
             i2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i2);
         }
@@ -110,6 +131,14 @@ public class TutorialCategoryLection
             fragLectionContent_0101.goInclickable();
         }else if(lection_id.substring(0, 4).equals("01_02")){
             fragLectionContent_0102.goInclickable();
+        }else if(lection_id.substring(0, 4).equals("01_03")){
+            fragLectionContent_0103.goInclickable();
+        }else if(lection_id.substring(0, 4).equals("01_04")){
+            fragLectionContent_0104.goInclickable();
+        }else if(lection_id.substring(0, 4).equals("01_05")){
+            fragLectionContent_0105.goInclickable();
+        }else if(lection_id.substring(0, 4).equals("01_06")){
+            fragLectionContent_0106.goInclickable();
         }
     }
 
@@ -155,7 +184,7 @@ public class TutorialCategoryLection
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, data);
         editor.apply();
-        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
     }
 
     //key value store

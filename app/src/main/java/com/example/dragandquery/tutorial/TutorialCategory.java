@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Space;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,6 +31,9 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 /***
  * TODO:
  * - cats 2-5
+ * - default first unloked
+ * - do done lections againg without reset
+ * - !!! first time speech bubble that user should reset once (story time cause default ist wrong)
  */
 public class TutorialCategory extends AppCompatActivity {
 
@@ -180,37 +185,31 @@ public class TutorialCategory extends AppCompatActivity {
     public void loadLections(int cat_id){
         switch(cat_id){
             case 1:
-                //todo make via menu/list
+                setTitle(getString(R.string.tutorial_category1));
+                //todo make via menu/list and export half of the case to a method (exp key etc global)
                 addLection(getString(R.string.cat1_lec1));
                 addLection(getString(R.string.cat1_lec2));
                 addLection(getString(R.string.cat1_lec3));
-                addLection("another");
-                addLection("one more");
-                addLection("take that");
-                addLection("not enough");
-                addLection("3 left");
-                addLection("almost done");
-                addLection("last one");
+                addLection(getString(R.string.cat1_lec4));
+                addLection(getString(R.string.cat1_lec5));
+                addLection(getString(R.string.cat1_lec6));
 
                 exp_key = getString(R.string.tutScore1_key);
                 exp_unlocked_key = getString(R.string.tutScore1_unlocked_key);
                 cat_exp = loadData(exp_key, 1); //default 0 lections done yet
                 cat_exp_unlocked = loadData(exp_unlocked_key, 100/lections_achievement.size()+1); //default 1 lection unlocked yet
 
-                for(int i=0; i<lections_achievement.size(); i++){
-                    lections_achievement.set(i, LOCKED);
-                    viewLectionLocked(i);
+                //every lection finished?
+                if(cat_exp>=100){
+                    for(int i=0; i<lections_achievement.size(); i++){
+                        lections_achievement.set(i, DONE);
+                        viewLectionDone(i);
+                    }
+                    break;
                 }
 
-                for(int i=0; i<unlockedexperienceToAchievements(); i++){
-                    lections_achievement.set(i, UNLOCKED);
-                    viewLectionUnlocked(i);
-                }
-
-                for(int i=0; i<experienceToAchievements(); i++){
-                    lections_achievement.set(i, DONE);
-                    viewLectionDone(i);
-                }
+                //otherwise
+                setAchsAndViews();
                 break;
             case 2:
                 cat_exp = loadData(getString(R.string.tutScore2_key), 10);
@@ -224,6 +223,25 @@ public class TutorialCategory extends AppCompatActivity {
             case 5:
                 cat_exp = loadData(getString(R.string.tutScore5_key), 10);
                 break;
+        }
+
+    }
+
+    //set achievements and views
+    public void setAchsAndViews(){
+        for(int i=0; i<lections_achievement.size(); i++){
+            lections_achievement.set(i, LOCKED);
+            viewLectionLocked(i);
+        }
+
+        for(int i=0; i<unlockedexperienceToAchievements(); i++){
+            lections_achievement.set(i, UNLOCKED);
+            viewLectionUnlocked(i);
+        }
+
+        for(int i=0; i<experienceToAchievements(); i++){
+            lections_achievement.set(i, DONE);
+            viewLectionDone(i);
         }
     }
 
@@ -240,12 +258,12 @@ public class TutorialCategory extends AppCompatActivity {
     public void addLection(String name){
         Button l = new Button(context);
         l.setText(name);
-        l.setWidth(500);
-        l.setHeight(150);
+        l.setBackground(getDrawable(R.drawable.btn_lection));
         l.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         cat_lections.add(l);
         lections_achievement.add(LOCKED);
         lections.addView(l);
+        lections.addView(new Space(context), 300, 10);
     }
 
     //when 3 out of 5 lections are done, saved exp should be 61

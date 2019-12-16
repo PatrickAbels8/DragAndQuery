@@ -27,6 +27,16 @@
     <string name="feedback_msg_bad">Das war noch nicht ganz richtig!</string>
     <string name="c1l1_title">Kapitel 1 Lektion 1</string>
     <string name="c1l2_title">Kapitel 1 Lektion 2</string>
+    <string name="c1l3_title">Kapitel 1 Lektion 3</string>
+    <string name="c1l4_title">Kapitel 1 Lektion 4</string>
+    <string name="c1l5_title">Kapitel 1 Lektion 5</string>
+    <string name="c1l6_title">Kapitel 1 Lektion 6</string>
+    <string name="cat1_lec1">Schlüssel</string>
+    <string name="cat1_lec2">Attribute</string>
+    <string name="cat1_lec3">NULL</string>
+    <string name="cat1_lec4">Where</string>
+    <string name="cat1_lec5">Manipulation</string>
+    <string name="cat1_lec6">Algebra</string>
 
     <string name="userName_key">userName</string>
     <string name="userMail_key">userMail</string>
@@ -54,9 +64,6 @@
     <string name="block_where">Where </string>
     <string name="block_star">* </string>
 
-    <string name="cat1_lec1">Schlüssel</string>
-    <string name="cat1_lec2">Attribute</string>
-    <string name="cat1_lec3">NULL</string>
 
     <string name="head_tutorial">Tutorial</string>
     <string name="tutorial_category1">Relationale Datanbank</string>
@@ -64,7 +71,7 @@
     <string name="tutorial_category3">Aggregatfunktionen</string>
     <string name="tutorial_category4">Join</string>
     <string name="tutorial_category5">Verschachtelte Anfragen</string>
-    <string name="title_activity_tutorial_category">TutorialCategory</string>
+    <string name="title_activity_tutorial_category">Tutorial Category</string>
     <string name="title_activity_tutorial">Tutorial</string>
 
     <string name="toast_notUnlockedYet">Noch nicht freigeschaltet!</string>

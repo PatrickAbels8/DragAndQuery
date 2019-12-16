@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0ffff00"
+    android:id="@+id/frag_lectioncontent_0105">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/c1l5_title"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:id="@+id/btn_lectioncontent_0105_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_btn_go"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,9 +20,9 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO:
- * - add nd
- * - pb+tv clicklistener to open overview on corresponding lections
+ * - add nd (copy navigation class, include nav layout but this layout, in nav layout include this layout)
  * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
+ * -
  */
 
 public class Tutorial extends AppCompatActivity {
@@ -43,6 +44,7 @@ public class Tutorial extends AppCompatActivity {
         //intent stuff
         Intent intent = getIntent();
 
+
         //init coms
         cats_exp = new int[]{
                 loadData(getString(R.string.tutScore1_key), 10),
@@ -50,6 +52,8 @@ public class Tutorial extends AppCompatActivity {
                 loadData(getString(R.string.tutScore3_key), 30),
                 loadData(getString(R.string.tutScore4_key), 40),
                 loadData(getString(R.string.tutScore5_key), 50)};
+
+        Log.d("###############exp: ", Integer.toString(cats_exp[0]));
         cats = new ProgressBar[]{
                 (ProgressBar) findViewById(R.id.pb_cat1), //Rel DB
                 (ProgressBar) findViewById(R.id.pb_cat2), //Anfragen
@@ -90,6 +94,15 @@ public class Tutorial extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         int data = sharedPref.getInt(key, default_value);
         return data;
+    }
+
+    //key value store
+    public void saveData(String key, int data){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(key, data);
+        editor.apply();
+        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
     }
 
     public class OnClickListener implements View.OnClickListener{

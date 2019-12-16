@@ -37,7 +37,10 @@ import java.util.HashMap;
  * -prac score
  * -title big+small in nd
  * (-outsource sp to settings)
+ * -change profile image
  * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
+ * - flamingos on anything (esp on app icon)
+ * - speech bubbles
  */
 
 public class Navigation extends AppCompatActivity
@@ -100,6 +103,10 @@ public class Navigation extends AppCompatActivity
         mail.setText(user_mail);
         pb_tutorial.setProgress(tutorial_exp_avg);
         pb_practise.setProgress(practise_exp);
+
+        //open settings via tv's
+        name.setOnClickListener(new Navigation.OnSettingsClickListener());
+        mail.setOnClickListener(new Navigation.OnSettingsClickListener());
 
         //open tutorial (and practise) via pb/tv
         tv_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
@@ -236,5 +243,21 @@ public class Navigation extends AppCompatActivity
             Intent i = new Intent(getApplicationContext(), Tutorial.class);
             startActivity(i);
         }
+    }
+
+    public class OnSettingsClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
+        }
+    }
+
+    //key value store
+    public int loadData(String key, int default_value){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int data = sharedPref.getInt(key, default_value);
+        return data;
     }
 }

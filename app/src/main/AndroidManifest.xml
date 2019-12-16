@@ -37,7 +37,7 @@
             android:screenOrientation="sensorPortrait"/>
         <activity
             android:name=".Navigation"
-            android:clearTaskOnLaunch="true"
+            android:clearTaskOnLaunch="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
