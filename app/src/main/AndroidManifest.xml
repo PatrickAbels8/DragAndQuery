@@ -10,11 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".tutorial.TutorialCategoryLection"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:noHistory="true"
+            android:parentActivityName=".tutorial.TutorialCategory"
+            android:screenOrientation="sensorPortrait"></activity>
         <activity
             android:name=".tutorial.TutorialCategory"
             android:label="@string/title_activity_tutorial_category"
             android:parentActivityName=".Tutorial"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -23,21 +27,28 @@
         <activity
             android:name=".Tutorial"
             android:label="@string/title_activity_tutorial"
+            android:parentActivityName=".Navigation"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Practice" />
         <activity
             android:name=".Free"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:screenOrientation="sensorPortrait"/>
         <activity
             android:name=".Navigation"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:clearTaskOnLaunch="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>

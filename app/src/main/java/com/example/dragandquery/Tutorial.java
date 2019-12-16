@@ -19,6 +19,7 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO:
+ * - add nd
  * - pb+tv clicklistener to open overview on corresponding lections
  * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
  */

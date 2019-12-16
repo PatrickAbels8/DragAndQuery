@@ -26,6 +26,7 @@
     <string name="feedback_msg_good">Das war super!</string>
     <string name="feedback_msg_bad">Das war noch nicht ganz richtig!</string>
     <string name="c1l1_title">Kapitel 1 Lektion 1</string>
+    <string name="c1l2_title">Kapitel 1 Lektion 2</string>
 
     <string name="userName_key">userName</string>
     <string name="userMail_key">userMail</string>

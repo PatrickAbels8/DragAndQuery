@@ -130,7 +130,7 @@ public class Navigation extends AppCompatActivity
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key, data);
         editor.apply();
-        Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
     }
 
     //key value store
@@ -175,7 +175,7 @@ public class Navigation extends AppCompatActivity
     @Override
     //not used yet maybe later for action bar items
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(getApplicationContext(), "onOptionItemSelected", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "onOptionItemSelected", Toast.LENGTH_SHORT).show();
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 } else{
-                    Toast.makeText(getApplicationContext(), "Please enter again!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Oops! Da hat wohl etwas noch nicht gestimmt!", Toast.LENGTH_LONG).show();
                 }
             }
         });

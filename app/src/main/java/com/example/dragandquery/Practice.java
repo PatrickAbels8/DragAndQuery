@@ -20,6 +20,11 @@ import android.widget.Toast;
 import com.example.dragandquery.block.Block;
 import com.example.dragandquery.block.BlockFactory;
 
+/***
+ * TODO
+ * - add nd
+ */
+
 public class Practice extends AppCompatActivity {
 
     //coms

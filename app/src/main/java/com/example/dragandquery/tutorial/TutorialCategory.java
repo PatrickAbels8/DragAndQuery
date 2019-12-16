@@ -166,7 +166,7 @@ public class TutorialCategory extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, data);
         editor.apply();
-        Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
     }
 
     //key value store
@@ -240,6 +240,9 @@ public class TutorialCategory extends AppCompatActivity {
     public void addLection(String name){
         Button l = new Button(context);
         l.setText(name);
+        l.setWidth(500);
+        l.setHeight(150);
+        l.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         cat_lections.add(l);
         lections_achievement.add(LOCKED);
         lections.addView(l);
