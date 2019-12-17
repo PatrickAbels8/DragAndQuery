@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import com.example.dragandquery.R;
 import com.example.dragandquery.block.Block;
 import com.example.dragandquery.block.BlockFactory;
+import com.example.dragandquery.block.BlockT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +109,7 @@ public class Fragment_Query extends Fragment {
                         rl_query.removeView(draggedView);
                         blocks_in_rl.remove(draggedView);
                         //sounds
-                        //MediaPlayer.create(context, R.raw.clearblock).start();
+                        MediaPlayer.create(context, R.raw.clearblock).start();
                     }
                     break;
             }
@@ -147,12 +148,13 @@ public class Fragment_Query extends Fragment {
     @SuppressLint("ClickableViewAccessibility")
     public void createView(View view, float x, float y){
         //make a new iv at (x,y)
-        Block block = null;
+        //Block block = null;
+        BlockT blockT = null;
 
         /***
          * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE CHOSEN HERE!!!!!!!!!!!
          */
-        switch(((Block) view.getTag()).getDesign()){
+        /*switch(((Block) view.getTag()).getDesign()){
             case R.drawable.attribute_block:
                 block = BlockFactory.getInstance().ATTRIBUTE;
                 break;
@@ -171,8 +173,29 @@ public class Fragment_Query extends Fragment {
             case R.drawable.where_block:
                 block = BlockFactory.getInstance().WHERE;
                 break;
+        }*/
+        switch(((BlockT) view.getTag()).getDesign()){
+            case R.drawable.attribute_block:
+                blockT = BlockT.ATTRIBUTE;
+                break;
+            case R.drawable.from_block:
+                blockT = BlockT.FROM;
+                break;
+            case R.drawable.select_block:
+                blockT = BlockT.SELECT;
+                break;
+            case R.drawable.star_block:
+                blockT = BlockT.STAR;
+                break;
+            case R.drawable.table_block:
+                blockT = BlockT.TABLE;
+                break;
+            case R.drawable.where_block:
+                blockT = BlockT.WHERE;
+                break;
         }
-        ImageView cur_view = block.createView(context);
+        //ImageView cur_view = block.createView(context);
+        ImageView cur_view = blockT.createView(context);
         cur_view.setX(x);
         cur_view.setY(y);
 
@@ -181,10 +204,10 @@ public class Fragment_Query extends Fragment {
         blocks_in_rl.add(cur_view);
 
         //drag mode
-        cur_view.setOnTouchListener(new Block.OnTouchListener());
+        cur_view.setOnTouchListener(new BlockT.OnTouchListener());
 
         //drop mode: other block
-        cur_view.setOnDragListener(new Block.OnDragListener());
+        cur_view.setOnDragListener(new BlockT.OnDragListener());
     }
 
     public void goInclickable(){

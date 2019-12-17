@@ -18,11 +18,10 @@
        >
 
        <ImageButton
-           android:id="@+id/reset"
-           android:src="@drawable/btn_retry"
            android:layout_width="wrap_content"
-           android:layout_height="wrap_content">
-       </ImageButton>
+           android:layout_height="wrap_content"
+           android:id="@+id/reset"
+           android:src="@drawable/btn_retry"/>
 
    </LinearLayout>
 

@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
  * - default first unloked
  * - do done lections againg without reset
  * - !!! first time speech bubble that user should reset once (story time cause default ist wrong)
+ * - reset into settings
  */
 public class TutorialCategory extends AppCompatActivity {
 
@@ -64,11 +66,11 @@ public class TutorialCategory extends AppCompatActivity {
         Intent intent = getIntent();
 
         //init coms&vars
+        reset = (ImageButton) findViewById(R.id.reset);
         lections = (LinearLayout) findViewById(R.id.ll_tutorial_lections);
         cat_lections = new ArrayList<>();
         lections_achievement = new ArrayList<>();
         context = lections.getContext();
-        reset = (ImageButton) findViewById(R.id.reset);
 
         //show which category is currently open and open corresponding lections
         if(intent.hasExtra(Tutorial.CAT_ID)){
@@ -94,7 +96,7 @@ public class TutorialCategory extends AppCompatActivity {
             });
         }
 
-        //reset exps
+        //reset everything
         reset.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {

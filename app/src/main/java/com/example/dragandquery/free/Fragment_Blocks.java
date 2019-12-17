@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.example.dragandquery.R;
 import com.example.dragandquery.block.Block;
 import com.example.dragandquery.block.BlockFactory;
+import com.example.dragandquery.block.BlockT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,9 +67,9 @@ public class Fragment_Blocks extends Fragment {
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
         /***
-         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUEL BE ADDED HERE!!!!!!!!!!!
+         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
          */
-        Block b_select = BlockFactory.getInstance().SELECT;
+        /*Block b_select = BlockFactory.getInstance().SELECT;
         ImageView iv_select = b_select.createView(context);
         blocks_of_categories[2].add(iv_select);
 
@@ -90,8 +91,15 @@ public class Fragment_Blocks extends Fragment {
 
         Block b_table = BlockFactory.getInstance().TABLE;
         ImageView iv_table = b_table.createView(context);
-        blocks_of_categories[0].add(iv_table);
+        blocks_of_categories[0].add(iv_table);*/
 
+        blocks_of_categories[0].add(BlockT.TABLE.createView(context));
+        blocks_of_categories[0].add(BlockT.STAR.createView(context));
+        blocks_of_categories[0].add(BlockT.ATTRIBUTE.createView(context));
+
+        blocks_of_categories[2].add(BlockT.FROM.createView(context));
+        blocks_of_categories[2].add(BlockT.WHERE.createView(context));
+        blocks_of_categories[2].add(BlockT.SELECT.createView(context));
 
         //drag
         /*for(ImageView b: blocks){
@@ -128,12 +136,11 @@ public class Fragment_Blocks extends Fragment {
                     @Override
                     public void onClick(View view) {
                         showOrHideBlocks(null, -1);
-                        listener.onBlockDragged(view, 500f, 10f);
+                        listener.onBlockDragged(view, 500f, 10f); //todo on press point
                     }
                 });
             }
         }
-
         return v;
     }
 

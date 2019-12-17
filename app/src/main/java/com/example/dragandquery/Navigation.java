@@ -1,14 +1,9 @@
 package com.example.dragandquery;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -24,13 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.HashMap;
 
 /***
  * TODO
@@ -79,11 +70,11 @@ public class Navigation extends AppCompatActivity
         pb_practise = (ProgressBar) findViewById(R.id.pb_practise);
 
         //key value store
-        if(i.hasExtra(LoginActivity.UNAME)){
-            saveData(getString(R.string.userName_key), i.getStringExtra(LoginActivity.UNAME));
+        if(i.hasExtra(Settings.UNAME)){
+            saveData(getString(R.string.userName_key), i.getStringExtra(Settings.UNAME));
         }
-        if(i.hasExtra(LoginActivity.UMAIL)) {
-            saveData(getString(R.string.userMail_key), i.getStringExtra(LoginActivity.UMAIL));
+        if(i.hasExtra(Settings.UMAIL)) {
+            saveData(getString(R.string.userMail_key), i.getStringExtra(Settings.UMAIL));
         }
         saveData(getString(R.string.pracScore_key), Integer.toString(70)); //just for now
 
@@ -223,7 +214,7 @@ public class Navigation extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_settings) {
-            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            Intent i = new Intent(getApplicationContext(), Settings.class);
             startActivity(i);
 
         } else if (id == R.id.nav_impressum) {
@@ -249,7 +240,7 @@ public class Navigation extends AppCompatActivity
 
         @Override
         public void onClick(View view) {
-            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            Intent i = new Intent(getApplicationContext(), Settings.class);
             startActivity(i);
         }
     }
