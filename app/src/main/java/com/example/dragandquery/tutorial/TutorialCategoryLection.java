@@ -127,7 +127,7 @@ public class TutorialCategoryLection
             setLectionDone();
         }
 
-        if(lection_id.substring(0, 4).equals("01_01")){
+        /*if(lection_id.substring(0, 4).equals("01_01")){
             fragLectionContent_0101.goInclickable();
         }else if(lection_id.substring(0, 4).equals("01_02")){
             fragLectionContent_0102.goInclickable();
@@ -139,7 +139,7 @@ public class TutorialCategoryLection
             fragLectionContent_0105.goInclickable();
         }else if(lection_id.substring(0, 4).equals("01_06")){
             fragLectionContent_0106.goInclickable();
-        }
+        }*/
     }
 
     public void setLectionDone(){

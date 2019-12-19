@@ -69,29 +69,6 @@ public class Fragment_Blocks extends Fragment {
         /***
          * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
          */
-        /*Block b_select = BlockFactory.getInstance().SELECT;
-        ImageView iv_select = b_select.createView(context);
-        blocks_of_categories[2].add(iv_select);
-
-        Block b_star = BlockFactory.getInstance().STAR;
-        ImageView iv_star = b_star.createView(context);
-        blocks_of_categories[0].add(iv_star);
-
-        Block b_where = BlockFactory.getInstance().WHERE;
-        ImageView iv_where = b_where.createView(context);
-        blocks_of_categories[2].add(iv_where);
-
-        Block b_attribute = BlockFactory.getInstance().ATTRIBUTE;
-        ImageView iv_attribute = b_attribute.createView(context);
-        blocks_of_categories[0].add(iv_attribute);
-
-        Block b_from = BlockFactory.getInstance().FROM;
-        ImageView iv_from = b_from.createView(context);
-        blocks_of_categories[2].add(iv_from);
-
-        Block b_table = BlockFactory.getInstance().TABLE;
-        ImageView iv_table = b_table.createView(context);
-        blocks_of_categories[0].add(iv_table);*/
 
         blocks_of_categories[0].add(BlockT.TABLE.createView(context));
         blocks_of_categories[0].add(BlockT.STAR.createView(context));

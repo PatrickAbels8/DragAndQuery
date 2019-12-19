@@ -3,6 +3,7 @@ package com.example.dragandquery.block;
 import android.content.ClipData;
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,9 +12,15 @@ import android.widget.ImageView;
 import androidx.annotation.DrawableRes;
 
 import com.example.dragandquery.R;
+import com.example.dragandquery.free.Fragment_Query;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/***
+ * TODO
+ * -drag and touch not just for dv but for whole tree of dv's (viewgroup or dynamic linear lyouts)
+ */
 
 public enum BlockT {
     SELECT,
@@ -22,7 +29,6 @@ public enum BlockT {
     STAR,
     TABLE,
     ATTRIBUTE;
-
 
     public String getName() {
         switch(this){
@@ -33,11 +39,13 @@ public enum BlockT {
             case WHERE:
                 return "WHERE";
             case TABLE:
-                return "TABLE";
+                return "table";
             case ATTRIBUTE:
-                return "ATTRIBUTE";
+                return "attribute";
+            case STAR:
+                return "*";
         }
-        return "*";
+        return "";
     }
 
     @DrawableRes
@@ -57,7 +65,7 @@ public enum BlockT {
         return R.drawable.star_block;
     }
 
-    public List<BlockT> getSuccessors(){
+    public List<BlockT> getRightSuccessors(){
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
             case SELECT:
@@ -80,85 +88,121 @@ public enum BlockT {
         return sucs;
     }
 
+    public List<BlockT> getDownSuccessors(){
+        List<BlockT> sucs = new ArrayList<>();
+        switch(this){
+            case SELECT:
+                sucs.add(BlockT.FROM);
+                break;
+            case FROM:
+                sucs.add(BlockT.WHERE);
+                break;
+            case WHERE:
+                break;
+            case TABLE:
+                break;
+            case ATTRIBUTE:
+                break;
+            case STAR:
+                break;
+        }
+        return sucs;
+    }
+
     public ImageView createView(Context context){
-        ImageView view = new ImageView(context);
+        ImageView view = new BlockView(context);
         view.setImageResource(getDesign());
         view.setTag(this);
         return view;
     }
 
-    public boolean hasSuccessor(BlockT draggedBlock){
-        return this.getSuccessors().contains(draggedBlock);
+    public boolean hasRightSuccessor(BlockT draggedBlock){
+        return this.getRightSuccessors().contains(draggedBlock);
     }
 
-    public static class OnDragListener implements View.OnDragListener {
+    public boolean hasDownSuccessor(BlockT draggedBlock){
+        return this.getDownSuccessors().contains(draggedBlock);
+    }
+
+    //bv --> draggedNod --> draggedlockT || view --> thisNode --> thisBlockT
+   /* public static class OnDragListener implements View.OnDragListener {
         @Override
         public boolean onDrag(View view, DragEvent dragEvent) {
             Object o = dragEvent.getLocalState();
             if(o instanceof ImageView) {
-                ImageView iv = (ImageView) o;
-                BlockT draggedBlock = (BlockT) iv.getTag();
-                BlockT thisBlock = (BlockT) view.getTag();
-                boolean fits_right = thisBlock.hasSuccessor(draggedBlock);
-                boolean fits_left = draggedBlock.hasSuccessor(thisBlock);
-                boolean isOnRightSide = iv.getX() > view.getX();
+                BlockView bv = (BlockView) o;
+                //BlockT draggedBlock = (BlockT) iv.getTag();
+                //BlockT thisBlock = (BlockT) view.getTag();
+
+                Node draggedNode = bv.getNode();
+                Node thisNode = ((BlockView) view).getNode();
+                BlockT draggedBlock = draggedNode.getBlock();
+                BlockT thisBlock = thisNode.getBlock();
+                boolean fits_right = thisBlock.hasRightSuccessor(draggedBlock);
+                boolean fits_down = thisBlock.hasDownSuccessor(draggedBlock);
+                //boolean isOnRightSide = bv.getX() > view.getX();
 
                 switch (dragEvent.getAction()) {
                     case DragEvent.ACTION_DRAG_ENTERED:
-                        if (isOnRightSide && fits_right) {
-                            iv.setVisibility(View.VISIBLE);
-                            iv.setAlpha(0.5f);
-                            iv.setX(view.getX()+view.getWidth());
-                            iv.setY(view.getY());
-                        } else if(!isOnRightSide && fits_left){
-                            iv.setVisibility(View.VISIBLE);
-                            iv.setAlpha(0.5f);
-                            iv.setX(view.getX()-view.getWidth());
-                            iv.setY(view.getY());
+                        if (fits_right) {
+                            bv.setVisibility(View.VISIBLE);
+                            bv.setAlpha(0.5f);
+                            bv.setX(view.getX()+view.getWidth());
+                            bv.setY(view.getY());
                         }
                         break;
                     case DragEvent.ACTION_DRAG_EXITED:
-                        iv.setVisibility(View.INVISIBLE);
-                        iv.setAlpha(1f);
+                        bv.setVisibility(View.INVISIBLE);
+                        bv.setAlpha(1f);
                         break;
                     case DragEvent.ACTION_DROP:
-                        iv.setAlpha(1f);
-                        if (isOnRightSide && fits_right) {
-                            iv.setX(view.getX()+view.getWidth()); //todo has to fit to drawables
-                            iv.setY(view.getY());
-                            //todo thisBlock.addFollower(draggedBlock);
+                        bv.setAlpha(1f);
+                        if (fits_right) {
+                            bv.setX(view.getX()+view.getWidth()); //todo has to fit to drawables
+                            bv.setY(view.getY());
+                            thisNode.addRightChild(draggedNode);
                             //sounds
-                            MediaPlayer.create(iv.getContext(), R.raw.dropblock).start();
-                        } else if(!isOnRightSide && fits_left){
-                            iv.setX(view.getX()-view.getWidth()); //todo has to fit to drawables
-                            iv.setY(view.getY());
-                            //todo thisBlock.addFollower(draggedBlock);
+                            MediaPlayer.create(bv.getContext(), R.raw.dropblock).start();
+                        } else if(fits_down) {
+                            bv.setX(view.getX());
+                            bv.setY(view.getY() + view.getHeight()); //todo has to fit to drawables
+                            thisNode.addDownChild(draggedNode);
                             //sounds
-                            MediaPlayer.create(iv.getContext(), R.raw.dropblock).start();
+                            MediaPlayer.create(bv.getContext(), R.raw.dropblock).start();
                         } else{
-                            iv.setX(view.getX());
-                            iv.setY(view.getY()+view.getHeight()); //todo maybe somewhere else
+                        bv.setX(view.getX());
+                            bv.setY(view.getY()-5*view.getHeight()); //todo maybe somewhere else
                         }
-                        iv.setVisibility(View.VISIBLE);
+                        bv.setVisibility(View.VISIBLE);
+
+                        if(thisBlock.getName().equals("SELECT")){
+                            thisNode.printTree();
+                        }
                         break;
+
                 }
             }
             return true;
         }
-    }
+    }*/
 
-    public static class OnTouchListener implements View.OnTouchListener{
+    /*public static class OnTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)&&((ImageView)view).getDrawable()!=null){
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
-                view.setVisibility(View.INVISIBLE);
+                List<ImageView> treeMembers =
+                Log.d("##################### count: ", Integer.toString(treeMembers.size()));
+                for(int i=0; i<treeMembers.size(); i++){
+                    Log.d("########################", "another one");
+                    ClipData data = ClipData.newPlainText("", "");
+                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(treeMembers.get(i));
+                    treeMembers.get(i).startDragAndDrop(data, shadow, treeMembers.get(i), View.DRAG_FLAG_OPAQUE);
+                    treeMembers.get(i).setVisibility(View.INVISIBLE);
+                }
                 return true;
             }else
                 return false;
         }
-    }
+    }*/
 
 }

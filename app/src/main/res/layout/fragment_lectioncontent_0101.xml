@@ -2,24 +2,106 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c0ffff00"
     android:id="@+id/frag_lectioncontent_0101">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_c1l1_input"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/c1l1_title"
-            android:layout_centerInParent="true"/>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:background="@color/speechBubbleBackground"
+            android:visibility="invisible"
+            >
 
-        <Button
-            android:id="@+id/btn_lectioncontent_0101_go"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_btn_go"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"/>
+                <TextView
+                    android:id="@+id/tv_c1l1_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/c1l1_input"
+                    android:textSize="@dimen/tutorial_input_textSize"
+                    android:layout_centerInParent="true"/>
+
+                <Button
+                    android:id="@+id/btn_c1l1_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept_input"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_c1l1_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/bird_c1l1"
+                    android:src="@drawable/bird_small_closed"
+                    android:layout_width="140px"
+                    android:layout_height="235px"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/c1l1_question"
+                    android:textSize="20dp"
+                    android:gravity="center_horizontal"
+                    android:layout_above="@id/rg_c1l1"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_c1l1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    android:paddingTop="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rb1_c1l1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l1_answer1"
+                            android:textSize="@dimen/radio_button_textSize"/>
+                        <RadioButton
+                            android:id="@+id/rb2_c1l1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l1_answer2"
+                            android:textSize="@dimen/radio_button_textSize"/>
+                        <RadioButton
+                            android:id="@+id/rb3_c1l1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l1_answer3"
+                            android:textSize="@dimen/radio_button_textSize"/>
+
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btn_lectioncontent_0101_go"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_btn_go"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"/>
+        </RelativeLayout>
+
+
 
 </RelativeLayout>

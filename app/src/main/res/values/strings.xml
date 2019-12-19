@@ -39,6 +39,19 @@
     <string name="cat1_lec5">Manipulation</string>
     <string name="cat1_lec6">Algebra</string>
 
+    <string name="accept_input">Verstanden!</string>
+    <string name="c1l1_input">
+        Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.
+        <br/>
+        In jeder Schule müssen Kontaktdaten von Lehrkräften und SchülerInnen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.
+        <br/>
+        Durch die Nutzung einer Datenbank geschieht das effizient, widerspruchsfrei und dauerhaft.
+    </string>
+    <string name="c1l1_question">In welchem der folgenden Bereiche lohnt sich der Einsatz einer Datenbank nicht?</string>
+    <string name="c1l1_answer1">Addressbuch</string>
+    <string name="c1l1_answer2">Familienkalender</string>
+    <string name="c1l1_answer3">Einkaufsliste</string>
+
     <string name="userName_key">userName</string>
     <string name="userMail_key">userMail</string>
     <string name="tutScore1_key">tutScore1</string>
@@ -77,4 +90,6 @@
 
     <string name="toast_notUnlockedYet">Noch nicht freigeschaltet!</string>
     <string name="toast_alreadyDone">Bereits erledigt!</string>
+
+    <string name="select_missing_error">Ich finde leider kein SELECT ...</string>
 </resources>

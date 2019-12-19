@@ -16,10 +16,16 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-
         android:layout_marginRight="30dp"
         android:layout_marginBottom="60dp"
         android:background="#4D171B04">
+
+        <TextView
+            android:id="@+id/raw_query"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SELECT * \n FROM table" />
 
 
     </TableLayout>

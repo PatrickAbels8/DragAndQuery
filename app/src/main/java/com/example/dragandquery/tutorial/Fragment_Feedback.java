@@ -20,12 +20,13 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
+ * - bad feedback align with bird
  */
 
 public class Fragment_Feedback extends Fragment {
 
     //coms
-    private LinearLayout ll_feedback;
+    private RelativeLayout rl_feedback;
     private TextView tv_msg;
     private Button btn_back;
     private Button btn_forth;
@@ -46,7 +47,7 @@ public class Fragment_Feedback extends Fragment {
 
         //init coms
         tv_msg = v.findViewById(R.id.tv_feedback_msg);
-        ll_feedback = v.findViewById(R.id.frag_feedback);
+        rl_feedback = v.findViewById(R.id.frag_feedback);
         btn_back = v.findViewById(R.id.btn_feedback_back);
         btn_forth = v.findViewById(R.id.btn_feedback_forth);
 
@@ -70,11 +71,11 @@ public class Fragment_Feedback extends Fragment {
     }
 
     public void goInvisible(){
-        ll_feedback.setVisibility(View.INVISIBLE);
+        rl_feedback.setVisibility(View.INVISIBLE);
     }
 
     public void goVisible(boolean isCorrect){
-        ll_feedback.setVisibility(View.VISIBLE);
+        rl_feedback.setVisibility(View.VISIBLE);
         if(isCorrect){
             startGoodFeedback();
         }else{

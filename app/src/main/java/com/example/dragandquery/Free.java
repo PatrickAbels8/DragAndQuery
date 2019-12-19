@@ -11,8 +11,6 @@ import com.example.dragandquery.free.Fragment_Table;
 
 /***
  * TODO
- * - change to table frag after go
- * - table frag needs try again button (or query button when go pressed visible)
  */
 
 //top: query fragment
@@ -52,10 +50,10 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     }
 
     @Override
-    public void onGo(CharSequence query) {
+    public void onGo(String query) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        fragTable.goVisible();
+        fragTable.goVisible(query);
     }
 
     @Override

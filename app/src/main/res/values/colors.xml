@@ -6,4 +6,6 @@
     <color name="invisible">#00000000</color>
     <color name="dragMode">#FF5722</color>
     <color name="NOdragMode">#FFC107</color>
+    <color name="speechBubbleBackground">#ff44ff</color>
+    <color name="feedbackBackground">#D31AD3</color>
 </resources>

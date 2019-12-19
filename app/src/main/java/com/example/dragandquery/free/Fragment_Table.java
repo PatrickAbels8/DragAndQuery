@@ -24,7 +24,8 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * -text visibile
+ * - show code button
+ * - code to tableview
  */
 
 public class Fragment_Table extends Fragment {
@@ -33,6 +34,7 @@ public class Fragment_Table extends Fragment {
     RelativeLayout rl_table;
     ImageButton btn_retry;
     TextView msg;
+    TextView raw_query;
 
     //vars
     private Fragment_Table_Listener listener;
@@ -53,6 +55,7 @@ public class Fragment_Table extends Fragment {
         rl_table = v.findViewById(R.id.frag_table);
         btn_retry = v.findViewById(R.id.frag_retry);
         msg = v.findViewById(R.id.tv_table_msg);
+        raw_query = v.findViewById(R.id.raw_query);
 
         //text msg
         msg.setVisibility(View.VISIBLE);
@@ -72,9 +75,10 @@ public class Fragment_Table extends Fragment {
         rl_table.setVisibility(View.INVISIBLE);
     }
 
-    public void goVisible(){
-        Toast.makeText(getContext(), "lets go visible", Toast.LENGTH_LONG).show();
+    public void goVisible(String query){
         rl_table.setVisibility(View.VISIBLE);
+        raw_query.setText(query);
+
     }
 
     @Override
