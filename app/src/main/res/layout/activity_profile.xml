@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,110 +9,83 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="131dp"
-        android:layout_height="106dp"
-        android:src="@drawable/ic_person_outline_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="1dp">
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile_image"
+        android:layout_above="@id/profile_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"/>
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_above="@id/profile_mail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
             android:text="name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+             />
 
         <TextView
-            android:id="@+id/tv_mail"
+            android:id="@+id/profile_mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="mail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            android:layout_above="@id/divider"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:text="mail" />
+
+    <!-- add cetral guideline -->
 
         <ProgressBar
         android:id="@+id/pb_tutorial"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
             android:progressDrawable="@drawable/my_pb2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@id/divider"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
         />
 
         <TextView
             android:id="@+id/tv_tutorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignTop="@id/pb_tutorial"
+            android:layout_marginTop="40dp"
             android:text="@string/pb_tutorial" />
 
         <ProgressBar
             android:id="@+id/pb_practise"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
             android:progressDrawable="@drawable/my_pb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/pb_tutorial"
             />
 
         <TextView
             android:id="@+id/tv_practise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="40dp"
+            android:layout_alignTop="@id/pb_practise"
+            android:layout_centerHorizontal="true"
             android:text="@string/pb_practise" />
 
-    </LinearLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_centerVertical="true"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

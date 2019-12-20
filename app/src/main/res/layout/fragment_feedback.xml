@@ -5,9 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/frag_feedback"
-    android:visibility="invisible"
     android:layout_gravity="center_horizontal"
-    tools:visibility="visible">
+    android:visibility="invisible">
 
     <LinearLayout
         android:id="@+id/ll_feedback"
@@ -25,7 +24,7 @@
             android:id="@+id/tv_feedback_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/feedback_msg_good"
+            android:text="@string/feedback_msg_bad"
             android:textSize="30dp"
             />
 

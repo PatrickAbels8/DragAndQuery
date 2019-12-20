@@ -1,11 +1,18 @@
 package com.example.dragandquery;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -19,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +36,10 @@ import android.widget.Toast;
  * -prac score
  * -title big+small in nd
  * (-outsource sp to settings)
- * -change profile image
- * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
+ * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed or onCreate)
  * - flamingos on anything (esp on app icon)
  * - speech bubbles
+ * - launching animation
  */
 
 public class Navigation extends AppCompatActivity
@@ -44,8 +52,11 @@ public class Navigation extends AppCompatActivity
     private int tutorial_exp_avg;
     private int[] tutorial_exps;
     private int practise_exp;
+    private static final int IMAGE_PICK_CODE = 1000;
+    private static final int PERMISSION_CODE = 1001;
 
     //coms
+    ImageView image;
     TextView name;
     TextView mail;
     TextView tv_tutorial;
@@ -62,8 +73,9 @@ public class Navigation extends AppCompatActivity
         Intent i = getIntent();
 
         //components
-        name = (TextView) findViewById(R.id.tv_name);
-        mail = (TextView) findViewById(R.id.tv_mail);
+        image = (ImageView) findViewById(R.id.profile_image);
+        name = (TextView) findViewById(R.id.profile_name);
+        mail = (TextView) findViewById(R.id.profile_mail);
         tv_tutorial = (TextView) findViewById(R.id.tv_tutorial);
         tv_practise = (TextView) findViewById(R.id.tv_practise);
         pb_tutorial = (ProgressBar) findViewById(R.id.pb_tutorial);
@@ -99,6 +111,27 @@ public class Navigation extends AppCompatActivity
         name.setOnClickListener(new Navigation.OnSettingsClickListener());
         mail.setOnClickListener(new Navigation.OnSettingsClickListener());
 
+        //change profile image
+        if(loadDataBoolean(getString(R.string.userImageBool_key), false)){
+            image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
+        }
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                    if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                        String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, PERMISSION_CODE);
+                    }else{
+                        pickImageFromGallery();
+                    }
+                }else{
+                    pickImageFromGallery();
+                }
+            }
+        });
+
         //open tutorial (and practise) via pb/tv
         tv_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
         pb_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
@@ -132,6 +165,15 @@ public class Navigation extends AppCompatActivity
     }
 
     //key value store
+    public void saveDataBoolean(String key, boolean data){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(key, data);
+        editor.apply();
+        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
+    }
+
+    //key value store
     public String loadDataString(String key, String default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String data = sharedPref.getString(key, default_value);
@@ -142,6 +184,12 @@ public class Navigation extends AppCompatActivity
     public int loadDataInt(String key, int default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         int data = sharedPref.getInt(key, default_value);
+        return data;
+    }
+
+    public boolean loadDataBoolean(String key, boolean default_value){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        boolean data = sharedPref.getBoolean(key, default_value);
         return data;
     }
 
@@ -250,5 +298,37 @@ public class Navigation extends AppCompatActivity
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         int data = sharedPref.getInt(key, default_value);
         return data;
+    }
+
+    //change profile image
+    public void pickImageFromGallery(){
+        Intent i = new Intent(Intent.ACTION_PICK);
+        i.setType("image/*");
+        startActivityForResult(i, IMAGE_PICK_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResult){
+        switch(requestCode){
+            case PERMISSION_CODE:{
+                Log.d("###################### granresult length:", Integer.toString(grantResult[0]));
+                if(grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
+                    pickImageFromGallery();
+                }else{
+                    Toast.makeText(this, getString(R.string.toast_ImagePermissionDenied), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            Uri img_uri = data.getData();
+            image.setImageURI(img_uri);
+            saveData(getString(R.string.userImage_key), img_uri.toString());
+            saveDataBoolean(getString(R.string.userImageBool_key), true);
+        }
     }
 }

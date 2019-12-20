@@ -17,13 +17,15 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * -toolbar.set...
+ * -toolbar.set
+ * -inclickable when feedbac open
  */
 
 public class TutorialCategoryLection
         extends AppCompatActivity
         implements
             Fragment_Feedback.Fragment_Feedback_Listener,
+            Fragment_Input.Fragment_Input_Listener,
             Fragment_LectionContent_0101.Fragment_LectionContent_0101_Listener,
             Fragment_LectionContent_0102.Fragment_LectionContent_0102_Listener,
             Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
@@ -35,6 +37,7 @@ public class TutorialCategoryLection
     //fragments
     Fragment curFrag;
     Fragment_Feedback fragFeedback;
+    Fragment_Input fragInput;
     Fragment_LectionContent_0101 fragLectionContent_0101;
     Fragment_LectionContent_0102 fragLectionContent_0102;
     Fragment_LectionContent_0103 fragLectionContent_0103;
@@ -55,6 +58,7 @@ public class TutorialCategoryLection
 
         //init coms and vars
         fragFeedback = new Fragment_Feedback();
+        fragInput = new Fragment_Input();
         fragLectionContent_0101 = new Fragment_LectionContent_0101();
         fragLectionContent_0102 = new Fragment_LectionContent_0102();
         fragLectionContent_0103 = new Fragment_LectionContent_0103();
@@ -91,14 +95,16 @@ public class TutorialCategoryLection
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_lectionFeedback, fragFeedback)
                 .replace(R.id.container_lectionContent, curFrag)
+                .replace(R.id.container_lectionInput, fragInput)
                 .commit();
     }
 
     @Override
     public void onBack() {
         fragFeedback.goInvisible();
+        fragInput.goClickable();
         if(lection_id.substring(0, 5).equals("01_01")){
-            fragLectionContent_0101.goClickable();
+            fragLectionContent_0101.startExercise();
         }else if(lection_id.substring(0, 5).equals("01_02")){
             fragLectionContent_0102.goClickable();
         }
@@ -121,25 +127,46 @@ public class TutorialCategoryLection
 
     @Override
     public void onGo(boolean isCorrect) {
+        Log.d("############ hello from", "onGo()");
+
         fragFeedback.goVisible(isCorrect);
+        fragInput.goInclickable();
 
         if(isCorrect){
             setLectionDone();
         }
 
-        /*if(lection_id.substring(0, 4).equals("01_01")){
-            fragLectionContent_0101.goInclickable();
+        if(lection_id.substring(0, 4).equals("01_01")){
+            fragLectionContent_0101.pauseExercise();
         }else if(lection_id.substring(0, 4).equals("01_02")){
             fragLectionContent_0102.goInclickable();
-        }else if(lection_id.substring(0, 4).equals("01_03")){
-            fragLectionContent_0103.goInclickable();
-        }else if(lection_id.substring(0, 4).equals("01_04")){
-            fragLectionContent_0104.goInclickable();
-        }else if(lection_id.substring(0, 4).equals("01_05")){
-            fragLectionContent_0105.goInclickable();
-        }else if(lection_id.substring(0, 4).equals("01_06")){
-            fragLectionContent_0106.goInclickable();
-        }*/
+        }
+    }
+
+    @Override
+    public void onAccept() {
+        Log.d("############ hello from", "onAccept()");
+        if(lection_id.substring(0, 5).equals("01_01")){
+            fragLectionContent_0101.startExercise();
+        }
+        fragInput.goInvisible();
+    }
+
+    @Override
+    public void onBird(boolean wasOpen){
+        Log.d("############ hello from", "onBird()");
+        if(wasOpen){
+            if(lection_id.substring(0, 5).equals("01_01")){
+                fragLectionContent_0101.startExercise();
+            }
+            fragInput.goInvisible();
+        }else{
+            if(lection_id.substring(0, 5).equals("01_01")){
+                fragLectionContent_0101.pauseExercise();
+            }
+            fragInput.goVisible(lection_id);
+        }
+
     }
 
     public void setLectionDone(){
@@ -207,5 +234,4 @@ public class TutorialCategoryLection
         nextLectionID += "_"+coms[2];
         return nextLectionID;
     }
-
 }

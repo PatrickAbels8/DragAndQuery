@@ -20,7 +20,7 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * - bad feedback align with bird
+ * -
  */
 
 public class Fragment_Feedback extends Fragment {
