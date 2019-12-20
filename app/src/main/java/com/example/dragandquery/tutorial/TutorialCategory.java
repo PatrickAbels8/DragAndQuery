@@ -15,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -40,9 +42,10 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 public class TutorialCategory extends AppCompatActivity {
 
     //coms
-    LinearLayout lections;
-    List<Button> cat_lections;
-    ImageButton reset;
+    private LinearLayout lections;
+    private List<Button> cat_lections;
+    private ImageButton reset;
+    private Animation vibrate;
 
     //vars
     public static final String LECTION_ID = "com.example.dragandquery.tutorial.TutorialCategory.LECTION_ID";
@@ -71,6 +74,7 @@ public class TutorialCategory extends AppCompatActivity {
         cat_lections = new ArrayList<>();
         lections_achievement = new ArrayList<>();
         context = lections.getContext();
+        vibrate = AnimationUtils.loadAnimation(context, R.anim.vibrate);
 
         //show which category is currently open and open corresponding lections
         if(intent.hasExtra(Tutorial.CAT_ID)){
@@ -154,7 +158,8 @@ public class TutorialCategory extends AppCompatActivity {
 
     //set drawable and stuff
     public void viewLectionDone(int lection_id){
-        cat_lections.get(lection_id).setAlpha(1f);
+        cat_lections.get(lection_id).setAlpha(0.6f);
+        cat_lections.get(lection_id).clearAnimation();
     }
 
     //set drawable and stuff
@@ -164,7 +169,8 @@ public class TutorialCategory extends AppCompatActivity {
 
     //set drawable and stuff
     public void viewLectionUnlocked(int lection_id){
-        cat_lections.get(lection_id).setAlpha(0.6f);
+        cat_lections.get(lection_id).setAlpha(1f);
+        cat_lections.get(lection_id).startAnimation(vibrate);
     }
 
     //key value store

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -31,10 +33,13 @@ import com.example.dragandquery.R;
 public class Fragment_Table extends Fragment {
 
     //coms
-    RelativeLayout rl_table;
-    ImageButton btn_retry;
-    TextView msg;
-    TextView raw_query;
+    private RelativeLayout rl_table;
+    private ImageButton btn_retry;
+    private TextView msg;
+    private TextView raw_query;
+    private Animation frombottom;
+    private Animation tobottom;
+    private Context context;
 
     //vars
     private Fragment_Table_Listener listener;
@@ -52,10 +57,13 @@ public class Fragment_Table extends Fragment {
         View v = inflater.inflate(R.layout.fragment_table, container, false);
 
         //init coms
+        context = getContext();
         rl_table = v.findViewById(R.id.frag_table);
         btn_retry = v.findViewById(R.id.frag_retry);
         msg = v.findViewById(R.id.tv_table_msg);
         raw_query = v.findViewById(R.id.raw_query);
+        frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
+        tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
 
         //text msg
         msg.setVisibility(View.VISIBLE);
@@ -72,11 +80,13 @@ public class Fragment_Table extends Fragment {
     }
 
     public void goInvisible(){
+        rl_table.startAnimation(tobottom);
         rl_table.setVisibility(View.INVISIBLE);
     }
 
     public void goVisible(String query){
         rl_table.setVisibility(View.VISIBLE);
+        rl_table.startAnimation(frombottom);
         raw_query.setText(query);
 
     }

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +33,9 @@ public class Fragment_Input extends Fragment {
     private TextView tv_input;
     private Button btn_accept_input;
     private ImageView bird;
+    private Animation fromtop;
+    private Animation totop;
+    private Context context;
 
     //vars
     private Fragment_Input_Listener listener;
@@ -48,11 +53,16 @@ public class Fragment_Input extends Fragment {
         View v = inflater.inflate(R.layout.fragment_input, container, false);
 
         //init coms
+        context = getContext();
         tv_input = v.findViewById(R.id.tv_input);
         rl_input = v.findViewById(R.id.frag_input);
         ll_input = v.findViewById(R.id.ll_input);
         btn_accept_input = v.findViewById(R.id.btn_input);
         bird = v.findViewById(R.id.bird_input);
+        fromtop = AnimationUtils.loadAnimation(context, R.anim.fromtop);
+        totop = AnimationUtils.loadAnimation(context, R.anim.totop);
+
+        rl_input.setAnimation(fromtop);
 
         //get on to exercise
         btn_accept_input.setOnClickListener(new View.OnClickListener() {
