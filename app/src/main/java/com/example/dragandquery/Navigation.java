@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -55,6 +56,7 @@ public class Navigation extends AppCompatActivity
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
 
+
     //coms
     ImageView image;
     TextView name;
@@ -68,6 +70,8 @@ public class Navigation extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+
+
 
         //intent stuff
         Intent i = getIntent();
