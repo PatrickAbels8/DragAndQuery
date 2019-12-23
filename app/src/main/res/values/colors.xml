@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <!-- prim was #008577 -->
+    <!-- primDark was #00574b -->
+    <!-- accent was #d81b60 -->
+    <color name="colorPrimary">#176092</color>
+    <color name="colorPrimaryDark">#176092</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="background_light">#87ceff</color>
+    <color name="background_dark">#176092</color>
+    <color name="foreground">#ee6aa7</color>
+
     <color name="invisible">#00000000</color>
     <color name="dragMode">#FF5722</color>
     <color name="NOdragMode">#FFC107</color>

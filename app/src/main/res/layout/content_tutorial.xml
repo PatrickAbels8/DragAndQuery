@@ -6,156 +6,124 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Tutorial"
+    android:background="@drawable/gradient_background"
     tools:showIn="@layout/activity_tutorial">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <ProgressBar
             android:id="@+id/pb_cat1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
-            android:progressDrawable="@drawable/my_pb2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_centerHorizontal="true"
+            android:progressDrawable="@drawable/my_pb2" />
 
         <TextView
             android:id="@+id/tv_title_cat1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/pb_cat1"
+            android:layout_marginBottom="40dp"
+            android:textSize="16dp"
             android:text="@string/tutorial_category1" />
 
         <ProgressBar
             android:id="@+id/pb_cat2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
-            android:progressDrawable="@drawable/my_pb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_below="@id/pb_cat1"
+            android:layout_centerHorizontal="true"
+            android:progressDrawable="@drawable/my_pb" />
 
         <TextView
             android:id="@+id/tv_title_cat2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/pb_cat2"
+            android:layout_marginBottom="40dp"
+            android:textSize="16dp"
             android:text="@string/tutorial_category2" />
 
         <ProgressBar
             android:id="@+id/pb_cat3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
-            android:progressDrawable="@drawable/my_pb2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_below="@id/pb_cat2"
+            android:layout_centerHorizontal="true"
+            android:progressDrawable="@drawable/my_pb2" />
 
         <TextView
             android:id="@+id/tv_title_cat3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/pb_cat3"
+            android:layout_marginBottom="40dp"
+            android:textSize="16dp"
             android:text="@string/tutorial_category3" />
 
         <ProgressBar
             android:id="@+id/pb_cat4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
-            android:progressDrawable="@drawable/my_pb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_below="@id/pb_cat3"
+            android:layout_centerHorizontal="true"
+            android:progressDrawable="@drawable/my_pb2" />
 
         <TextView
             android:id="@+id/tv_title_cat4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/pb_cat4"
+            android:layout_marginBottom="40dp"
+            android:textSize="16dp"
             android:text="@string/tutorial_category4" />
 
         <ProgressBar
             android:id="@+id/pb_cat5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
-            android:progressDrawable="@drawable/my_pb2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_below="@id/pb_cat4"
+            android:layout_centerHorizontal="true"
+            android:progressDrawable="@drawable/my_pb2" />
 
         <TextView
             android:id="@+id/tv_title_cat5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/pb_cat5"
+            android:layout_marginBottom="40dp"
+            android:textSize="16dp"
             android:text="@string/tutorial_category5" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

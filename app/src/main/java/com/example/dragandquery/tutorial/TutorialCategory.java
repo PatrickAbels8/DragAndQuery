@@ -112,14 +112,6 @@ public class TutorialCategory extends AppCompatActivity {
         //toolbar stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -345,6 +337,7 @@ public class TutorialCategory extends AppCompatActivity {
         setLectionUnlocked(0);
         for(int i=1; i<lections_achievement.size(); i++){
             setLectionLocked(i);
+            cat_lections.get(i).clearAnimation();
         }
     }
 }

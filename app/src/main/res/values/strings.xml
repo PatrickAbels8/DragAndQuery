@@ -21,8 +21,8 @@
     <string name="welcome">Hallo! Bitte gib deinen Namen und deine Mail an.</string>
     <string name="reset_tutorial">Du willst deinen Tutorial-Fortschritt zurücksetzen?</string>
     <string name="start_btn_go">Go!</string>
-    <string name="loginName_hint">Login Name</string>
-    <string name="loginMail_hint">Login Mail</string>
+    <string name="loginName_hint">Name</string>
+    <string name="loginMail_hint">Mail</string>
 
     <!-- tutorial -->
     <string name="feedback_back">Zurück</string>

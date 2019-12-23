@@ -12,18 +12,18 @@
             <item android:bottom="1dp">
                 <shape>
                     <corners android:radius="3dp"/>
-                    <solid android:color="#b0ff0000"/>
+                    <solid android:color="#B1306B"/>
                 </shape>
             </item>
             <item android:bottom="8dp">
                 <shape>
-                    <solid android:color="#ff0000" />
+                    <solid android:color="@color/foreground" />
                     <corners android:radius="3dp"/>
                 </shape>
             </item>
             <item android:bottom="45dp" android:left="3dp" android:right="3dp" android:top="3dp">
                 <shape>
-                    <solid android:color="#6DDF6868"/>
+                    <solid android:color="#F1A0C6"/>
                     <corners android:radius="2dp"/>
                 </shape>
             </item>

@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".Navigation">
-
-
 
     <ImageView
         android:id="@+id/profile_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@drawable/profile_image"
         android:layout_above="@id/profile_name"
         android:layout_centerHorizontal="true"
@@ -24,8 +23,8 @@
             android:layout_above="@id/profile_mail"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
-            android:text="name"
-             />
+            android:textSize="16dp"
+            android:text="name" />
 
         <TextView
             android:id="@+id/profile_mail"
@@ -33,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/divider"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
+            android:textSize="16dp"
+            android:layout_marginBottom="16dp"
             android:text="mail" />
 
     <!-- add cetral guideline -->
@@ -47,7 +47,7 @@
             android:progressDrawable="@drawable/my_pb2"
         android:layout_below="@id/divider"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
         />
 
         <TextView
@@ -57,6 +57,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignTop="@id/pb_tutorial"
             android:layout_marginTop="40dp"
+            android:textSize="16dp"
             android:text="@string/pb_tutorial" />
 
         <ProgressBar
@@ -76,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:textSize="16dp"
             android:layout_alignTop="@id/pb_practise"
             android:layout_centerHorizontal="true"
             android:text="@string/pb_practise" />

@@ -16,6 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
