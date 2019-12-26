@@ -14,6 +14,7 @@
         android:src="@drawable/profile_image"
         android:layout_above="@id/profile_name"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"/>
 
         <TextView
@@ -44,7 +45,8 @@
         android:layout_height="100dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
-            android:progressDrawable="@drawable/my_pb2"
+            android:progressDrawable="@drawable/my_pb"
+            android:background="@drawable/pb_background"
         android:layout_below="@id/divider"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
@@ -68,6 +70,7 @@
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progress="80"
             android:progressDrawable="@drawable/my_pb"
+            android:background="@drawable/pb_background"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/pb_tutorial"
             />

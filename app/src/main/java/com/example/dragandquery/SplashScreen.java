@@ -2,9 +2,12 @@ package com.example.dragandquery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
@@ -18,6 +21,8 @@ public class SplashScreen extends AppCompatActivity {
     //vars
     private static final int DOT_LOAD_TIME = 750;
     private static final int SPLASH_TIME_OUT = 3500;
+    private static final int BIRD_APPEAR_TIME = SPLASH_TIME_OUT/2;
+    private static final int BIRD_DISAPPEAR_TIME = SPLASH_TIME_OUT/2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,35 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         bird = (ImageView) findViewById(R.id.splash_bird);
+        dot1 = (ImageView) findViewById(R.id.splash_dot1);
+        dot2 = (ImageView) findViewById(R.id.splash_dot2);
+        dot3 = (ImageView) findViewById(R.id.splash_dot3);
+
+        animateBird();
+        animateDots();
+
+    }
+
+    public void animateBird(){
+        bird.setAlpha(0f);
+        bird.setVisibility(View.VISIBLE);
+        bird.animate()
+                .alpha(1f)
+                .setDuration(BIRD_APPEAR_TIME)
+                .setListener(null);
+        bird.setAlpha(1f);
+        bird.animate()
+                .alpha(0f)
+                .setDuration(BIRD_DISAPPEAR_TIME)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        bird.setVisibility(View.GONE);
+                    }
+                });
+    }
+
+    public void animateDots(){
         dot1 = (ImageView) findViewById(R.id.splash_dot1);
         dot2 = (ImageView) findViewById(R.id.splash_dot2);
         dot3 = (ImageView) findViewById(R.id.splash_dot3);

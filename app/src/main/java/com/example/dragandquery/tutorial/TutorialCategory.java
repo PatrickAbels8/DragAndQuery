@@ -151,6 +151,7 @@ public class TutorialCategory extends AppCompatActivity {
     //set drawable and stuff
     public void viewLectionDone(int lection_id){
         cat_lections.get(lection_id).setAlpha(0.6f);
+        //todo add green check (change reset function)
         cat_lections.get(lection_id).clearAnimation();
     }
 
