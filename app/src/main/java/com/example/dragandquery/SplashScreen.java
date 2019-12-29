@@ -10,6 +10,11 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 
+
+/***
+ * TODO:
+ * -anim bugs
+ */
 public class SplashScreen extends AppCompatActivity {
 
     //coms
@@ -35,17 +40,35 @@ public class SplashScreen extends AppCompatActivity {
         dot3 = (ImageView) findViewById(R.id.splash_dot3);
 
         animateBird();
-        animateDots();
+        //animateDots();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(getApplicationContext(), Navigation.class);
+                startActivity(i);
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
 
     }
 
     public void animateBird(){
+        dot1.setVisibility(View.INVISIBLE);
+        dot2.setVisibility(View.INVISIBLE);
+        dot3.setVisibility(View.INVISIBLE);
+
         bird.setAlpha(0f);
         bird.setVisibility(View.VISIBLE);
         bird.animate()
                 .alpha(1f)
                 .setDuration(BIRD_APPEAR_TIME)
-                .setListener(null);
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        bird.setVisibility(View.VISIBLE);
+                    }
+                });
         bird.setAlpha(1f);
         bird.animate()
                 .alpha(0f)
@@ -59,10 +82,6 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     public void animateDots(){
-        dot1 = (ImageView) findViewById(R.id.splash_dot1);
-        dot2 = (ImageView) findViewById(R.id.splash_dot2);
-        dot3 = (ImageView) findViewById(R.id.splash_dot3);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -83,14 +102,5 @@ public class SplashScreen extends AppCompatActivity {
                 dot3.setImageResource(R.drawable.full_dot);
             }
         }, 3*DOT_LOAD_TIME);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(getApplicationContext(), Navigation.class);
-                startActivity(i);
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
     }
 }

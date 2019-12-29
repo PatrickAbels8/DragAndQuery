@@ -39,7 +39,9 @@
             android:layout_height="wrap_content"
             android:text="@string/c1l1_input"
             android:textSize="@dimen/tutorial_input_textSize"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:scrollHorizontally="true" />
 
         <Button
             android:id="@+id/btn_input"

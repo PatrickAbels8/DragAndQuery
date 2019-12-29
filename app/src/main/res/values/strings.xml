@@ -44,10 +44,8 @@
 
     <string name="accept_input">Verstanden!</string>
     <string name="c1l1_input">
-        Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.
-        <br />
-        In jeder Schule müssen Kontaktdaten von Lehrkräften und SchülerInnen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.
-        <br />
+        Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.\n\n
+        In jeder Schule müssen Kontaktdaten von Lehrkräften und SchülerInnen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.\n\n
         Durch die Nutzung einer Datenbank geschieht das effizient, widerspruchsfrei und dauerhaft.
     </string>
     <string name="c1l1_question">In welchem der folgenden Bereiche lohnt sich der Einsatz einer Datenbank nicht?</string>

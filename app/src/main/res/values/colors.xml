@@ -16,4 +16,10 @@
     <color name="NOdragMode">#FFC107</color>
     <color name="speechBubbleBackground">#ff44ff</color>
     <color name="feedbackBackground">#D31AD3</color>
+
+    <!-- table fragment -->
+    <color name="attribute_background">#000000</color>
+    <color name="attribute_text">#ffffff</color>
+    <color name="cell_background">#4D171B04</color>
+    <color name="cell_text">#ffffff</color>
 </resources>

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
@@ -33,9 +34,8 @@ import com.example.dragandquery.R;
 public class Fragment_Table extends Fragment {
 
     //coms
-    private RelativeLayout rl_table;
+    private ConstraintLayout cl_table;
     private ImageButton btn_retry;
-    private TextView msg;
     private TextView raw_query;
     private Animation frombottom;
     private Animation tobottom;
@@ -58,15 +58,11 @@ public class Fragment_Table extends Fragment {
 
         //init coms
         context = getContext();
-        rl_table = v.findViewById(R.id.frag_table);
+        cl_table = v.findViewById(R.id.frag_table);
         btn_retry = v.findViewById(R.id.frag_retry);
-        msg = v.findViewById(R.id.tv_table_msg);
         raw_query = v.findViewById(R.id.raw_query);
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
-
-        //text msg
-        msg.setVisibility(View.VISIBLE);
 
         //get back to edit
         btn_retry.setOnClickListener(new View.OnClickListener() {
@@ -80,13 +76,13 @@ public class Fragment_Table extends Fragment {
     }
 
     public void goInvisible(){
-        rl_table.startAnimation(tobottom);
-        rl_table.setVisibility(View.INVISIBLE);
+        cl_table.startAnimation(tobottom);
+        cl_table.setVisibility(View.INVISIBLE);
     }
 
     public void goVisible(String query){
-        rl_table.setVisibility(View.VISIBLE);
-        rl_table.startAnimation(frombottom);
+        cl_table.setVisibility(View.VISIBLE);
+        cl_table.startAnimation(frombottom);
         raw_query.setText(query);
 
     }
