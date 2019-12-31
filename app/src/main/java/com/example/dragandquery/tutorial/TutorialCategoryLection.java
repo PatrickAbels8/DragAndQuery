@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -102,7 +103,13 @@ public class TutorialCategoryLection
     @Override
     public void onBack() {
         fragFeedback.goInvisible();
-        fragInput.goClickable();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                fragInput.goClickable();
+                fragInput.showBird();
+            }
+        }, Fragment_Feedback.TORIGHT_DURATION);
         if(lection_id.substring(0, 5).equals("01_01")){
             fragLectionContent_0101.startExercise();
         }else if(lection_id.substring(0, 5).equals("01_02")){
@@ -131,14 +138,15 @@ public class TutorialCategoryLection
 
         fragFeedback.goVisible(isCorrect);
         fragInput.goInclickable();
+        fragInput.hideBird();
 
         if(isCorrect){
             setLectionDone();
         }
 
-        if(lection_id.substring(0, 4).equals("01_01")){
+        if(lection_id.substring(0, 5).equals("01_01")){
             fragLectionContent_0101.pauseExercise();
-        }else if(lection_id.substring(0, 4).equals("01_02")){
+        }else if(lection_id.substring(0, 5).equals("01_02")){
             fragLectionContent_0102.goInclickable();
         }
     }

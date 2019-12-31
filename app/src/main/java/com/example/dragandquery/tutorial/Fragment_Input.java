@@ -90,6 +90,14 @@ public class Fragment_Input extends Fragment {
         return v;
     }
 
+    public void hideBird(){
+        bird.setVisibility(View.INVISIBLE);
+    }
+
+    public void showBird(){
+        bird.setVisibility(View.VISIBLE);
+    }
+
     public void goInvisible(){
         Log.d("############ hello from", "input.goInvisible()");
         ll_input.setVisibility(View.INVISIBLE);

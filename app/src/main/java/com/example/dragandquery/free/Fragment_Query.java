@@ -37,7 +37,7 @@ import java.util.List;
 
 /***
  * TODO
- * - appearence depending on view pos
+ * - appearence depending on view pos (not good enough yet)to
  * - drag mode with several blocks
  * - touch mode with several blocks (maybe vie viewgroup or linearlyouts)
  * - kill parentship has to diff between killing right and down child
@@ -200,8 +200,9 @@ public class Fragment_Query extends Fragment {
         //ImageView cur_view = block.createView(context);
         ImageView cur_view = blockT.createView(context);
         ((BlockView) cur_view).setNode(root);
-        cur_view.setX(x);
-        cur_view.setY(y);
+        float[] rawXY = getRawXY(x, y);
+        cur_view.setX(rawXY[0]);
+        cur_view.setY(rawXY[1]); //todo add upwards margin of
 
         //add the new iv to rl and blocklist
         rl_query.addView(cur_view);
@@ -321,6 +322,13 @@ public class Fragment_Query extends Fragment {
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
+    }
+
+    //in blockfrag upleft starts with xy=00, for rawXY in queryfrag add height and sub blockfrag margin (4dp), already sub blockfrag height
+    public float[] getRawXY(float x, float y){
+        float qf_height = (float) rl_query.getHeight();
+        float bf_margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, context.getResources().getDisplayMetrics());
+        return new float[]{x, y +qf_height -bf_margin};
     }
 
     //TODO

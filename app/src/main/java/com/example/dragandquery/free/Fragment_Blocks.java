@@ -5,10 +5,12 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -109,11 +111,16 @@ public class Fragment_Blocks extends Fragment {
         //add block to query fragment and hide blocks when block iv is clicked (todo drag mode)
         for(int i=0; i<categories.length; i++){
             for(ImageView iv: blocks_of_categories[i]){
-                iv.setOnClickListener(new View.OnClickListener() {
+                iv.setOnTouchListener(new View.OnTouchListener() {
                     @Override
-                    public void onClick(View view) {
-                        showOrHideBlocks(null, -1);
-                        listener.onBlockDragged(view, 500f, 10f); //todo on press point
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                            showOrHideBlocks(null, -1);
+                            float rawX = motionEvent.getX();
+                            float rawY = motionEvent.getY() - (float)ll_blocks.getHeight() - (float)ll_categories.getHeight();
+                            listener.onBlockDragged(view, rawX, rawY);
+                        }
+                        return true;
                     }
                 });
             }

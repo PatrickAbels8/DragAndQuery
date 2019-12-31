@@ -38,6 +38,7 @@ public class Fragment_Feedback extends Fragment {
 
     //vars
     private Fragment_Feedback_Listener listener;
+    public static final long TORIGHT_DURATION = 2000;
 
     //interface
     public interface Fragment_Feedback_Listener{
@@ -58,6 +59,7 @@ public class Fragment_Feedback extends Fragment {
         btn_forth = v.findViewById(R.id.btn_feedback_forth);
         fromright = AnimationUtils.loadAnimation(context, R.anim.fromright);
         toright = AnimationUtils.loadAnimation(context, R.anim.toright);
+        toright.setDuration(TORIGHT_DURATION);
 
         //get back to wherever you came from
         btn_back.setOnClickListener(new View.OnClickListener() {

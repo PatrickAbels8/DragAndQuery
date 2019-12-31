@@ -39,8 +39,8 @@ public class SplashScreen extends AppCompatActivity {
         dot2 = (ImageView) findViewById(R.id.splash_dot2);
         dot3 = (ImageView) findViewById(R.id.splash_dot3);
 
-        animateBird();
-        //animateDots();
+        //animateBird();
+        animateDots();
 
         new Handler().postDelayed(new Runnable() {
             @Override
