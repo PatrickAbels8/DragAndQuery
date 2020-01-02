@@ -38,10 +38,14 @@ import java.util.List;
 /***
  * TODO
  * - appearence depending on view pos (not good enough yet)to
- * - drag mode with several blocks
- * - touch mode with several blocks (maybe vie viewgroup or linearlyouts)
- * - kill parentship has to diff between killing right and down child
- * - not just add right but also add parent from left
+ * - dropped views invisible (also when visible childs dropped on rl_query)
+ * - kill relative layout parents wrong
+ * - throw runtime exception (when go button pressed)
+ * - clear (no more views but layouts)
+ * - block appearence with raw coordinates (maybe without marings)
+ * - kill parentship (tree) has to diff between killing right and down child
+ *
+ * - rmv logs and toats
  */
 
 public class Fragment_Query extends Fragment {
@@ -56,7 +60,8 @@ public class Fragment_Query extends Fragment {
 
     //vars
     private Fragment_Query_Listener listener;
-    private List<ImageView> blocks_in_rl;
+    private List<BlockView> blocks_in_rl;
+    private List<RelativeLayout> blockGroups_in_rl;
     public Context context;
 
     //interface
@@ -77,6 +82,7 @@ public class Fragment_Query extends Fragment {
         btn_go = (Button) v.findViewById(R.id.frag_go);
         btn_clear = (ImageButton) v.findViewById(R.id.frag_clear);
         blocks_in_rl = new ArrayList<>();
+        blockGroups_in_rl = new ArrayList<>();
         context = getContext();
 
         //send query to db
@@ -115,11 +121,12 @@ public class Fragment_Query extends Fragment {
                 case DragEvent.ACTION_DROP:
                     btn_clear.setImageResource(R.drawable.garbage_collector);
                     Object o = dragEvent.getLocalState();
-                    if(o instanceof ImageView) {
-                        ImageView draggedView = (ImageView) o;
-                        for(ImageView iv: extractTreeViews(draggedView)){
-                            rl_query.removeView(iv);
-                            blocks_in_rl.remove(iv);
+                    if(o instanceof BlockView) {
+                        BlockView draggedView = (BlockView) o;
+                        List<BlockView> members = extractTreeViews(draggedView);
+                        for(int i=0; i<members.size(); i++){
+                            rl_query.removeView(members.get(i));
+                            blocks_in_rl.remove(members.get(i));
                         }
                         //sounds
                         MediaPlayer.create(context, R.raw.clearblock).start();
@@ -142,19 +149,23 @@ public class Fragment_Query extends Fragment {
                 //what if night is finally dropped on d4
                 case DragEvent.ACTION_DROP:
                     Object o = dragEvent.getLocalState();
-                    if(o instanceof ImageView) {
+                    if(o instanceof BlockView) {
                         BlockView draggedView = (BlockView) o;
-                        float margin = 50; //todo
-                        draggedView.setX(dragEvent.getX()-margin);
-                        draggedView.setY(dragEvent.getY()-margin);
+                        draggedView.setX(dragEvent.getX()-draggedView.getWidth()/2);
+                        draggedView.setY(dragEvent.getY()-draggedView.getHeight()/2);
                         draggedView.setVisibility(View.VISIBLE);
                         //todo diff between exiting with a right or down child
-                        Node draggedNode = draggedView.getNode();
+                        /*Node draggedNode = draggedView.getNode();
                         if((draggedNode.getParent() != null) && (draggedNode.getParent().hasRight()))
                             draggedNode.getParent().removeRightChild(draggedNode);
                         if((draggedNode.getParent() != null) && (draggedNode.getParent().hasDown()))
-                            draggedNode.getParent().removeDownChild(draggedNode);
-
+                            draggedNode.getParent().removeDownChild(draggedNode);*/
+                    } else  if(o instanceof RelativeLayout) {
+                        RelativeLayout draggedLayout = (RelativeLayout) o;
+                        Log.d("############# dragged_Layout dim", Integer.toString(draggedLayout.getChildCount()));
+                        draggedLayout.setX(dragEvent.getX() - draggedLayout.getWidth() / 2);
+                        draggedLayout.setY(dragEvent.getY() - draggedLayout.getHeight() / 2);
+                        draggedLayout.setVisibility(View.VISIBLE);
                     }
                     break;
             }
@@ -198,31 +209,52 @@ public class Fragment_Query extends Fragment {
         Node root = new Node(blockT);
 
         //ImageView cur_view = block.createView(context);
-        ImageView cur_view = blockT.createView(context);
-        ((BlockView) cur_view).setNode(root);
-        float[] rawXY = getRawXY(x, y);
-        cur_view.setX(rawXY[0]);
-        cur_view.setY(rawXY[1]); //todo add upwards margin of
+        BlockView cur_view = blockT.createView(context);
+        cur_view.setNode(root);
+        //float[] rawXY = getRawXY(x, y);
+        //cur_view.setX(rawXY[0]);
+        //cur_view.setY(rawXY[1]); //todo add margins
 
         //add the new iv to rl and blocklist
-        rl_query.addView(cur_view);
+        RelativeLayout.LayoutParams lp_view = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        rl_query.addView(cur_view, lp_view);
+        RelativeLayout draggedLayout = new RelativeLayout(context);
+        RelativeLayout.LayoutParams lp_layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        lp_layout.addRule(RelativeLayout.CENTER_IN_PARENT);
+        rl_query.addView(draggedLayout, lp_layout);
+
+        rl_query.removeView(cur_view);
+        draggedLayout.addView(cur_view);
+        //draggedLayout.setBackgroundColor(getResources().getColor(R.color.background_dark));
+        blockGroups_in_rl.add(draggedLayout);
         blocks_in_rl.add(cur_view);
 
-        //drag mode
-        //cur_view.setOnTouchListener(new BlockT.OnTouchListener());
-        cur_view.setOnTouchListener(new View.OnTouchListener() {
+        Log.d("############# blocks_in_rl size", Integer.toString(blocks_in_rl.size()));
+        Log.d("############# blockGroups_in_rl size", Integer.toString(blockGroups_in_rl.size()));
+        Log.d("############# dragged_Layout dim", Integer.toString(draggedLayout.getChildCount()));
+
+
+        //drag mode: touch --> single drag
+        draggedLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    ClipData data = ClipData.newPlainText("", "");
+                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
+                    view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
+                    view.setVisibility(View.INVISIBLE);
+                    Log.d("########## START DRAG", "true");
+                    return true;
+                }else
+                    return false;
+            }
+        });
+
+        //drag mode: double touch --> group drag
+        /*cur_view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)&&((ImageView)view).getDrawable()!=null){
-                    /*List<ImageView> treeMembers = extractTreeViews((ImageView)view);
-                            Log.d("##################### count: ", Integer.toString(treeMembers.size()));
-                    for(int i=0; i<treeMembers.size(); i++){ //todo not good yet
-                        Log.d("########################", "another one");
-                        ClipData data = ClipData.newPlainText("", "");
-                        View.DragShadowBuilder shadow = new View.DragShadowBuilder(treeMembers.get(i));
-                        treeMembers.get(i).startDragAndDrop(data, shadow, treeMembers.get(i), View.DRAG_FLAG_OPAQUE);
-                        treeMembers.get(i).setVisibility(View.INVISIBLE);
-                    }*/
                     ClipData data = ClipData.newPlainText("", "");
                     View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
                     view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
@@ -231,58 +263,93 @@ public class Fragment_Query extends Fragment {
                 }else
                     return false;
             }
-        });
+        });*/
+
+        //drag mode: longclick --> edit todo
+        /*cur_view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                //if has dropdown start dropdown, if has editable start editable, if...
+                return true;
+            }
+        });*/
 
         //drop mode: other block
-        cur_view.setOnDragListener(new View.OnDragListener() {
+        //todo: with layouts but views, but need blockview for node stuff
+        draggedLayout.setOnDragListener(new View.OnDragListener() {
             @Override
-            public boolean onDrag(View view, DragEvent dragEvent) {
+            public boolean onDrag(View thisView, DragEvent dragEvent) {
                 Object o = dragEvent.getLocalState();
-                if(o instanceof ImageView) {
-                    BlockView bv = (BlockView) o;
+                if(o instanceof RelativeLayout) {
+                    RelativeLayout draggedLay = (RelativeLayout) o;
                     //BlockT draggedBlock = (BlockT) iv.getTag();
                     //BlockT thisBlock = (BlockT) view.getTag();
 
-                    Node draggedNode = bv.getNode();
-                    Node thisNode = ((BlockView) view).getNode();
+                    Log.d("############# dragged_Lay dim", Integer.toString(draggedLay.getChildCount()));
+
+                    Node draggedNode = getLayoutHead(draggedLay).getNode();
+                    Node thisNode = getLayoutHead((RelativeLayout) thisView).getNode();
                     BlockT draggedBlock = draggedNode.getBlock();
                     BlockT thisBlock = thisNode.getBlock();
                     boolean fits_right = thisBlock.hasRightSuccessor(draggedBlock);
                     boolean fits_down = thisBlock.hasDownSuccessor(draggedBlock);
-                    //boolean isOnRightSide = bv.getX() > view.getX();
 
                     switch (dragEvent.getAction()) {
                         case DragEvent.ACTION_DRAG_ENTERED:
                             if (fits_right) {
-                                bv.setVisibility(View.VISIBLE);
-                                bv.setAlpha(0.5f);
-                                bv.setX(view.getX()+view.getWidth());
-                                bv.setY(view.getY());
+                                draggedLay.setVisibility(View.VISIBLE);
+                                draggedLay.setAlpha(0.5f);
+                                draggedLay.setX(thisView.getX()+thisView.getWidth());
+                                draggedLay.setY(thisView.getY());
+                            } else if (fits_down) {
+                                draggedLay.setVisibility(View.VISIBLE);
+                                draggedLay.setAlpha(0.5f);
+                                draggedLay.setX(thisView.getX());
+                                draggedLay.setY(thisView.getY()+thisView.getHeight());
                             }
                             break;
                         case DragEvent.ACTION_DRAG_EXITED:
-                            bv.setVisibility(View.INVISIBLE);
-                            bv.setAlpha(1f);
+                            draggedLay.setVisibility(View.INVISIBLE);
+                            draggedLay.setAlpha(1f);
                             break;
                         case DragEvent.ACTION_DROP:
-                            bv.setAlpha(1f);
+                            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+                            RelativeLayout thisLay = (RelativeLayout) thisView;
+                            draggedLay.setAlpha(1f);
                             if (fits_right) {
-                                bv.setX(view.getX()+view.getWidth()); //todo has to fit to drawables
-                                bv.setY(view.getY());
+                                /*draggedLay.setX(getLayoutHead(thisLay).getX()+getLayoutHead(thisLay).getWidth());
+                                draggedLay.setY(getLayoutHead(thisLay).getY());*/
+                                lp.addRule(RelativeLayout.RIGHT_OF, getLayoutHead(thisLay).getId());
                                 thisNode.addRightChild(draggedNode);
+                                rl_query.removeView(draggedLay);
+                                //todo drag attr from 1 select to another select
+                                /*if(draggedLay.getParent() instanceof RelativeLayout){
+                                    ((RelativeLayout) draggedLay.getParent()).removeView(draggedLay);
+                                }*/
+
+                                thisLay.addView(draggedLay, lp);
+                                thisLay.getLayoutParams().width = thisLay.getWidth() + draggedLay.getWidth();
+                                thisLay.getLayoutParams().height = Math.max(thisLay.getHeight(), draggedLay.getHeight());
                                 //sounds
-                                MediaPlayer.create(bv.getContext(), R.raw.dropblock).start();
+                                MediaPlayer.create(thisView.getContext(), R.raw.dropblock).start();
                             } else if(fits_down) {
-                                bv.setX(view.getX());
-                                bv.setY(view.getY() + view.getHeight()); //todo has to fit to drawables
+                                /*draggedLay.setX(getLayoutHead(thisLay).getX());
+                                draggedLay.setY(getLayoutHead(thisLay).getY() + getLayoutHead(thisLay).getHeight());*/
+                                lp.addRule(RelativeLayout.BELOW, getLayoutHead(thisLay).getId());
                                 thisNode.addDownChild(draggedNode);
+                                rl_query.removeView(draggedLay);
+                                thisLay.addView(draggedLay, lp);
+                                thisLay.getLayoutParams().width = Math.max(thisLay.getWidth(), draggedLay.getWidth());
+                                thisLay.getLayoutParams().height = thisLay.getHeight() + draggedLay.getHeight();
                                 //sounds
-                                MediaPlayer.create(bv.getContext(), R.raw.dropblock).start();
+                                MediaPlayer.create(thisView.getContext(), R.raw.dropblock).start();
                             } else{
-                                bv.setX(view.getX());
-                                bv.setY(view.getY()-5*view.getHeight()); //todo maybe somewhere else
+                                /*draggedLay.setX(getLayoutHead(thisLay).getX());
+                                draggedLay.setY(getLayoutHead(thisLay).getY()-getLayoutHead(thisLay).getHeight());*/ //todo no new position but sound
                             }
-                            bv.setVisibility(View.VISIBLE);
+                            draggedLay.setVisibility(View.VISIBLE);
+                            Log.d("############# dragged_Layout dim", Integer.toString(thisLay.getChildCount()));
                             break;
 
                     }
@@ -292,33 +359,40 @@ public class Fragment_Query extends Fragment {
         });
     }
 
+    //when holding a layout return the leading blockview
+    public BlockView getLayoutHead(RelativeLayout rl){
+        return (BlockView) rl.getChildAt(0);
+    }
+
     //extract the views that have to move when one is dragged
-    public List<ImageView> extractTreeViews(ImageView mover){
-        List<Node> tree = ((BlockView) mover).getNode().getTreeMembers();
-        List<ImageView> members = new ArrayList<>();
-        for(ImageView iv: blocks_in_rl){
-            if(tree.contains(((BlockView) iv).getNode())){
-                members.add(iv);
+    public List<BlockView> extractTreeViews(BlockView mover){
+        List<Node> tree = mover.getNode().getTreeMembers();
+        List<BlockView> members = new ArrayList<>();
+        for(int i=0; i<blocks_in_rl.size(); i++){
+            if(tree.contains(blocks_in_rl.get(i).getNode())){
+                members.add(blocks_in_rl.get(i));
             }
         }
         for(int i=0; i<members.size(); i++)
-            Log.d("############## members: ", ((BlockView)members.get(i)).getNode().getBlock().getName());
+            Log.d("############## members: ", members.get(i).getNode().getBlock().getName());
         return members;
     }
 
 
+    //todo not just iv but the rel layouts
     public void goInclickable(){
-        for(ImageView iv: blocks_in_rl){
-            iv.setClickable(false);
+        for(int i=0; i<blocks_in_rl.size(); i++){
+            blocks_in_rl.get(i).setClickable(false);
         }
         btn_go.setVisibility(View.INVISIBLE);
         btn_clear.setVisibility(View.INVISIBLE);
     }
 
 
+    //todo not just iv but the rel layouts
     public void goClickable(){
-        for(ImageView iv: blocks_in_rl){
-            iv.setClickable(true);
+        for(int i=0; i<blocks_in_rl.size(); i++){
+            blocks_in_rl.get(i).setClickable(true);
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
@@ -331,12 +405,12 @@ public class Fragment_Query extends Fragment {
         return new float[]{x, y +qf_height -bf_margin};
     }
 
-    //TODO
+    //TODO color current selects and choose by userclick
     public String interpret(){
-        for(ImageView iv: blocks_in_rl){
-            if(((BlockView)iv).getNode().getBlock() == BlockT.SELECT){
-                ((BlockView)iv).getNode().printTree();
-                return ((BlockView)iv).getNode().toTreeString();
+        for(int i=0; i<blocks_in_rl.size(); i++){
+            if(blocks_in_rl.get(i).getNode().getBlock() == BlockT.SELECT){
+                blocks_in_rl.get(i).getNode().printTree();
+                return blocks_in_rl.get(i).getNode().toTreeString();
             }
         }
         return SELECT_MISSING_ERROR;

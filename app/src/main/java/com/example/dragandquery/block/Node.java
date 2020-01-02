@@ -23,8 +23,14 @@ public class Node {
     }
 
     public void addRightChild(Node child){
+        if(this.hasRight()){
+            child.addRightChild(this.rightChild);
+            this.rightChild.setParent(child.getLastRightTreeMember());
+            child.getLastRightTreeMember().addRightChild(this.rightChild);
+        }
         child.setParent(this);
         this.rightChild = child;
+
     }
 
     public void removeRightChild(Node child){
@@ -33,6 +39,11 @@ public class Node {
     }
 
     public void addDownChild(Node child){
+        if(this.hasDown()){
+            child.addDownChild(this.downChild);
+            this.downChild.setParent(child.getLastDownTreeMember());
+            child.getLastDownTreeMember().addDownChild(this.downChild);
+        }
         child.setParent(this);
         this.downChild = child;
     }
@@ -40,6 +51,20 @@ public class Node {
     public void removeDownChild(Node child){
         child.setParent(null);
         this.downChild = null;
+    }
+
+    public Node getLastRightTreeMember(){
+        if(this.hasRight()){
+            return this.rightChild.getLastRightTreeMember();
+        }
+        return this;
+    }
+
+    public Node getLastDownTreeMember(){
+        if(this.hasDown()){
+            return this.downChild.getLastDownTreeMember();
+        }
+        return this;
     }
 
     //todo for parser

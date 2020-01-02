@@ -194,6 +194,11 @@ public class TutorialCategory extends AppCompatActivity {
                 addLection(getString(R.string.cat1_lec4));
                 addLection(getString(R.string.cat1_lec5));
                 addLection(getString(R.string.cat1_lec6));
+                addLection(getString(R.string.cat1_lec7));
+                addLection(getString(R.string.cat1_lec8));
+                addLection(getString(R.string.cat1_lec9));
+                addLection(getString(R.string.cat1_lec10));
+                addLection(getString(R.string.cat1_lec11));
 
                 exp_key = getString(R.string.tutScore1_key);
                 exp_unlocked_key = getString(R.string.tutScore1_unlocked_key);

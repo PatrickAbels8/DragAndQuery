@@ -109,8 +109,8 @@ public enum BlockT {
         return sucs;
     }
 
-    public ImageView createView(Context context){
-        ImageView view = new BlockView(context);
+    public BlockView createView(Context context){
+        BlockView view = new BlockView(context);
         view.setImageResource(getDesign());
         view.setTag(this);
         return view;

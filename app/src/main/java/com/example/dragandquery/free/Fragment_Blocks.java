@@ -116,7 +116,7 @@ public class Fragment_Blocks extends Fragment {
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                             showOrHideBlocks(null, -1);
-                            float rawX = motionEvent.getX();
+                            float rawX = motionEvent.getX(); //todo take view pos but event pos OR getRawX but getX
                             float rawY = motionEvent.getY() - (float)ll_blocks.getHeight() - (float)ll_categories.getHeight();
                             listener.onBlockDragged(view, rawX, rawY);
                         }

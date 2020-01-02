@@ -243,7 +243,7 @@ public class Navigation extends AppCompatActivity
     @Override
     //TODO back stack + add all the navi stuff to the other main activities after creating the main activities each
     public boolean onNavigationItemSelected(MenuItem item) {
-        Toast.makeText(getApplicationContext(), "onNavigationItemSelected", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "onNavigationItemSelected", Toast.LENGTH_LONG).show();
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 

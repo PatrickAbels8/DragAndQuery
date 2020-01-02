@@ -35,14 +35,35 @@
     <string name="c1l4_title">Kapitel 1 Lektion 4</string>
     <string name="c1l5_title">Kapitel 1 Lektion 5</string>
     <string name="c1l6_title">Kapitel 1 Lektion 6</string>
-    <string name="cat1_lec1">Datenbanken</string>
-    <string name="cat1_lec2">Attribute</string>
-    <string name="cat1_lec3">NULL</string>
-    <string name="cat1_lec4">Where</string>
-    <string name="cat1_lec5">Manipulation</string>
-    <string name="cat1_lec6">Algebra</string>
+
+    <string name="cat1_lec1">Einsatzmöglichkeiten für Datenbanken</string>
+    <string name="cat1_lec2">Von Datenbanken und Tabellen</string>
+    <string name="cat1_lec3">Relation</string>
+    <string name="cat1_lec4">Zeilen, Spalten, Attribute</string>
+    <string name="cat1_lec5">Anforderungen an Tabellen</string>
+    <string name="cat1_lec6">Datentypen von Attributen</string>
+    <string name="cat1_lec7">Eindeutigkeit dank Schlüsseln</string>
+    <string name="cat1_lec8">Fremdschlüssel</string>
+    <string name="cat1_lec9">Erste Abfrage mit dem SELECT-Befehl</string>
+    <string name="cat1_lec10">Attribute im SLEECT-Block</string>
+    <string name="cat1_lec11">Wir gehen ans Limit mit dem LIMIT-Befehl</string>
+
+    <string name="cat2_lec1">Bedingungen mit dem WHERE-Befehl</string>
+    <string name="cat2_lec2">Es muss nicht alles gleich sein</string>
+    <string name="cat2_lec3">Größer oder kleiner?</string>
+    <string name="cat2_lec4">Ordnung ist das halbe Leben</string>
+    <string name="cat2_lec5">Zwischen den Stühlen?</string>
+    <string name="cat2_lec6">Oder oder Oder?</string>
+    <string name="cat2_lec7">Wahr oder nicht wahr?</string>
+    <string name="cat2_lec8">Ganz oder gar nicht!</string>
+    <string name="cat2_lec9">Mittendrin ist auch dabei</string>
+    <string name="cat2_lec10">Unsicher? LIKE!</string>
+    <string name="cat2_lec11">Doppelt hält (nicht) besser</string>
+    <string name="cat2_lec12">Ein bisschen Mathe gefällig?</string>
+    <string name="cat2_lec13">Nenn mich doch lieber ...</string>
 
     <string name="accept_input">Verstanden!</string>
+
     <string name="c1l1_input">
         Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.\n\n
         In jeder Schule müssen Kontaktdaten von Lehrkräften und SchülerInnen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.\n\n
@@ -55,7 +76,7 @@
 
     <string name="head_tutorial">Tutorial</string>
     <string name="tutorial_category1">Relationale Datanbank</string>
-    <string name="tutorial_category2">Anfragen</string>
+    <string name="tutorial_category2">Bedingungen</string>
     <string name="tutorial_category3">Aggregatfunktionen</string>
     <string name="tutorial_category4">Join</string>
     <string name="tutorial_category5">Verschachtelte Anfragen</string>
