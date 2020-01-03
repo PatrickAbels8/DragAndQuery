@@ -100,8 +100,8 @@ public class Navigation extends AppCompatActivity
                 loadDataInt(getString(R.string.tutScore1_key), 10),
                 loadDataInt(getString(R.string.tutScore2_key), 20),
                 loadDataInt(getString(R.string.tutScore3_key), 30),
-                loadDataInt(getString(R.string.tutScore4_key), 40),
-                loadDataInt(getString(R.string.tutScore5_key), 50)};
+                loadDataInt(getString(R.string.tutScore4_key), 40)
+        };
         tutorial_exp_avg = calcAvg(tutorial_exps);
         practise_exp = Integer.parseInt(loadDataString(getString(R.string.pracScore_key), Integer.toString(0)));
 

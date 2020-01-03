@@ -1,7 +1,6 @@
 package com.example.dragandquery.tutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,14 +11,18 @@ import android.widget.Toast;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.Tutorial;
-import com.example.dragandquery.tutorial.Fragment_Feedback;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0101;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0102;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0103;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0104;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0105;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0106;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * -toolbar.set
- * -inclickable when feedbac open
+ * -curfrag of type MyFrag interface/topclass and every lection overrides methods (startExercise(), ...)
  */
 
 public class TutorialCategoryLection
@@ -36,19 +39,14 @@ public class TutorialCategoryLection
 {
 
     //fragments
-    Fragment curFrag;
+    Fragment_Content curFrag;
     Fragment_Feedback fragFeedback;
     Fragment_Input fragInput;
-    Fragment_LectionContent_0101 fragLectionContent_0101;
-    Fragment_LectionContent_0102 fragLectionContent_0102;
-    Fragment_LectionContent_0103 fragLectionContent_0103;
-    Fragment_LectionContent_0104 fragLectionContent_0104;
-    Fragment_LectionContent_0105 fragLectionContent_0105;
-    Fragment_LectionContent_0106 fragLectionContent_0106;
+    Fragment_Content[] frags;
 
     //vars
     private String lection_id; //of type "01_03_05" when its the 3rd out of 5 lections in cat 01
-    private int numCat; //todo
+    private int numCat;
     private int numLec;
     private int numLecs;
 
@@ -60,12 +58,14 @@ public class TutorialCategoryLection
         //init coms and vars
         fragFeedback = new Fragment_Feedback();
         fragInput = new Fragment_Input();
-        fragLectionContent_0101 = new Fragment_LectionContent_0101();
-        fragLectionContent_0102 = new Fragment_LectionContent_0102();
-        fragLectionContent_0103 = new Fragment_LectionContent_0103();
-        fragLectionContent_0104 = new Fragment_LectionContent_0104();
-        fragLectionContent_0105 = new Fragment_LectionContent_0105();
-        fragLectionContent_0106 = new Fragment_LectionContent_0106();
+        frags = new Fragment_Content[]{ //todo add lections here
+                new Fragment_LectionContent_0101(),
+                new Fragment_LectionContent_0102(),
+                new Fragment_LectionContent_0103(),
+                new Fragment_LectionContent_0104(),
+                new Fragment_LectionContent_0105(),
+                new Fragment_LectionContent_0106()
+        };
 
         //intent stuff
         Intent i = getIntent();
@@ -78,19 +78,7 @@ public class TutorialCategoryLection
         }
 
         //checkout current lection
-        if(lection_id.substring(0, 5).equals("01_01")){
-            curFrag = fragLectionContent_0101;
-        }else if(lection_id.substring(0, 5).equals("01_02")){
-            curFrag = fragLectionContent_0102;
-        }else if(lection_id.substring(0, 5).equals("01_03")){
-            curFrag = fragLectionContent_0103;
-        }else if(lection_id.substring(0, 5).equals("01_04")){
-            curFrag = fragLectionContent_0104;
-        }else if(lection_id.substring(0, 5).equals("01_05")){
-            curFrag = fragLectionContent_0105;
-        }else if(lection_id.substring(0, 5).equals("01_06")){
-            curFrag = fragLectionContent_0106;
-        }
+        curFrag = frags[getFragIndex(numCat, numLec)];
 
         //open current lection
         getSupportFragmentManager().beginTransaction()
@@ -110,11 +98,8 @@ public class TutorialCategoryLection
                 fragInput.showBird();
             }
         }, Fragment_Feedback.TORIGHT_DURATION);
-        if(lection_id.substring(0, 5).equals("01_01")){
-            fragLectionContent_0101.startExercise();
-        }else if(lection_id.substring(0, 5).equals("01_02")){
-            fragLectionContent_0102.goClickable();
-        }
+
+        curFrag.startExercise();
     }
 
     @Override
@@ -144,19 +129,13 @@ public class TutorialCategoryLection
             setLectionDone();
         }
 
-        if(lection_id.substring(0, 5).equals("01_01")){
-            fragLectionContent_0101.pauseExercise();
-        }else if(lection_id.substring(0, 5).equals("01_02")){
-            fragLectionContent_0102.goInclickable();
-        }
+        curFrag.pauseExercise();
     }
 
     @Override
     public void onAccept() {
         Log.d("############ hello from", "onAccept()");
-        if(lection_id.substring(0, 5).equals("01_01")){
-            fragLectionContent_0101.startExercise();
-        }
+        curFrag.startExercise();
         fragInput.goInvisible();
     }
 
@@ -164,14 +143,10 @@ public class TutorialCategoryLection
     public void onBird(boolean wasOpen){
         Log.d("############ hello from", "onBird()");
         if(wasOpen){
-            if(lection_id.substring(0, 5).equals("01_01")){
-                fragLectionContent_0101.startExercise();
-            }
+            curFrag.startExercise();
             fragInput.goInvisible();
         }else{
-            if(lection_id.substring(0, 5).equals("01_01")){
-                fragLectionContent_0101.pauseExercise();
-            }
+            curFrag.pauseExercise();
             fragInput.goVisible(lection_id);
         }
 
@@ -183,6 +158,15 @@ public class TutorialCategoryLection
         if (numCat == 1) {
             exp_key += getString(R.string.tutScore1_key);
             exp_unlocked_key += getString(R.string.tutScore1_unlocked_key);
+        } else if (numCat == 2) {
+            exp_key += getString(R.string.tutScore2_key);
+            exp_unlocked_key += getString(R.string.tutScore2_unlocked_key);
+        } else if (numCat == 3) {
+            exp_key += getString(R.string.tutScore3_key);
+            exp_unlocked_key += getString(R.string.tutScore3_unlocked_key);
+        } else if (numCat == 4) {
+            exp_key += getString(R.string.tutScore4_key);
+            exp_unlocked_key += getString(R.string.tutScore4_unlocked_key);
         }
         saveData(exp_key, achievementsToExperience());
         saveData(exp_unlocked_key, unlockedachievementsToExperience());
@@ -241,5 +225,37 @@ public class TutorialCategoryLection
         nextLectionID +=  newLec>9? Integer.toString(newLec): "0"+Integer.toString(newLec);
         nextLectionID += "_"+coms[2];
         return nextLectionID;
+    }
+
+    //todo change when lection changed
+    public int getFragIndex(int chapter, int lection){
+        int idx = 0;
+        switch(chapter){
+            case 1:
+                switch(lection){
+                    case 1:
+                        idx = 0;
+                        break;
+                    case 2:
+                        idx = 1;
+                        break;
+                    case 3:
+                        idx = 2;
+                        break;
+                    case 4:
+                        idx = 3;
+                        break;
+                    case 5:
+                        idx = 4;
+                        break;
+                    case 6:
+                        idx = 5;
+                        break;
+                }
+            case 2:
+            case 3:
+            case 4:
+        }
+        return idx;
     }
 }

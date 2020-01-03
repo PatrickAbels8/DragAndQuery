@@ -22,4 +22,7 @@
     <color name="attribute_text">#ffffff</color>
     <color name="cell_background">#4D171B04</color>
     <color name="cell_text">#ffffff</color>
+
+    <!-- query fragment -->
+    <color name="select_layouts">#ff0000</color>
 </resources>

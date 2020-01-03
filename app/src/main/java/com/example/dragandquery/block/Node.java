@@ -7,7 +7,7 @@ import java.util.List;
 
 /***
  *TODO:
- * -
+ * -print misses right childs
  */
 
 
@@ -102,6 +102,11 @@ public class Node {
 
     public boolean hasDown(){
         return downChild != null;
+    }
+
+    //if child right child of this return true, if is down hild return false
+    public boolean isRightButDown(Node child){
+            return this.rightChild.getBlock().getName().equals(child.getBlock().getName());
     }
 
     public List<Node> getTreeMembers(){

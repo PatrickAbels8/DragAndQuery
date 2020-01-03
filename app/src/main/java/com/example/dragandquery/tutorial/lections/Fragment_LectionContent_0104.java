@@ -1,4 +1,4 @@
-package com.example.dragandquery.tutorial;
+package com.example.dragandquery.tutorial.lections;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
+import com.example.dragandquery.tutorial.Fragment_Content;
 
 import java.util.Random;
 
@@ -24,29 +25,29 @@ import java.util.Random;
  * - verify answer
  */
 
-public class Fragment_LectionContent_0102 extends Fragment {
+public class Fragment_LectionContent_0104 extends Fragment_Content {
 
     //coms
     private RelativeLayout rl_lectioncontent;
     private Button btn_go;
 
     //vars
-    private Fragment_LectionContent_0102_Listener listener;
+    private Fragment_LectionContent_0104_Listener listener;
     public Context context;
 
     //interface
-    public interface Fragment_LectionContent_0102_Listener{
+    public interface Fragment_LectionContent_0104_Listener{
         void onGo(boolean isCorrect);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_lectioncontent_0102, container, false);
+        View v = inflater.inflate(R.layout.fragment_lectioncontent_0104, container, false);
 
         //init coms
         rl_lectioncontent = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0102);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0102_go);
+        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0104_go);
         context = getContext();
 
         /***
@@ -79,8 +80,8 @@ public class Fragment_LectionContent_0102 extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_LectionContent_0102_Listener){
-            listener = (Fragment_LectionContent_0102_Listener) context;
+        if(context instanceof Fragment_LectionContent_0104_Listener){
+            listener = (Fragment_LectionContent_0104_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

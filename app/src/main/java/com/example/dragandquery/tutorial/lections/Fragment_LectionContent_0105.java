@@ -1,4 +1,4 @@
-package com.example.dragandquery.tutorial;
+package com.example.dragandquery.tutorial.lections;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
+import com.example.dragandquery.tutorial.Fragment_Content;
 
 import java.util.Random;
 
@@ -24,7 +25,7 @@ import java.util.Random;
  * - verify answer
  */
 
-public class Fragment_LectionContent_0105 extends Fragment {
+public class Fragment_LectionContent_0105 extends Fragment_Content {
 
     //coms
     private RelativeLayout rl_lectioncontent;

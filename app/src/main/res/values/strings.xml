@@ -29,12 +29,7 @@
     <string name="feedback_forth">Weiter</string>
     <string name="feedback_msg_good">Das war super!</string>
     <string name="feedback_msg_bad">Probier es nochmal!</string>
-    <string name="c1l1_title">Kapitel 1 Lektion 1</string>
-    <string name="c1l2_title">Kapitel 1 Lektion 2</string>
-    <string name="c1l3_title">Kapitel 1 Lektion 3</string>
-    <string name="c1l4_title">Kapitel 1 Lektion 4</string>
-    <string name="c1l5_title">Kapitel 1 Lektion 5</string>
-    <string name="c1l6_title">Kapitel 1 Lektion 6</string>
+    <string name="accept_input">Verstanden!</string>
 
     <string name="cat1_lec1">Einsatzmöglichkeiten für Datenbanken</string>
     <string name="cat1_lec2">Von Datenbanken und Tabellen</string>
@@ -48,21 +43,38 @@
     <string name="cat1_lec10">Attribute im SLEECT-Block</string>
     <string name="cat1_lec11">Wir gehen ans Limit mit dem LIMIT-Befehl</string>
 
-    <string name="cat2_lec1">Bedingungen mit dem WHERE-Befehl</string>
+    <string name="cat2_lec1">Der WHERE-Befehl</string>
     <string name="cat2_lec2">Es muss nicht alles gleich sein</string>
     <string name="cat2_lec3">Größer oder kleiner?</string>
     <string name="cat2_lec4">Ordnung ist das halbe Leben</string>
     <string name="cat2_lec5">Zwischen den Stühlen?</string>
     <string name="cat2_lec6">Oder oder Oder?</string>
-    <string name="cat2_lec7">Wahr oder nicht wahr?</string>
-    <string name="cat2_lec8">Ganz oder gar nicht!</string>
-    <string name="cat2_lec9">Mittendrin ist auch dabei</string>
-    <string name="cat2_lec10">Unsicher? LIKE!</string>
-    <string name="cat2_lec11">Doppelt hält (nicht) besser</string>
-    <string name="cat2_lec12">Ein bisschen Mathe gefällig?</string>
-    <string name="cat2_lec13">Nenn mich doch lieber ...</string>
+    <string name="cat2_lec7">Und und und...</string>
+    <string name="cat2_lec8">Aber nicht doch</string>
+    <string name="cat2_lec9">Wahr oder nicht wahr?</string>
+    <string name="cat2_lec10">Ganz oder gar nicht!</string>
+    <string name="cat2_lec11">Mittendrin ist auch dabei</string>
+    <string name="cat2_lec12">Unsicher? LIKE!</string>
+    <string name="cat2_lec13">Doppelt hält (nicht) besser</string>
+    <string name="cat2_lec14">Ein bisschen Mathe gefällig?</string>
+    <string name="cat2_lec15">Nenn mich doch lieber...?</string>
 
-    <string name="accept_input">Verstanden!</string>
+    <string name="cat3_lec1">Aggrewer?</string>
+    <string name="cat3_lec2">Zählen bitte!</string>
+    <string name="cat3_lec3">Klopf Klopf</string>
+    <string name="cat3_lec4">Grüner leben dank der Summenfunktion</string>
+    <string name="cat3_lec5">Grupeenbildung hey!</string>
+    <string name="cat3_lec6">Manchmal reicht es Durchschnitt zu sein</string>
+    <string name="cat3_lec7">Erfolg maximieren, Aufwand minimieren</string>
+    <string name="cat3_lec8">Wherecome to Having</string>
+
+    <string name="cat4_lec1">Es kommt zusammen, was zusammen gehört</string>
+    <string name="cat4_lec2">Fremdschlüssel sind Key</string>
+    <string name="cat4_lec3">Üben, üben, üben</string>
+    <string name="cat4_lec4">Noch ein bisschen JOINen</string>
+    <string name="cat4_lec5">Doppelt hält besser</string>
+    <string name="cat4_lec6">Darf\'s ein bisschen mehr sein?</string>
+    <string name="cat4_lec7">Aller guten Dinge sind drei</string>
 
     <string name="c1l1_input">
         Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.\n\n
@@ -75,11 +87,11 @@
     <string name="c1l1_answer3">Einkaufsliste</string>
 
     <string name="head_tutorial">Tutorial</string>
-    <string name="tutorial_category1">Relationale Datanbank</string>
+    <string name="tutorial_category1">Relationale Datanbanken</string>
     <string name="tutorial_category2">Bedingungen</string>
     <string name="tutorial_category3">Aggregatfunktionen</string>
     <string name="tutorial_category4">Join</string>
-    <string name="tutorial_category5">Verschachtelte Anfragen</string>
+
     <string name="title_activity_tutorial_category">Tutorial Category</string>
     <string name="title_activity_tutorial">Tutorial</string>
 
@@ -88,12 +100,16 @@
     <string name="userImage_key">userImage</string>
     <string name="userName_key">userName</string>
     <string name="userMail_key">userMail</string>
+
     <string name="tutScore1_key">tutScore1</string>
     <string name="tutScore1_unlocked_key">tutScore1_unlocked</string>
     <string name="tutScore2_key">tutScore2</string>
+    <string name="tutScore2_unlocked_key">tutScore2_unlocked</string>
     <string name="tutScore3_key">tutScore3</string>
+    <string name="tutScore3_unlocked_key">tutScore3_unlocked</string>
     <string name="tutScore4_key">tutScore4</string>
-    <string name="tutScore5_key">tutScore5</string>
+    <string name="tutScore4_unlocked_key">tutScore4_unlocked</string>
+
     <string name="pracScore_key">pracScore</string>
 
     <!-- profile -->

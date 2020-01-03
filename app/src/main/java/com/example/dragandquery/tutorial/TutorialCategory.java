@@ -33,8 +33,6 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO:
- * - cats 2-5
- * - default first unloked
  * - do done lections againg without reset
  * - !!! first time speech bubble that user should reset once (story time cause default ist wrong)
  * - reset into settings
@@ -78,7 +76,7 @@ public class TutorialCategory extends AppCompatActivity {
 
         //show which category is currently open and open corresponding lections
         if(intent.hasExtra(Tutorial.CAT_ID)){
-            cat_id = intent.getIntExtra(Tutorial.CAT_ID, 1); //1-5
+            cat_id = intent.getIntExtra(Tutorial.CAT_ID, 1); //1-4
             loadLections(cat_id);
         }
 
@@ -118,6 +116,7 @@ public class TutorialCategory extends AppCompatActivity {
     //start lection
     public void startLection(int lection_id){
         Intent i = new Intent(context, TutorialCategoryLection.class);
+        Log.d("################## lection id", getLectionID(lection_id));
         i.putExtra(LECTION_ID, getLectionID(lection_id));
         startActivity(i);
     }
@@ -202,34 +201,74 @@ public class TutorialCategory extends AppCompatActivity {
 
                 exp_key = getString(R.string.tutScore1_key);
                 exp_unlocked_key = getString(R.string.tutScore1_unlocked_key);
-                cat_exp = loadData(exp_key, 1); //default 0 lections done yet
-                cat_exp_unlocked = loadData(exp_unlocked_key, 100/lections_achievement.size()+1); //default 1 lection unlocked yet
-
-                //every lection finished?
-                if(cat_exp>=100){
-                    for(int i=0; i<lections_achievement.size(); i++){
-                        lections_achievement.set(i, DONE);
-                        viewLectionDone(i);
-                    }
-                    break;
-                }
-
-                //otherwise
-                setAchsAndViews();
                 break;
             case 2:
-                cat_exp = loadData(getString(R.string.tutScore2_key), 10);
+                setTitle(getString(R.string.tutorial_category2));
+                //todo make via menu/list
+                addLection(getString(R.string.cat2_lec1));
+                addLection(getString(R.string.cat2_lec2));
+                addLection(getString(R.string.cat2_lec3));
+                addLection(getString(R.string.cat2_lec4));
+                addLection(getString(R.string.cat2_lec5));
+                addLection(getString(R.string.cat2_lec6));
+                addLection(getString(R.string.cat2_lec7));
+                addLection(getString(R.string.cat2_lec8));
+                addLection(getString(R.string.cat2_lec9));
+                addLection(getString(R.string.cat2_lec10));
+                addLection(getString(R.string.cat2_lec11));
+                addLection(getString(R.string.cat2_lec12));
+                addLection(getString(R.string.cat2_lec13));
+                addLection(getString(R.string.cat2_lec14));
+                addLection(getString(R.string.cat2_lec15));
+
+                exp_key = getString(R.string.tutScore2_key);
+                exp_unlocked_key = getString(R.string.tutScore2_unlocked_key);
                 break;
             case 3:
-                cat_exp = loadData(getString(R.string.tutScore3_key), 10);
+                setTitle(getString(R.string.tutorial_category3));
+                //todo make via menu/list
+                addLection(getString(R.string.cat3_lec1));
+                addLection(getString(R.string.cat3_lec2));
+                addLection(getString(R.string.cat3_lec3));
+                addLection(getString(R.string.cat3_lec4));
+                addLection(getString(R.string.cat3_lec5));
+                addLection(getString(R.string.cat3_lec6));
+                addLection(getString(R.string.cat3_lec7));
+                addLection(getString(R.string.cat3_lec8));
+
+                exp_key = getString(R.string.tutScore3_key);
+                exp_unlocked_key = getString(R.string.tutScore3_unlocked_key);
                 break;
             case 4:
-                cat_exp = loadData(getString(R.string.tutScore4_key), 10);
-                break;
-            case 5:
-                cat_exp = loadData(getString(R.string.tutScore5_key), 10);
+                setTitle(getString(R.string.tutorial_category4));
+                //todo make via menu/list
+                addLection(getString(R.string.cat4_lec1));
+                addLection(getString(R.string.cat4_lec2));
+                addLection(getString(R.string.cat4_lec3));
+                addLection(getString(R.string.cat4_lec4));
+                addLection(getString(R.string.cat4_lec5));
+                addLection(getString(R.string.cat4_lec6));
+                addLection(getString(R.string.cat4_lec7));
+
+                exp_key = getString(R.string.tutScore4_key);
+                exp_unlocked_key = getString(R.string.tutScore4_unlocked_key);
                 break;
         }
+
+        cat_exp = loadData(exp_key, 1); //default 0 lections done yet
+        cat_exp_unlocked = loadData(exp_unlocked_key, 100/lections_achievement.size()+1); //default 1 lection unlocked yet
+
+        //every lection finished?
+        if(cat_exp>=100){
+            for(int i=0; i<lections_achievement.size(); i++){
+                lections_achievement.set(i, DONE);
+                viewLectionDone(i);
+            }
+            return;
+        }
+
+        //otherwise
+        setAchsAndViews();
 
     }
 

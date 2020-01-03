@@ -1,4 +1,4 @@
-package com.example.dragandquery.tutorial;
+package com.example.dragandquery.tutorial.lections;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.example.dragandquery.R;
 import com.example.dragandquery.block.Block;
 import com.example.dragandquery.block.BlockFactory;
+import com.example.dragandquery.tutorial.Fragment_Content;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ import java.util.Random;
  * - add background emoji with question marks
  */
 
-public class Fragment_LectionContent_0101 extends Fragment {
+public class Fragment_LectionContent_0101 extends Fragment_Content {
 
     //coms
     private RelativeLayout rl_exercise;

@@ -14,52 +14,51 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/text"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="100dp"
-        android:id="@+id/l">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/select_block"
-            android:id="@+id/b1"/>
+            android:id="@+id/b">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/select_block"
+                android:id="@+id/b1"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/c"
+                android:layout_toRightOf="@id/b1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/attribute_block" />
+            </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/b2"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/attribute_block"
-            android:layout_toRightOf="@id/b1"/>
+            android:id="@+id/d"
+            android:layout_below="@id/b1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/from_block"
+                android:id="@+id/d1"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/attribute_block"
-            android:layout_toRightOf="@id/b2"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/e"
+                android:layout_below="@id/d1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/where_block" />
+            </RelativeLayout>
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/b3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/from_block"
-            android:layout_below="@id/b1"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/where_block"
-            android:layout_below="@id/b3"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/table_block"
-            android:layout_below="@id/b1"
-            android:layout_toRightOf="@id/b3"/>
     </RelativeLayout>
 
 </RelativeLayout>

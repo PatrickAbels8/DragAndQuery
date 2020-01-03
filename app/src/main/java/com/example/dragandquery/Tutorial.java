@@ -32,7 +32,7 @@ public class Tutorial extends AppCompatActivity {
     TextView[] titles;
 
     //vars
-    private final static int num_cats = 5;
+    private final static int num_cats = 4;
     private int[] cats_exp;
     public final static String CAT_ID = "com.example.dragandquery.Tutorial.CAT_ID";
 
@@ -50,22 +50,20 @@ public class Tutorial extends AppCompatActivity {
                 loadData(getString(R.string.tutScore1_key), 10),
                 loadData(getString(R.string.tutScore2_key), 20),
                 loadData(getString(R.string.tutScore3_key), 30),
-                loadData(getString(R.string.tutScore4_key), 40),
-                loadData(getString(R.string.tutScore5_key), 50)};
+                loadData(getString(R.string.tutScore4_key), 40)
+        };
 
         Log.d("###############exp: ", Integer.toString(cats_exp[0]));
         cats = new ProgressBar[]{
                 (ProgressBar) findViewById(R.id.pb_cat1), //Rel DB
                 (ProgressBar) findViewById(R.id.pb_cat2), //Anfragen
                 (ProgressBar) findViewById(R.id.pb_cat3), //Aggreg. fkt.
-                (ProgressBar) findViewById(R.id.pb_cat4), //Join
-                (ProgressBar) findViewById(R.id.pb_cat5)};//Verschachtelte Anfragen
+                (ProgressBar) findViewById(R.id.pb_cat4)}; //Join
         titles = new TextView[]{
                 (TextView) findViewById(R.id.tv_title_cat1),
                 (TextView) findViewById(R.id.tv_title_cat2),
                 (TextView) findViewById(R.id.tv_title_cat3),
-                (TextView) findViewById(R.id.tv_title_cat4),
-                (TextView) findViewById(R.id.tv_title_cat5)};
+                (TextView) findViewById(R.id.tv_title_cat4)};
 
         for(int i=0; i<num_cats; i++){
             cats[i].setProgress(cats_exp[i]);
@@ -103,7 +101,7 @@ public class Tutorial extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent1 = new Intent(view.getContext(), TutorialCategory.class);
             String cat_name = view.getResources().getResourceName(view.getId());
-            int cat_id = Integer.parseInt(Character.toString(cat_name.charAt(cat_name.length()-1))); //1-5
+            int cat_id = Integer.parseInt(Character.toString(cat_name.charAt(cat_name.length()-1))); //1-4
             intent1.putExtra(CAT_ID, cat_id);
             startActivity(intent1);
         }

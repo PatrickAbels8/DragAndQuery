@@ -1,5 +1,6 @@
 package com.example.dragandquery.free;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class Fragment_Blocks extends Fragment {
         void onBlockDragged(View view, float x, float y);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -116,8 +118,10 @@ public class Fragment_Blocks extends Fragment {
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                             showOrHideBlocks(null, -1);
-                            float rawX = motionEvent.getX(); //todo take view pos but event pos OR getRawX but getX
-                            float rawY = motionEvent.getY() - (float)ll_blocks.getHeight() - (float)ll_categories.getHeight();
+                            //float rawX = motionEvent.getX(); //todo take view pos but event pos OR getRawX but getX
+                            //float rawY = motionEvent.getY() - (float)ll_blocks.getHeight() - (float)ll_categories.getHeight();
+                            float rawX = motionEvent.getRawX();
+                            float rawY = motionEvent.getRawY();
                             listener.onBlockDragged(view, rawX, rawY);
                         }
                         return true;

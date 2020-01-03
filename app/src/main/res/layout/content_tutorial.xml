@@ -104,29 +104,6 @@
             android:textSize="16dp"
             android:text="@string/tutorial_category4" />
 
-        <ProgressBar
-            android:id="@+id/pb_cat5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:progress="80"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_below="@id/pb_cat4"
-            android:layout_centerHorizontal="true"
-            android:progressDrawable="@drawable/my_pb"
-            android:background="@drawable/pb_background" />
-
-        <TextView
-            android:id="@+id/tv_title_cat5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignBottom="@id/pb_cat5"
-            android:layout_marginBottom="40dp"
-            android:textSize="16dp"
-            android:text="@string/tutorial_category5" />
-
 
     </RelativeLayout>
 

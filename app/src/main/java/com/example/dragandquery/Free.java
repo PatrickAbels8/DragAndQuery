@@ -59,6 +59,7 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     @Override
     public void onRetry() {
         fragQuery.goClickable();
+        fragQuery.resetSelectLayoutColors();
         fragBlocks.goVisible();
         fragTable.goInvisible();
     }
