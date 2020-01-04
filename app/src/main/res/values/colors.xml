@@ -3,13 +3,18 @@
     <!-- prim was #008577 -->
     <!-- primDark was #00574b -->
     <!-- accent was #d81b60 -->
+<!-- 3 primärfarben: -->
+    <color name="berry">#8f1243</color>
+    <color name="petrol">#05377a</color>
+    <color name="mustard">#fdbc00</color>
+
     <color name="colorPrimary">#176092</color>
     <color name="colorPrimaryDark">#176092</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="background_light">#4BB4FA</color>
     <color name="background_dark">#176092</color>
-    <color name="foreground">#ee6aa7</color>
+    <color name="foreground">#8f1243</color>
 
     <color name="invisible">#00000000</color>
     <color name="dragMode">#FF5722</color>

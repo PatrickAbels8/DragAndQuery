@@ -21,15 +21,18 @@
             android:progress="80"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/tv_title_cat1"
             android:progressDrawable="@drawable/my_pb"
-            android:background="@drawable/pb_background" />
+            android:background="@drawable/pb_background"
+            android:layout_marginRight="20dp"/>
+
+
 
         <TextView
             android:id="@+id/tv_title_cat1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/pb_cat1"
             android:layout_marginBottom="40dp"
             android:textSize="16dp"
@@ -44,7 +47,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_below="@id/pb_cat1"
-            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/tv_title_cat2"
             android:progressDrawable="@drawable/my_pb"
             android:background="@drawable/pb_background" />
 
@@ -52,7 +55,7 @@
             android:id="@+id/tv_title_cat2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/pb_cat2"
             android:layout_marginBottom="40dp"
             android:textSize="16dp"
@@ -67,7 +70,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_below="@id/pb_cat2"
-            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/tv_title_cat3"
             android:progressDrawable="@drawable/my_pb"
             android:background="@drawable/pb_background" />
 
@@ -75,7 +78,7 @@
             android:id="@+id/tv_title_cat3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/pb_cat3"
             android:layout_marginBottom="40dp"
             android:textSize="16dp"
@@ -90,7 +93,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_below="@id/pb_cat3"
-            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/tv_title_cat4"
             android:progressDrawable="@drawable/my_pb"
             android:background="@drawable/pb_background" />
 
@@ -98,7 +101,7 @@
             android:id="@+id/tv_title_cat4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/pb_cat4"
             android:layout_marginBottom="40dp"
             android:textSize="16dp"
