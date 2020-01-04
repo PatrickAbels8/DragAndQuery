@@ -3,12 +3,22 @@
     <!-- prim was #008577 -->
     <!-- primDark was #00574b -->
     <!-- accent was #d81b60 -->
-    <color name="colorPrimary">#176092</color>
-    <color name="colorPrimaryDark">#176092</color>
+    <color name="colorPrimary">#05377a</color>
+    <color name="colorPrimaryDark">#05377a</color>
     <color name="colorAccent">#D81B60</color>
 
+    <!-- veras primaries -->
+    <color name="berry">#8f1243</color>
+    <color name="petrol">#05377a</color>
+    <color name="mustard">#fdbc00</color>
+    <color name="gradient_left">#80679BE2</color>
+    <color name="gradient_middle">#1857ab</color>
+    <color name="gradient_right">#00449e</color>
+    <color name="textcolor_white">#f7f6f6</color>
+
+
     <color name="background_light">#4BB4FA</color>
-    <color name="background_dark">#176092</color>
+    <color name="background_dark">#05377a</color>
     <color name="foreground">#ee6aa7</color>
 
     <color name="invisible">#00000000</color>

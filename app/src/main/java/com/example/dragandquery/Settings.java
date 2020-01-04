@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /***
  * TODO
  * -global tutrial reset
+ * - change image
+ * - tv to button with borders
  */
 public class Settings extends AppCompatActivity {
 
@@ -19,11 +23,11 @@ public class Settings extends AppCompatActivity {
     public static String UNAME = "com.example.dragandquery.Settings.UNAME";
     public static String UMAIL = "com.example.dragandquery.Settings.UMAIL";
 
-
     //coms
-    Button go;
-    EditText name;
-    EditText mail;
+    private TextView save;
+    private EditText name;
+    private EditText mail;
+    private TextView resetTutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +35,13 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //components
-        name = (EditText) findViewById(R.id.et_loginName);
-        mail = (EditText) findViewById(R.id.et_loginMail);
-        go = (Button) findViewById(R.id.btn_go);
+        name = (EditText) findViewById(R.id.settings_name);
+        mail = (EditText) findViewById(R.id.settings_mail);
+        save = (TextView) findViewById(R.id.save_settings);
+        resetTutorial = (TextView) findViewById(R.id.tv_reset_tutorial);
 
         //lets go back to navigation
-        go.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String userName = name.getText().toString();
@@ -53,6 +58,15 @@ public class Settings extends AppCompatActivity {
                 } else{
                     Toast.makeText(getApplicationContext(), "Oops! Da hat wohl etwas noch nicht gestimmt!", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        //reset the whole tutorial exp
+        resetTutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo popup asks again
+                //todo when popup accepted reset whole tutorial
             }
         });
     }

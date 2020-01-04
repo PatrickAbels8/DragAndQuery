@@ -41,13 +41,15 @@
             android:textSize="@dimen/tutorial_input_textSize"
             android:layout_centerInParent="true"
             android:ellipsize="marquee"
-            android:scrollHorizontally="true" />
+            android:scrollHorizontally="true"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/textcolor_white"/>
 
         <Button
             android:id="@+id/btn_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/accept_input"/>
+            android:text="@string/accept_input" />
 
     </LinearLayout>
 

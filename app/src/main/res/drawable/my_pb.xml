@@ -8,6 +8,6 @@
         android:thickness="8dp"
         android:useLevel="true">
 
-        <solid android:color="@color/foreground"/>
+        <solid android:color="@color/berry"/>
     </shape>
 </rotate>

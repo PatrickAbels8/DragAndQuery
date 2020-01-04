@@ -18,11 +18,13 @@
     <string name="menu_impressum">Impressum</string>
     <string name="title_activity_navigation">Navigation</string>
     <string name="others">Sonstiges</string>
-    <string name="welcome">Hallo! Bitte gib deinen Namen und deine Mail an.</string>
-    <string name="reset_tutorial">Du willst deinen Tutorial-Fortschritt zurücksetzen?</string>
+    <string name="welcome">Ändere dein Profilbild</string>
+    <string name="reset_tutorial">Tutorial zurücksetzen</string>
+    <string name="reset_practise">Übungen zurücksetzen</string>
     <string name="start_btn_go">Go!</string>
     <string name="loginName_hint">Name</string>
     <string name="loginMail_hint">Mail</string>
+    <string name="save">Speichern</string>
 
     <!-- tutorial -->
     <string name="feedback_back">Zurück</string>
@@ -115,8 +117,8 @@
     <!-- profile -->
     <string name="default_name">admin</string>
     <string name="default_mail">admin@dnq.de</string>
-    <string name="pb_tutorial">Tutorial-Fortschritt</string>
-    <string name="pb_practise">Übungs-Fortschritt</string>
+    <string name="pb_tutorial">Tutorial</string>
+    <string name="pb_practise">Übungen</string>
     <string name="btn_retry">Retry!</string>
     <string name="table_msg_well_done">Gut gemacht!</string>
 

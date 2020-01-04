@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".tutorial.TutorialCategory"
-    android:background="@drawable/gradient_background"
+    android:background="@color/gradient_middle"
     tools:showIn="@layout/activity_tutorial_category">
 
    <LinearLayout
        android:id="@+id/ll_tutorial_lections"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:paddingLeft="32dp"
-       android:paddingRight="32dp"
+       android:paddingLeft="60dp"
+       android:paddingRight="60dp"
        android:orientation="vertical"
        android:gravity="center_horizontal"
        android:layout_gravity="center_horizontal"

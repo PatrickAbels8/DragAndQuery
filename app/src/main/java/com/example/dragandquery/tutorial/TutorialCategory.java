@@ -3,6 +3,7 @@ package com.example.dragandquery.tutorial;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.fonts.Font;
 import android.os.Bundle;
 
 import com.example.dragandquery.R;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -42,6 +44,7 @@ public class TutorialCategory extends AppCompatActivity {
     //coms
     private LinearLayout lections;
     private List<Button> cat_lections;
+    private List<ImageView> checksOrLocks;
     private ImageButton reset;
     private Animation vibrate;
 
@@ -70,6 +73,7 @@ public class TutorialCategory extends AppCompatActivity {
         reset = (ImageButton) findViewById(R.id.reset);
         lections = (LinearLayout) findViewById(R.id.ll_tutorial_lections);
         cat_lections = new ArrayList<>();
+        checksOrLocks = new ArrayList<>();
         lections_achievement = new ArrayList<>();
         context = lections.getContext();
         vibrate = AnimationUtils.loadAnimation(context, R.anim.vibrate);
@@ -149,19 +153,21 @@ public class TutorialCategory extends AppCompatActivity {
 
     //set drawable and stuff
     public void viewLectionDone(int lection_id){
-        cat_lections.get(lection_id).setAlpha(0.6f);
-        //todo add green check (change reset function)
+        cat_lections.get(lection_id).setAlpha(1f);
+        checksOrLocks.get(lection_id).setImageDrawable(getDrawable(R.drawable.check));
         cat_lections.get(lection_id).clearAnimation();
     }
 
     //set drawable and stuff
     public void viewLectionLocked(int lection_id){
-        cat_lections.get(lection_id).setAlpha(0.2f);
+        cat_lections.get(lection_id).setAlpha(0.5f);
+        checksOrLocks.get(lection_id).setImageDrawable(getDrawable(R.drawable.lock));
     }
 
     //set drawable and stuff
     public void viewLectionUnlocked(int lection_id){
         cat_lections.get(lection_id).setAlpha(1f);
+        checksOrLocks.get(lection_id).setImageDrawable(null);
         cat_lections.get(lection_id).startAnimation(vibrate);
     }
 
@@ -301,14 +307,36 @@ public class TutorialCategory extends AppCompatActivity {
 
     //add a new lection to every list and layout
     public void addLection(String name){
+        //create lection btn
         Button l = new Button(context);
         l.setText(name);
+        l.setTextColor(getResources().getColor(R.color.berry));
         l.setBackground(getDrawable(R.drawable.btn_lection));
         l.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         cat_lections.add(l);
         lections_achievement.add(LOCKED);
-        lections.addView(l);
-        lections.addView(new Space(context), 300, 10);
+
+        //create hor ll
+        LinearLayout l_layout = new LinearLayout(context);
+        l_layout.setOrientation(LinearLayout.HORIZONTAL);
+        l_layout.setGravity(Gravity.CENTER);
+
+        //create check/lock img
+        ImageView checkOrLock = new ImageView(context);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMarginEnd(32);
+        checksOrLocks.add(checkOrLock);
+
+        //add img and btn to hor ll
+        l_layout.addView(checkOrLock, lp);
+        l_layout.addView(l, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        //add hor ll to lections
+        lections.addView(l_layout, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        //add space to lections
+        lections.addView(new Space(context), 300, 15);
+
     }
 
     //when 3 out of 5 lections are done, saved exp should be 61

@@ -7,80 +7,150 @@
     android:background="@drawable/gradient_background"
     tools:context=".Settings">
 
-    <EditText
-        android:id="@+id/et_loginName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:hint="@string/loginName_hint"
-        android:text="name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
-
-    <Button
-        android:id="@+id/btn_go"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/start_btn_go"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_loginMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:hint="@string/loginMail_hint"
-        android:text="name@dnq.de"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_loginName" />
+    <ImageView
+        android:id="@+id/settings_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="32dp"/>
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/tv_changeImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:textSize="16dp"
         android:text="@string/welcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/textcolor_white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings_image"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/settings_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Name"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/textcolor_white"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:background="@drawable/border_dark"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_changeImg"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/settings_mail"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Mail"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/textcolor_white"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:background="@drawable/border_dark"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings_name"
+        android:layout_marginTop="16dp"/>
+
+    <ProgressBar
+        android:id="@+id/settings_pb_tutorial"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progress="80"
+        android:progressDrawable="@drawable/my_pb"
+        android:background="@drawable/pb_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintTop_toBottomOf="@id/settings_mail"
+        android:layout_marginTop="16dp"
+        />
 
     <TextView
         android:id="@+id/tv_reset_tutorial"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:textSize="16dp"
         android:text="@string/reset_tutorial"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_loginMail" />
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/textcolor_white"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintTop_toTopOf="@id/settings_pb_tutorial"
+        app:layout_constraintBottom_toBottomOf="@id/settings_pb_tutorial"
+        app:layout_constraintLeft_toRightOf="@id/settings_pb_tutorial"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintRight_toRightOf="parent"/>
 
-    <ImageButton
-        android:id="@+id/reset_tutorial"
-        android:src="@drawable/btn_retry"
+    <ProgressBar
+        android:id="@+id/settings_pb_practise"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progress="80"
+        android:progressDrawable="@drawable/my_pb"
+        android:background="@drawable/pb_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintTop_toBottomOf="@id/settings_pb_tutorial"
+        android:layout_marginTop="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_reset_practise"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_practise"
+        android:textSize="16dp"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/textcolor_white"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/border_white"
+        app:layout_constraintTop_toTopOf="@id/settings_pb_practise"
+        app:layout_constraintBottom_toBottomOf="@id/settings_pb_practise"
+        app:layout_constraintLeft_toRightOf="@id/settings_pb_practise"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/save_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_reset_tutorial" >
-    </ImageButton>
+        android:text="@string/save"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/textcolor_white"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/border_white"
+    app:layout_constraintTop_toBottomOf="@id/settings_pb_practise"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

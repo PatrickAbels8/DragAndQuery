@@ -41,6 +41,8 @@ import android.widget.Toast;
  * - flamingos on anything (esp on app icon)
  * - speech bubbles
  * - launching animation
+ *
+ * - img click to settings, only there change anything
  */
 
 public class Navigation extends AppCompatActivity
