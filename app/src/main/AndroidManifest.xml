@@ -46,7 +46,8 @@
             android:parentActivityName=".Navigation"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Practice" />
+        <activity android:name=".Practice"
+            android:screenOrientation="sensorPortrait"/>
         <activity
             android:name=".Free"
             android:screenOrientation="sensorPortrait"

@@ -131,7 +131,7 @@ public class Fragment_Query extends Fragment {
                         RelativeLayout draggedLayout = (RelativeLayout) o;
                         ((ViewGroup)draggedLayout.getParent()).removeView(draggedLayout);
                         blockGroups_in_rl.remove(draggedLayout);
-                        clearFromParent(getLayoutHead(draggedLayout));
+                        clearFromParent(getLayoutHead(draggedLayout)); //todo nullpointer
 
                         //sounds
                         MediaPlayer.create(context, R.raw.clearblock).start();
@@ -161,15 +161,18 @@ public class Fragment_Query extends Fragment {
                         draggedView.setVisibility(View.VISIBLE);
                     } else*/ if(o instanceof RelativeLayout) {
                         RelativeLayout draggedLayout = (RelativeLayout) o;
-                        Log.d("############# dragged_Layout dim", Integer.toString(draggedLayout.getChildCount()));
-                        draggedLayout.setX(dragEvent.getX() - draggedLayout.getWidth() / 2);
-                        draggedLayout.setY(dragEvent.getY() - draggedLayout.getHeight() / 2);
-                        draggedLayout.setVisibility(View.VISIBLE);
-                        ((ViewGroup)draggedLayout.getParent()).removeView(draggedLayout);
-                        updateLayoutSizes();
-                        rl_query.addView(draggedLayout); //todo maybe wrong position
+                        Log.d("############# DROP_Layout dim", Integer.toString(draggedLayout.getChildCount()));
+                    ((ViewGroup)draggedLayout.getParent()).removeView(draggedLayout);
+                    rl_query.addView(draggedLayout);
+                    Log.d("############# RL_Layout dim", Integer.toString(rl_query.getChildCount()));
+                    draggedLayout.setX(dragEvent.getX() - draggedLayout.getWidth() / 2);
+                    draggedLayout.setY(dragEvent.getY() - draggedLayout.getHeight() / 2);
+                    draggedLayout.setVisibility(View.VISIBLE);
+                    updateLayoutSizes();
                         clearFromParent(getLayoutHead(draggedLayout));
-                    }
+                    Log.d("############# DRAG_Layout size", Integer.toString(draggedLayout.getWidth())+Integer.toString(draggedLayout.getHeight()));
+
+                }
                     break;
             }
             return true;
@@ -226,31 +229,18 @@ public class Fragment_Query extends Fragment {
 
         Log.d("############# blockGroups_in_rl size", Integer.toString(blockGroups_in_rl.size()));
 
-        //drag mode: touch --> single drag todo drag bv but rl
-        draggedLayout.setOnTouchListener(new View.OnTouchListener() {
+        //drag mode
+        for(int i=0; i<blockGroups_in_rl.size(); i++){ //todo bug always touches the first added bv
+            getLayoutHead(blockGroups_in_rl.get(i)).setOnTouchListener(new Fragment_Query.OnGroupTouchListener());
+        }
+        /*cur_view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                     ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                    view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
-                    view.setVisibility(View.INVISIBLE);
-                    Log.d("########## START DRAG", "true");
-                    return true;
-                }else
-                    return false;
-            }
-        });
-
-        //drag mode: double touch --> group drag
-        /*cur_view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)&&((ImageView)view).getDrawable()!=null){
-                    ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                    view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
-                    view.setVisibility(View.INVISIBLE);
+                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(getLayout((BlockView)view));
+                    view.startDragAndDrop(data, shadow, getLayout((BlockView)view), View.DRAG_FLAG_OPAQUE);
+                    //view.setVisibility(View.INVISIBLE);
                     return true;
                 }else
                     return false;
@@ -313,6 +303,7 @@ public class Fragment_Query extends Fragment {
                                 /*draggedLay.setX(getLayoutHead(thisLay).getX()+getLayoutHead(thisLay).getWidth());
                                 draggedLay.setY(getLayoutHead(thisLay).getY());*/
                                 lp.addRule(RelativeLayout.RIGHT_OF, getLayoutHead(thisLay).getId());
+                                lp.addRule(RelativeLayout.ALIGN_TOP, getLayoutHead(thisLay).getId());
                                 clearFromParent(getLayoutHead(draggedLay));
                                 thisNode.addRightChild(draggedNode);
                                 ((ViewGroup)draggedLay.getParent()).removeView(draggedLay);
@@ -324,6 +315,7 @@ public class Fragment_Query extends Fragment {
                                 /*draggedLay.setX(getLayoutHead(thisLay).getX());
                                 draggedLay.setY(getLayoutHead(thisLay).getY() + getLayoutHead(thisLay).getHeight());*/
                                 lp.addRule(RelativeLayout.BELOW, getLayoutHead(thisLay).getId());
+                                lp.addRule(RelativeLayout.ALIGN_LEFT, getLayoutHead(thisLay).getId());
                                 clearFromParent(getLayoutHead(draggedLay));
                                 thisNode.addDownChild(draggedNode);
                                 ((ViewGroup)draggedLay.getParent()).removeView(draggedLay);
@@ -479,5 +471,19 @@ public class Fragment_Query extends Fragment {
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    public class OnGroupTouchListener implements View.OnTouchListener{
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadow = new View.DragShadowBuilder(getLayout((BlockView)view));
+                view.startDragAndDrop(data, shadow, getLayout((BlockView)view), View.DRAG_FLAG_OPAQUE);
+                //view.setVisibility(View.INVISIBLE);
+                return true;
+            }else
+                return false;
+        }
     }
 }

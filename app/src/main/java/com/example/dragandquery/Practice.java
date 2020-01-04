@@ -132,12 +132,12 @@ public class Practice extends AppCompatActivity {
                 //what if night is finally dropped on d4
                 case DragEvent.ACTION_DROP:
                     Object o = dragEvent.getLocalState();
-                    if(o instanceof BlockView) {
+                    /*if(o instanceof BlockView) {
                         BlockView draggedView = (BlockView) o;
                         draggedView.setX(dragEvent.getX()-draggedView.getWidth()/2);
                         draggedView.setY(dragEvent.getY()-draggedView.getHeight()/2);
                         draggedView.setVisibility(View.VISIBLE);
-                    }else if(o instanceof RelativeLayout) {
+                    }else*/if(o instanceof RelativeLayout) {
                         RelativeLayout draggedLayout = (RelativeLayout) o;
                         ((ViewGroup)draggedLayout.getParent()).removeView(draggedLayout);
                         layout.addView(draggedLayout);

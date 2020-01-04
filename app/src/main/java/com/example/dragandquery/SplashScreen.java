@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
 
     //vars
     private static final int DOT_LOAD_TIME = 750;
-    private static final int SPLASH_TIME_OUT = 3500;
+    private static final int SPLASH_TIME_OUT = 3000;
     private static final int BIRD_APPEAR_TIME = SPLASH_TIME_OUT/2;
     private static final int BIRD_DISAPPEAR_TIME = SPLASH_TIME_OUT/2;
 
