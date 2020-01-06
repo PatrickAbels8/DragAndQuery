@@ -23,6 +23,7 @@ import java.util.List;
  */
 
 public enum BlockT {
+
     SELECT,
     FROM,
     WHERE,

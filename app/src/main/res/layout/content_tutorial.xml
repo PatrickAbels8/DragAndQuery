@@ -37,6 +37,11 @@
             android:textAlignment="center"
             android:textColor="@color/textcolor_white"
             android:textSize="20dp"
+            android:background="@drawable/border_white"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
             app:layout_constraintBottom_toBottomOf="@id/pb_cat1"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toRightOf="@id/pb_cat1"
@@ -71,7 +76,12 @@
             android:textColor="@color/textcolor_white"
             android:maxWidth="180dp"
             android:textAlignment="center"
-            android:fontFamily="@font/comfortaa"/>
+            android:fontFamily="@font/comfortaa"
+            android:background="@drawable/border_white"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"/>
 
         <ProgressBar
             android:id="@+id/pb_cat3"
@@ -101,7 +111,12 @@
             android:textColor="@color/textcolor_white"
             android:maxWidth="180dp"
             android:textAlignment="center"
-            android:fontFamily="@font/comfortaa"/>
+            android:fontFamily="@font/comfortaa"
+            android:background="@drawable/border_white"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"/>
 
         <ProgressBar
             android:id="@+id/pb_cat4"
@@ -131,7 +146,12 @@
             android:textColor="@color/textcolor_white"
             android:maxWidth="180dp"
             android:textAlignment="center"
-            android:fontFamily="@font/comfortaa"/>
+            android:fontFamily="@font/comfortaa"
+            android:background="@drawable/border_white"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
