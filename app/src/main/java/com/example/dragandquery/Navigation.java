@@ -36,13 +36,7 @@ import android.widget.Toast;
  * TODO
  * -prac score
  * -title big+small in nd
- * (-outsource sp to settings)
  * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed or onCreate)
- * - flamingos on anything (esp on app icon)
- * - speech bubbles
- * - launching animation
- *
- * - img click to settings, only there change anything
  */
 
 public class Navigation extends AppCompatActivity
@@ -55,25 +49,20 @@ public class Navigation extends AppCompatActivity
     private int tutorial_exp_avg;
     private int[] tutorial_exps;
     private int practise_exp;
-    private static final int IMAGE_PICK_CODE = 1000;
-    private static final int PERMISSION_CODE = 1001;
-
 
     //coms
-    ImageView image;
-    TextView name;
-    TextView mail;
-    TextView tv_tutorial;
-    TextView tv_practise;
-    ProgressBar pb_tutorial;
-    ProgressBar pb_practise;
+    private ImageView image;
+    private TextView name;
+    private TextView mail;
+    private TextView tv_tutorial;
+    private TextView tv_practise;
+    private ProgressBar pb_tutorial;
+    private ProgressBar pb_practise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-
-
 
         //intent stuff
         Intent i = getIntent();
@@ -94,7 +83,7 @@ public class Navigation extends AppCompatActivity
         if(i.hasExtra(Settings.UMAIL)) {
             saveData(getString(R.string.userMail_key), i.getStringExtra(Settings.UMAIL));
         }
-        saveData(getString(R.string.pracScore_key), Integer.toString(70)); //just for now
+        saveData(getString(R.string.pracScore_key), Integer.toString(70)); //todo just for now
 
         user_name = loadDataString(getString(R.string.userName_key), "Name");
         user_mail = loadDataString(getString(R.string.userMail_key), "Mail");
@@ -122,25 +111,12 @@ public class Navigation extends AppCompatActivity
             image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
         }
 
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-                    if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
-                        String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                        requestPermissions(permissions, PERMISSION_CODE);
-                    }else{
-                        pickImageFromGallery();
-                    }
-                }else{
-                    pickImageFromGallery();
-                }
-            }
-        });
-
         //open tutorial (and practise) via pb/tv
         tv_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
         pb_tutorial.setOnClickListener(new Navigation.OnTutorialClickListener());
+
+        tv_practise.setOnClickListener(new Navigation.OnPracticeClickListener());
+        pb_practise.setOnClickListener(new Navigation.OnPracticeClickListener());
 
         //navigation stuff TODO first time show right swipe
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -265,6 +241,7 @@ public class Navigation extends AppCompatActivity
 
         } else if (id == R.id.nav_practice) {
             Intent i = new Intent(getApplicationContext(), Practice.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
 
         } else if (id == R.id.nav_settings) {
@@ -286,6 +263,17 @@ public class Navigation extends AppCompatActivity
         @Override
         public void onClick(View view) {
             Intent i = new Intent(getApplicationContext(), Tutorial.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        }
+    }
+
+    public class OnPracticeClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getApplicationContext(), Practice.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         }
     }
@@ -304,37 +292,5 @@ public class Navigation extends AppCompatActivity
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         int data = sharedPref.getInt(key, default_value);
         return data;
-    }
-
-    //change profile image
-    public void pickImageFromGallery(){
-        Intent i = new Intent(Intent.ACTION_PICK);
-        i.setType("image/*");
-        startActivityForResult(i, IMAGE_PICK_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResult){
-        switch(requestCode){
-            case PERMISSION_CODE:{
-                Log.d("###################### granresult length:", Integer.toString(grantResult[0]));
-                if(grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
-                    pickImageFromGallery();
-                }else{
-                    Toast.makeText(this, getString(R.string.toast_ImagePermissionDenied), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            Uri img_uri = data.getData();
-            image.setImageURI(img_uri);
-            saveData(getString(R.string.userImage_key), img_uri.toString());
-            saveDataBoolean(getString(R.string.userImageBool_key), true);
-        }
     }
 }

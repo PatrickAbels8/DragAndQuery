@@ -40,24 +40,8 @@ import java.util.List;
 public class Practice extends AppCompatActivity {
 
     //coms
-    /*BlockView draggedView;
-    BlockView otherView;*/
     Context context;
     RelativeLayout layout;
-
-    //RelativeLayout draggedLayout;
-
-    RelativeLayout b;
-    RelativeLayout c;
-    RelativeLayout d;
-    RelativeLayout e;
-
-    ImageView b1;
-    ImageView d1;
-
-    //vars
-    BlockT draggedBlock;
-    BlockT otherBlock;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -99,8 +83,8 @@ public class Practice extends AppCompatActivity {
         sel.setOnTouchListener(new Practice.MyOnTouchListener());
         att.setOnTouchListener(new Practice.MyOnTouchListener());
 
-        sel.setOnDragListener(new Practice.MyOnDragListener());
-        att.setOnDragListener(new Practice.MyOnDragListener());
+        //sel.setOnDragListener(new Practice.MyOnDragListener());
+        //att.setOnDragListener(new Practice.MyOnDragListener());
 
         ((Button)findViewById(R.id.btttttn)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +95,67 @@ public class Practice extends AppCompatActivity {
                 MediaPlayer.create(sel.getContext(), R.raw.dropblock).start();
 
                 sel.getNode().addRightChild(att.getNode());
+            }
+        });
+
+        sel.setMydragListener(new BlockView.MyOnDragListener() {
+            @Override
+            public void onMyDrag(BlockView me, BlockView him, float x, float y, int event) {
+                Log.d("############ mydrag", "onMyDrag");
+                boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
+                Log.d("############ mydrag", Float.toString(me.getX()));
+                Log.d("############ mydrag", Float.toString(x));
+                Log.d("############ mydrag", Float.toString(me.getWidth()));
+                Log.d("############ mydrag", Float.toString(me.getY()));
+                Log.d("############ mydrag", Float.toString(y));
+                Log.d("############ mydrag", Float.toString(me.getHeight()));
+                Log.d("############ mydrag", "isinMe:"+Boolean.toString(isInMe));
+                if(isInMe){
+                    boolean fits_right = true; //todo
+                    switch (event){
+                        case BlockView.MOVE:
+                            Log.d("############ mydrag", "MOVE");
+                            break;
+                        case BlockView.UP:
+                            Log.d("############ mydrag", "UP");
+                            if (fits_right) {
+                                him.setX(me.getX()+me.getWidth());
+                                him.setY(me.getY());
+                                //sounds
+                                MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
+
+                                me.getNode().addRightChild(him.getNode());
+                            }
+                            break;
+
+                    }
+                }
+
+            }
+        });
+
+        att.setMydragListener(new BlockView.MyOnDragListener() {
+            @Override
+            public void onMyDrag(BlockView me, BlockView him, float x, float y, int event) {
+                boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
+                if(isInMe){
+                    boolean fits_right = true; //todo
+                    switch (event){
+                        case BlockView.MOVE:
+                            break;
+                        case BlockView.UP:
+                            if (fits_right) {
+                                him.setX(me.getX()+me.getWidth());
+                                him.setY(me.getY());
+                                //sounds
+                                MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
+
+                                me.getNode().addRightChild(him.getNode());
+                            }
+                            break;
+
+                    }
+                }
             }
         });
 
@@ -153,59 +198,6 @@ public class Practice extends AppCompatActivity {
                 Log.d("############### y_att", Float.toString(y));
             }
         });
-
-        /***
-         * Relative Layout stuff
-         */
-
-        /*b = (RelativeLayout) findViewById(R.id.b);
-        c = (RelativeLayout) findViewById(R.id.c);
-        d = (RelativeLayout) findViewById(R.id.d);
-        e = (RelativeLayout) findViewById(R.id.e);
-
-        b1 = (ImageView) findViewById(R.id.b1);
-        d1 = (ImageView) findViewById(R.id.d1);
-        b1.setOnTouchListener(new Practice.MyOnSELECTTouchListener());
-        d1.setOnTouchListener(new Practice.MyOnFROMTouchListener());*/
-
-
-        /*draggedBlock = BlockT.SELECT;
-        otherBlock = BlockT.ATTRIBUTE;
-        draggedView = draggedBlock.createView(context);
-        otherView = otherBlock.createView(context);
-
-        RelativeLayout.LayoutParams lp1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        lp1.setMarginStart(500);
-        lp2.setMarginStart(800);
-        layout.addView(draggedView, lp1);
-        layout.addView(otherView, lp2);
-
-        draggedLayout = new RelativeLayout(context);
-
-        RelativeLayout.LayoutParams lp3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        //lp3.setMarginStart(500);
-        layout.addView(draggedLayout, lp3);
-
-        layout.removeView(draggedView);
-        draggedLayout.addView(draggedView);*/
-
-        //Log.d("############# dragged_Layout dim", Integer.toString(draggedLayout.getChildCount()));
-
-        //todo maybe listener on bv but on layouts
-        /*draggedLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)){
-                    ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                    view.startDragAndDrop(data, shadow, view, View.DRAG_FLAG_OPAQUE);
-                    view.setVisibility(View.INVISIBLE);
-                    return true;
-                }else
-                    return false;
-            }
-        });*/
 
         layout.setOnDragListener((view, dragEvent) -> {
             int dragID = dragEvent.getAction();
@@ -264,12 +256,15 @@ public class Practice extends AppCompatActivity {
         return members;
     }
 
-    public List<BlockView> extractLayoutViews(){
+    public List<BlockView> extractLayoutViews(BlockView without){
         List<BlockView> members = new ArrayList<>();
         for(int i=0; i<layout.getChildCount(); i++){
             View child = layout.getChildAt(i);
             if(child instanceof BlockView){
-                members.add((BlockView)child);
+                BlockView b_child = (BlockView)child;
+                if(b_child != without){
+                    members.add(b_child);
+                }
             }
         }
         Log.d("############### members count", Integer.toString(members.size()));
@@ -354,7 +349,7 @@ public class Practice extends AppCompatActivity {
        public boolean onTouch(View view, MotionEvent motionEvent) {
            Log.d("############### action", "noticed");
            List<BlockView> subtree = extractTreeViews((BlockView)view);
-           List<BlockView> blocks = extractLayoutViews();
+           List<BlockView> blocks = extractLayoutViews((BlockView)view);
            switch(motionEvent.getAction()){
                case MotionEvent.ACTION_DOWN:
                    //notify listener current distance
@@ -381,7 +376,16 @@ public class Practice extends AppCompatActivity {
                        //subtree.get(i).notifyListener((BlockView)view);
                        subtree.get(i).notifyListener(motionEvent.getRawX(), motionEvent.getRawY());
                    }
+                   for(int i=0; i<blocks.size(); i++){
+                       Log.d("########### mytouch", "notify mydrag");
+                       blocks.get(i).notifyMyDragListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.MOVE);
+                   }
 
+                   break;
+               case MotionEvent.ACTION_UP:
+                   for(int i=0; i<blocks.size(); i++){
+                       blocks.get(i).notifyMyDragListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.UP);
+                   }
                    break;
                default:
                    Log.d("############### action default", "noticed");
@@ -390,50 +394,4 @@ public class Practice extends AppCompatActivity {
            return true;
        }
    }
-
-    /*public class MyOnSELECTTouchListener implements View.OnTouchListener{
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)){
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadow = new View.DragShadowBuilder(b);
-                view.startDragAndDrop(data, shadow, b, View.DRAG_FLAG_OPAQUE);
-                //view.setVisibility(View.INVISIBLE);
-                return true;
-            }else
-                return false;
-        }
-    }
-
-    public class MyOnFROMTouchListener implements View.OnTouchListener{
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)){
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadow = new View.DragShadowBuilder(d);
-                view.startDragAndDrop(data, shadow, d, View.DRAG_FLAG_OPAQUE);
-                //view.setVisibility(View.INVISIBLE);
-                return true;
-            }else
-                return false;
-        }
-    }*/
-
-    void simulateTouchEventDown(View v, float x, float y){
-        MotionEvent e = MotionEvent.obtain(
-                SystemClock.uptimeMillis(),
-                SystemClock.uptimeMillis(),
-                MotionEvent.ACTION_DOWN,
-                x, y, 0);
-        v.dispatchTouchEvent(e);
-    }
-
-    void simulateTouchEventMove(View v, float x, float y){
-        MotionEvent e = MotionEvent.obtain(
-                SystemClock.uptimeMillis(),
-                SystemClock.uptimeMillis(),
-                MotionEvent.ACTION_MOVE,
-                x, y, 0);
-        v.dispatchTouchEvent(e);
-    }
 }

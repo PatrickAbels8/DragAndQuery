@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,12 +38,7 @@ import java.util.List;
 
 /***
  * TODO
- * - appearence depending on view pos (not good enough yet)to
- * - dropped views invisible (also when visible childs dropped on rl_query)
- * - kill relative layout parents wrong
- * - throw runtime exception (when go button pressed)
- * - maybe touchlistener on views but on layouts
- * - rmv logs and toats
+ * - alpha/visible/shadow stuff
  */
 
 public class Fragment_Query extends Fragment {
@@ -52,13 +48,11 @@ public class Fragment_Query extends Fragment {
 
     //coms
     private RelativeLayout rl_query;
-    private Button btn_go;
-    private ImageButton btn_clear;
+    private ClearView btn_go;
+    private ClearView btn_clear;
 
     //vars
     private Fragment_Query_Listener listener;
-    //private List<BlockView> blocks_in_rl;
-    private List<RelativeLayout> blockGroups_in_rl;
     public Context context;
 
     //interface
@@ -76,107 +70,15 @@ public class Fragment_Query extends Fragment {
 
         //init coms
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
-        btn_go = (Button) v.findViewById(R.id.frag_go);
-        btn_clear = (ImageButton) v.findViewById(R.id.frag_clear);
-        //blocks_in_rl = new ArrayList<>();
-        blockGroups_in_rl = new ArrayList<>();
+        btn_go = (ClearView) v.findViewById(R.id.frag_go);
+        btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
         context = getContext();
 
-        //send query to db
-        btn_go.setOnClickListener(view -> {
-            String query = interpret();
-            listener.onGo(query);
-        });
+        //listeners
+        btn_go.setMyClearDragListener(new Fragment_Query.MyGoListener());
+        btn_clear.setOnLongClickListener(new Fragment_Query.MyClearLongClickListener());
+        btn_clear.setMyClearDragListener(new Fragment_Query.MyClearDragListener());
 
-        //remove all blocks
-        btn_clear.setOnLongClickListener(view -> {
-            //TODO ask again in popup fragment
-            //sounds
-            if(!blockGroups_in_rl.isEmpty()){
-                MediaPlayer.create(context, R.raw.clearblock).start();
-            }
-            for (int i=0; i<blockGroups_in_rl.size(); i++){
-                rl_query.removeView(blockGroups_in_rl.get(i));
-            }
-            blockGroups_in_rl.clear();
-            return false;
-        });
-
-        //remove block
-        btn_clear.setOnDragListener((view, dragEvent) -> {
-            int dragID = dragEvent.getAction();
-            switch(dragID) {
-                //what if night enters d4
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    btn_clear.setImageResource(R.drawable.garbage_collector_x);
-                    break;
-                //what if night exited d4
-                case DragEvent.ACTION_DRAG_EXITED:
-                    btn_clear.setImageResource(R.drawable.garbage_collector);
-                    break;
-                //what if night is finally dropped on d4
-                case DragEvent.ACTION_DROP:
-                    btn_clear.setImageResource(R.drawable.garbage_collector);
-                    Object o = dragEvent.getLocalState();
-                    /*if(o instanceof BlockView) {
-                        BlockView draggedView = (BlockView) o;
-                        List<BlockView> members = extractTreeViews(draggedView);
-                        for(int i=0; i<members.size(); i++){
-                            rl_query.removeView(members.get(i));
-                            blocks_in_rl.remove(members.get(i));
-                        }
-                        //sounds
-                        MediaPlayer.create(context, R.raw.clearblock).start();
-                    } else*/  if(o instanceof RelativeLayout) {
-                        RelativeLayout draggedLayout = (RelativeLayout) o;
-                        ((ViewGroup)draggedLayout.getParent()).removeView(draggedLayout);
-                        blockGroups_in_rl.remove(draggedLayout);
-                        clearFromParent(getLayoutHead(draggedLayout)); //todo nullpointer
-
-                        //sounds
-                        MediaPlayer.create(context, R.raw.clearblock).start();
-                    }
-                    break;
-            }
-            return true;
-        });
-
-        //drop mode: layout
-        rl_query.setOnDragListener((view, dragEvent) -> {
-            int dragID = dragEvent.getAction();
-            switch(dragID) {
-                //what if night enters d4
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    break;
-                //what if night exited d4
-                case DragEvent.ACTION_DRAG_EXITED:
-                    break;
-                //what if night is finally dropped on d4
-                case DragEvent.ACTION_DROP:
-                    Object o = dragEvent.getLocalState();
-                    /*if(o instanceof BlockView) {
-                        BlockView draggedView = (BlockView) o;
-                        draggedView.setX(dragEvent.getX()-draggedView.getWidth()/2);
-                        draggedView.setY(dragEvent.getY()-draggedView.getHeight()/2);
-                        draggedView.setVisibility(View.VISIBLE);
-                    } else*/ if(o instanceof RelativeLayout) {
-                        RelativeLayout draggedLayout = (RelativeLayout) o;
-                        Log.d("############# DROP_Layout dim", Integer.toString(draggedLayout.getChildCount()));
-                    ((ViewGroup)draggedLayout.getParent()).removeView(draggedLayout);
-                    rl_query.addView(draggedLayout);
-                    Log.d("############# RL_Layout dim", Integer.toString(rl_query.getChildCount()));
-                    draggedLayout.setX(dragEvent.getX() - draggedLayout.getWidth() / 2);
-                    draggedLayout.setY(dragEvent.getY() - draggedLayout.getHeight() / 2);
-                    draggedLayout.setVisibility(View.VISIBLE);
-                    updateLayoutSizes();
-                        clearFromParent(getLayoutHead(draggedLayout));
-                    Log.d("############# DRAG_Layout size", Integer.toString(draggedLayout.getWidth())+Integer.toString(draggedLayout.getHeight()));
-
-                }
-                    break;
-            }
-            return true;
-        });
         return v;
     }
 
@@ -215,163 +117,17 @@ public class Fragment_Query extends Fragment {
         BlockView cur_view = blockT.createView(context);
         cur_view.setNode(root);
 
-        //add the new bv as head of a new rl to rl_query and blockGroup list
-        RelativeLayout.LayoutParams lp_view = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        rl_query.addView(cur_view, lp_view); //only temporary for margin issues
-        RelativeLayout draggedLayout = new RelativeLayout(context); //here she comes
-        RelativeLayout.LayoutParams lp_layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        lp_layout.setMargins((int)x, (int)y, 0, 0);
-        rl_query.addView(draggedLayout, lp_layout);
-        rl_query.removeView(cur_view); //told you
-        draggedLayout.addView(cur_view);
-        //draggedLayout.setBackgroundColor(getResources().getColor(R.color.background_light));
-        blockGroups_in_rl.add(draggedLayout);
+        //add the new bv to rl
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins((int)x-cur_view.getWidth(), (int)y-cur_view.getHeight(), 0, 0);
+        rl_query.addView(cur_view, params);
 
-        Log.d("############# blockGroups_in_rl size", Integer.toString(blockGroups_in_rl.size()));
-
-        //drag mode
-        for(int i=0; i<blockGroups_in_rl.size(); i++){ //todo bug always touches the first added bv
-            getLayoutHead(blockGroups_in_rl.get(i)).setOnTouchListener(new Fragment_Query.OnGroupTouchListener());
-        }
-        /*cur_view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-                    ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(getLayout((BlockView)view));
-                    view.startDragAndDrop(data, shadow, getLayout((BlockView)view), View.DRAG_FLAG_OPAQUE);
-                    //view.setVisibility(View.INVISIBLE);
-                    return true;
-                }else
-                    return false;
-            }
-        });*/
-
-        //drag mode: longclick --> edit todo
-        /*cur_view.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                //if has dropdown start dropdown, if has editable start editable, if...
-                return true;
-            }
-        });*/
-
-        //drop mode: other block
-        //todo: with view but layout ???
-        draggedLayout.setOnDragListener(new View.OnDragListener() {
-            @Override
-            public boolean onDrag(View thisView, DragEvent dragEvent) {
-                Object o = dragEvent.getLocalState();
-                if(o instanceof RelativeLayout) {
-                    RelativeLayout draggedLay = (RelativeLayout) o;
-                    //BlockT draggedBlock = (BlockT) iv.getTag();
-                    //BlockT thisBlock = (BlockT) view.getTag();
-
-                    Log.d("############# dragged_Lay dim", Integer.toString(draggedLay.getChildCount()));
-
-                    Node draggedNode = getLayoutHead(draggedLay).getNode();
-                    Node thisNode = getLayoutHead((RelativeLayout) thisView).getNode();
-                    BlockT draggedBlock = draggedNode.getBlock();
-                    BlockT thisBlock = thisNode.getBlock();
-                    boolean fits_right = thisBlock.hasRightSuccessor(draggedBlock); //todo special cases like star without attribute
-                    boolean fits_down = thisBlock.hasDownSuccessor(draggedBlock);
-
-                    switch (dragEvent.getAction()) {
-                        case DragEvent.ACTION_DRAG_ENTERED:
-                            if (fits_right) {
-                                draggedLay.setVisibility(View.VISIBLE);
-                                draggedLay.setAlpha(0.5f);
-                                draggedLay.setX(thisView.getX()+thisView.getWidth());
-                                draggedLay.setY(thisView.getY());
-                            } else if (fits_down) {
-                                draggedLay.setVisibility(View.VISIBLE);
-                                draggedLay.setAlpha(0.5f);
-                                draggedLay.setX(thisView.getX());
-                                draggedLay.setY(thisView.getY()+thisView.getHeight());
-                            }
-                            break;
-                        case DragEvent.ACTION_DRAG_EXITED:
-                            draggedLay.setVisibility(View.INVISIBLE);
-                            draggedLay.setAlpha(1f);
-                            break;
-                        case DragEvent.ACTION_DROP:
-                            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-                                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-                            RelativeLayout thisLay = (RelativeLayout) thisView;
-                            draggedLay.setAlpha(1f);
-                            if (fits_right) {
-                                /*draggedLay.setX(getLayoutHead(thisLay).getX()+getLayoutHead(thisLay).getWidth());
-                                draggedLay.setY(getLayoutHead(thisLay).getY());*/
-                                lp.addRule(RelativeLayout.RIGHT_OF, getLayoutHead(thisLay).getId());
-                                lp.addRule(RelativeLayout.ALIGN_TOP, getLayoutHead(thisLay).getId());
-                                clearFromParent(getLayoutHead(draggedLay));
-                                thisNode.addRightChild(draggedNode);
-                                ((ViewGroup)draggedLay.getParent()).removeView(draggedLay);
-                                thisLay.addView(draggedLay, lp);
-                                updateLayoutSizes();
-                                //sounds
-                                MediaPlayer.create(thisView.getContext(), R.raw.dropblock).start();
-                            } else if(fits_down) {
-                                /*draggedLay.setX(getLayoutHead(thisLay).getX());
-                                draggedLay.setY(getLayoutHead(thisLay).getY() + getLayoutHead(thisLay).getHeight());*/
-                                lp.addRule(RelativeLayout.BELOW, getLayoutHead(thisLay).getId());
-                                lp.addRule(RelativeLayout.ALIGN_LEFT, getLayoutHead(thisLay).getId());
-                                clearFromParent(getLayoutHead(draggedLay));
-                                thisNode.addDownChild(draggedNode);
-                                ((ViewGroup)draggedLay.getParent()).removeView(draggedLay);
-                                thisLay.addView(draggedLay, lp);
-                                updateLayoutSizes();
-                                //sounds
-                                MediaPlayer.create(thisView.getContext(), R.raw.dropblock).start();
-                            } else{
-                                /*draggedLay.setX(getLayoutHead(thisLay).getX());
-                                draggedLay.setY(getLayoutHead(thisLay).getY()-getLayoutHead(thisLay).getHeight());*/ //todo no new position but sound
-                            }
-                            draggedLay.setVisibility(View.VISIBLE);
-                            Log.d("############# dragged_Layout dim", Integer.toString(thisLay.getChildCount()));
-                            break;
-
-                    }
-                }
-                return true;
-            }
-        });
-    }
-
-    //when holding a blockview retrun the relative layout with bv as head
-    public RelativeLayout getLayout(BlockView bv){
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            if(getLayoutHead(blockGroups_in_rl.get(i)).getId() == bv.getId()){
-                return blockGroups_in_rl.get(i);
-            }
-        }
-        return null;
-    }
-
-    //for all the rel layouts in rl_query add child sizes up (max or sum)
-    public void updateLayoutSizes(){
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            updateLayoutSize(blockGroups_in_rl.get(i));
-        }
-    }
-
-    //todo
-    public void updateLayoutSize(RelativeLayout rl){
-        int count = rl.getChildCount();
-        int total_width = 0;
-        int total_height = 0;
-        for(int i=0; i<count; i++){
-            View child = rl.getChildAt(i);
-            total_width += child.getWidth();
-            total_height += child.getHeight();
-        }
-        rl.setMinimumWidth(total_width);
-        rl.setMinimumHeight(total_height);
-    }
-
-    //when holding a layout return the leading blockview
-    public BlockView getLayoutHead(RelativeLayout rl){
-        return (BlockView) rl.getChildAt(0);
+        //add listeners
+        cur_view.setOnTouchListener(new Fragment_Query.MyOnGroupTouchListener());
+        cur_view.setMydragListener(new Fragment_Query.MyDragListener());
+        cur_view.setListener(new Fragment_Query.MyGroupDragListener());
     }
 
     //when removed or cleared, if had node parent remove
@@ -390,70 +146,57 @@ public class Fragment_Query extends Fragment {
     public List<BlockView> extractTreeViews(BlockView mover){
         List<Node> tree = mover.getNode().getTreeMembers();
         List<BlockView> members = new ArrayList<>();
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            if(tree.contains(getLayoutHead(blockGroups_in_rl.get(i)).getNode())){
-                members.add(getLayoutHead(blockGroups_in_rl.get(i)));
+        for(int i=0; i<rl_query.getChildCount(); i++){
+            View child = rl_query.getChildAt(i);
+            if(child instanceof BlockView && tree.contains(((BlockView)child).getNode())){
+                members.add((BlockView)child);
             }
         }
-        for(int i=0; i<members.size(); i++)
-            Log.d("############## members: ", members.get(i).getNode().getBlock().getName());
+        return members;
+    }
+
+    //list of al the blocks in rl
+    public List<BlockView> extractLayoutViews(BlockView without){
+        List<BlockView> members = new ArrayList<>();
+        for(int i=0; i<rl_query.getChildCount(); i++){
+            View child = rl_query.getChildAt(i);
+            if(child instanceof BlockView){
+                BlockView b_child = (BlockView)child;
+                if(b_child != without){
+                    members.add(b_child);
+                }
+            }
+        }
         return members;
     }
 
     public void goInclickable(){
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            blockGroups_in_rl.get(i).setClickable(false);
+        for(int i=0; i<extractLayoutViews(null).size(); i++){
+            extractLayoutViews(null).get(i).setClickable(false);
         }
         btn_go.setVisibility(View.INVISIBLE);
         btn_clear.setVisibility(View.INVISIBLE);
     }
 
     public void goClickable(){
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            blockGroups_in_rl.get(i).setClickable(true);
+        for(int i=0; i<extractLayoutViews(null).size(); i++){
+            extractLayoutViews(null).get(i).setClickable(true);
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
     }
 
     public void resetSelectLayoutColors(){
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            blockGroups_in_rl.get(i).setBackgroundColor(getResources().getColor(R.color.invisible));
+        for(int i=0; i<extractLayoutViews(null).size(); i++){
+            extractLayoutViews(null).get(i).setBackgroundColor(getResources().getColor(R.color.invisible));
         }
     }
 
-    //in blockfrag upleft starts with xy=00, for rawXY in queryfrag add height and sub blockfrag margin (4dp), already sub blockfrag height
-    public float[] getRawXY(float x, float y){
-        float qf_height = (float) rl_query.getHeight();
-        float bf_margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, context.getResources().getDisplayMetrics());
-        return new float[]{x, y +qf_height -bf_margin};
-    }
-
-    //TODO color current selects and choose by userclick
-    public String interpret(){
-        List<RelativeLayout> select_layouts = new ArrayList<>();
-        for(int i=0; i<blockGroups_in_rl.size(); i++){
-            if(getLayoutHead(blockGroups_in_rl.get(i)).getNode().getBlock() == BlockT.SELECT){
-                select_layouts.add(blockGroups_in_rl.get(i));
-                blockGroups_in_rl.get(i).setBackgroundColor(getResources().getColor(R.color.select_layouts));
-                getLayoutHead(blockGroups_in_rl.get(i)).getNode().printTree();
-            }
-        }
-        if(select_layouts.size()==0){
+    public String interpret(BlockView select){
+        if(select.getNode().getBlock() != BlockT.SELECT){
             return SELECT_MISSING_ERROR;
-        } else if(select_layouts.size()==1){
-            return getLayoutHead(select_layouts.get(0)).getNode().toTreeString();
-        } /*else{
-            for(int i=0; i<select_layouts.size(); i++){
-                select_layouts.get(i).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //todo
-                    }
-                });
-            }
-        }*/
-        return getLayoutHead(select_layouts.get(0)).getNode().toTreeString();
+        }
+        return select.getNode().toTreeString();
     }
 
     @Override
@@ -473,17 +216,184 @@ public class Fragment_Query extends Fragment {
         listener = null;
     }
 
-    public class OnGroupTouchListener implements View.OnTouchListener{
+    /***
+     * Listeners
+     */
+
+    public class MyOnGroupTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadow = new View.DragShadowBuilder(getLayout((BlockView)view));
-                view.startDragAndDrop(data, shadow, getLayout((BlockView)view), View.DRAG_FLAG_OPAQUE);
-                //view.setVisibility(View.INVISIBLE);
-                return true;
-            }else
-                return false;
+            List<BlockView> subtree = extractTreeViews((BlockView)view);
+            List<BlockView> blocks = extractLayoutViews((BlockView)view);
+            switch(motionEvent.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    clearFromParent((BlockView)view);
+                    for(int i=0; i<subtree.size(); i++){
+                        subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-motionEvent.getRawX(), subtree.get(i).getY()-motionEvent.getRawY());
+                    }
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    for(int i=0; i<subtree.size(); i++){
+                        subtree.get(i).notifyListener(motionEvent.getRawX(), motionEvent.getRawY());
+                    }
+                    for(int i=0; i<blocks.size(); i++){
+                        blocks.get(i).notifyMyDragListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.MOVE);
+                    }
+                    btn_clear.notifyListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.MOVE);
+                    btn_go.notifyListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.MOVE);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    for(int i=0; i<blocks.size(); i++){
+                        blocks.get(i).notifyMyDragListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.UP);
+                    }
+                    btn_clear.notifyListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.UP);
+                    btn_go.notifyListener((BlockView)view, motionEvent.getRawX(), motionEvent.getRawY(), BlockView.UP);
+                    break;
+                default:
+                    return false;
+            }
+            return true;
+        }
+    }
+
+    public class MyDragListener implements BlockView.MyOnDragListener{
+
+        @Override
+        public void onMyDrag(BlockView me, BlockView him, float x, float y, int event) {
+            boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
+            if(isInMe){
+                Node me_node = me.getNode();
+                Node him_node = him.getNode();
+                BlockT me_blockT = me_node.getBlock();
+                BlockT him_blockT = him_node.getBlock();
+                boolean fits_right = me_blockT.hasRightSuccessor(him_blockT);
+                boolean fits_down = me_blockT.hasDownSuccessor(him_blockT);
+                switch (event){
+                    case BlockView.MOVE:
+                        break;
+                    case BlockView.UP:
+                        if (fits_right && !me_node.hasRight()) {
+
+                            //ui
+                            him.setX(me.getX()+me.getWidth());
+                            him.setY(me.getY());
+
+
+
+                            //logic
+                            me.getNode().addRightChild(him.getNode());
+
+                            //sounds
+                            MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
+                        }
+                        if (fits_down && !me_node.hasDown()) {
+                            //ui
+                            him.setX(me.getX());
+                            him.setY(me.getY()+me.getHeight());
+
+                            //logic
+                            me.getNode().addDownChild(him.getNode());
+
+                            //sounds
+                            MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
+                        }
+
+                        break;
+
+                }
+            }
+        }
+    }
+
+    //todo has to be notified when parent is dropped on other block
+    public class MyGroupDragListener implements BlockView.GroupDragListener{
+
+        @Override
+        public void onGroupDrag(BlockView child, float xd, float yd) {
+            child.setX(xd+child.getxDis());
+            child.setY(yd+child.getyDis());
+        }
+
+        @Override
+        public void setDistance(BlockView me, float x, float y) {
+            me.setxDis(x);
+            me.setyDis(y);
+        }
+    }
+
+
+
+
+    public class MyGoListener implements ClearView.MyClearDragListener{
+        @Override
+        public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
+            boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
+            Log.d("########## go: ", Integer.toString(event));
+            switch(event) {
+                case BlockView.MOVE:
+                    if(isInMe)
+                        btn_go.setImageResource(R.drawable.go_x);
+                    else
+                        btn_go.setImageResource(R.drawable.go);
+                    break;
+                case BlockView.UP:
+                    if(isInMe){
+                        btn_go.setImageResource(R.drawable.go);
+                        String query = interpret(him);
+                        listener.onGo(query);
+                        //sounds todo
+                        btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
+                    }
+
+                    break;
+            }
+        }
+    }
+
+    public class MyClearLongClickListener implements View.OnLongClickListener{
+
+        @Override
+        public boolean onLongClick(View view) {
+            List<BlockView> blocks = extractLayoutViews(null);
+            if(!blocks.isEmpty()){
+                MediaPlayer.create(context, R.raw.clearblock).start();
+                btn_clear.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.vibrate_short));
+            }
+            for (int i=0; i<blocks.size(); i++){
+                rl_query.removeView(blocks.get(i));
+            }
+            return false;
+        }
+    }
+
+    //todo dont notify all the time but only notify when isInMe fullfilled --> performane
+    public class MyClearDragListener implements ClearView.MyClearDragListener{
+
+        @Override
+        public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
+            boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
+            switch(event) {
+                case BlockView.MOVE:
+                    if(isInMe)
+                        btn_clear.setImageResource(R.drawable.garbage_collector_x);
+                    else
+                        btn_clear.setImageResource(R.drawable.garbage_collector);
+                    break;
+                case BlockView.UP:
+                    if(isInMe){
+                        btn_clear.setImageResource(R.drawable.garbage_collector);
+                        List<BlockView> members = extractTreeViews(him);
+                        for(int i=0; i<members.size(); i++){
+                            rl_query.removeView(members.get(i));
+                        }
+                        clearFromParent(him);
+                        //sounds
+                        MediaPlayer.create(context, R.raw.clearblock).start();
+                        btn_clear.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
+                    }
+
+                    break;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 <resources>
     <!-- usual stuff -->
     <string name="app_name">DragAndQuery</string>
+    <string name="splash_title">Drag and Query</string>
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
