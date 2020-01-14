@@ -27,6 +27,11 @@
     <color name="speechBubbleBackground">#ff44ff</color>
     <color name="feedbackBackground">#D31AD3</color>
 
+    <!-- complexity -->
+    <color name="easy">#8BCF00</color>
+    <color name="medium">#FF8C00</color>
+    <color name="hard">#ff0000</color>
+
     <!-- table fragment -->
     <color name="attribute_background">#000000</color>
     <color name="attribute_text">#ffffff</color>

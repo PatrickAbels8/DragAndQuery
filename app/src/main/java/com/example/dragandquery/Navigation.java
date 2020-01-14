@@ -19,6 +19,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.dragandquery.practice.Complexity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -240,7 +241,7 @@ public class Navigation extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_practice) {
-            Intent i = new Intent(getApplicationContext(), Practice.class);
+            Intent i = new Intent(getApplicationContext(), Complexity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
 
@@ -272,7 +273,7 @@ public class Navigation extends AppCompatActivity
 
         @Override
         public void onClick(View view) {
-            Intent i = new Intent(getApplicationContext(), Practice.class);
+            Intent i = new Intent(getApplicationContext(), Complexity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         }

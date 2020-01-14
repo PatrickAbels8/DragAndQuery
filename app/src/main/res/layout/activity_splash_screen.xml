@@ -11,7 +11,7 @@
         android:id="@+id/splash_bird"
         android:layout_width="400dp"
         android:layout_height="400dp"
-        android:src="@drawable/bird_happy"
+        android:src="@drawable/happy_berry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

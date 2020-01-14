@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".practice.Practices"
+    tools:showIn="@layout/activity_practices"
+    android:background="@color/gradient_middle">
+
+   <LinearLayout
+       android:id="@+id/ll_practices_lections"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:paddingLeft="60dp"
+       android:paddingRight="60dp"
+       android:orientation="vertical"
+       android:gravity="center_horizontal"
+       android:layout_gravity="center_horizontal"
+       >
+      
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+   </LinearLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

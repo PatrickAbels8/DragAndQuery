@@ -77,10 +77,10 @@ public class Fragment_Input extends Fragment {
             @Override
             public void onClick(View view) {
                 if(isOpen){
-                    bird.setImageResource(R.drawable.bird_small_open);
+                    bird.setImageResource(R.drawable.berry_talking);
                     listener.onAccept();
                 }else{
-                    bird.setImageResource(R.drawable.bird_small_closed);
+                    bird.setImageResource(R.drawable.happy_berry);
                     listener.onBird(isOpen);
                 }
 
@@ -121,6 +121,18 @@ public class Fragment_Input extends Fragment {
         String text = "";
         if(lection_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
+        }else if(lection_id.substring(0,5).equals("01_02")){
+            text = getString(R.string.c1l2_input);
+        }else if(lection_id.substring(0,5).equals("01_03")){
+            text = getString(R.string.c1l3_input);
+        }else if(lection_id.substring(0,5).equals("01_04")){
+            text = getString(R.string.c1l4_input);
+        }else if(lection_id.substring(0,5).equals("01_05")){
+            text = getString(R.string.c1l5_input);
+        }else if(lection_id.substring(0,5).equals("01_06")){
+            text = getString(R.string.c1l6_input);
+        }else if(lection_id.substring(0,5).equals("01_07")){
+            text = getString(R.string.c1l7_input);
         }
         tv_input.setText(text);
         isOpen = true;

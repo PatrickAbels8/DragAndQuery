@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!-- icon: bird_launch / bird_launcher -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/bird_launcher"
@@ -15,14 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".practice.Complexity"
+            android:label="@string/title_activity_practice"
+            android:screenOrientation="sensorPortrait">
+
+        </activity>
+        <activity
+            android:name=".practice.Practices"
+            android:label="@string/title_activity_practices"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".tutorial.TutorialCategoryLection"
@@ -46,9 +55,6 @@
             android:parentActivityName=".Navigation"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Practice"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
         <activity
             android:name=".Free"
             android:screenOrientation="sensorPortrait"
@@ -57,9 +63,7 @@
             android:name=".Navigation"
             android:clearTaskOnLaunch="false"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".Settings"
             android:screenOrientation="sensorPortrait"

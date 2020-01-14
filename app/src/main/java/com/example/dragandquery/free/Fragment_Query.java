@@ -39,6 +39,8 @@ import java.util.List;
 /***
  * TODO
  * - alpha/visible/shadow stuff
+ * - db icon
+ * - child doesnt move when parent dropped
  */
 
 public class Fragment_Query extends Fragment {

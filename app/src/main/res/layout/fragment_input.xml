@@ -13,7 +13,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/bird_happy"
+        android:src="@drawable/berry_talking"
         android:layout_alignParentRight="true"/>
 
     <LinearLayout

@@ -227,35 +227,15 @@ public class TutorialCategoryLection
         return nextLectionID;
     }
 
-    //todo change when lection changed
+    //todo change when lections changed
     public int getFragIndex(int chapter, int lection){
         int idx = 0;
-        switch(chapter){
-            case 1:
-                switch(lection){
-                    case 1:
-                        idx = 0;
-                        break;
-                    case 2:
-                        idx = 1;
-                        break;
-                    case 3:
-                        idx = 2;
-                        break;
-                    case 4:
-                        idx = 3;
-                        break;
-                    case 5:
-                        idx = 4;
-                        break;
-                    case 6:
-                        idx = 5;
-                        break;
-                }
-            case 2:
-            case 3:
-            case 4:
-        }
+
+        idx += chapter>1? 11: 0;
+        idx += chapter>2? 15: 0;
+        idx += chapter>3? 8: 0;
+        idx += lection-1;
+
         return idx;
     }
 }

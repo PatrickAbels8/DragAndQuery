@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class Fragment_Feedback extends Fragment {
     private TextView tv_msg;
     private Button btn_back;
     private Button btn_forth;
+    private ImageView bird;
     private Animation fromright;
     private Animation toright;
     private Context context;
@@ -57,6 +59,7 @@ public class Fragment_Feedback extends Fragment {
         rl_feedback = v.findViewById(R.id.frag_feedback);
         btn_back = v.findViewById(R.id.btn_feedback_back);
         btn_forth = v.findViewById(R.id.btn_feedback_forth);
+        bird = v.findViewById(R.id.bird_feedback);
         fromright = AnimationUtils.loadAnimation(context, R.anim.fromright);
         toright = AnimationUtils.loadAnimation(context, R.anim.toright);
         toright.setDuration(TORIGHT_DURATION);
@@ -97,12 +100,14 @@ public class Fragment_Feedback extends Fragment {
 
     public void startGoodFeedback(){
         tv_msg.setText(R.string.feedback_msg_good);
+        bird.setImageResource(R.drawable.happy_berry);
         btn_back.setVisibility(View.VISIBLE);
         btn_forth.setVisibility(View.VISIBLE);
     }
 
     public void startBadFeedback(){
         tv_msg.setText(R.string.feedback_msg_bad);
+        bird.setImageResource(R.drawable.sad_berry);
         btn_back.setVisibility(View.VISIBLE);
         btn_forth.setVisibility(View.INVISIBLE);
     }
