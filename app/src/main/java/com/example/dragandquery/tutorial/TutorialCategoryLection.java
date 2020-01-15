@@ -17,12 +17,14 @@ import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0103;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0104;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0105;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0106;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0107;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0108;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * -curfrag of type MyFrag interface/topclass and every lection overrides methods (startExercise(), ...)
+ * -cat 2-4
  */
 
 public class TutorialCategoryLection
@@ -35,7 +37,9 @@ public class TutorialCategoryLection
             Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
             Fragment_LectionContent_0104.Fragment_LectionContent_0104_Listener,
             Fragment_LectionContent_0105.Fragment_LectionContent_0105_Listener,
-            Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener
+            Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener,
+            Fragment_LectionContent_0107.Fragment_LectionContent_0107_Listener,
+            Fragment_LectionContent_0108.Fragment_LectionContent_0108_Listener
 {
 
     //fragments
@@ -64,7 +68,9 @@ public class TutorialCategoryLection
                 new Fragment_LectionContent_0103(),
                 new Fragment_LectionContent_0104(),
                 new Fragment_LectionContent_0105(),
-                new Fragment_LectionContent_0106()
+                new Fragment_LectionContent_0106(),
+                new Fragment_LectionContent_0107(),
+                new Fragment_LectionContent_0108()
         };
 
         //intent stuff

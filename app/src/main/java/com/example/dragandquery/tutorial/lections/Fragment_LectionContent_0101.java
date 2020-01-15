@@ -30,10 +30,8 @@ import java.util.List;
 import java.util.Random;
 
 /***
- * TODO
- * - outsource exercise frag (var arg radiobuttons, question string, answer int)
- * - verify answer (no hard coding)
- * - add background emoji with question marks
+ * TODO:
+ * -
  */
 
 public class Fragment_LectionContent_0101 extends Fragment_Content {
@@ -78,24 +76,11 @@ public class Fragment_LectionContent_0101 extends Fragment_Content {
         return v;
     }
 
-    //todo check if solution was correct (db stuff) + NO HARD CODING
     public boolean verifyAnswer(){
         return !rb1.isChecked() && !rb2.isChecked() && rb3.isChecked();
     }
 
-    //for later
-    /*public void checkAnswer(){
-        answered = true;
-        RadioButton rbSelected = findViewById(rg.getCheckedRadioButtonId());
-        int answerNr = rg.indexOfChild(rbSelected)+1;
-        if(answerNr == currentQuestion.getAnswerNr()){
-            //what to do when answer is correct
-        }
-    }*/
-
-
     public void pauseExercise(){
-        Log.d("############ hello from", "pauseExercise()");
         rl_exercise.setAlpha(0.2f);
         rb1.setClickable(false);
         rb2.setClickable(false);
@@ -104,7 +89,6 @@ public class Fragment_LectionContent_0101 extends Fragment_Content {
     }
 
     public void startExercise(){
-        Log.d("############ hello from", "startExercise()");
         rl_exercise.setVisibility(View.VISIBLE);
         rl_exercise.setAlpha(1f);
         rb1.setClickable(true);

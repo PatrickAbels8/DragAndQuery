@@ -6,30 +6,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.tutorial.Fragment_Content;
 
-import java.util.Random;
-
 /***
- * TODO
- * - scroll down cat name
- * - actual content
- * - button back to category
- * - verify answer
+ * TODO:
+ * - 
  */
 
 public class Fragment_LectionContent_0105 extends Fragment_Content {
 
     //coms
-    private RelativeLayout rl_lectioncontent;
+    private RelativeLayout rl_exercise;
     private Button btn_go;
+    private RadioGroup rg;
+    private RadioButton rb1;
+    private RadioButton rb2;
+    private RadioButton rb3;
 
     //vars
     private Fragment_LectionContent_0105_Listener listener;
@@ -46,15 +46,16 @@ public class Fragment_LectionContent_0105 extends Fragment_Content {
         View v = inflater.inflate(R.layout.fragment_lectioncontent_0105, container, false);
 
         //init coms
-        rl_lectioncontent = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0102);
+        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0105);
         btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0105_go);
         context = getContext();
+        rg = (RadioGroup) v.findViewById(R.id.rg_c1l5);
+        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l5);
+        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l5);
+        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l5);
 
-        /***
-         * PUT IN CONTENT HERE
-         */
-
-        //lets see if exercixe was solved correctly
+        //exercise mode
+        rg.clearCheck();
         btn_go.setOnClickListener((View view) -> {
             listener.onGo(verifyAnswer());
         });
@@ -62,19 +63,25 @@ public class Fragment_LectionContent_0105 extends Fragment_Content {
         return v;
     }
 
-    public void goInclickable(){
-        rl_lectioncontent.setAlpha(0.6f);
-        btn_go.setVisibility(View.INVISIBLE);
-    }
-
-    public void goClickable(){
-        rl_lectioncontent.setAlpha(1f);
-        btn_go.setVisibility(View.VISIBLE);
-    }
-
-    //todo check if solution was correct
     public boolean verifyAnswer(){
-        return new Random().nextBoolean();
+        return !rb1.isChecked() && !rb2.isChecked() && rb3.isChecked();
+    }
+
+    public void pauseExercise(){
+        rl_exercise.setAlpha(0.2f);
+        rb1.setClickable(false);
+        rb2.setClickable(false);
+        rb3.setClickable(false);
+        btn_go.setClickable(false);
+    }
+
+    public void startExercise(){
+        rl_exercise.setVisibility(View.VISIBLE);
+        rl_exercise.setAlpha(1f);
+        rb1.setClickable(true);
+        rb2.setClickable(true);
+        rb3.setClickable(true);
+        btn_go.setClickable(true);
     }
 
     @Override

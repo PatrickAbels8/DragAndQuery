@@ -21,7 +21,7 @@ import com.example.dragandquery.tutorial.Fragment_Content;
  * - 
  */
 
-public class Fragment_LectionContent_0104 extends Fragment_Content {
+public class Fragment_LectionContent_0108 extends Fragment_Content {
 
     //coms
     private RelativeLayout rl_exercise;
@@ -32,27 +32,27 @@ public class Fragment_LectionContent_0104 extends Fragment_Content {
     private RadioButton rb3;
 
     //vars
-    private Fragment_LectionContent_0104_Listener listener;
+    private Fragment_LectionContent_0108_Listener listener;
     public Context context;
 
     //interface
-    public interface Fragment_LectionContent_0104_Listener{
+    public interface Fragment_LectionContent_0108_Listener{
         void onGo(boolean isCorrect);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_lectioncontent_0104, container, false);
+        View v = inflater.inflate(R.layout.fragment_lectioncontent_0108, container, false);
 
         //init coms
-        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0104);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0104_go);
+        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0108);
+        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0108_go);
         context = getContext();
-        rg = (RadioGroup) v.findViewById(R.id.rg_c1l4);
-        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l4);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l4);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l4);
+        rg = (RadioGroup) v.findViewById(R.id.rg_c1l8);
+        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l8);
+        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l8);
+        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l8);
 
         //exercise mode
         rg.clearCheck();
@@ -87,8 +87,8 @@ public class Fragment_LectionContent_0104 extends Fragment_Content {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_LectionContent_0104_Listener){
-            listener = (Fragment_LectionContent_0104_Listener) context;
+        if(context instanceof Fragment_LectionContent_0108_Listener){
+            listener = (Fragment_LectionContent_0108_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

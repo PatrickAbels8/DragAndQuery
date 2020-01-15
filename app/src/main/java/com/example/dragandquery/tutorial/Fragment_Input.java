@@ -22,7 +22,7 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * -add other inputs
+ * -cat 2-4
  */
 
 public class Fragment_Input extends Fragment {
@@ -77,10 +77,8 @@ public class Fragment_Input extends Fragment {
             @Override
             public void onClick(View view) {
                 if(isOpen){
-                    bird.setImageResource(R.drawable.berry_talking);
                     listener.onAccept();
                 }else{
-                    bird.setImageResource(R.drawable.happy_berry);
                     listener.onBird(isOpen);
                 }
 
@@ -133,6 +131,14 @@ public class Fragment_Input extends Fragment {
             text = getString(R.string.c1l6_input);
         }else if(lection_id.substring(0,5).equals("01_07")){
             text = getString(R.string.c1l7_input);
+        }else if(lection_id.substring(0,5).equals("01_08")){
+            text = getString(R.string.c1l8_input);
+        }else if(lection_id.substring(0,5).equals("01_09")){
+            text = getString(R.string.c1l9_input);
+        }else if(lection_id.substring(0,5).equals("01_10")){
+            text = getString(R.string.c1l10_input);
+        }else if(lection_id.substring(0,5).equals("01_11")){
+            text = getString(R.string.c1l11_input);
         }
         tv_input.setText(text);
         isOpen = true;
