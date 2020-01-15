@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".tutorial.TutorialCategoryLection"
-    android:background="@drawable/gradient_background">
+    android:background="@color/mustard">
 
     <FrameLayout
         android:id="@+id/container_lectionContent"

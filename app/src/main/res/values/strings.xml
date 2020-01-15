@@ -33,15 +33,21 @@
     <string name="prac_hard">Schwer</string>
 
     <string name="ex_easy_1">Schlüssel</string>
+    <string name="ex_easy_1_text">Baue eine Schlüssel Anfrage nach.</string>
     <string name="ex_easy_2">Join</string>
+    <string name="ex_easy_2_text">Baue eine Join Anfrage nach.</string>
     <string name="ex_easy_3">Select</string>
+    <string name="ex_easy_3_text">Baue eine Select Anfrage nach.</string>
     <string name="ex_easy_4">Aggregate</string>
+    <string name="ex_easy_4_text">Baue eine Aggregate Anfrage nach.</string>
 
     <string name="title_activity_practice">Schwierigkeitsgrad</string>
     <string name="title_activity_practices">Übungen</string>
     <string name="title_prac_easy">Leichte Übungen</string>
     <string name="title_prac_medium">Mittelschwere Übungen</string>
     <string name="title_prac_hard">Schwere Übungen</string>
+
+    <string name="ex_title">Aufgabe</string>
 
     <!-- tutorial -->
     <string name="feedback_back">Zurück</string>

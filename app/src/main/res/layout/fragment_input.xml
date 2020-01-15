@@ -16,6 +16,8 @@
         android:src="@drawable/happy_berry"
         android:layout_alignParentRight="true"/>
 
+
+
     <LinearLayout
         android:id="@+id/ll_input"
         android:layout_below="@id/bird_input"
@@ -33,18 +35,23 @@
         android:background="@drawable/border_berry_filled"
         >
 
-        <TextView
-            android:id="@+id/tv_input"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/c1l1_input"
-            android:textSize="@dimen/tutorial_input_textSize"
-            android:layout_centerInParent="true"
-            android:ellipsize="marquee"
-            android:scrollHorizontally="true"
-            android:fontFamily="@font/comfortaa"
-            android:textColor="@color/textcolor_white"/>
+            android:layout_height="350dp">
 
+            <TextView
+                android:id="@+id/tv_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/c1l1_input"
+                android:textSize="@dimen/tutorial_input_textSize"
+                android:layout_centerInParent="true"
+                android:ellipsize="marquee"
+                android:scrollHorizontally="true"
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/textcolor_white"/>
+
+        </ScrollView>
         <Button
             android:id="@+id/btn_input"
             android:layout_width="wrap_content"
@@ -58,6 +65,8 @@
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>
+
+
 
 
 </RelativeLayout>

@@ -120,7 +120,6 @@ public class TutorialCategory extends AppCompatActivity {
     //start lection
     public void startLection(int lection_id){
         Intent i = new Intent(context, TutorialCategoryLection.class);
-        Log.d("################## lection id", getLectionID(lection_id));
         i.putExtra(LECTION_ID, getLectionID(lection_id));
         startActivity(i);
     }

@@ -53,6 +53,7 @@ public class TutorialCategoryLection
     private int numCat;
     private int numLec;
     private int numLecs;
+    public static final String LEC_KEY = "com.example.dragandquery.tutorial.TutorialCategoryLection";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,11 @@ public class TutorialCategoryLection
 
         //checkout current lection
         curFrag = frags[getFragIndex(numCat, numLec)];
+
+        //send right text to input frag
+        Bundle lec = new Bundle();
+        lec.putString(LEC_KEY, lection_id);
+        fragInput.setArguments(lec);
 
         //open current lection
         getSupportFragmentManager().beginTransaction()
@@ -125,8 +131,6 @@ public class TutorialCategoryLection
 
     @Override
     public void onGo(boolean isCorrect) {
-        Log.d("############ hello from", "onGo()");
-
         fragFeedback.goVisible(isCorrect);
         fragInput.goInclickable();
         fragInput.hideBird();
@@ -140,20 +144,18 @@ public class TutorialCategoryLection
 
     @Override
     public void onAccept() {
-        Log.d("############ hello from", "onAccept()");
         curFrag.startExercise();
         fragInput.goInvisible();
     }
 
     @Override
     public void onBird(boolean wasOpen){
-        Log.d("############ hello from", "onBird()");
         if(wasOpen){
             curFrag.startExercise();
             fragInput.goInvisible();
         }else{
             curFrag.pauseExercise();
-            fragInput.goVisible(lection_id);
+            fragInput.goVisible();
         }
 
     }
@@ -184,9 +186,6 @@ public class TutorialCategoryLection
         int numDone = Integer.parseInt(counts[1]);
         int numTotal = Integer.parseInt(counts[2]);
         int exp = 100*numDone/numTotal +1;
-        //Log.d("############ ach -> exp: numDone: ", Integer.toString(numDone));
-        //Log.d("############ ach -> exp: numTotal: ", Integer.toString(numTotal));
-        //Log.d("############ ach -> exp: exp: ", Integer.toString(exp));
         return exp;
     }
 
@@ -196,9 +195,6 @@ public class TutorialCategoryLection
         int numUnlocked = Integer.parseInt(counts[1])+1;
         int numTotal = Integer.parseInt(counts[2]);
         int exp = 100*numUnlocked/numTotal +1;
-        //Log.d("############ un.ach -> exp: numDone: ", Integer.toString(numUnlocked));
-        //Log.d("############ un.ach -> exp: numTotal: ", Integer.toString(numTotal));
-        //Log.d("############ un.ach -> exp: exp: ", Integer.toString(exp));
         return exp;
     }
 
@@ -209,7 +205,6 @@ public class TutorialCategoryLection
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, data);
         editor.apply();
-        Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
     }
 
     //key value store

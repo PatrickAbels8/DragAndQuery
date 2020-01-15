@@ -129,10 +129,7 @@ public class Navigation extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        /*TextView title_big = (TextView) findViewById(R.id.nav_title_big);
-        title_big.setText(user_name);
-        TextView title_small = (TextView) findViewById(R.id.nav_title_small);
-        title_small.setText(user_mail);*/
+        //((TextView)findViewById(R.id.nav_title_small)).setText(user_name);
 
         //handle navigation menu
         navigationView.setNavigationItemSelectedListener(this);

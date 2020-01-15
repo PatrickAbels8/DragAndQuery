@@ -61,13 +61,16 @@ public class Practices extends AppCompatActivity {
         };
 
         //intent stuff
-        Intent i = getIntent();
-        if(i.hasExtra(Complexity.COMPLEXITY)){
-            complexity = i.getIntExtra(Complexity.COMPLEXITY, 1);
+        Intent intent = getIntent();
+        if(intent.hasExtra(Complexity.COMPLEXITY)){
+            complexity = intent.getIntExtra(Complexity.COMPLEXITY, 1);
         }
 
         //choose exercises where matching lessons are already done + color match complexitiy + check already done exercises
         loadExercises();
+        for(int i=0; i<exercises.size(); i++){
+            exercises.get(i).setOnClickListener(new MyOnExerciseClickListener());
+        }
 
         //toolbar stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -146,13 +149,13 @@ public class Practices extends AppCompatActivity {
         return data;
     }
 
-    //todo open free mode in exercise mode with right exercise and block set
     public class MyOnExerciseClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View view) {
-            //Intent i = new Intent(getApplicationContext(), Exercise.class);
-            //i.putExtra(EX_ID, getExerciseID(view));
+            Intent i = new Intent(getApplicationContext(), Exercise.class);
+            i.putExtra(EX_ID, complexity*100+exercises.indexOf(view)); //0-(n-1) + 100/200/300
+            startActivity(i);
         }
     }
 }
