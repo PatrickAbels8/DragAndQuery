@@ -88,31 +88,7 @@ public class Fragment_Query extends Fragment {
     @SuppressLint("ClickableViewAccessibility")
     public void createView(View view, float x, float y) {
         //create a blockT of the right type
-        BlockT blockT = null;
-
-        /***
-         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE CHOSEN HERE!!!!!!!!!!!
-         */
-        switch (((BlockT) view.getTag()).getDesign()) {
-            case R.drawable.attribute_block:
-                blockT = BlockT.ATTRIBUTE;
-                break;
-            case R.drawable.from_block:
-                blockT = BlockT.FROM;
-                break;
-            case R.drawable.select_block:
-                blockT = BlockT.SELECT;
-                break;
-            case R.drawable.star_block:
-                blockT = BlockT.STAR;
-                break;
-            case R.drawable.table_block:
-                blockT = BlockT.TABLE;
-                break;
-            case R.drawable.where_block:
-                blockT = BlockT.WHERE;
-                break;
-        }
+        BlockT blockT = BlockT.getBlock(((BlockT) view.getTag()).getDesign());
 
         //create a corresponding node and BlockView
         Node root = new Node(blockT);
@@ -186,12 +162,6 @@ public class Fragment_Query extends Fragment {
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
-    }
-
-    public void resetSelectLayoutColors(){
-        for(int i=0; i<extractLayoutViews(null).size(); i++){
-            extractLayoutViews(null).get(i).setBackgroundColor(getResources().getColor(R.color.invisible));
-        }
     }
 
     public String interpret(BlockView select){

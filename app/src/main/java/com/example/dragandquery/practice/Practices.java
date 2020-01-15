@@ -69,6 +69,11 @@ public class Practices extends AppCompatActivity {
         //choose exercises where matching lessons are already done + color match complexitiy + check already done exercises
         loadExercises();
 
+        //toolbar stuff
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 

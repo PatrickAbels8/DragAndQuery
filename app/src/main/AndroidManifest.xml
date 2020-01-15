@@ -22,6 +22,8 @@
         <activity
             android:name=".practice.Practices"
             android:label="@string/title_activity_practices"
+            android:parentActivityName=".practice.Complexity"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
