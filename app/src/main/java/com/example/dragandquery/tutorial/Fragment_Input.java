@@ -22,7 +22,7 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * -add other inputs
+ * -cat 2-4
  */
 
 public class Fragment_Input extends Fragment {
@@ -40,6 +40,7 @@ public class Fragment_Input extends Fragment {
     //vars
     private Fragment_Input_Listener listener;
     private boolean isOpen = true;
+    private String lection_id;
 
     //interface
     public interface Fragment_Input_Listener{
@@ -62,7 +63,12 @@ public class Fragment_Input extends Fragment {
         fromtop = AnimationUtils.loadAnimation(context, R.anim.fromtop);
         totop = AnimationUtils.loadAnimation(context, R.anim.totop);
 
+        //match input to lec id
+        lection_id = getArguments().getString(TutorialCategoryLection.LEC_KEY);
+        setText();
+
         rl_input.setAnimation(fromtop);
+
 
         //get on to exercise
         btn_accept_input.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +83,8 @@ public class Fragment_Input extends Fragment {
             @Override
             public void onClick(View view) {
                 if(isOpen){
-                    bird.setImageResource(R.drawable.bird_small_open);
                     listener.onAccept();
                 }else{
-                    bird.setImageResource(R.drawable.bird_small_closed);
                     listener.onBird(isOpen);
                 }
 
@@ -99,30 +103,49 @@ public class Fragment_Input extends Fragment {
     }
 
     public void goInvisible(){
-        Log.d("############ hello from", "input.goInvisible()");
         ll_input.setVisibility(View.INVISIBLE);
         isOpen = false;
     }
 
     public void goInclickable(){
-        Log.d("############ hello from", "input.doInclickable()");
         bird.setClickable(false);
     }
 
     public void goClickable(){
-        Log.d("############ hello from", "input.goClickable()");
         bird.setClickable(true);
     }
 
-    //todo add other inputs
-    public void goVisible(String lection_id){
-        Log.d("############ hello from", "input.goVisible()");
-        ll_input.setVisibility(View.VISIBLE);
+    public void setText(){
         String text = "";
         if(lection_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
+        }else if(lection_id.substring(0,5).equals("01_02")){
+            text = getString(R.string.c1l2_input);
+        }else if(lection_id.substring(0,5).equals("01_03")){
+            text = getString(R.string.c1l3_input);
+        }else if(lection_id.substring(0,5).equals("01_04")){
+            text = getString(R.string.c1l4_input);
+        }else if(lection_id.substring(0,5).equals("01_05")){
+            text = getString(R.string.c1l5_input);
+        }else if(lection_id.substring(0,5).equals("01_06")){
+            text = getString(R.string.c1l6_input);
+        }else if(lection_id.substring(0,5).equals("01_07")){
+            text = getString(R.string.c1l7_input);
+        }else if(lection_id.substring(0,5).equals("01_08")){
+            text = getString(R.string.c1l8_input);
+        }else if(lection_id.substring(0,5).equals("01_09")){
+            text = getString(R.string.c1l9_input);
+        }else if(lection_id.substring(0,5).equals("01_10")){
+            text = getString(R.string.c1l10_input);
+        }else if(lection_id.substring(0,5).equals("01_11")){
+            text = getString(R.string.c1l11_input);
         }
         tv_input.setText(text);
+    }
+
+    //todo add more
+    public void goVisible(){
+        ll_input.setVisibility(View.VISIBLE);
         isOpen = true;
     }
 
@@ -130,6 +153,7 @@ public class Fragment_Input extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+
         if(context instanceof Fragment_Input_Listener){
             listener = (Fragment_Input_Listener) context;
         } else{

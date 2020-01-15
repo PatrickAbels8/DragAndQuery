@@ -27,6 +27,28 @@
     <string name="loginMail_hint">Mail</string>
     <string name="save">Speichern</string>
 
+    <!-- practice -->
+    <string name="prac_easy">Leicht</string>
+    <string name="prac_medium">Mittel</string>
+    <string name="prac_hard">Schwer</string>
+
+    <string name="ex_easy_1">Schlüssel</string>
+    <string name="ex_easy_1_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_2">Join</string>
+    <string name="ex_easy_2_text">Baue eine Join Anfrage nach.</string>
+    <string name="ex_easy_3">Select</string>
+    <string name="ex_easy_3_text">Baue eine Select Anfrage nach.</string>
+    <string name="ex_easy_4">Aggregate</string>
+    <string name="ex_easy_4_text">Baue eine Aggregate Anfrage nach.</string>
+
+    <string name="title_activity_practice">Schwierigkeitsgrad</string>
+    <string name="title_activity_practices">Übungen</string>
+    <string name="title_prac_easy">Leichte Übungen</string>
+    <string name="title_prac_medium">Mittelschwere Übungen</string>
+    <string name="title_prac_hard">Schwere Übungen</string>
+
+    <string name="ex_title">Aufgabe</string>
+
     <!-- tutorial -->
     <string name="feedback_back">Zurück</string>
     <string name="feedback_forth">Weiter</string>
@@ -34,17 +56,17 @@
     <string name="feedback_msg_bad">Probier es nochmal!</string>
     <string name="accept_input">Verstanden!</string>
 
-    <string name="cat1_lec1">Einsatzmöglichkeiten für Datenbanken</string>
-    <string name="cat1_lec2">Von Datenbanken und Tabellen</string>
-    <string name="cat1_lec3">Relation</string>
-    <string name="cat1_lec4">Zeilen, Spalten, Attribute</string>
-    <string name="cat1_lec5">Anforderungen an Tabellen</string>
-    <string name="cat1_lec6">Datentypen von Attributen</string>
-    <string name="cat1_lec7">Eindeutigkeit dank Schlüsseln</string>
-    <string name="cat1_lec8">Fremdschlüssel</string>
-    <string name="cat1_lec9">Erste Abfrage mit dem SELECT-Befehl</string>
-    <string name="cat1_lec10">Attribute im SLEECT-Block</string>
-    <string name="cat1_lec11">Wir gehen ans Limit mit dem LIMIT-Befehl</string>
+    <string name="cat1_lec1">Einsatzmöglichkeiten für Datenbanken <b>X</b></string>
+    <string name="cat1_lec2">Von Datenbanken und Tabellen <b>X</b></string>
+    <string name="cat1_lec3">Warum relational? <b>X</b></string>
+    <string name="cat1_lec4">Zeilen, Spalten, Attribute <b>X</b></string>
+    <string name="cat1_lec5">Anforderungen an Tabellen <b>X</b></string>
+    <string name="cat1_lec6">Datentypen von Attributen <b>X</b></string>
+    <string name="cat1_lec7">Eindeutigkeit dank Schlüsseln <b>X</b></string>
+    <string name="cat1_lec8">Fremdschlüssel <b>X</b></string>
+    <string name="cat1_lec9">Erste Abfrage mit dem SELECT-Befehl <b>D</b></string>
+    <string name="cat1_lec10">Attribute im SLEECT-Block <b>D</b></string>
+    <string name="cat1_lec11">Wir gehen ans Limit mit dem LIMIT-Befehl <b>D</b></string>
 
     <string name="cat2_lec1">Der WHERE-Befehl</string>
     <string name="cat2_lec2">Es muss nicht alles gleich sein</string>
@@ -81,13 +103,112 @@
 
     <string name="c1l1_input">
         Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.\n\n
-        In jeder Schule müssen Kontaktdaten von Lehrkräften und SchülerInnen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.\n\n
+        In jeder Schule müssen Kontaktdaten von Lehrkräften und Schüler*innen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.\n\n
         Durch die Nutzung einer Datenbank geschieht das effizient, widerspruchsfrei und dauerhaft.
     </string>
     <string name="c1l1_question">In welchem der folgenden Bereiche lohnt sich der Einsatz einer Datenbank nicht?</string>
     <string name="c1l1_answer1">Addressbuch</string>
     <string name="c1l1_answer2">Familienkalender</string>
     <string name="c1l1_answer3">Einkaufsliste</string>
+
+    <string name="c1l2_input">
+        Im Grunde ist auch dein Stundenplan schon eine kleine Datenbank.\n\n
+        Es wird gespeichert wann welcher Unterricht stattfindet.\n\n
+        Deine Adresse passt jedoch nicht in dieses Format und hat ja auch mit deinen Unterrichtszeiten nichts zu tun.\n\n
+        Daher gibt es in einer Datenbank nicht nur eine, sondern verschiedene Tabellen für verschiedene Datensätze.
+    </string>
+    <string name="c1l2_question">Wähle das Falsche aus:</string>
+    <string name="c1l2_answer1">Eine Datenbank besteht immer aus mindestens einer Tabelle</string>
+    <string name="c1l2_answer2">Eine Datenbank kann aus mehreren Tabellen bestehen</string>
+    <string name="c1l2_answer3">Eine Datenbank besteht immer aus genau einer Tabelle</string>
+
+    <string name="c1l3_input">
+        Am häufigsten werden relationale Datenbanken verwendet.\n\n
+	Eine Relation bezeichnet allgemein die Beziehung zwischen etwas.\n\n
+	In relationalen Datenbanken werden die Inhalte also in Beziehung zueinander gestellt.\n\n
+	So ist jede Tabelle einer relationalen Datenbank selbst eine Relation.\n\n
+	Jede*r Schüler*in hat eine Adresse.\n\n
+	Diese werden einander in einer Tabelle eindeutig zugeordnet.
+    </string>
+    <string name="c1l3_question">Welche der Folgenden stehen nicht in Relation zueinander?</string>
+    <string name="c1l3_answer1">Jede*r Schüler*in gehört zu einer Klasse</string>
+    <string name="c1l3_answer2">Jedes Unterrichtsfach hat einen Raum</string>
+    <string name="c1l3_answer3">Jeder Raum hat eine Nummer</string>
+
+    <string name="c1l4_input">
+       Jede Tabelle hat einen Namen und besteht aus Zeilen und Spalten.\n\n
+	Die Spaltennamen werden als „Attribute“ bezeichnet, in jeder Zeile steht ein zusammengehörender Datensatz, ein „Tupel“.\n\n
+	So bildet jede Tabelle ein „Relationenschema“.\n\n
+        Man kann Tabellen auch in der Form Tabellenname (Attribut 1, …, Attribut n) darstellen, wenn man die Einträge nicht sehen will.
+    </string>
+    <string name="c1l4_question">Orden den weißen Feldern die richtigen Begriffe zu.</string>
+    <string name="c1l4_answer1">tba</string>
+    <string name="c1l4_answer2">tba</string>
+    <string name="c1l4_answer3">tba</string>
+
+    <string name="c1l5_input">
+        Damit man effizient auf die Datenbank zugreifen kann, müssen die einzelnen Einträge atomar sein.\n\n
+        Das bedeutet, dass in jeder Zelle nur eine Information steht.\n\n
+        Außerdem sollte keine Information doppelt gespeichert werden, sondern lieber mehrere Tabellen miteinander verknüpft werden.
+    </string>
+    <string name="c1l5_question">Welche Tabellenstruktur erfüllt die Bedingungen und enthält Name, Personalnummer, Adresse und Fächer?</string>
+    <string name="c1l5_answer1">tba</string>
+    <string name="c1l5_answer2">tba</string>
+    <string name="c1l5_answer3">tba</string>
+
+    <string name="c1l6_input">
+        Die Attribute legen fest, welche Einträge in eine Zelle geschrieben werden können.\n\n
+        So kann als Geburtsdatum nur ein Datum gespeichert werden und kein Wort.\n\n
+        Manchmal sind nicht alle Informationen eines Datensatzes bekannt.\n\n
+        Daher gibt es die Möglichkeit “NULL” in die betreffende Zelle zu schreiben.\n\n
+        NULL passt zu jedem Attribut.
+    </string>
+    <string name="c1l6_question">Welcher Eintrag ist falsch?</string>
+    <string name="c1l6_answer1">tba</string>
+    <string name="c1l6_answer2">tba</string>
+    <string name="c1l6_answer3">tba</string>
+
+    <string name="c1l7_input">
+        Um einen Datensatz zu identifizieren wird ihm ein eindeutiger Schlüssel zugeordnet.\n\n
+        Gibt es in einer Tabelle keine eindeutigen Spalte, so kann auch auf einen künstlichen Schlüssel zurückgegriffen werden, der dann ein eigenes Attribut wird.\n\n
+        Meistens handelt es sich um irgendeine Art von Nummer.\n\n
+        In der Darstellung einer Datenbank erkennt man Schlüsselattribute daran, dass sie unterstrichen sind.
+    </string>
+    <string name="c1l7_question">Was eignet sich gut als Schlüssel?</string>
+    <string name="c1l7_answer1">Nachname</string>
+    <string name="c1l7_answer2">Personalnummer</string>
+    <string name="c1l7_answer3">Kürzel</string>
+
+    <string name="c1l8_input">
+        Manchmal werden Primärschlüssel einer Tabelle als Eintrag in einer anderen Tabelle verwendet.\n\n
+        Mit deren Hilfe findet man schnell zusammengehörende Informationen, wie beispielsweise die Adresse und die Fächer einer Lehrkraft.\n\n
+        Manchmal ergibt es keinen Sinn, einen Schlüssel extra zu “erfinden”.\n\n
+        Dann werden mehrere Fremdschlüssel im Verbund als Schlüssel verwendet.\n\n
+        In der Darstellung einer Datenbank sind Fremdschlüsselattribute ebenfalls unterstrichen und werden mit einem kleinen Pfeil ↑ markiert.
+    </string>
+    <string name="c1l8_question">(tba) Vor welches Attribut gehört der ↑, da es ein Fremdschlüssel ist?</string>
+    <string name="c1l8_answer1">SchülerID</string>
+    <string name="c1l8_answer2">Nachname</string>
+    <string name="c1l8_answer3">KlassenID</string>
+
+    <string name="c1l9_input">
+        Um zu sehen was in der Datenbank gespeichert ist stellt man Anfragen.\n\n
+        Damit der Computer diese verarbeiten kann nutzen wir Befehle in SQL (Structured Query Language).\n\n
+Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FROM (engl. von).\n\n
+        Mit SELECT gibt man an, welche Spalten man ausgegeben haben möchte; mit FROM gibt man die Tabelle an, aus der die Spalten stammen.\n\n
+        Versuche folgende SQL-Anfrage nachzubauen und abzuschicken:\n\n\n
+        SELECT * FROM SCHUELER
+    </string>
+
+    <string name="c1l10_input">
+        Das Ergebnis der letzten SQL-Abfrage war ganz schön groß, weil der *-Befehl alles ausgibt, was in der Tabelle gespeichert ist.\n\n
+        Versuche dir jetzt nur die Spalten VORNAME und NACHNAME anzeigen zu lassen.
+    </string>
+
+    <string name="c1l11_input">
+        In dieser Schule sind ganz schön viele Schüler.\n\n
+        Versuche mit dem LIMIT Befehl, der sich im Reiter <i>Befehle</i> befindet, dir nur die ersten 10 Vornamen anzeigen zu lassen.
+    </string>
 
     <string name="head_tutorial">Tutorial</string>
     <string name="tutorial_category1">Relationale Datanbanken</string>
@@ -114,6 +235,9 @@
     <string name="tutScore4_unlocked_key">tutScore4_unlocked</string>
 
     <string name="pracScore_key">pracScore</string>
+    <string name="prac_easy_key">pracEasy</string>
+    <string name="prac_medium_key">pracMedium</string>
+    <string name="prac_hard_key">pracHard</string>
 
     <!-- profile -->
     <string name="default_name">admin</string>

@@ -77,6 +77,7 @@ public class Tutorial extends AppCompatActivity {
         //toolbar stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     //key value store

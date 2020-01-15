@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".practice.Complexity"
+    android:background="@drawable/gradient_background">
+
+    <TextView
+        android:id="@+id/prac_easy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/prac_easy"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor_white"
+        android:textSize="30dp"
+        android:background="@drawable/border_yellow"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/prac_medium"
+        android:layout_marginBottom="32dp"
+        />
+
+    <TextView
+        android:id="@+id/prac_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/prac_medium"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor_white"
+        android:textSize="30dp"
+        android:background="@drawable/border_orange"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/prac_hard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa"
+        android:text="@string/prac_hard"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor_white"
+        android:textSize="30dp"
+        android:background="@drawable/border_red"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prac_medium"
+        android:layout_marginTop="32dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

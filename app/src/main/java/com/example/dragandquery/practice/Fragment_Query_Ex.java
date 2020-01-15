@@ -1,49 +1,40 @@
-package com.example.dragandquery.free;
+package com.example.dragandquery.practice;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
-import com.example.dragandquery.block.Block;
-import com.example.dragandquery.block.BlockFactory;
 import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
+import com.example.dragandquery.free.ClearView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /***
  * TODO
- * - alpha/visible/shadow stuff
  * - db icon
  * - child doesnt move when parent dropped
  */
 
-public class Fragment_Query extends Fragment {
+public class Fragment_Query_Ex extends Fragment {
 
     //errors
     public static String SELECT_MISSING_ERROR;
@@ -52,20 +43,24 @@ public class Fragment_Query extends Fragment {
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
+    private ImageView bird;
+    private LinearLayout exercise;
+    private TextView exercise_text;
 
     //vars
-    private Fragment_Query_Listener listener;
+    private Fragment_Query_Ex_Listener listener;
     public Context context;
+    private boolean ex_open = true;
 
     //interface
-    public interface Fragment_Query_Listener{
+    public interface Fragment_Query_Ex_Listener{
         void onGo(String query);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_query, container, false);
+        View v = inflater.inflate(R.layout.fragment_query_ex, container, false);
 
         //errors
         SELECT_MISSING_ERROR = getString(R.string.select_missing_error);
@@ -74,12 +69,19 @@ public class Fragment_Query extends Fragment {
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
         btn_go = (ClearView) v.findViewById(R.id.frag_go);
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
+        bird = (ImageView) v.findViewById(R.id.ex_bird);
         context = getContext();
+        exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
+        exercise_text = (TextView) v.findViewById(R.id.tv_ex);
 
         //listeners
-        btn_go.setMyClearDragListener(new Fragment_Query.MyGoListener());
-        btn_clear.setOnLongClickListener(new Fragment_Query.MyClearLongClickListener());
-        btn_clear.setMyClearDragListener(new Fragment_Query.MyClearDragListener());
+        btn_go.setMyClearDragListener(new Fragment_Query_Ex.MyGoListener());
+        btn_clear.setOnLongClickListener(new Fragment_Query_Ex.MyClearLongClickListener());
+        btn_clear.setMyClearDragListener(new Fragment_Query_Ex.MyClearDragListener());
+        bird.setOnClickListener(new Fragment_Query_Ex.MyBirdClickListener());
+
+        //set ex text
+        exercise_text.setText(getExText(this.getArguments().getInt(Exercise.ID_KEY)));
 
         return v;
     }
@@ -103,9 +105,9 @@ public class Fragment_Query extends Fragment {
         rl_query.addView(cur_view, params);
 
         //add listeners
-        cur_view.setOnTouchListener(new Fragment_Query.MyOnGroupTouchListener());
-        cur_view.setMydragListener(new Fragment_Query.MyDragListener());
-        cur_view.setListener(new Fragment_Query.MyGroupDragListener());
+        cur_view.setOnTouchListener(new Fragment_Query_Ex.MyOnGroupTouchListener());
+        cur_view.setMydragListener(new Fragment_Query_Ex.MyDragListener());
+        cur_view.setListener(new Fragment_Query_Ex.MyGroupDragListener());
     }
 
     //when removed or cleared, if had node parent remove
@@ -171,11 +173,31 @@ public class Fragment_Query extends Fragment {
         return select.getNode().toTreeString();
     }
 
+    //todo add exs via strings
+    public String getExText(int ex_id){
+        String text = "";
+        switch(ex_id){
+            case 100:
+                text += getString(R.string.ex_easy_1_text);
+                break;
+            case 101:
+                text += getString(R.string.ex_easy_2_text);
+                break;
+            case 102:
+                text += getString(R.string.ex_easy_3_text);
+                break;
+            case 103:
+                text += getString(R.string.ex_easy_4_text);
+                break;
+        }
+        return text;
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_Query_Listener){
-            listener = (Fragment_Query_Listener) context;
+        if(context instanceof Fragment_Query_Ex_Listener){
+            listener = (Fragment_Query_Ex_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -365,6 +387,20 @@ public class Fragment_Query extends Fragment {
                     }
 
                     break;
+            }
+        }
+    }
+
+    public class MyBirdClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(ex_open){
+                exercise.setVisibility(View.INVISIBLE);
+                ex_open = false;
+            }else{
+                exercise.setVisibility(View.VISIBLE);
+                ex_open = true;
             }
         }
     }

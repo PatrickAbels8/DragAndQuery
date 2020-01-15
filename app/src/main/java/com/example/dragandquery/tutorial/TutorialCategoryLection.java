@@ -17,12 +17,14 @@ import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0103;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0104;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0105;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0106;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0107;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0108;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * -curfrag of type MyFrag interface/topclass and every lection overrides methods (startExercise(), ...)
+ * -cat 2-4
  */
 
 public class TutorialCategoryLection
@@ -35,7 +37,9 @@ public class TutorialCategoryLection
             Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
             Fragment_LectionContent_0104.Fragment_LectionContent_0104_Listener,
             Fragment_LectionContent_0105.Fragment_LectionContent_0105_Listener,
-            Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener
+            Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener,
+            Fragment_LectionContent_0107.Fragment_LectionContent_0107_Listener,
+            Fragment_LectionContent_0108.Fragment_LectionContent_0108_Listener
 {
 
     //fragments
@@ -49,6 +53,7 @@ public class TutorialCategoryLection
     private int numCat;
     private int numLec;
     private int numLecs;
+    public static final String LEC_KEY = "com.example.dragandquery.tutorial.TutorialCategoryLection";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,9 @@ public class TutorialCategoryLection
                 new Fragment_LectionContent_0103(),
                 new Fragment_LectionContent_0104(),
                 new Fragment_LectionContent_0105(),
-                new Fragment_LectionContent_0106()
+                new Fragment_LectionContent_0106(),
+                new Fragment_LectionContent_0107(),
+                new Fragment_LectionContent_0108()
         };
 
         //intent stuff
@@ -79,6 +86,11 @@ public class TutorialCategoryLection
 
         //checkout current lection
         curFrag = frags[getFragIndex(numCat, numLec)];
+
+        //send right text to input frag
+        Bundle lec = new Bundle();
+        lec.putString(LEC_KEY, lection_id);
+        fragInput.setArguments(lec);
 
         //open current lection
         getSupportFragmentManager().beginTransaction()
@@ -119,8 +131,6 @@ public class TutorialCategoryLection
 
     @Override
     public void onGo(boolean isCorrect) {
-        Log.d("############ hello from", "onGo()");
-
         fragFeedback.goVisible(isCorrect);
         fragInput.goInclickable();
         fragInput.hideBird();
@@ -134,20 +144,18 @@ public class TutorialCategoryLection
 
     @Override
     public void onAccept() {
-        Log.d("############ hello from", "onAccept()");
         curFrag.startExercise();
         fragInput.goInvisible();
     }
 
     @Override
     public void onBird(boolean wasOpen){
-        Log.d("############ hello from", "onBird()");
         if(wasOpen){
             curFrag.startExercise();
             fragInput.goInvisible();
         }else{
             curFrag.pauseExercise();
-            fragInput.goVisible(lection_id);
+            fragInput.goVisible();
         }
 
     }
@@ -178,9 +186,6 @@ public class TutorialCategoryLection
         int numDone = Integer.parseInt(counts[1]);
         int numTotal = Integer.parseInt(counts[2]);
         int exp = 100*numDone/numTotal +1;
-        //Log.d("############ ach -> exp: numDone: ", Integer.toString(numDone));
-        //Log.d("############ ach -> exp: numTotal: ", Integer.toString(numTotal));
-        //Log.d("############ ach -> exp: exp: ", Integer.toString(exp));
         return exp;
     }
 
@@ -190,9 +195,6 @@ public class TutorialCategoryLection
         int numUnlocked = Integer.parseInt(counts[1])+1;
         int numTotal = Integer.parseInt(counts[2]);
         int exp = 100*numUnlocked/numTotal +1;
-        //Log.d("############ un.ach -> exp: numDone: ", Integer.toString(numUnlocked));
-        //Log.d("############ un.ach -> exp: numTotal: ", Integer.toString(numTotal));
-        //Log.d("############ un.ach -> exp: exp: ", Integer.toString(exp));
         return exp;
     }
 
@@ -203,7 +205,6 @@ public class TutorialCategoryLection
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, data);
         editor.apply();
-        Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_SHORT).show();
     }
 
     //key value store
@@ -227,35 +228,15 @@ public class TutorialCategoryLection
         return nextLectionID;
     }
 
-    //todo change when lection changed
+    //todo change when lections changed
     public int getFragIndex(int chapter, int lection){
         int idx = 0;
-        switch(chapter){
-            case 1:
-                switch(lection){
-                    case 1:
-                        idx = 0;
-                        break;
-                    case 2:
-                        idx = 1;
-                        break;
-                    case 3:
-                        idx = 2;
-                        break;
-                    case 4:
-                        idx = 3;
-                        break;
-                    case 5:
-                        idx = 4;
-                        break;
-                    case 6:
-                        idx = 5;
-                        break;
-                }
-            case 2:
-            case 3:
-            case 4:
-        }
+
+        idx += chapter>1? 11: 0;
+        idx += chapter>2? 15: 0;
+        idx += chapter>3? 8: 0;
+        idx += lection-1;
+
         return idx;
     }
 }

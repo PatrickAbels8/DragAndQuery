@@ -49,6 +49,24 @@ public enum BlockT {
         return "";
     }
 
+    public static BlockT getBlock(int design){
+        switch(design){
+            case R.drawable.attribute_block:
+                return BlockT.ATTRIBUTE;
+            case R.drawable.from_block:
+                return BlockT.FROM;
+            case R.drawable.select_block:
+                return BlockT.SELECT;
+            case R.drawable.star_block:
+                return BlockT.STAR;
+            case R.drawable.table_block:
+                return BlockT.TABLE;
+            case R.drawable.where_block:
+                return BlockT.WHERE;
+        }
+        return BlockT.SELECT;
+    }
+
     @DrawableRes
     public int getDesign(){
         switch(this){

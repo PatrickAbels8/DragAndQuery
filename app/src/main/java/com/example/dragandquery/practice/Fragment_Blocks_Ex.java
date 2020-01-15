@@ -1,25 +1,20 @@
-package com.example.dragandquery.free;
+package com.example.dragandquery.practice;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
-import com.example.dragandquery.block.Block;
-import com.example.dragandquery.block.BlockFactory;
 import com.example.dragandquery.block.BlockT;
 
 import java.util.ArrayList;
@@ -27,10 +22,11 @@ import java.util.List;
 
 /***
  * TODO
- * -
+ * -match blocks to ex id
+ * -block drag mode
  */
 
-public class Fragment_Blocks extends Fragment {
+public class Fragment_Blocks_Ex extends Fragment {
 
     //coms
     LinearLayout ll_blocks;
@@ -42,13 +38,13 @@ public class Fragment_Blocks extends Fragment {
     List<ImageView> [] blocks_of_categories;
 
     //vars
-    private Fragment_Blocks_Listener listener;
+    private Fragment_Blocks_Ex_Listener listener;
     private boolean blocks_open;
     private int current_category_index;
     private Context context;
 
     //interface
-    public interface Fragment_Blocks_Listener{
+    public interface Fragment_Blocks_Ex_Listener{
         void onBlockDragged(View view, float x, float y);
     }
 
@@ -56,7 +52,7 @@ public class Fragment_Blocks extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_blocks, container, false);
+        View v = inflater.inflate(R.layout.fragment_blocks_ex, container, false);
         context = getContext();
 
         //init stuff
@@ -70,17 +66,12 @@ public class Fragment_Blocks extends Fragment {
         blocks_open = false;
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
-        /***
-         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
-         */
-
-        blocks_of_categories[0].add(BlockT.TABLE.createView(context));
-        blocks_of_categories[0].add(BlockT.STAR.createView(context));
-        blocks_of_categories[0].add(BlockT.ATTRIBUTE.createView(context));
-
-        blocks_of_categories[2].add(BlockT.FROM.createView(context));
-        blocks_of_categories[2].add(BlockT.WHERE.createView(context));
-        blocks_of_categories[2].add(BlockT.SELECT.createView(context));
+        //match blocks to bundle
+        Bundle args = this.getArguments();
+        ArrayList<String> blocks = (ArrayList<String>)args.get(Exercise.ARGS_KEY);
+        for(int i=0; i<blocks.size(); i++){
+            addBlock(blocks.get(i));
+        }
 
         //drag
         /*for(ImageView b: blocks){
@@ -130,6 +121,21 @@ public class Fragment_Blocks extends Fragment {
         return v;
     }
 
+    public void addBlock(String name){
+        if(name.equals(BlockT.ATTRIBUTE.getName()))
+            blocks_of_categories[0].add(BlockT.ATTRIBUTE.createView(context));
+        else if(name.equals(BlockT.SELECT.getName()))
+            blocks_of_categories[2].add(BlockT.SELECT.createView(context));
+        else if(name.equals(BlockT.TABLE.getName()))
+            blocks_of_categories[2].add(BlockT.FROM.createView(context));
+        else if(name.equals(BlockT.WHERE.getName()))
+            blocks_of_categories[2].add(BlockT.WHERE.createView(context));
+        else if(name.equals(BlockT.STAR.getName()))
+            blocks_of_categories[0].add(BlockT.STAR.createView(context));
+        else if(name.equals(BlockT.TABLE.getName()))
+            blocks_of_categories[0].add(BlockT.TABLE.createView(context));
+    }
+
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<ImageView> blocks_to_show, int index){
         if(!blocks_open){ //no cat opened yet
@@ -162,8 +168,8 @@ public class Fragment_Blocks extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_Blocks_Listener){
-            listener = (Fragment_Blocks_Listener) context;
+        if(context instanceof Fragment_Blocks_Ex_Listener){
+            listener = (Fragment_Blocks_Ex_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

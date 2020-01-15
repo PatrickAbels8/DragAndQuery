@@ -18,7 +18,7 @@
         android:layout_height="100dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/bird_happy" />
+        app:srcCompat="@drawable/happy_berry" />
 
     <TextView
         android:id="@+id/nav_title_big"
