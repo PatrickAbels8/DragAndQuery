@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:id="@+id/cl_blocks">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/ll_blocks"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@id/ll_categories">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_categories"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/block_category1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cat1_block" />
+
+        <ImageView
+            android:id="@+id/block_category2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cat2_block" />
+
+        <ImageView
+            android:id="@+id/block_category3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/cat3_block" />
+
+        <ImageView
+            android:id="@+id/block_category4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/cat4_block"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/ll_categories"
+        app:layout_constraintTop_toTopOf="@id/ll_categories">
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat1"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/textcolor_white"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat2"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/textcolor_white"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat3"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/textcolor_white"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="@dimen/cat_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/block_cat4"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/textcolor_white"/>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

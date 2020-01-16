@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".practice.Exercise"
+        <activity android:name=".tutorial.draglessons.DragLesson"
+            android:parentActivityName=".tutorial.TutorialCategory"
+            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
         <activity
+            android:name=".practice.Exercise"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
             android:name=".practice.Complexity"
             android:label="@string/title_activity_practice"
-            android:screenOrientation="sensorPortrait"></activity>
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".practice.Practices"
             android:label="@string/title_activity_practices"

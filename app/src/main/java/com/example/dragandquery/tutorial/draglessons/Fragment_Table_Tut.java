@@ -1,4 +1,4 @@
-package com.example.dragandquery.practice;
+package com.example.dragandquery.tutorial.draglessons;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,26 +22,27 @@ import com.example.dragandquery.R;
  * TODO
  * - show code button
  * - code to tableview
- * - is correct
- * - btn to exs
  */
 
-public class Fragment_Table_Ex extends Fragment {
+public class Fragment_Table_Tut extends Fragment {
 
     //coms
     private ConstraintLayout cl_table;
-    private Button btn_retry;
+    private Button btn_back;
+    private Button btn_forth;
     private TextView raw_query;
     private Animation frombottom;
     private Animation tobottom;
     private Context context;
 
     //vars
-    private Fragment_Table_Ex_Listener listener;
+    private Fragment_Table_Tut_Listener listener;
+    private String lec_id;
 
     //interface
-    public interface Fragment_Table_Ex_Listener{
-        void onRetry();
+    public interface Fragment_Table_Tut_Listener{
+        void onBack();
+        void onForth();
     }
 
 
@@ -49,23 +50,34 @@ public class Fragment_Table_Ex extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_table_ex, container, false);
+        View v = inflater.inflate(R.layout.fragment_table_tut, container, false);
 
         //init coms
         context = getContext();
         cl_table = v.findViewById(R.id.frag_table);
-        btn_retry = v.findViewById(R.id.frag_retry);
+        btn_back = v.findViewById(R.id.btn_feedback_back);
+        btn_forth = v.findViewById(R.id.btn_feedback_forth);
         raw_query = v.findViewById(R.id.raw_query);
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
 
+        //load lection id
+        lec_id = this.getArguments().getString(DragLesson.ID_KEY);
+
         //get back to edit or forth to next lec
-        btn_retry.setOnClickListener(new View.OnClickListener() {
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onRetry();
+                listener.onBack();
             }
         });
+        btn_forth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onForth();
+            }
+        });
+
 
         return v;
     }
@@ -75,18 +87,23 @@ public class Fragment_Table_Ex extends Fragment {
         cl_table.setVisibility(View.INVISIBLE);
     }
 
-    public void goVisible(String query){
+    //todo good or bad feedback
+    public void goVisible(String query, boolean isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         cl_table.startAnimation(frombottom);
         raw_query.setText(query);
+        if(isCorrect)
+            btn_forth.setVisibility(View.VISIBLE);
+        else
+            btn_forth.setVisibility(View.INVISIBLE);
 
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_Table_Ex_Listener){
-            listener = (Fragment_Table_Ex_Listener) context;
+        if(context instanceof Fragment_Table_Tut_Listener){
+            listener = (Fragment_Table_Tut_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

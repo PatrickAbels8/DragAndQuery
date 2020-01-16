@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.Tutorial;
+import com.example.dragandquery.tutorial.draglessons.DragLesson;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0101;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0102;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0103;
@@ -24,9 +25,10 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * -cat 2-4
+ * -
  */
 
+//for choice lessons only
 public class TutorialCategoryLection
         extends AppCompatActivity
         implements
@@ -84,7 +86,7 @@ public class TutorialCategoryLection
             numLecs = Integer.parseInt(components[2]);
         }
 
-        //checkout current lection
+        //checkout current lection todo out of bounds
         curFrag = frags[getFragIndex(numCat, numLec)];
 
         //send right text to input frag
@@ -118,9 +120,17 @@ public class TutorialCategoryLection
     public void onForth() {
         //go forth to next lection if there is one, if not back to cat overview
         if(hasNextLection()){
-            Intent i = new Intent(getApplicationContext(), TutorialCategoryLection.class);
-            i.putExtra(TutorialCategory.LECTION_ID, getNextLectionID());
-            startActivity(i);
+            String next_lec = getNextLectionID();
+            if(!isDragLesson(next_lec)){
+                Intent i = new Intent(getApplicationContext(), TutorialCategoryLection.class);
+                i.putExtra(TutorialCategory.LECTION_ID, next_lec);
+                startActivity(i);
+            }else{
+                Intent i = new Intent(getApplicationContext(), DragLesson.class);
+                i.putExtra(TutorialCategory.LECTION_ID, next_lec);
+                startActivity(i);
+            }
+
         }else{
             Intent i2 = new Intent(getApplicationContext(), TutorialCategory.class);
             i2.putExtra(Tutorial.CAT_ID, numCat);
@@ -217,6 +227,13 @@ public class TutorialCategoryLection
     //check whether you are the last lection of your category
     public boolean hasNextLection(){
         return !(numLec == numLecs);
+    }
+
+    //todo hard for every choice-->drag transition
+    public boolean isDragLesson(String id){
+        return id.substring(0, 5).equals("01_09") ||
+                id.substring(0, 5).equals("01_10") ||
+                id.substring(0, 5).equals("01_11") ;
     }
 
     public String getNextLectionID(){

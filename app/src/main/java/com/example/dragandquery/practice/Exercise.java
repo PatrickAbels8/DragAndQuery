@@ -14,14 +14,12 @@ import java.util.List;
 
 /***
  * TODO:
- * - better: send same arguments to everyone, they calc their info on that arguments
  */
 
 public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fragment_Table_Ex_Listener, Fragment_Query_Ex.Fragment_Query_Ex_Listener, Fragment_Blocks_Ex.Fragment_Blocks_Ex_Listener{
 
     //vars
     int ex_id;
-    public static final String ARGS_KEY = "com.example.dragandquery.practice.Exercise.ARGS_KEY";
     public static final String ID_KEY = "com.example.dragandquery.practice.Exercise.ID_KEY";
 
     //fragments
@@ -44,15 +42,12 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
         fragBlocks = new Fragment_Blocks_Ex();
         fragTable = new Fragment_Table_Ex();
 
-        //notify blocks wich one to show
-        Bundle blocks_args = new Bundle();
-        blocks_args.putStringArrayList(ARGS_KEY, getBlockStrings());
-        fragBlocks.setArguments(blocks_args);
-
-        Bundle query_args = new Bundle();
-        query_args.putInt(ID_KEY, ex_id);
-        fragQuery.setArguments(query_args);
-        fragTable.setArguments(query_args);
+        //frags need to know the lec id
+        Bundle args = new Bundle();
+        args.putInt(ID_KEY, ex_id);
+        fragBlocks.setArguments(args);
+        fragQuery.setArguments(args);
+        fragTable.setArguments(args);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_query, fragQuery)
@@ -80,13 +75,5 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
         fragQuery.goClickable();
         fragBlocks.goVisible();
         fragTable.goInvisible();
-    }
-
-    public ArrayList<String> getBlockStrings(){
-        //todo depending on ex id return blocks to choose
-        ArrayList<String> blocks = new ArrayList<>();
-        blocks.add(BlockT.SELECT.getName());
-        blocks.add(BlockT.ATTRIBUTE.getName());
-        return blocks;
     }
 }

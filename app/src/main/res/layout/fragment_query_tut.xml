@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mustard"
+    android:id="@+id/frag_query">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:id="@+id/ll_tools"
+                >
+
+                <com.example.dragandquery.free.ClearView
+                    android:id="@+id/frag_go"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/go" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                        android:id="@+id/frag_db"
+                        android:src="@drawable/ic_golf"/>
+
+                <ImageView
+                    android:id="@+id/ex_bird"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                        android:src="@drawable/happy_berry"/>
+
+                <com.example.dragandquery.free.ClearView
+                    android:id="@+id/frag_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/garbage_collector" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ex"
+            android:layout_below="@id/ll_tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:background="@drawable/border_berry_filled"
+            >
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                        <TextView
+                            android:id="@+id/tv_ex"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l1_input"
+                            android:textSize="@dimen/tutorial_input_textSize"
+                            android:layout_centerInParent="true"
+                            android:ellipsize="marquee"
+                            android:scrollHorizontally="true"
+                            android:fontFamily="@font/comfortaa"
+                            android:textColor="@color/textcolor_white"/>
+
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btn_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept_input"
+                    android:background="@drawable/border_white"
+                    android:fontFamily="@font/comfortaa"
+                    android:textColor="@color/textcolor_white"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+
+
+</RelativeLayout>
