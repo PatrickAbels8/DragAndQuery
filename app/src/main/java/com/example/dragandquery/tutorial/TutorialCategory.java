@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.Tutorial;
+import com.example.dragandquery.tutorial.draglessons.DragLesson;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -119,9 +120,23 @@ public class TutorialCategory extends AppCompatActivity {
 
     //start lection
     public void startLection(int lection_id){
-        Intent i = new Intent(context, TutorialCategoryLection.class);
-        i.putExtra(LECTION_ID, getLectionID(lection_id));
-        startActivity(i);
+        String lec = getLectionID(lection_id);
+        if(lec.substring(0, 5).equals("01_01") ||
+                lec.substring(0, 5).equals("01_02") ||
+                lec.substring(0, 5).equals("01_03") ||
+                lec.substring(0, 5).equals("01_04") ||
+                lec.substring(0, 5).equals("01_05") ||
+                lec.substring(0, 5).equals("01_06") ||
+                lec.substring(0, 5).equals("01_07") ||
+                lec.substring(0, 5).equals("01_08")){
+            Intent i = new Intent(context, TutorialCategoryLection.class);
+            i.putExtra(LECTION_ID, lec);
+            startActivity(i);
+        }else{
+            Intent drag_i = new Intent(context, DragLesson.class);
+            drag_i.putExtra(LECTION_ID, lec);
+            startActivity(drag_i);
+        }
     }
 
     //save new achievement in layout and in sharedPrefs

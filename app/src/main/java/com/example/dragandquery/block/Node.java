@@ -104,9 +104,11 @@ public class Node {
         return downChild != null;
     }
 
-    //if child right child of this return true, if is down hild return false
+    //if child right child of this return true, if is down child return false
     public boolean isRightButDown(Node child){
+        if(this.rightChild != null)
             return this.rightChild.getBlock().getName().equals(child.getBlock().getName());
+        return false;
     }
 
     public List<Node> getTreeMembers(){
