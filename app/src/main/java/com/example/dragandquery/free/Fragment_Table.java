@@ -35,7 +35,7 @@ public class Fragment_Table extends Fragment {
 
     //coms
     private ConstraintLayout cl_table;
-    private ImageButton btn_retry;
+    private Button btn_retry;
     private TextView raw_query;
     private Animation frombottom;
     private Animation tobottom;

@@ -20,6 +20,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.example.dragandquery.practice.Complexity;
+import com.example.dragandquery.practice.Exercise;
+import com.example.dragandquery.practice.Practices;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -35,8 +37,11 @@ import android.widget.Toast;
 
 /***
  * TODO
- * -prac score
  * -title big+small in nd
+ * default img missing
+ * prac onForth
+ * star only update if better
+ * tutprial wrong defaults
  * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed or onCreate)
  */
 
@@ -49,7 +54,6 @@ public class Navigation extends AppCompatActivity
     private String user_mail;
     private int tutorial_exp_avg;
     private int[] tutorial_exps;
-    private int practise_exp;
 
     //coms
     private ImageView image;
@@ -84,8 +88,6 @@ public class Navigation extends AppCompatActivity
         if(i.hasExtra(Settings.UMAIL)) {
             saveData(getString(R.string.userMail_key), i.getStringExtra(Settings.UMAIL));
         }
-        saveData(getString(R.string.pracScore_key), Integer.toString(70)); //todo just for now
-
         user_name = loadDataString(getString(R.string.userName_key), "Name");
         user_mail = loadDataString(getString(R.string.userMail_key), "Mail");
         tutorial_exps = new int[]{
@@ -95,13 +97,13 @@ public class Navigation extends AppCompatActivity
                 loadDataInt(getString(R.string.tutScore4_key), 40)
         };
         tutorial_exp_avg = calcAvg(tutorial_exps);
-        practise_exp = Integer.parseInt(loadDataString(getString(R.string.pracScore_key), Integer.toString(0)));
+
 
         //show user details
         name.setText(user_name);
         mail.setText(user_mail);
         pb_tutorial.setProgress(tutorial_exp_avg);
-        pb_practise.setProgress(practise_exp);
+        pb_practise.setProgress(calcExAvg());
 
         //open settings via tv's
         name.setOnClickListener(new Navigation.OnSettingsClickListener());
@@ -110,6 +112,8 @@ public class Navigation extends AppCompatActivity
         //change profile image
         if(loadDataBoolean(getString(R.string.userImageBool_key), false)){
             image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
+        } else{
+            image.setImageResource(R.drawable.profile_image);
         }
 
         //open tutorial (and practise) via pb/tv
@@ -173,6 +177,15 @@ public class Navigation extends AppCompatActivity
         return data;
     }
 
+    public int calcExAvg(){
+        String e1 = loadDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
+        String e2 = loadDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
+        String e3 = loadDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+        int num_exs = Practices.DEFAULT_EASY.length()+Practices.DEFAULT_MEDIUM.length()+Practices.DEFAULT_HARD.length();
+        int num_dones = getNonZeros(e1)+getNonZeros(e2)+getNonZeros(e3);
+        return num_dones==0? 1: 100*num_dones/num_exs;
+    }
+
     public int calcAvg(int[] partialExps){
         int num_cats = partialExps.length;
         int sum = 0;
@@ -180,6 +193,14 @@ public class Navigation extends AppCompatActivity
             sum += partialExp;
         }
         return sum/num_cats;
+    }
+
+    public int getNonZeros(String s){
+        int num_NonZeros = 0;
+        for(int i=0; i<s.length(); i++)
+            if(s.charAt(i)!='0')
+                num_NonZeros++;
+        return num_NonZeros;
     }
 
     @Override
@@ -217,7 +238,7 @@ public class Navigation extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    //TODO back stack + add all the navi stuff to the other main activities after creating the main activities each
+    //TODO back stack + add all the navi stuff to the other main activities after creating the main activities each + uml
     public boolean onNavigationItemSelected(MenuItem item) {
         //Toast.makeText(getApplicationContext(), "onNavigationItemSelected", Toast.LENGTH_LONG).show();
         // Handle navigation view item clicks here.

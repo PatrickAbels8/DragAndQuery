@@ -186,6 +186,8 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     public boolean isDragLesson(String id){
         return id.substring(0, 5).equals("01_09") ||
                 id.substring(0, 5).equals("01_10") ||
-                id.substring(0, 5).equals("01_11") ;
+                id.substring(0, 5).equals("01_11") ||
+                id.substring(0, 5).equals("03_01") ||
+                id.substring(0, 5).equals("04_01");
     }
 }

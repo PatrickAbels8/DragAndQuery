@@ -4,32 +4,26 @@
         <layer-list>
             <item>
                 <shape>
-                    <corners android:radius="3dp"/>
                     <solid android:color="#090E09"/>
-                    <size android:width="40dp" android:height="20dp"/>
+                    <size android:width="40dp" android:height="25dp"/>
                 </shape>
             </item>
-            <item android:bottom="1dp">
+            <item android:right="@dimen/block_ui_overlapping" android:bottom="@dimen/block_ui_overlapping">
                 <shape>
                     <corners android:radius="3dp"/>
                     <solid android:color="#b0ff0000"/>
                 </shape>
             </item>
-            <item android:bottom="3dp">
+            <item android:bottom="@dimen/block_ui_overlapping" android:right="@dimen/block_ui_overlapping">
                 <shape>
                     <solid android:color="#ff0000" />
                     <corners android:radius="3dp"/>
                 </shape>
             </item>
-            <item android:bottom="12dp" android:left="1dp" android:right="1dp" android:top="1dp">
+            <item android:bottom="12dp" android:left="1dp" android:right="6dp" android:top="1dp">
                 <shape>
                     <solid android:color="#6FDF6868"/>
                     <corners android:radius="2dp"/>
-                </shape>
-            </item>
-            <item android:right="2dp" android:top="1dp" android:left="37dp" android:bottom="18dp">
-                <shape android:shape="oval">
-                    <solid android:color="#A6FFFFFF"/>
                 </shape>
             </item>
         </layer-list>

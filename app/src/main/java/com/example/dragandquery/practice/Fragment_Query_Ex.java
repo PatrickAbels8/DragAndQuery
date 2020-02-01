@@ -54,7 +54,7 @@ public class Fragment_Query_Ex extends Fragment {
 
     //interface
     public interface Fragment_Query_Ex_Listener{
-        void onGo(String query);
+        void onGo(String query, int isCorrect);
     }
 
     @Nullable
@@ -173,6 +173,11 @@ public class Fragment_Query_Ex extends Fragment {
         return select.getNode().toTreeString();
     }
 
+    //todo depending on ex and runtime
+    public int isCorrect(String query){
+        return Character.getNumericValue("0123".charAt((int)(Math.random()*4)));
+    }
+
     //todo add exs via strings
     public String getExText(int ex_id){
         String text = "";
@@ -214,6 +219,7 @@ public class Fragment_Query_Ex extends Fragment {
      * Listeners
      */
 
+    // when a parent block is dragged his whole family shoudld call their listeners
     public class MyOnGroupTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -250,6 +256,7 @@ public class Fragment_Query_Ex extends Fragment {
         }
     }
 
+    // if a block is dragged and dropped above another block
     public class MyDragListener implements BlockView.MyOnDragListener{
 
         @Override
@@ -268,11 +275,20 @@ public class Fragment_Query_Ex extends Fragment {
                     case BlockView.UP:
                         if (fits_right && !me_node.hasRight()) {
 
-                            //ui
-                            him.setX(me.getX()+me.getWidth());
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
                             him.setY(me.getY());
-
-
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addRightChild(him.getNode());
@@ -281,9 +297,20 @@ public class Fragment_Query_Ex extends Fragment {
                             MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
                         }
                         if (fits_down && !me_node.hasDown()) {
-                            //ui
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight());
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addDownChild(him.getNode());
@@ -300,6 +327,7 @@ public class Fragment_Query_Ex extends Fragment {
     }
 
     //todo has to be notified when parent is dropped on other block
+    //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
         @Override
@@ -334,7 +362,7 @@ public class Fragment_Query_Ex extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        listener.onGo(query);
+                        listener.onGo(query, isCorrect(query));
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }

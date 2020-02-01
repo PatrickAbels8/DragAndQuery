@@ -208,6 +208,66 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c1l10_input);
         }else if(lec_id.substring(0,5).equals("01_11")){
             text = getString(R.string.c1l11_input);
+        }else if(lec_id.substring(0,5).equals("02_01")){
+            text = getString(R.string.c2l1_input);
+        }else if(lec_id.substring(0,5).equals("02_02")){
+            text = getString(R.string.c2l2_input);
+        }else if(lec_id.substring(0,5).equals("02_03")){
+            text = getString(R.string.c2l3_input);
+        }else if(lec_id.substring(0,5).equals("02_04")){
+            text = getString(R.string.c2l4_input);
+        }else if(lec_id.substring(0,5).equals("02_05")){
+            text = getString(R.string.c2l5_input);
+        }else if(lec_id.substring(0,5).equals("02_06")){
+            text = getString(R.string.c2l6_input);
+        }else if(lec_id.substring(0,5).equals("02_07")){
+            text = getString(R.string.c2l7_input);
+        }else if(lec_id.substring(0,5).equals("02_08")){
+            text = getString(R.string.c2l8_input);
+        }else if(lec_id.substring(0,5).equals("02_09")){
+            text = getString(R.string.c2l9_input);
+        }else if(lec_id.substring(0,5).equals("02_10")){
+            text = getString(R.string.c2l10_input);
+        }else if(lec_id.substring(0,5).equals("02_11")){
+            text = getString(R.string.c2l11_input);
+        }else if(lec_id.substring(0,5).equals("02_12")){
+            text = getString(R.string.c2l12_input);
+        }else if(lec_id.substring(0,5).equals("02_13")){
+            text = getString(R.string.c2l13_input);
+        }else if(lec_id.substring(0,5).equals("02_14")){
+            text = getString(R.string.c2l14_input);
+        }else if(lec_id.substring(0,5).equals("02_15")){
+            text = getString(R.string.c2l15_input);
+        }else if(lec_id.substring(0,5).equals("03_01")){
+            text = getString(R.string.c3l1_input);
+        }else if(lec_id.substring(0,5).equals("03_02")){
+            text = getString(R.string.c3l2_input);
+        }else if(lec_id.substring(0,5).equals("03_03")){
+            text = getString(R.string.c3l3_input);
+        }else if(lec_id.substring(0,5).equals("03_04")){
+            text = getString(R.string.c3l4_input);
+        }else if(lec_id.substring(0,5).equals("03_05")){
+            text = getString(R.string.c3l5_input);
+        }else if(lec_id.substring(0,5).equals("03_06")){
+            text = getString(R.string.c3l6_input);
+        }else if(lec_id.substring(0,5).equals("03_07")){
+            text = getString(R.string.c3l7_input);
+        }else if(lec_id.substring(0,5).equals("03_08")){
+            text = getString(R.string.c3l8_input);
+        }else if(lec_id.substring(0,5).equals("04_01")){
+            text = getString(R.string.c4l1_input);
+        }else if(lec_id.substring(0,5).equals("04_02")){
+            text = getString(R.string.c4l2_input);
+        }else if(lec_id.substring(0,5).equals("04_03")){
+            text = getString(R.string.c4l3_input);
+        }else if(lec_id.substring(0,5).equals("04_04")){
+            text = getString(R.string.c4l4_input);
+        }else if(lec_id.substring(0,5).equals("04_05")){
+            text = getString(R.string.c4l5_input);
+        }else if(lec_id.substring(0,5).equals("04_06")){
+            text = getString(R.string.c4l6_input);
+        }else if(lec_id.substring(0,5).equals("04_07")){
+            text = getString(R.string.c4l7_input);
         }
         return text;
     }
@@ -233,6 +293,7 @@ public class Fragment_Query_Tut extends Fragment {
      * Listeners
      */
 
+    // when a parent block is dragged his whole family shoudld call their listeners
     public class MyOnGroupTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -269,6 +330,7 @@ public class Fragment_Query_Tut extends Fragment {
         }
     }
 
+    // if a block is dragged and dropped above another block
     public class MyDragListener implements BlockView.MyOnDragListener{
 
         @Override
@@ -287,11 +349,20 @@ public class Fragment_Query_Tut extends Fragment {
                     case BlockView.UP:
                         if (fits_right && !me_node.hasRight()) {
 
-                            //ui
-                            him.setX(me.getX()+me.getWidth());
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
                             him.setY(me.getY());
-
-
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addRightChild(him.getNode());
@@ -300,9 +371,20 @@ public class Fragment_Query_Tut extends Fragment {
                             MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
                         }
                         if (fits_down && !me_node.hasDown()) {
-                            //ui
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight());
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addDownChild(him.getNode());
@@ -319,6 +401,7 @@ public class Fragment_Query_Tut extends Fragment {
     }
 
     //todo has to be notified when parent is dropped on other block
+    //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
         @Override

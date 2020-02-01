@@ -115,6 +115,7 @@ public class Fragment_Input extends Fragment {
         bird.setClickable(true);
     }
 
+    //todo make global (just test in category class and intent)
     public void setText(){
         String text = "";
         if(lection_id.substring(0,5).equals("01_01")){
@@ -139,6 +140,10 @@ public class Fragment_Input extends Fragment {
             text = getString(R.string.c1l10_input);
         }else if(lection_id.substring(0,5).equals("01_11")){
             text = getString(R.string.c1l11_input);
+        }else if(lection_id.substring(0,5).equals("03_01")){
+            text = getString(R.string.c3l1_input);
+        }else if(lection_id.substring(0,5).equals("04_01")){
+            text = getString(R.string.c4l1_input);
         }
         tv_input.setText(text);
     }

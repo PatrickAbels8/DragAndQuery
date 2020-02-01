@@ -82,23 +82,6 @@ public class Fragment_Blocks extends Fragment {
         blocks_of_categories[2].add(BlockT.WHERE.createView(context));
         blocks_of_categories[2].add(BlockT.SELECT.createView(context));
 
-        //drag
-        /*for(ImageView b: blocks){
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //shadow stuff
-                    /*ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                    shadow.getView().setBackgroundResource(R.color.invisible);
-                    view.startDrag(data, shadow, view, 0);
-
-                    //send to frag
-                    listener.onBlockDragged(view);
-                }
-            });
-        }*/
-
         //open blocks when category iv is clicked
         for(ImageView category: categories){
             category.setOnClickListener(new View.OnClickListener() {
