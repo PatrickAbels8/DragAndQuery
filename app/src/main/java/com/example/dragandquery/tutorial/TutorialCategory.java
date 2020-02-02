@@ -37,7 +37,6 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 /***
  * TODO:
  * - do done lections againg without reset
- * - !!! first time speech bubble that user should reset once (story time cause default ist wrong)
  */
 public class TutorialCategory extends AppCompatActivity {
 

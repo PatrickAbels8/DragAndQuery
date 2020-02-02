@@ -26,6 +26,7 @@ import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
 import com.example.dragandquery.free.ClearView;
 import com.example.dragandquery.practice.Exercise;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,9 @@ public class Fragment_Query_Tut extends Fragment {
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
+    private ImageView btn_db;
     private ImageView bird;
+    private PhotoView db_view;
     private LinearLayout exercise;
     private TextView exercise_text;
     private Button acceptInput;
@@ -54,6 +57,7 @@ public class Fragment_Query_Tut extends Fragment {
     private Fragment_Query_Tut_Listener listener;
     public Context context;
     private boolean ex_open = true;
+    private boolean db_open = false;
 
     //interface
     public interface Fragment_Query_Tut_Listener{
@@ -72,7 +76,11 @@ public class Fragment_Query_Tut extends Fragment {
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
         btn_go = (ClearView) v.findViewById(R.id.frag_go);
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
         bird = (ImageView) v.findViewById(R.id.ex_bird);
+        db_view = (PhotoView) v.findViewById(R.id.db_view);
+        db_view.setImageResource(R.drawable.sad_berry);
+        hideDB();
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
@@ -83,6 +91,7 @@ public class Fragment_Query_Tut extends Fragment {
         btn_clear.setOnLongClickListener(new Fragment_Query_Tut.MyClearLongClickListener());
         btn_clear.setMyClearDragListener(new Fragment_Query_Tut.MyClearDragListener());
         bird.setOnClickListener(new Fragment_Query_Tut.MyBirdClickListener());
+        btn_db.setOnClickListener(new Fragment_Query_Tut.MyDBClickListener());
         acceptInput.setOnClickListener(new Fragment_Query_Tut.MyBirdClickListener());
 
         //set ex text
@@ -437,6 +446,8 @@ public class Fragment_Query_Tut extends Fragment {
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
                         listener.onGo(query, isCorrect(query));
+                        hideBird();
+                        hideDB();
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
@@ -498,12 +509,44 @@ public class Fragment_Query_Tut extends Fragment {
         @Override
         public void onClick(View view) {
             if(ex_open){
-                exercise.setVisibility(View.INVISIBLE);
-                ex_open = false;
+                hideBird();
             }else{
-                exercise.setVisibility(View.VISIBLE);
-                ex_open = true;
+                showBird();
+                hideDB();
             }
         }
+    }
+
+    public class MyDBClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(db_open){
+                hideDB();
+            }else{
+                showDB();
+                hideBird();
+            }
+        }
+    }
+
+    public void showBird(){
+        exercise.setVisibility(View.VISIBLE);
+        ex_open = true;
+    }
+
+    public void hideBird(){
+        exercise.setVisibility(View.INVISIBLE);
+        ex_open = false;
+    }
+
+    public void showDB(){
+        db_view.setVisibility(View.VISIBLE);
+        db_open = true;
+    }
+
+    public void hideDB(){
+        db_view.setVisibility(View.INVISIBLE);
+        db_open = false;
     }
 }

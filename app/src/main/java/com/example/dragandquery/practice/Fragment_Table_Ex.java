@@ -21,8 +21,6 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * - show code button
- * - code to tableview
  * - btn to exs
  */
 

@@ -17,7 +17,9 @@ import java.util.List;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO: stars not centered, reset 
+ * TODO:
+ * -stars not centered
+ * - wait 24h before try again
  */
 
 //exp: "02001203"

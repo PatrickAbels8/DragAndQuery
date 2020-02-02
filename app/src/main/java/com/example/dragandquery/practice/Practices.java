@@ -30,7 +30,7 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO:
- * - anything just like tut cat, but: ex to show depending on tut exp + key store bitstring "1100101" for done exs
+ * - show ex depending on tut exp
  */
 
 public class Practices extends AppCompatActivity {

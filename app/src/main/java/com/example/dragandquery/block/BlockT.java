@@ -19,7 +19,6 @@ import java.util.List;
 
 /***
  * TODO
- * -drag and touch not just for dv but for whole tree of dv's (viewgroup or dynamic linear lyouts)
  */
 
 public enum BlockT {

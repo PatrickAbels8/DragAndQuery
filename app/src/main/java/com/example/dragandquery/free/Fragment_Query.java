@@ -28,11 +28,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
-import com.example.dragandquery.block.Block;
-import com.example.dragandquery.block.BlockFactory;
 import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,6 @@ import java.util.List;
  * TODO
  * - alpha/visible/shadow stuff
  * - db icon
- * - child doesnt move when parent dropped
  */
 
 public class Fragment_Query extends Fragment {
@@ -53,10 +51,13 @@ public class Fragment_Query extends Fragment {
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
+    private ImageView btn_db;
+    private PhotoView db_view;
 
     //vars
     private Fragment_Query_Listener listener;
     public Context context;
+    private boolean db_open = false;
 
     //interface
     public interface Fragment_Query_Listener{
@@ -75,12 +76,17 @@ public class Fragment_Query extends Fragment {
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
         btn_go = (ClearView) v.findViewById(R.id.frag_go);
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
+        db_view = v.findViewById(R.id.db_view);
+        db_view.setImageResource(R.drawable.sad_berry);
+        hideDB();
         context = getContext();
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query.MyGoListener());
         btn_clear.setOnLongClickListener(new Fragment_Query.MyClearLongClickListener());
         btn_clear.setMyClearDragListener(new Fragment_Query.MyClearDragListener());
+        btn_db.setOnClickListener(new Fragment_Query.MyDBClickListener());
 
         return v;
     }
@@ -344,6 +350,7 @@ public class Fragment_Query extends Fragment {
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
                         listener.onGo(query);
+                        hideDB();
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
@@ -398,5 +405,27 @@ public class Fragment_Query extends Fragment {
                     break;
             }
         }
+    }
+
+    public class MyDBClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(db_open){
+                hideDB();
+            }else{
+                showDB();
+            }
+        }
+    }
+
+    public void showDB(){
+        db_view.setVisibility(View.VISIBLE);
+        db_open = true;
+    }
+
+    public void hideDB(){
+        db_view.setVisibility(View.INVISIBLE);
+        db_open = false;
     }
 }

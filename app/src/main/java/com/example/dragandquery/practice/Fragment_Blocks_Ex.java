@@ -22,7 +22,6 @@ import java.util.List;
 
 /***
  * TODO
- * -match blocks to ex id
  * -block drag mode
  */
 

@@ -22,7 +22,6 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * -cat 2-4
  */
 
 public class Fragment_Input extends Fragment {

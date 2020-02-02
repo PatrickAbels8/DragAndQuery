@@ -38,11 +38,8 @@ import android.widget.Toast;
 /***
  * TODO
  * -title big+small in nd
- * default img missing
  * prac onForth
  * star only update if better
- * tutprial wrong defaults
- * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed or onCreate)
  */
 
 public class Navigation extends AppCompatActivity
@@ -238,10 +235,8 @@ public class Navigation extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    //TODO back stack + add all the navi stuff to the other main activities after creating the main activities each + uml
+    //TODO add all the navi stuff to the other main activities after creating the main activities each
     public boolean onNavigationItemSelected(MenuItem item) {
-        //Toast.makeText(getApplicationContext(), "onNavigationItemSelected", Toast.LENGTH_LONG).show();
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
@@ -268,7 +263,12 @@ public class Navigation extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_impressum) {
-            //TODO basic scrollpage with text and links to mail etc
+            Intent i = new Intent(getApplicationContext(), Impressum.class);
+            startActivity(i);
+
+        } else if (id == R.id.nav_dbView) {
+            Intent i = new Intent(getApplicationContext(), DbView.class);
+            startActivity(i);
         }
 
 

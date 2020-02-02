@@ -15,6 +15,7 @@
     <string name="menu_free">Freier Modus</string>
     <string name="menu_tutorial">Tutorial</string>
     <string name="menu_practice">Übungen</string>
+    <string name="menu_dbView">Datenbank</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_impressum">Impressum</string>
     <string name="title_activity_navigation">Navigation</string>
@@ -473,6 +474,43 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="block_from">From </string>
     <string name="block_where">Where </string>
     <string name="block_star">* </string>
+
+    <!-- impressum -->
+    <string name="impressum">
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+
+    </string>
 
     <!-- toasts -->
     <string name="toast_notUnlockedYet">Noch nicht freigeschaltet!</string>
