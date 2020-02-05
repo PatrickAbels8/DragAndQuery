@@ -37,9 +37,7 @@ import android.widget.Toast;
 
 /***
  * TODO
- * -title big+small in nd
  * prac onForth
- * star only update if better
  */
 
 public class Navigation extends AppCompatActivity
@@ -60,6 +58,9 @@ public class Navigation extends AppCompatActivity
     private TextView tv_practise;
     private ProgressBar pb_tutorial;
     private ProgressBar pb_practise;
+    private TextView title_big;
+    private TextView title_small;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class Navigation extends AppCompatActivity
         tv_practise = (TextView) findViewById(R.id.tv_practise);
         pb_tutorial = (ProgressBar) findViewById(R.id.pb_tutorial);
         pb_practise = (ProgressBar) findViewById(R.id.pb_practise);
+        drawer = findViewById(R.id.drawer_layout);
 
         //key value store
         if(i.hasExtra(Settings.UNAME)){
@@ -96,7 +98,7 @@ public class Navigation extends AppCompatActivity
         tutorial_exp_avg = calcAvg(tutorial_exps);
 
 
-        //show user details
+        //show user details in profile
         name.setText(user_name);
         mail.setText(user_mail);
         pb_tutorial.setProgress(tutorial_exp_avg);
@@ -129,8 +131,6 @@ public class Navigation extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        //((TextView)findViewById(R.id.nav_title_small)).setText(user_name);
 
         //handle navigation menu
         navigationView.setNavigationItemSelectedListener(this);
@@ -201,12 +201,29 @@ public class Navigation extends AppCompatActivity
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //popup
+        if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
+    @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Intent i = new Intent(getApplicationContext(), PopUp.class);
+            i.putExtra(PopUp.KEY, PopUp.CLOSEAPP);
+            startActivityForResult(i, PopUp.REQUEST_CODE);
         }
     }
 
@@ -271,8 +288,6 @@ public class Navigation extends AppCompatActivity
             startActivity(i);
         }
 
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

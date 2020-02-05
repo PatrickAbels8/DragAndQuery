@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DbView"></activity>
+        <activity
+            android:name=".PopUp"
+            android:theme="@style/AppTheme.PopUp"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".DbView" />
         <activity
             android:name=".Impressum"
             android:screenOrientation="sensorPortrait"

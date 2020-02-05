@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".PopUp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background_dark"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/popup_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textcolor_white"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/popup_default_msg"/>
+            <Button
+                android:id="@+id/popup_accepted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_white"
+                android:textColor="@color/textcolor_white"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/popup_accept"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

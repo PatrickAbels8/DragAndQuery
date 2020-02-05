@@ -6,7 +6,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Drag And Query</string>
-    <string name="nav_header_subtitle">pkoetz, vruss u. pabels</string>
+    <string name="nav_header_subtitle">Im Auftrag der JGU</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -436,6 +436,12 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
         Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.
     </string>
 
+    <!-- pop ups -->
+    <string name="popup_accept">Ja!</string>
+    <string name="popup_default_msg">Bist du dir wirklich sicher?"</string>
+    <string name="popup_globalreset_msg">Willst du deinen gesamten Tutorial- und Übungsfortschritt zurücksetzen?</string>
+    <string name="popup_closeapp_msg">Willst du schon gehen?</string>
+    <string name="popup_changeimg_msg">In deiner Galerie nach einem neuen Profilbild schauen?</string>
 
     <!-- key value store -->
     <string name="userImageBool_key">userImageBool</string>

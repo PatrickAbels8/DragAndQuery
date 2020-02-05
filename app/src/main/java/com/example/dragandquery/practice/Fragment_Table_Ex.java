@@ -76,7 +76,7 @@ public class Fragment_Table_Ex extends Fragment {
 
     public void goInvisible(){
         cl_table.startAnimation(tobottom);
-        cl_table.setVisibility(View.INVISIBLE);
+        cl_table.setVisibility(View.GONE);
     }
 
     public void goVisible(String query, int isCorrect){

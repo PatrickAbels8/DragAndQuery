@@ -403,4 +403,11 @@ public class TutorialCategory extends AppCompatActivity {
 
         return ID;
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
 }

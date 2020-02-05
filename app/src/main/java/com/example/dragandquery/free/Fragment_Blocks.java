@@ -133,7 +133,7 @@ public class Fragment_Blocks extends Fragment {
     }
 
     public void goInvisible(){
-        ll_blocks.setVisibility(View.INVISIBLE);
+        ll_blocks.setVisibility(View.GONE);
     }
 
     public void goVisible(){

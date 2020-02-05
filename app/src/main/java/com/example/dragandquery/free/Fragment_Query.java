@@ -162,8 +162,9 @@ public class Fragment_Query extends Fragment {
         for(int i=0; i<extractLayoutViews(null).size(); i++){
             extractLayoutViews(null).get(i).setClickable(false);
         }
-        btn_go.setVisibility(View.INVISIBLE);
-        btn_clear.setVisibility(View.INVISIBLE);
+        btn_go.setVisibility(View.GONE);
+        btn_clear.setVisibility(View.GONE);
+        btn_db.setVisibility(View.GONE);
     }
 
     public void goClickable(){
@@ -172,6 +173,7 @@ public class Fragment_Query extends Fragment {
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
+        btn_db.setVisibility(View.VISIBLE);
     }
 
     public String interpret(BlockView select){
@@ -337,7 +339,6 @@ public class Fragment_Query extends Fragment {
         @Override
         public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
             boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
-            Log.d("########## go: ", Integer.toString(event));
             switch(event) {
                 case BlockView.MOVE:
                     if(isInMe)
@@ -351,7 +352,7 @@ public class Fragment_Query extends Fragment {
                         String query = interpret(him);
                         listener.onGo(query);
                         hideDB();
-                        //sounds todo
+                        //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
 
@@ -425,7 +426,7 @@ public class Fragment_Query extends Fragment {
     }
 
     public void hideDB(){
-        db_view.setVisibility(View.INVISIBLE);
+        db_view.setVisibility(View.GONE);
         db_open = false;
     }
 }

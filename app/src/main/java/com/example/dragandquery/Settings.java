@@ -50,7 +50,6 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
         //intent stuff
         Intent intent = getIntent();
 
@@ -135,7 +134,6 @@ public class Settings extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResult){
         switch(requestCode){
             case PERMISSION_CODE:{
-                Log.d("###################### granresult length:", Integer.toString(grantResult[0]));
                 if(grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
                     pickImageFromGallery();
                 }else{
@@ -148,11 +146,16 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+        //image
+        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK) {
             Uri img_uri = data.getData();
             image.setImageURI(img_uri);
             saveDataString(getString(R.string.userImage_key), img_uri.toString());
             saveDataBoolean(getString(R.string.userImageBool_key), true);
+        }
+        //popup
+        if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
+            reset_globally();
         }
     }
 
@@ -221,27 +224,32 @@ public class Settings extends AppCompatActivity {
         return num_NonZeros;
     }
 
+    public void reset_globally(){
+        reset_tut.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.vibrate_short));
+        //reset done lections
+        saveDataInt(getString(R.string.tutScore1_key), 1);
+        saveDataInt(getString(R.string.tutScore2_key), 1);
+        saveDataInt(getString(R.string.tutScore3_key), 1);
+        saveDataInt(getString(R.string.tutScore4_key), 1);
+        //reset unlocked lections todo hard
+        saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/11f+1));
+        saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/15f+1));
+        saveDataInt(getString(R.string.tutScore3_unlocked_key), (int)(100f/8f+1));
+        saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/7f+1));
+        //reset done exercises
+        saveDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
+        saveDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
+        saveDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+    }
 
     //listeners
     public class OnTutResetClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View view) {
-            reset_tut.startAnimation(AnimationUtils.loadAnimation(view.getContext(), R.anim.vibrate_short));
-            //reset done lections
-            saveDataInt(getString(R.string.tutScore1_key), 1);
-            saveDataInt(getString(R.string.tutScore2_key), 1);
-            saveDataInt(getString(R.string.tutScore3_key), 1);
-            saveDataInt(getString(R.string.tutScore4_key), 1);
-            //reset unlocked lections todo hard
-            saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/11f+1));
-            saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/15f+1));
-            saveDataInt(getString(R.string.tutScore3_unlocked_key), (int)(100f/8f+1));
-            saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/7f+1));
-            //reset done exercises
-            saveDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
-            saveDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
-            saveDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+            Intent i = new Intent(getApplicationContext(), PopUp.class);
+            i.putExtra(PopUp.KEY, PopUp.GLOBALRESET);
+            startActivityForResult(i, PopUp.REQUEST_CODE);
         }
     }
 }

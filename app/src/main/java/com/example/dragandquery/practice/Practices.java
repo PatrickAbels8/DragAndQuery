@@ -200,6 +200,17 @@ public class Practices extends AppCompatActivity {
         return data;
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
+    /***
+     * listeenrs
+     */
+
     public class MyOnExerciseClickListener implements View.OnClickListener{
 
         @Override
