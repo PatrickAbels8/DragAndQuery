@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -61,6 +62,7 @@ public class Navigation extends AppCompatActivity
     private TextView title_big;
     private TextView title_small;
     private DrawerLayout drawer;
+    private ImageView swipeHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,10 @@ public class Navigation extends AppCompatActivity
         pb_tutorial = (ProgressBar) findViewById(R.id.pb_tutorial);
         pb_practise = (ProgressBar) findViewById(R.id.pb_practise);
         drawer = findViewById(R.id.drawer_layout);
+        swipeHint = (ImageView) findViewById(R.id.swipehint);
+
+        //show nd gesture hint
+        swipeHint.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromleft));
 
         //key value store
         if(i.hasExtra(Settings.UNAME)){
@@ -220,6 +226,7 @@ public class Navigation extends AppCompatActivity
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            swipeHint.setVisibility(View.VISIBLE);
         } else {
             Intent i = new Intent(getApplicationContext(), PopUp.class);
             i.putExtra(PopUp.KEY, PopUp.CLOSEAPP);
@@ -230,6 +237,7 @@ public class Navigation extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.navigation, menu);
+        swipeHint.setVisibility(View.GONE);
         return true;
     }
 
