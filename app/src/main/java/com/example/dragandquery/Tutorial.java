@@ -21,7 +21,6 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 /***
  * TODO:
  * - add nd (copy navigation class, include nav layout but this layout, in nav layout include this layout)
- * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed
  * -
  */
 
@@ -78,6 +77,13 @@ public class Tutorial extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 
     //key value store

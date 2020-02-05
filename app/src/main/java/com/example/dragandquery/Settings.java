@@ -22,11 +22,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dragandquery.practice.Practices;
+
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO
- * -global reset
  */
 public class Settings extends AppCompatActivity {
 
@@ -43,14 +44,12 @@ public class Settings extends AppCompatActivity {
     private ProgressBar pb_tut;
     private ProgressBar pb_prac;
     private TextView reset_tut;
-    private TextView reset_prac;
     private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
         //intent stuff
         Intent intent = getIntent();
 
@@ -61,12 +60,19 @@ public class Settings extends AppCompatActivity {
         save = (TextView) findViewById(R.id.save_settings);
         pb_prac = (ProgressBar) findViewById(R.id.settings_pb_practise);
         pb_tut = (ProgressBar) findViewById(R.id.settings_pb_tutorial);
-        reset_prac = (TextView) findViewById(R.id.tv_reset_practise);
         reset_tut = (TextView) findViewById(R.id.tv_reset_tutorial);
+
+        //text hints should be the currentty saved data
+        String cur_name = loadDataString(getString(R.string.userName_key), getString(R.string.default_name));
+        String cur_mail = loadDataString(getString(R.string.userMail_key), getString(R.string.default_mail));
+        name.setText(cur_name);
+        mail.setText(cur_mail);
 
         //change profile image
         if(loadDataBoolean(getString(R.string.userImageBool_key), false)){
             image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
+        } else{
+            image.setImageResource(R.drawable.profile_image);
         }
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,11 +118,10 @@ public class Settings extends AppCompatActivity {
                 loadDataInt(getString(R.string.tutScore3_key), 30),
                 loadDataInt(getString(R.string.tutScore4_key), 40)
         }));
-        pb_prac.setProgress(Integer.parseInt(loadDataString(getString(R.string.pracScore_key), Integer.toString(0))));
+        pb_prac.setProgress(calcExAvg());
 
         //global tut/prac reset //todo popup reask
         reset_tut.setOnClickListener(new Settings.OnTutResetClickListener());
-        reset_prac.setOnClickListener(new Settings.OnPracResetClickListener());
     }
 
     public void pickImageFromGallery(){
@@ -129,7 +134,6 @@ public class Settings extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResult){
         switch(requestCode){
             case PERMISSION_CODE:{
-                Log.d("###################### granresult length:", Integer.toString(grantResult[0]));
                 if(grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
                     pickImageFromGallery();
                 }else{
@@ -142,11 +146,16 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+        //image
+        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK) {
             Uri img_uri = data.getData();
             image.setImageURI(img_uri);
-            saveData(getString(R.string.userImage_key), img_uri.toString());
+            saveDataString(getString(R.string.userImage_key), img_uri.toString());
             saveDataBoolean(getString(R.string.userImageBool_key), true);
+        }
+        //popup
+        if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
+            reset_globally();
         }
     }
 
@@ -161,15 +170,20 @@ public class Settings extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(key, data);
         editor.apply();
-        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
     }
 
-    public void saveData(String key, String data){
+    public void saveDataString(String key, String data){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(key, data);
         editor.apply();
-        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
+    }
+
+    public void saveDataInt(String key, int data){
+        SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(key, data);
+        editor.apply();
     }
 
     public String loadDataString(String key, String default_value){
@@ -193,21 +207,49 @@ public class Settings extends AppCompatActivity {
         return sum/num_cats;
     }
 
+    public int calcExAvg(){
+        String e1 = loadDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
+        String e2 = loadDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
+        String e3 = loadDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+        int num_exs = Practices.DEFAULT_EASY.length()+Practices.DEFAULT_MEDIUM.length()+Practices.DEFAULT_HARD.length();
+        int num_dones = getNonZeros(e1)+getNonZeros(e2)+getNonZeros(e3);
+        return num_dones==0? 1: 100*num_dones/num_exs;
+    }
+
+    public int getNonZeros(String s){
+        int num_NonZeros = 0;
+        for(int i=0; i<s.length(); i++)
+            if(s.charAt(i)!='0')
+                num_NonZeros++;
+        return num_NonZeros;
+    }
+
+    public void reset_globally(){
+        reset_tut.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.vibrate_short));
+        //reset done lections
+        saveDataInt(getString(R.string.tutScore1_key), 1);
+        saveDataInt(getString(R.string.tutScore2_key), 1);
+        saveDataInt(getString(R.string.tutScore3_key), 1);
+        saveDataInt(getString(R.string.tutScore4_key), 1);
+        //reset unlocked lections todo hard
+        saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/11f+1));
+        saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/15f+1));
+        saveDataInt(getString(R.string.tutScore3_unlocked_key), (int)(100f/8f+1));
+        saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/7f+1));
+        //reset done exercises
+        saveDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
+        saveDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
+        saveDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+    }
+
+    //listeners
     public class OnTutResetClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View view) {
-            //todo
-            reset_tut.startAnimation(AnimationUtils.loadAnimation(view.getContext(), R.anim.vibrate_short));
-        }
-    }
-
-    public class OnPracResetClickListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View view) {
-            //todo
-            reset_prac.startAnimation(AnimationUtils.loadAnimation(view.getContext(), R.anim.vibrate_short));
+            Intent i = new Intent(getApplicationContext(), PopUp.class);
+            i.putExtra(PopUp.KEY, PopUp.GLOBALRESET);
+            startActivityForResult(i, PopUp.REQUEST_CODE);
         }
     }
 }

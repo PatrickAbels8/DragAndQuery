@@ -6,6 +6,7 @@ import android.content.ClipDescription;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.DragEvent;
@@ -27,11 +28,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
-import com.example.dragandquery.block.Block;
-import com.example.dragandquery.block.BlockFactory;
 import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,6 @@ import java.util.List;
  * TODO
  * - alpha/visible/shadow stuff
  * - db icon
- * - child doesnt move when parent dropped
  */
 
 public class Fragment_Query extends Fragment {
@@ -52,10 +51,13 @@ public class Fragment_Query extends Fragment {
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
+    private ImageView btn_db;
+    private PhotoView db_view;
 
     //vars
     private Fragment_Query_Listener listener;
     public Context context;
+    private boolean db_open = false;
 
     //interface
     public interface Fragment_Query_Listener{
@@ -74,12 +76,17 @@ public class Fragment_Query extends Fragment {
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
         btn_go = (ClearView) v.findViewById(R.id.frag_go);
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
+        db_view = v.findViewById(R.id.db_view);
+        db_view.setImageResource(R.drawable.sad_berry);
+        hideDB();
         context = getContext();
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query.MyGoListener());
         btn_clear.setOnLongClickListener(new Fragment_Query.MyClearLongClickListener());
         btn_clear.setMyClearDragListener(new Fragment_Query.MyClearDragListener());
+        btn_db.setOnClickListener(new Fragment_Query.MyDBClickListener());
 
         return v;
     }
@@ -106,6 +113,9 @@ public class Fragment_Query extends Fragment {
         cur_view.setOnTouchListener(new Fragment_Query.MyOnGroupTouchListener());
         cur_view.setMydragListener(new Fragment_Query.MyDragListener());
         cur_view.setListener(new Fragment_Query.MyGroupDragListener());
+
+        //todo simulate action down touch (no work yet)
+        simulateTouch(cur_view, x, y, MotionEvent.ACTION_DOWN);
     }
 
     //when removed or cleared, if had node parent remove
@@ -152,8 +162,9 @@ public class Fragment_Query extends Fragment {
         for(int i=0; i<extractLayoutViews(null).size(); i++){
             extractLayoutViews(null).get(i).setClickable(false);
         }
-        btn_go.setVisibility(View.INVISIBLE);
-        btn_clear.setVisibility(View.INVISIBLE);
+        btn_go.setVisibility(View.GONE);
+        btn_clear.setVisibility(View.GONE);
+        btn_db.setVisibility(View.GONE);
     }
 
     public void goClickable(){
@@ -162,6 +173,7 @@ public class Fragment_Query extends Fragment {
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
+        btn_db.setVisibility(View.VISIBLE);
     }
 
     public String interpret(BlockView select){
@@ -169,6 +181,11 @@ public class Fragment_Query extends Fragment {
             return SELECT_MISSING_ERROR;
         }
         return select.getNode().toTreeString();
+    }
+
+    //helper to start dragging view after inserting
+    public void simulateTouch(View view, float x, float y, int event){
+        view.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), event, 0, 0, 0));
     }
 
     @Override
@@ -192,6 +209,7 @@ public class Fragment_Query extends Fragment {
      * Listeners
      */
 
+    // when a parent block is dragged his whole family shoudld call their listeners
     public class MyOnGroupTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -228,6 +246,7 @@ public class Fragment_Query extends Fragment {
         }
     }
 
+    // if a block is dragged and dropped above another block
     public class MyDragListener implements BlockView.MyOnDragListener{
 
         @Override
@@ -245,12 +264,20 @@ public class Fragment_Query extends Fragment {
                         break;
                     case BlockView.UP:
                         if (fits_right && !me_node.hasRight()) {
-
-                            //ui
-                            him.setX(me.getX()+me.getWidth());
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
                             him.setY(me.getY());
-
-
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addRightChild(him.getNode());
@@ -259,9 +286,20 @@ public class Fragment_Query extends Fragment {
                             MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
                         }
                         if (fits_down && !me_node.hasDown()) {
-                            //ui
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight());
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addDownChild(him.getNode());
@@ -278,6 +316,7 @@ public class Fragment_Query extends Fragment {
     }
 
     //todo has to be notified when parent is dropped on other block
+    //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
         @Override
@@ -300,7 +339,6 @@ public class Fragment_Query extends Fragment {
         @Override
         public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
             boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
-            Log.d("########## go: ", Integer.toString(event));
             switch(event) {
                 case BlockView.MOVE:
                     if(isInMe)
@@ -313,7 +351,8 @@ public class Fragment_Query extends Fragment {
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
                         listener.onGo(query);
-                        //sounds todo
+                        hideDB();
+                        //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
 
@@ -367,5 +406,27 @@ public class Fragment_Query extends Fragment {
                     break;
             }
         }
+    }
+
+    public class MyDBClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(db_open){
+                hideDB();
+            }else{
+                showDB();
+            }
+        }
+    }
+
+    public void showDB(){
+        db_view.setVisibility(View.VISIBLE);
+        db_open = true;
+    }
+
+    public void hideDB(){
+        db_view.setVisibility(View.GONE);
+        db_open = false;
     }
 }

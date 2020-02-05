@@ -6,7 +6,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Drag And Query</string>
-    <string name="nav_header_subtitle">pkoetz, vruss u. pabels</string>
+    <string name="nav_header_subtitle">Im Auftrag der JGU</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -15,13 +15,13 @@
     <string name="menu_free">Freier Modus</string>
     <string name="menu_tutorial">Tutorial</string>
     <string name="menu_practice">Übungen</string>
+    <string name="menu_dbView">Datenbank</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_impressum">Impressum</string>
     <string name="title_activity_navigation">Navigation</string>
     <string name="others">Sonstiges</string>
     <string name="welcome">Ändere dein Profilbild</string>
-    <string name="reset_tutorial">Tutorial zurücksetzen</string>
-    <string name="reset_practise">Übungen zurücksetzen</string>
+    <string name="global_reset">Tutorial und Übungen zurücksetzen</string>
     <string name="start_btn_go">Go!</string>
     <string name="loginName_hint">Name</string>
     <string name="loginMail_hint">Mail</string>
@@ -40,6 +40,10 @@
     <string name="ex_easy_3_text">Baue eine Select Anfrage nach.</string>
     <string name="ex_easy_4">Aggregate</string>
     <string name="ex_easy_4_text">Baue eine Aggregate Anfrage nach.</string>
+    <string name="ex_easy_5">Stern</string>
+    <string name="ex_easy_5_text">Baue eine Stern Anfrage nach.</string>
+    <string name="ex_easy_6">DB</string>
+    <string name="ex_easy_6_text">Baue eine DB Anfrage nach.</string>
 
     <string name="title_activity_practice">Schwierigkeitsgrad</string>
     <string name="title_activity_practices">Übungen</string>
@@ -56,6 +60,14 @@
     <string name="feedback_msg_bad">Probier es nochmal!</string>
     <string name="accept_input">Verstanden!</string>
 
+    <string name="head_tutorial">Tutorial</string>
+    <string name="tutorial_category1">Relationale Datanbanken</string>
+    <string name="tutorial_category2">Bedingungen</string>
+    <string name="tutorial_category3">Aggregatfunktionen</string>
+    <string name="tutorial_category4">Join</string>
+
+    <string name="title_activity_tutorial_category">Tutorial Category</string>
+    <string name="title_activity_tutorial">Tutorial</string>
     <string name="cat1_lec1">Einsatzmöglichkeiten für Datenbanken <b>X</b></string>
     <string name="cat1_lec2">Von Datenbanken und Tabellen <b>X</b></string>
     <string name="cat1_lec3">Warum relational? <b>X</b></string>
@@ -64,9 +76,9 @@
     <string name="cat1_lec6">Datentypen von Attributen <b>X</b></string>
     <string name="cat1_lec7">Eindeutigkeit dank Schlüsseln <b>X</b></string>
     <string name="cat1_lec8">Fremdschlüssel <b>X</b></string>
-    <string name="cat1_lec9">Erste Abfrage mit dem SELECT-Befehl <b>D</b></string>
-    <string name="cat1_lec10">Attribute im SLEECT-Block <b>D</b></string>
-    <string name="cat1_lec11">Wir gehen ans Limit mit dem LIMIT-Befehl <b>D</b></string>
+    <string name="cat1_lec9">Erste Abfrage mit dem SELECT-Befehl</string>
+    <string name="cat1_lec10">Attribute im SLEECT-Block</string>
+    <string name="cat1_lec11">Wir gehen ans Limit mit dem LIMIT-Befehl</string>
 
     <string name="cat2_lec1">Der WHERE-Befehl</string>
     <string name="cat2_lec2">Es muss nicht alles gleich sein</string>
@@ -84,7 +96,7 @@
     <string name="cat2_lec14">Ein bisschen Mathe gefällig?</string>
     <string name="cat2_lec15">Nenn mich doch lieber...?</string>
 
-    <string name="cat3_lec1">Aggrewer?</string>
+    <string name="cat3_lec1">Aggrewer? <b>X</b></string>
     <string name="cat3_lec2">Zählen bitte!</string>
     <string name="cat3_lec3">Klopf Klopf</string>
     <string name="cat3_lec4">Grüner leben dank der Summenfunktion</string>
@@ -93,7 +105,7 @@
     <string name="cat3_lec7">Erfolg maximieren, Aufwand minimieren</string>
     <string name="cat3_lec8">Wherecome to Having</string>
 
-    <string name="cat4_lec1">Es kommt zusammen, was zusammen gehört</string>
+    <string name="cat4_lec1">Es kommt zusammen, was zusammen gehört <b>X</b></string>
     <string name="cat4_lec2">Fremdschlüssel sind Key</string>
     <string name="cat4_lec3">Üben, üben, üben</string>
     <string name="cat4_lec4">Noch ein bisschen JOINen</string>
@@ -101,6 +113,7 @@
     <string name="cat4_lec6">Darf\'s ein bisschen mehr sein?</string>
     <string name="cat4_lec7">Aller guten Dinge sind drei</string>
 
+    <!-- cat 1 -->
     <string name="c1l1_input">
         Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.\n\n
         In jeder Schule müssen Kontaktdaten von Lehrkräften und Schüler*innen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.\n\n
@@ -124,11 +137,11 @@
 
     <string name="c1l3_input">
         Am häufigsten werden relationale Datenbanken verwendet.\n\n
-	Eine Relation bezeichnet allgemein die Beziehung zwischen etwas.\n\n
-	In relationalen Datenbanken werden die Inhalte also in Beziehung zueinander gestellt.\n\n
-	So ist jede Tabelle einer relationalen Datenbank selbst eine Relation.\n\n
-	Jede*r Schüler*in hat eine Adresse.\n\n
-	Diese werden einander in einer Tabelle eindeutig zugeordnet.
+        Eine Relation bezeichnet allgemein die Beziehung zwischen etwas.\n\n
+        In relationalen Datenbanken werden die Inhalte also in Beziehung zueinander gestellt.\n\n
+        So ist jede Tabelle einer relationalen Datenbank selbst eine Relation.\n\n
+        Jede*r Schüler*in hat eine Adresse.\n\n
+        Diese werden einander in einer Tabelle eindeutig zugeordnet.
     </string>
     <string name="c1l3_question">Welche der Folgenden stehen nicht in Relation zueinander?</string>
     <string name="c1l3_answer1">Jede*r Schüler*in gehört zu einer Klasse</string>
@@ -136,9 +149,9 @@
     <string name="c1l3_answer3">Jeder Raum hat eine Nummer</string>
 
     <string name="c1l4_input">
-       Jede Tabelle hat einen Namen und besteht aus Zeilen und Spalten.\n\n
-	Die Spaltennamen werden als „Attribute“ bezeichnet, in jeder Zeile steht ein zusammengehörender Datensatz, ein „Tupel“.\n\n
-	So bildet jede Tabelle ein „Relationenschema“.\n\n
+        Jede Tabelle hat einen Namen und besteht aus Zeilen und Spalten.\n\n
+        Die Spaltennamen werden als „Attribute“ bezeichnet, in jeder Zeile steht ein zusammengehörender Datensatz, ein „Tupel“.\n\n
+        So bildet jede Tabelle ein „Relationenschema“.\n\n
         Man kann Tabellen auch in der Form Tabellenname (Attribut 1, …, Attribut n) darstellen, wenn man die Einträge nicht sehen will.
     </string>
     <string name="c1l4_question">Orden den weißen Feldern die richtigen Begriffe zu.</string>
@@ -210,14 +223,225 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
         Versuche mit dem LIMIT Befehl, der sich im Reiter <i>Befehle</i> befindet, dir nur die ersten 10 Vornamen anzeigen zu lassen.
     </string>
 
-    <string name="head_tutorial">Tutorial</string>
-    <string name="tutorial_category1">Relationale Datanbanken</string>
-    <string name="tutorial_category2">Bedingungen</string>
-    <string name="tutorial_category3">Aggregatfunktionen</string>
-    <string name="tutorial_category4">Join</string>
+    <!-- cat 2 -->
+    <string name="c2l1_input">
+        Manchmal willst du nicht irgendwelche Datensätze anzeigen lassen, sondern nur solche, die eine bestimmte Bedingung erfüllen.\n\n
+        Diese Bedingung kannst du mit dem WHERE-Befehl stellen.\n\n
+        Versuche die Vornamen alle Schüler*innen (Tabelle Schüler) auszugeben, die als Wohnort Mainz eingetragen haben. Hänge dazu einen Vergleichsblock (&lt; o Ä) an den WHERE-Block und wähle im Dropdown-Menü “=” aus.\n\n
+        Nutze außerdem einen Attribut-Block.
+    </string>
 
-    <string name="title_activity_tutorial_category">Tutorial Category</string>
-    <string name="title_activity_tutorial">Tutorial</string>
+    <string name="c2l2_input">
+        Du kannst dir auch alle anderen Wohnorte ausgeben lassen außer Mainz, indem du im Vergleichsblockl “!=” (das schicke ungleich) auswählst.
+    </string>
+
+    <string name="c2l3_input">
+        In der Tabelle Lehrkräfte wird auch für jede Lehrkraft die ungefähre Fahrtzeit zur Schule in Minuten gespeichert.\n\n
+        Wähle im Vergleichsblock > (alle 4) aus, um dir die Kürzel aller Lehrkräfte anzeigen zu lassen, die weniger als 30 Minuten zur Schule brauchen.
+    </string>
+
+    <string name="c2l4_input">
+        Du hast dir eben aus der Tabelle Lehrer die Kürzel der Lehrenden anzeigen lassen, die eine Fahrtzeit von weniger als 30 Minuten zur Schule haben.\n\n
+        Sinnvoller wäre es jedoch, die Ausgabe direkt zu sortieren, sodass man sieht welche Lehrkraft am schnellsten da sein kann.\n\n
+        Das erreichst du mit dem Befehl ORDER BY. Gib nach ORDER BY an, nach welchem Attribut die Liste sortiert werden soll.\n\n
+        Mit Doppeltippen auf den Pfeil wechselst du die Sortierung zwischen aufsteigend und absteigend.
+    </string>
+
+    <string name="c2l5_input">
+        Wenn du dir alle Schüler*innen der Mittelstufe ausgeben lassen willst, so geht das, indem du den logischen Block BETWEEN auswählst, hier wird &lt;= und &gt;= kombiniert.\n\n
+        Lasse dir die Schüler_ID von allen Schüler*innen aus der Tabelle Schüler in der Mittelstufe (Klassenstufe 7 bis 10) ausgeben.
+    </string>
+
+    <string name="c2l6_input">
+        Alle Schüler*innen, die als Wohnort Budenheim oder Nackenheim haben, fahren mit dem Zug nach Mainz.\n\n
+        Du kannst dir alle Schüler_IDs anzeigen lassen, indem du die logischen Blöcke “=” und “OR” verwendest.\n\n
+        (Ein Datensatz wird angezeigt, wenn mindestens eine der beiden Bedingungen erfüllt ist. )
+    </string>
+
+    <string name="c2l7_input">
+        Frau Müller hat den Vornamen ihres Kollegen Meier vergessen und weiß auch sein Kürzel nicht.\n\n
+        Sie möchte ihm aber eine Geburtstagskarte schreiben. Sie weiß, dass er in Mainz wohnt.\n\n
+        Versuche den Vornamen mit Hilfe des Nachnamens und des Wohnortes herauszufinden, indem du die logischen Blöcke “=” und “AND” verwendest.\n\n
+        (Ein Datensatz wird angezeigt, wenn beide Bedingungen erfüllt sind. )
+    </string>
+
+    <string name="c2l8_input">
+        Die Schulleitung möchte wissen, welche Schüler*innen nicht in Mainz wohnen.\n\n
+        Anstatt alle anderen Wohnorte abzufragen kann man auch den NOT Befehl vor die Bedingung stellen.\n\n
+        Dann werden die Datensätze ausgegeben, die die Bedingung nicht erfüllen. Gib die SchülerID, sowie vorname, Nachname und WOhnort aller Schüler*innen aus, die nicht in Mainz wohnen.
+    </string>
+
+    <string name="c2l9_input">
+        In der Tabelle Raum ist ein Attribut Beamer, dessen Attributwerte true (im Raum ist ein Beamer) oder false (im Raum ist kein Beamer) sein können.\n\n
+        Verwende nach dem WHERE Befehl den logischen Block “=”, um dir die Raumnummer jedes Raums, in dem ein Beamer ist ausgeben zu lassen.
+    </string>
+
+    <string name="c2l10_input">
+        In kleinen Räumen (weniger als 20 Plätze) werden keine Beamer eingebaut.\n\n
+        Um im Unterricht einen Film schauen zu können muss im Raum entweder ein Beamer vorhanden sein, oder weniger als 15 Plätze, damit alle Schüler*innen Blick auf einen Laptop haben können.\n\n
+        Du kannst die Raumnummern alle Räume in der Tabelle Raum finden, die genau eine der Bedingungen erfüllen, indem du den logischen Block XOR (entweder oder) verwendest
+    </string>
+
+    <string name="c2l11_input">
+        Für die Lehrkräfte aus den Ortschaften süd-östlich von Mainz würde sich eine Fahrgemeinschaft lohnen.\n\n
+        Du kannst viele OR Verknüpfungen mit dem logischen Baustein IN vermeiden. Wählst du nach dem WHERE-Befehl IN aus, so kannst du auflisten, zu was dein gesuchter Wert gleich sein darf.\n\n
+        Versuche so alle Nachnamen der Lehrkräfte in der Tabelle Lehrer aufzulisten, deren Wohnort Mommenheim, Lörzweiler, Harxheim oder Gau-Bischofsheim ist.
+    </string>
+
+    <string name="c2l12_input">
+        Manchmal weiß man nicht genau, wie ein Eintrag in der Datenbank geschrieben wird, oder wie eine ID lautet.\n\n
+        Kennt man nur einige Teile, so kann man im Baustein LIKE einzelne Zeichen durch _ und beliebig viele Zeichen durch % ersetzen.\n\n
+        Suche jetzt alle IDs von Schüler*innen, die 6 an der zweiten Stelle und 0 an der letzten Stelle haben.
+    </string>
+
+    <string name="c2l13_input">
+        Es interessiert die Schulleitung, aus welchen Ortschaften die Lehrkräfte an der Schule kommen.\n\n
+        Lässt sie sich alle Lehrkräfte mit WOhnort anzeigen, doppeln sich aber viele Orte. Um das zu verhindern gibt es den Befehl DISTINCT.\n\n
+        Wird SELECT DISTINCT verwendet, wird jeder Attributwert nur höchstens ein mal angezeigt.\n\n
+        Lasse jetzt die Wohnorte der Lehrkräfte anzeigen.
+    </string>
+
+    <string name="c2l14_input">
+        Wir haben in unserer Tabelle Lehrkraft leider nur die durchschnittliche Anfahrtszeit pro Lehrkraft.\n\n
+        Wir brauchen nun für die Pendlerpauschale auch die ungefähre Anzahl der Kilometer, die jede Lehrkraft zurücklegt.\n\n
+        Dafür gehen wir davon aus, dass die Lehrkräfte mit einer durchschnittlichen Geschwindigkeit von 50 km/h fahren.\n\n
+        Benutze die Grundrechenarten (+,-,*,/) um im Attribut-Block mit Hilfe der Fahrtzeit die Kilometeranzahl auszurechnen.\n\n
+        Gib zusätzlich das Kürzel der Lehrkraft aus. (Hinweis: Die Fahrtzeit ist in Minuten gegeben!)
+    </string>
+
+    <string name="c2l15_input">
+        Wie du gerade bemerkt hast, ist der Spaltenname deiner Ergebnistabelle ziemlich unschön.\n\n
+        Du kannst Berechnungen oder Attribute, die du mit dem SELECT-BEFEHL auswählst, umbenennen, indem du den AS-Befehl benutzt und danach den neuen Namen angibst, der später in deiner Ergebnistabelle angezeigt werden soll.\n\n
+        Führe die Berechnung für die Kilometeranzahl nochmal aus, benenne das Ergebnis jedoch um in “Strecke”.\n\n
+        Gib zusätzlich das Kürzel an und sortiere deine Tabelle aufsteigend nach Strecke.
+    </string>
+
+    <!-- cat 3 -->
+
+    <string name="c3l1_input">
+        Mit Aggregatfunktionen können numerische Daten ausgewertet werden.\n\n
+        Jede Aggregatfunktion wird auf ein Attribut einer Tabelle angewendet und liefert als Ergebnis einen Zahlenwert zurück.\n\n
+        Die Blöcke für die Aggregatfunktionen findest du bei den logischen Blöcken.
+    </string>
+    <string name="c3l1_question">Welche Aussagen über Aggregatfunktionen stimmt nicht?</string>
+    <string name="c3l1_answer1">Aggregatfunktionen liefern immer einen Zahlwert.</string>
+    <string name="c3l1_answer2">Aggregatfunktionen können nur auf Zahlwerte angewendet werden.</string>
+    <string name="c3l1_answer3">Aggregatfunktionen dienen zur Datenauswertung.</string>
+
+    <string name="c3l2_input">
+        Ein Beispiel für eine Aggregatfunktion ist count(Attribut).\n\n
+        Diese zählt die Einträge einer Spalte, die von NULL verschieden sind und gibt die Anzahl aus. Mit count(*) zählt man alle Datensätze.\n\n
+        Will man nur die verschiedenen Werte einer Spalte zählen, so benutzt man count(distinct Spaltenname).\n\n
+        Aggregatfunktionen werden, wie Rechenoperatoren, nach dem SELECT Befehl verwendet.\n\n
+        Versuche anhand der Kürzel die Lehrkräfte der Schule zu zählen.
+    </string>
+
+    <string name="c3l3_input">
+        Die Funktion ISNULL(Attribut, Alternative) prüft ob der Attributwert NULL ist und ersetzt ihn für den Ausdruck durch die alternative.\n\n
+        Besonders bei der Verwendung von Aggregatfunktionen kann dies nützlich sein, da mit NULL zum Beispiel nicht gerechnet werden kann.\n\n
+        Lasse dir die IDs und Fahrtzeiten aller Lehrkräfte ausgeben, die weniger als 10 Minuten Fahrtzeit haben.\n\n
+        Ersetze unbekannte Fahrtzeiten (NULL) durch -1.
+    </string>
+
+    <string name="c3l4_input">
+        Um die Lehrkräfte dazu zu bringen mehr Fahrgemeinschaften zu bilden, will die Schulleitung die gesamt Fahrtzeit aller Lehrkräfte pro Tag wissen.\n\n
+        Dazu muss die einfache Fahrtzeit für jede Lehrkraft zunächst verdoppelt und außerdem mit Hilfe der sum() Funktion aufsummiert werden.\n\n
+        Wie lange fahren die Lehrkräfte täglich Auto?
+    </string>
+
+    <string name="c3l5_input">
+        Damit alle Schüler*innen in den Schulbus passen, will das Busunternehmen wissen, wie viele Schüler*innen in welchem Ort wohnen.\n\n
+        Dazu müssen die Schüler*innen in jedem Ort gezählt werden. Dazu musst du den GROUP BY Befehl nutzen, er folgt in einer Anfrage auf den WHERE Befehl.\n\n
+        Sobald man Datensätze gruppiert hat, kann man nur noch Aussagen über die Gruppen, nicht mehr über einzelne Datensätze machen.\n\n
+        Durch die Nutzung von GROUP BY können Attribute und Aggregatfunktionen im SELECT Befehl gemischt werden.\n\n
+        Lasse dir die Wohnorte und die Anzahl der dort wohnenden Schüler*innen (zähle am besten die IDs) als “Anzahl” ausgeben.
+    </string>
+
+    <string name="c3l6_input">
+        Für die Schulhomepage soll die ungefähre Größe der Klassenräume herausgefunden werden.\n\n
+        Dazu interessiert uns der Durchschnitt der Sitzplätze pro Raum.\n\n
+        Auch hierfür gibt es eine passende Aggregatfunktion: avg().\n\n
+        Berechne mit avg()die durchschnittliche Anzahl Plätze pro Raum.
+    </string>
+
+    <string name="c3l7_input">
+        Um die Fahrtzeiten möglichst kurz zu halten wollen einige Lehrkräfte wissen, wer aus ihrem Ort die geringste Fahrtzeit hat.\n\n
+        Die betreffenden Lehrkräfte wohnen in Ingelheim, Engelstadt und Oppenheim.\n\n
+        Dazu kannst du die Aggregatfunktion min() nutzen.\n\n
+        Durch Doppeltippen auf den Block wird sie zu max().\n\n
+        Suche jetzt die Nachnamen der Lehrkräfte mit den kürzesten Fahrtzeiten.\n\n
+        Beschränke deine Anfrage mit Hilfe des WHERE Befehls auf die drei interessanten Orte.
+    </string>
+
+    <string name="c3l8_input">
+        Die Schulleitung möchte wissen, welche Klassen mehr als 28 Schüler*innen haben.\n\n
+        Dazu müssen die Schüler*innen jeder Klasse gezählt werden und die Klasse nur dann ausgegeben, wenn die Summe größer als 28 ist.\n\n
+        Da sich die Bedingung auf das Ergebnis einer Aggregatfunktion bezieht, kann man keinen WHERE Befehl verwenden (WHERE bezieht sich immer auf einzelne Attribute).\n\n
+        Verwende stattdessen den HAVING Befehl um zu prüfen welche Klassen groß genug sind, nutze GROUP BY um die Schüler*innen klassenweise zu zählen und gib die betreffenden KlassenIDs aus.
+    </string>
+
+    <!-- cat 4 -->
+    <string name="c4l1_input">
+        Manchmal möchtest du in einer Abfrage Informationen abfragen, die nicht nur in einer Tabelle, sondern verteilt auf mehrere Tabellen stehen.\n\n
+        Du musst also zwei Tabellen verschmelzen und dann auf dieser verschmolzenen Tabelle deine Abfrage laufen lassen.\n\n
+        Dieses Verfahren heißt Join.\n\n
+        Dabei wird immer ein Datensatz aus der ersten Tabelle mit einem Datensatz aus der zweiten Tabelle zu einem neuen Datensatz zusammengesetzt.\n\n
+        Ein Join macht nur dann Sinn, wenn die beiden Tabellen auch etwas miteinander zu tun haben, bei denen also der Wert des Primärschlüssels mit dem Wert des Fremdschlüssels übereinstimmt.
+    </string>
+    <string name="c4l1_question">Siehe im Relationenmodell nach und entscheide, welche der folgenden Möglichkeiten für einen Join sinnvoll ist:</string>
+    <string name="c4l1_answer1">Raum und Lehrer</string>
+    <string name="c4l1_answer2">Schüler und Klasse</string>
+    <string name="c4l1_answer3">Schüler und Raum</string>
+
+    <string name="c4l2_input">
+        Du hast in der letzten Lektion gelernt, dass ein Join über die Tabellen Schüler und Klasse sinnvoll ist.\n\n
+        Um nun diese beiden Tabellen zu verbinden, siehst du im Relationenmodell nach, wo ein Fremdschlüssel zu einem der beiden Tabellen in der jeweils anderen Tabelle enthalten ist.\n\n
+        Im FROM-Teil müssen beide Tabellen genannt sein.\n\n
+        Im WHERE-Teil müssen die beiden Schlüssel gleichgesetzt werden.\n\n
+        Beachte hierbei, dass vor dem (Fremd-)Schlüsselattribut immer der Name der Tabelle genannt werden muss.\n\n
+        Es sieht also wie folgt aus:\n\n
+        SELECT….\n
+        FROM Tabelle1, Tabelle2\n
+        WHERE Tabelle1.Primärschlüssel = Tabelle2.Fremdschlüssel\n\n
+        Finde nun heraus, zu welcher Klasse alle Schüler gehören.\n\n
+        Gib dabei Nachname der Schüler und Name der Klasse an.
+    </string>
+
+    <string name="c4l3_input">
+        Die Schulleitung muss für die Raumplanung wissen, welche Klassen derzeit einen Klassenraum haben, der mehr als 20 Sitzplätze enthält.\n\n
+        Gib aus, welche Klassen das sind (Name), wie viele Plätze die Räume haben und sortiere das Ergebnis aufsteigend nach der Anzahl der Plätze.
+    </string>
+
+    <string name="c4l4_input">
+        Die Klasse mit der KlassenID 81 macht draußen Unfug.\n\n
+        Der Hausmeister erwischt sie und muss dem Klassenlehrer Bescheid geben.\n\n
+        An wen muss er sich wenden? (Gib den Vor- und Nachnamen des Lehrers aus)
+    </string>
+
+    <string name="c4l5_input">
+        Du kannst nicht nur zwei Tabellen miteinander joinen sondern auch 3 Tabellen.\n\n
+        Dafür musst du im WHERE-Block beide Tabellen anhand der Fremdschlüssel miteinander verbinden.\n\n
+        Gib nun die Nachnamen der Schüler, ihren Klassennamen und die Raumnummer ihres Klassenraums an.
+    </string>
+
+    <string name="c4l6_input">
+        Um zu entscheiden, wer bald die Fachleitung der einzelnen Fächer übernimmt, muss die Schulleitung herausfinden, welcher Lehrer welche Fächer mindestens 10 Stunden unterrichtet.\n\n
+        Gib das Lehrerkürzel, den aktuellen Fachleiter, Fachname und die Stunden aus.\n\n
+        Sortiere aufsteigend nach den Stunden.
+    </string>
+
+    <string name="c4l7_input">
+        Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
+        Willkommen zum Triple-Join.\n\n
+        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.
+    </string>
+
+    <!-- pop ups -->
+    <string name="popup_accept">Ja!</string>
+    <string name="popup_default_msg">Bist du dir wirklich sicher?"</string>
+    <string name="popup_globalreset_msg">Willst du deinen gesamten Tutorial- und Übungsfortschritt zurücksetzen?</string>
+    <string name="popup_closeapp_msg">Willst du schon gehen?</string>
+    <string name="popup_changeimg_msg">In deiner Galerie nach einem neuen Profilbild schauen?</string>
 
     <!-- key value store -->
     <string name="userImageBool_key">userImageBool</string>
@@ -234,7 +458,6 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="tutScore4_key">tutScore4</string>
     <string name="tutScore4_unlocked_key">tutScore4_unlocked</string>
 
-    <string name="pracScore_key">pracScore</string>
     <string name="prac_easy_key">pracEasy</string>
     <string name="prac_medium_key">pracMedium</string>
     <string name="prac_hard_key">pracHard</string>
@@ -257,6 +480,43 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="block_from">From </string>
     <string name="block_where">Where </string>
     <string name="block_star">* </string>
+
+    <!-- impressum -->
+    <string name="impressum">
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+
+    </string>
 
     <!-- toasts -->
     <string name="toast_notUnlockedYet">Noch nicht freigeschaltet!</string>

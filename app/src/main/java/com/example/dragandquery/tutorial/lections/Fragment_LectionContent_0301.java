@@ -1,38 +1,27 @@
 package com.example.dragandquery.tutorial.lections;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.tutorial.Fragment_Content;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 /***
  * TODO:
- * -
+ * - 
  */
 
-public class Fragment_LectionContent_0101 extends Fragment_Content {
+public class Fragment_LectionContent_0301 extends Fragment_Content {
 
     //coms
     private RelativeLayout rl_exercise;
@@ -43,27 +32,27 @@ public class Fragment_LectionContent_0101 extends Fragment_Content {
     private RadioButton rb3;
 
     //vars
-    private Fragment_LectionContent_0101_Listener listener;
+    private Fragment_LectionContent_0301_Listener listener;
     public Context context;
 
     //interface
-    public interface Fragment_LectionContent_0101_Listener{
+    public interface Fragment_LectionContent_0301_Listener{
         void onGo(boolean isCorrect);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_lectioncontent_0101, container, false);
+        View v = inflater.inflate(R.layout.fragment_lectioncontent_0301, container, false);
 
         //init coms
-        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0101);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0101_go);
+        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0301);
+        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0301_go);
         context = getContext();
-        rg = (RadioGroup) v.findViewById(R.id.rg_c1l1);
-        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l1);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l1);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l1);
+        rg = (RadioGroup) v.findViewById(R.id.rg_c3l1);
+        rb1 = (RadioButton) v.findViewById(R.id.rb1_c3l1);
+        rb2 = (RadioButton) v.findViewById(R.id.rb2_c3l1);
+        rb3 = (RadioButton) v.findViewById(R.id.rb3_c3l1);
 
         //exercise mode
         rg.clearCheck();
@@ -98,8 +87,8 @@ public class Fragment_LectionContent_0101 extends Fragment_Content {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_LectionContent_0101_Listener){
-            listener = (Fragment_LectionContent_0101_Listener) context;
+        if(context instanceof Fragment_LectionContent_0301_Listener){
+            listener = (Fragment_LectionContent_0301_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

@@ -24,14 +24,13 @@ import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
 import com.example.dragandquery.free.ClearView;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /***
  * TODO
- * - db icon
- * - child doesnt move when parent dropped
  */
 
 public class Fragment_Query_Ex extends Fragment {
@@ -43,7 +42,9 @@ public class Fragment_Query_Ex extends Fragment {
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
+    private ImageView btn_db;
     private ImageView bird;
+    private PhotoView db_view;
     private LinearLayout exercise;
     private TextView exercise_text;
 
@@ -51,10 +52,11 @@ public class Fragment_Query_Ex extends Fragment {
     private Fragment_Query_Ex_Listener listener;
     public Context context;
     private boolean ex_open = true;
+    private boolean db_open = false;
 
     //interface
     public interface Fragment_Query_Ex_Listener{
-        void onGo(String query);
+        void onGo(String query, int isCorrect);
     }
 
     @Nullable
@@ -69,7 +71,11 @@ public class Fragment_Query_Ex extends Fragment {
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
         btn_go = (ClearView) v.findViewById(R.id.frag_go);
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
         bird = (ImageView) v.findViewById(R.id.ex_bird);
+        db_view = (PhotoView) v.findViewById(R.id.db_view);
+        db_view.setImageResource(R.drawable.sad_berry);
+        hideDB();
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
@@ -79,6 +85,7 @@ public class Fragment_Query_Ex extends Fragment {
         btn_clear.setOnLongClickListener(new Fragment_Query_Ex.MyClearLongClickListener());
         btn_clear.setMyClearDragListener(new Fragment_Query_Ex.MyClearDragListener());
         bird.setOnClickListener(new Fragment_Query_Ex.MyBirdClickListener());
+        btn_db.setOnClickListener(new Fragment_Query_Ex.MyDBClickListener());
 
         //set ex text
         exercise_text.setText(getExText(this.getArguments().getInt(Exercise.ID_KEY)));
@@ -154,8 +161,10 @@ public class Fragment_Query_Ex extends Fragment {
         for(int i=0; i<extractLayoutViews(null).size(); i++){
             extractLayoutViews(null).get(i).setClickable(false);
         }
-        btn_go.setVisibility(View.INVISIBLE);
-        btn_clear.setVisibility(View.INVISIBLE);
+        btn_go.setVisibility(View.GONE);
+        btn_clear.setVisibility(View.GONE);
+        btn_db.setVisibility(View.GONE);
+
     }
 
     public void goClickable(){
@@ -164,6 +173,7 @@ public class Fragment_Query_Ex extends Fragment {
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
+        btn_db.setVisibility(View.VISIBLE);
     }
 
     public String interpret(BlockView select){
@@ -171,6 +181,11 @@ public class Fragment_Query_Ex extends Fragment {
             return SELECT_MISSING_ERROR;
         }
         return select.getNode().toTreeString();
+    }
+
+    //todo depending on ex and runtime
+    public int isCorrect(String query){
+        return Character.getNumericValue("0123".charAt((int)(Math.random()*4)));
     }
 
     //todo add exs via strings
@@ -214,6 +229,7 @@ public class Fragment_Query_Ex extends Fragment {
      * Listeners
      */
 
+    // when a parent block is dragged his whole family shoudld call their listeners
     public class MyOnGroupTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -250,6 +266,7 @@ public class Fragment_Query_Ex extends Fragment {
         }
     }
 
+    // if a block is dragged and dropped above another block
     public class MyDragListener implements BlockView.MyOnDragListener{
 
         @Override
@@ -268,11 +285,20 @@ public class Fragment_Query_Ex extends Fragment {
                     case BlockView.UP:
                         if (fits_right && !me_node.hasRight()) {
 
-                            //ui
-                            him.setX(me.getX()+me.getWidth());
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
                             him.setY(me.getY());
-
-
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addRightChild(him.getNode());
@@ -281,9 +307,20 @@ public class Fragment_Query_Ex extends Fragment {
                             MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
                         }
                         if (fits_down && !me_node.hasDown()) {
-                            //ui
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight());
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addDownChild(him.getNode());
@@ -300,6 +337,7 @@ public class Fragment_Query_Ex extends Fragment {
     }
 
     //todo has to be notified when parent is dropped on other block
+    //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
         @Override
@@ -322,7 +360,6 @@ public class Fragment_Query_Ex extends Fragment {
         @Override
         public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
             boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
-            Log.d("########## go: ", Integer.toString(event));
             switch(event) {
                 case BlockView.MOVE:
                     if(isInMe)
@@ -334,7 +371,9 @@ public class Fragment_Query_Ex extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        listener.onGo(query);
+                        listener.onGo(query, isCorrect(query));
+                        hideBird();
+                        hideDB();
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
@@ -396,12 +435,44 @@ public class Fragment_Query_Ex extends Fragment {
         @Override
         public void onClick(View view) {
             if(ex_open){
-                exercise.setVisibility(View.INVISIBLE);
-                ex_open = false;
+                hideBird();
             }else{
-                exercise.setVisibility(View.VISIBLE);
-                ex_open = true;
+                showBird();
+                hideDB();
             }
         }
+    }
+
+    public class MyDBClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(db_open){
+                hideDB();
+            }else{
+                showDB();
+                hideBird();
+            }
+        }
+    }
+
+    public void showBird(){
+        exercise.setVisibility(View.VISIBLE);
+        ex_open = true;
+    }
+
+    public void hideBird(){
+        exercise.setVisibility(View.GONE);
+        ex_open = false;
+    }
+
+    public void showDB(){
+        db_view.setVisibility(View.VISIBLE);
+        db_open = true;
+    }
+
+    public void hideDB(){
+        db_view.setVisibility(View.GONE);
+        db_open = false;
     }
 }

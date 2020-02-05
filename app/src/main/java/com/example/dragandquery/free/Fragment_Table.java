@@ -35,7 +35,7 @@ public class Fragment_Table extends Fragment {
 
     //coms
     private ConstraintLayout cl_table;
-    private ImageButton btn_retry;
+    private Button btn_retry;
     private TextView raw_query;
     private Animation frombottom;
     private Animation tobottom;
@@ -77,7 +77,7 @@ public class Fragment_Table extends Fragment {
 
     public void goInvisible(){
         cl_table.startAnimation(tobottom);
-        cl_table.setVisibility(View.INVISIBLE);
+        cl_table.setVisibility(View.GONE);
     }
 
     public void goVisible(String query){

@@ -26,6 +26,7 @@ import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
 import com.example.dragandquery.free.ClearView;
 import com.example.dragandquery.practice.Exercise;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,9 @@ public class Fragment_Query_Tut extends Fragment {
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
+    private ImageView btn_db;
     private ImageView bird;
+    private PhotoView db_view;
     private LinearLayout exercise;
     private TextView exercise_text;
     private Button acceptInput;
@@ -54,6 +57,7 @@ public class Fragment_Query_Tut extends Fragment {
     private Fragment_Query_Tut_Listener listener;
     public Context context;
     private boolean ex_open = true;
+    private boolean db_open = false;
 
     //interface
     public interface Fragment_Query_Tut_Listener{
@@ -72,7 +76,11 @@ public class Fragment_Query_Tut extends Fragment {
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
         btn_go = (ClearView) v.findViewById(R.id.frag_go);
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
         bird = (ImageView) v.findViewById(R.id.ex_bird);
+        db_view = (PhotoView) v.findViewById(R.id.db_view);
+        db_view.setImageResource(R.drawable.sad_berry);
+        hideDB();
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
@@ -83,6 +91,7 @@ public class Fragment_Query_Tut extends Fragment {
         btn_clear.setOnLongClickListener(new Fragment_Query_Tut.MyClearLongClickListener());
         btn_clear.setMyClearDragListener(new Fragment_Query_Tut.MyClearDragListener());
         bird.setOnClickListener(new Fragment_Query_Tut.MyBirdClickListener());
+        btn_db.setOnClickListener(new Fragment_Query_Tut.MyDBClickListener());
         acceptInput.setOnClickListener(new Fragment_Query_Tut.MyBirdClickListener());
 
         //set ex text
@@ -159,8 +168,9 @@ public class Fragment_Query_Tut extends Fragment {
         for(int i=0; i<extractLayoutViews(null).size(); i++){
             extractLayoutViews(null).get(i).setClickable(false);
         }
-        btn_go.setVisibility(View.INVISIBLE);
-        btn_clear.setVisibility(View.INVISIBLE);
+        btn_go.setVisibility(View.GONE);
+        btn_clear.setVisibility(View.GONE);
+        btn_db.setVisibility(View.GONE);
     }
 
     public void goClickable(){
@@ -169,6 +179,7 @@ public class Fragment_Query_Tut extends Fragment {
         }
         btn_go.setVisibility(View.VISIBLE);
         btn_clear.setVisibility(View.VISIBLE);
+        btn_db.setVisibility(View.VISIBLE);
     }
 
     public String interpret(BlockView select){
@@ -208,6 +219,66 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c1l10_input);
         }else if(lec_id.substring(0,5).equals("01_11")){
             text = getString(R.string.c1l11_input);
+        }else if(lec_id.substring(0,5).equals("02_01")){
+            text = getString(R.string.c2l1_input);
+        }else if(lec_id.substring(0,5).equals("02_02")){
+            text = getString(R.string.c2l2_input);
+        }else if(lec_id.substring(0,5).equals("02_03")){
+            text = getString(R.string.c2l3_input);
+        }else if(lec_id.substring(0,5).equals("02_04")){
+            text = getString(R.string.c2l4_input);
+        }else if(lec_id.substring(0,5).equals("02_05")){
+            text = getString(R.string.c2l5_input);
+        }else if(lec_id.substring(0,5).equals("02_06")){
+            text = getString(R.string.c2l6_input);
+        }else if(lec_id.substring(0,5).equals("02_07")){
+            text = getString(R.string.c2l7_input);
+        }else if(lec_id.substring(0,5).equals("02_08")){
+            text = getString(R.string.c2l8_input);
+        }else if(lec_id.substring(0,5).equals("02_09")){
+            text = getString(R.string.c2l9_input);
+        }else if(lec_id.substring(0,5).equals("02_10")){
+            text = getString(R.string.c2l10_input);
+        }else if(lec_id.substring(0,5).equals("02_11")){
+            text = getString(R.string.c2l11_input);
+        }else if(lec_id.substring(0,5).equals("02_12")){
+            text = getString(R.string.c2l12_input);
+        }else if(lec_id.substring(0,5).equals("02_13")){
+            text = getString(R.string.c2l13_input);
+        }else if(lec_id.substring(0,5).equals("02_14")){
+            text = getString(R.string.c2l14_input);
+        }else if(lec_id.substring(0,5).equals("02_15")){
+            text = getString(R.string.c2l15_input);
+        }else if(lec_id.substring(0,5).equals("03_01")){
+            text = getString(R.string.c3l1_input);
+        }else if(lec_id.substring(0,5).equals("03_02")){
+            text = getString(R.string.c3l2_input);
+        }else if(lec_id.substring(0,5).equals("03_03")){
+            text = getString(R.string.c3l3_input);
+        }else if(lec_id.substring(0,5).equals("03_04")){
+            text = getString(R.string.c3l4_input);
+        }else if(lec_id.substring(0,5).equals("03_05")){
+            text = getString(R.string.c3l5_input);
+        }else if(lec_id.substring(0,5).equals("03_06")){
+            text = getString(R.string.c3l6_input);
+        }else if(lec_id.substring(0,5).equals("03_07")){
+            text = getString(R.string.c3l7_input);
+        }else if(lec_id.substring(0,5).equals("03_08")){
+            text = getString(R.string.c3l8_input);
+        }else if(lec_id.substring(0,5).equals("04_01")){
+            text = getString(R.string.c4l1_input);
+        }else if(lec_id.substring(0,5).equals("04_02")){
+            text = getString(R.string.c4l2_input);
+        }else if(lec_id.substring(0,5).equals("04_03")){
+            text = getString(R.string.c4l3_input);
+        }else if(lec_id.substring(0,5).equals("04_04")){
+            text = getString(R.string.c4l4_input);
+        }else if(lec_id.substring(0,5).equals("04_05")){
+            text = getString(R.string.c4l5_input);
+        }else if(lec_id.substring(0,5).equals("04_06")){
+            text = getString(R.string.c4l6_input);
+        }else if(lec_id.substring(0,5).equals("04_07")){
+            text = getString(R.string.c4l7_input);
         }
         return text;
     }
@@ -233,6 +304,7 @@ public class Fragment_Query_Tut extends Fragment {
      * Listeners
      */
 
+    // when a parent block is dragged his whole family shoudld call their listeners
     public class MyOnGroupTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -269,6 +341,7 @@ public class Fragment_Query_Tut extends Fragment {
         }
     }
 
+    // if a block is dragged and dropped above another block
     public class MyDragListener implements BlockView.MyOnDragListener{
 
         @Override
@@ -287,11 +360,20 @@ public class Fragment_Query_Tut extends Fragment {
                     case BlockView.UP:
                         if (fits_right && !me_node.hasRight()) {
 
-                            //ui
-                            him.setX(me.getX()+me.getWidth());
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
                             him.setY(me.getY());
-
-
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addRightChild(him.getNode());
@@ -300,9 +382,20 @@ public class Fragment_Query_Tut extends Fragment {
                             MediaPlayer.create(me.getContext(), R.raw.dropblock).start();
                         }
                         if (fits_down && !me_node.hasDown()) {
-                            //ui
+                            //ui:
+                            //1. count members
+                            //2. each member has to remember distanc to parent
+                            //3. parent changes position
+                            //4. each member changes position relative to parents new position
+                            List<BlockView> subtree = extractTreeViews(him);
+                            for(int i=0; i<subtree.size(); i++){
+                                subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
+                            }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight());
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            for(int i=0; i<subtree.size(); i++) {
+                                subtree.get(i).notifyListener(him.getX(), him.getY());
+                            }
 
                             //logic
                             me.getNode().addDownChild(him.getNode());
@@ -319,6 +412,7 @@ public class Fragment_Query_Tut extends Fragment {
     }
 
     //todo has to be notified when parent is dropped on other block
+    //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
         @Override
@@ -341,7 +435,6 @@ public class Fragment_Query_Tut extends Fragment {
         @Override
         public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
             boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
-            Log.d("########## go: ", Integer.toString(event));
             switch(event) {
                 case BlockView.MOVE:
                     if(isInMe)
@@ -354,6 +447,8 @@ public class Fragment_Query_Tut extends Fragment {
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
                         listener.onGo(query, isCorrect(query));
+                        hideBird();
+                        hideDB();
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
@@ -415,12 +510,44 @@ public class Fragment_Query_Tut extends Fragment {
         @Override
         public void onClick(View view) {
             if(ex_open){
-                exercise.setVisibility(View.INVISIBLE);
-                ex_open = false;
+                hideBird();
             }else{
-                exercise.setVisibility(View.VISIBLE);
-                ex_open = true;
+                showBird();
+                hideDB();
             }
         }
+    }
+
+    public class MyDBClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(db_open){
+                hideDB();
+            }else{
+                showDB();
+                hideBird();
+            }
+        }
+    }
+
+    public void showBird(){
+        exercise.setVisibility(View.VISIBLE);
+        ex_open = true;
+    }
+
+    public void hideBird(){
+        exercise.setVisibility(View.GONE);
+        ex_open = false;
+    }
+
+    public void showDB(){
+        db_view.setVisibility(View.VISIBLE);
+        db_open = true;
+    }
+
+    public void hideDB(){
+        db_view.setVisibility(View.GONE);
+        db_open = false;
     }
 }

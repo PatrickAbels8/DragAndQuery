@@ -18,8 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
-import com.example.dragandquery.block.Block;
-import com.example.dragandquery.block.BlockFactory;
 import com.example.dragandquery.block.BlockT;
 
 import java.util.ArrayList;
@@ -82,23 +80,6 @@ public class Fragment_Blocks extends Fragment {
         blocks_of_categories[2].add(BlockT.WHERE.createView(context));
         blocks_of_categories[2].add(BlockT.SELECT.createView(context));
 
-        //drag
-        /*for(ImageView b: blocks){
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //shadow stuff
-                    /*ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
-                    shadow.getView().setBackgroundResource(R.color.invisible);
-                    view.startDrag(data, shadow, view, 0);
-
-                    //send to frag
-                    listener.onBlockDragged(view);
-                }
-            });
-        }*/
-
         //open blocks when category iv is clicked
         for(ImageView category: categories){
             category.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +133,7 @@ public class Fragment_Blocks extends Fragment {
     }
 
     public void goInvisible(){
-        ll_blocks.setVisibility(View.INVISIBLE);
+        ll_blocks.setVisibility(View.GONE);
     }
 
     public void goVisible(){

@@ -23,10 +23,10 @@
                     android:src="@drawable/go" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
                         android:id="@+id/frag_db"
-                        android:src="@drawable/ic_golf"/>
+                        android:src="@drawable/ic_menu_dbview"/>
 
                 <ImageView
                     android:id="@+id/ex_bird"
@@ -87,6 +87,16 @@
                 </ScrollView>
 
         </LinearLayout>
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/db_view"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="32dp"
+            />
 
 
 

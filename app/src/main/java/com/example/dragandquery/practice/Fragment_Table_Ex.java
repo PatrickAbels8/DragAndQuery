@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,9 +21,6 @@ import com.example.dragandquery.R;
 
 /***
  * TODO
- * - show code button
- * - code to tableview
- * - is correct
  * - btn to exs
  */
 
@@ -35,6 +33,9 @@ public class Fragment_Table_Ex extends Fragment {
     private Animation frombottom;
     private Animation tobottom;
     private Context context;
+    private ImageView star1;
+    private ImageView star2;
+    private ImageView star3;
 
     //vars
     private Fragment_Table_Ex_Listener listener;
@@ -58,6 +59,9 @@ public class Fragment_Table_Ex extends Fragment {
         raw_query = v.findViewById(R.id.raw_query);
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
+        star1 = (ImageView) v.findViewById(R.id.star1);
+        star2 = (ImageView) v.findViewById(R.id.star2);
+        star3 = (ImageView) v.findViewById(R.id.star3);
 
         //get back to edit or forth to next lec
         btn_retry.setOnClickListener(new View.OnClickListener() {
@@ -72,14 +76,26 @@ public class Fragment_Table_Ex extends Fragment {
 
     public void goInvisible(){
         cl_table.startAnimation(tobottom);
-        cl_table.setVisibility(View.INVISIBLE);
+        cl_table.setVisibility(View.GONE);
     }
 
-    public void goVisible(String query){
+    public void goVisible(String query, int isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         cl_table.startAnimation(frombottom);
         raw_query.setText(query);
 
+        if(isCorrect>0)
+            star1.setImageResource(R.drawable.star_full);
+        else
+            star1.setImageResource(R.drawable.star_empty);
+        if(isCorrect>1)
+            star2.setImageResource(R.drawable.star_full);
+        else
+            star2.setImageResource(R.drawable.star_empty);
+        if(isCorrect>2)
+            star3.setImageResource(R.drawable.star_full);
+        else
+            star3.setImageResource(R.drawable.star_empty);
     }
 
     @Override

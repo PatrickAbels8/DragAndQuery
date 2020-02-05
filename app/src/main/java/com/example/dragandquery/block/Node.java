@@ -7,7 +7,6 @@ import java.util.List;
 
 /***
  *TODO:
- * -print misses right childs
  */
 
 

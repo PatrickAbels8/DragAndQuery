@@ -3,6 +3,7 @@ package com.example.dragandquery.practice;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,7 +30,7 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
  * TODO:
- * - anything just like tut cat, but: ex to show depending on tut exp + key store bitstring "1100101" for done exs
+ * - show ex depending on tut exp
  */
 
 public class Practices extends AppCompatActivity {
@@ -39,11 +40,14 @@ public class Practices extends AppCompatActivity {
     LinearLayout layout;
 
     //vars
-    private int complexity; //1 easy, 2 medium, 3 hard
+    private int complexity; //1 easy:6, 2 medium:8, 3 hard:12
     public static final String EX_ID = "com.example.dragandquery.practice.Practices.EX_ID";
     private List<Button> exercises;
     private boolean neededLections[][]; //todo lections on exercises if needed
-    private String dones; //todo not possible right now but later "1101001101"
+    private String dones; //"0123102031"
+    public static final String DEFAULT_EASY = "000000";
+    public static final String DEFAULT_MEDIUM = "00000000";
+    public static final String DEFAULT_HARD = "000000000000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,20 +89,27 @@ public class Practices extends AppCompatActivity {
         switch(complexity){
             case Complexity.EASY:
                 setTitle(getString(R.string.title_prac_easy));
+                dones = loadData(getString(R.string.prac_easy_key), DEFAULT_EASY);
                 if(lectionsDone(1))
-                    addExercise(getString(R.string.ex_easy_1));
+                    addExercise(0, getString(R.string.ex_easy_1));
                 if(lectionsDone(2))
-                    addExercise(getString(R.string.ex_easy_2));
+                    addExercise(1, getString(R.string.ex_easy_2));
                 if(lectionsDone(3))
-                    addExercise(getString(R.string.ex_easy_3));
+                    addExercise(2, getString(R.string.ex_easy_3));
                 if(lectionsDone(4))
-                    addExercise(getString(R.string.ex_easy_4));
+                    addExercise(3, getString(R.string.ex_easy_4));
+                if(lectionsDone(5))
+                    addExercise(4, getString(R.string.ex_easy_5));
+                if(lectionsDone(6))
+                    addExercise(5, getString(R.string.ex_easy_6));
                 break;
             case Complexity.MEDIUM:
                 setTitle(getString(R.string.title_prac_medium));
+                dones = loadData(getString(R.string.prac_medium_key), DEFAULT_MEDIUM);
                 break;
             case Complexity.HARD:
                 setTitle(getString(R.string.title_prac_hard));
+                dones = loadData(getString(R.string.prac_hard_key), DEFAULT_HARD);
                 break;
         }
     }
@@ -114,24 +125,64 @@ public class Practices extends AppCompatActivity {
     }
 
     //add a new exercise to every list and layout todo change view when already done
-    public void addExercise(String name){
-        //create exercise btn
+    public void addExercise(int id, String name){
+        int numStars = Character.getNumericValue(dones.charAt(id));
+
+        //vertical ll
+        LinearLayout ll_v = new LinearLayout(context);
+        ll_v.setBackground(getDrawable(R.drawable.btn_lection));
+        ll_v.setOrientation(LinearLayout.VERTICAL);
+
+        //horizontal ll for stars
+        LinearLayout ll_h = new LinearLayout(context);
+        ll_h.setOrientation(LinearLayout.HORIZONTAL);
+        ll_h.setGravity(LinearLayout.TEXT_ALIGNMENT_CENTER);
+        ll_v.addView(ll_h, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        //3 stars
+        ImageView star1 = new ImageView(context);
+        if(numStars>0)
+            star1.setImageResource(R.drawable.star_full);
+        else
+            star1.setImageResource(R.drawable.star_empty);
+        ImageView star2 = new ImageView(context);
+        if(numStars>1)
+            star2.setImageResource(R.drawable.star_full);
+        else
+            star2.setImageResource(R.drawable.star_empty);
+        ImageView star3 = new ImageView(context);
+        if(numStars>2)
+            star3.setImageResource(R.drawable.star_full);
+        else
+            star3.setImageResource(R.drawable.star_empty);
+        ll_h.addView(star1);
+        ll_h.addView(star2);
+        ll_h.addView(star3);
+
+        //button
         Button l = new Button(context);
         l.setText(name);
         l.setTextColor(getResources().getColor(getColor()));
-        l.setBackground(getDrawable(R.drawable.btn_lection));
+        l.setBackgroundColor(Color.parseColor("#00000000"));
         l.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        ll_v.addView(l, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
         exercises.add(l);
 
         //add btn and space to ll
-        layout.addView(l, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        layout.addView(ll_v, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
         layout.addView(new Space(context), 300, 15);
 
     }
 
     //todo
     public boolean lectionsDone(int ex){
-        return new Random().nextBoolean();
+        return true;
     }
 
     //key value store
@@ -148,6 +199,17 @@ public class Practices extends AppCompatActivity {
         String data = sharedPref.getString(key, default_value);
         return data;
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
+    /***
+     * listeenrs
+     */
 
     public class MyOnExerciseClickListener implements View.OnClickListener{
 

@@ -22,7 +22,6 @@ import java.util.List;
 
 /***
  * TODO
- * -match blocks to ex id
  * -block drag mode
  */
 
@@ -143,7 +142,7 @@ public class Fragment_Blocks_Ex extends Fragment {
     }
 
     public void goInvisible(){
-        ll_blocks.setVisibility(View.INVISIBLE);
+        ll_blocks.setVisibility(View.GONE);
     }
 
     public void goVisible(){

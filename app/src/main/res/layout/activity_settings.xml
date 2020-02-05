@@ -35,7 +35,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Name"
+        android:hint="@string/default_name"
         android:fontFamily="@font/comfortaa"
         android:textColor="@color/textcolor_white"
         android:gravity="center"
@@ -52,7 +52,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Mail"
+        android:hint="@string/default_mail"
         android:fontFamily="@font/comfortaa"
         android:textColor="@color/textcolor_white"
         android:gravity="center"
@@ -84,7 +84,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="@string/reset_tutorial"
+        android:text="@string/global_reset"
         android:fontFamily="@font/comfortaa"
         android:textColor="@color/textcolor_white"
         android:gravity="center"
@@ -94,7 +94,7 @@
         android:paddingBottom="8dp"
         android:background="@drawable/border_white"
         app:layout_constraintTop_toTopOf="@id/settings_pb_tutorial"
-        app:layout_constraintBottom_toBottomOf="@id/settings_pb_tutorial"
+        app:layout_constraintBottom_toBottomOf="@id/settings_pb_practise"
         app:layout_constraintLeft_toRightOf="@id/settings_pb_tutorial"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -113,26 +113,6 @@
         app:layout_constraintTop_toBottomOf="@id/settings_pb_tutorial"
         android:layout_marginTop="16dp"
         />
-
-    <TextView
-        android:id="@+id/tv_reset_practise"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/reset_practise"
-        android:textSize="16dp"
-        android:fontFamily="@font/comfortaa"
-        android:textColor="@color/textcolor_white"
-        android:gravity="center"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:background="@drawable/border_white"
-        app:layout_constraintTop_toTopOf="@id/settings_pb_practise"
-        app:layout_constraintBottom_toBottomOf="@id/settings_pb_practise"
-        app:layout_constraintLeft_toRightOf="@id/settings_pb_practise"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/save_settings"

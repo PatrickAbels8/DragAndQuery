@@ -20,6 +20,8 @@ import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0105;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0106;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0107;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0108;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0301;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0401;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
@@ -41,7 +43,9 @@ public class TutorialCategoryLection
             Fragment_LectionContent_0105.Fragment_LectionContent_0105_Listener,
             Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener,
             Fragment_LectionContent_0107.Fragment_LectionContent_0107_Listener,
-            Fragment_LectionContent_0108.Fragment_LectionContent_0108_Listener
+            Fragment_LectionContent_0108.Fragment_LectionContent_0108_Listener,
+            Fragment_LectionContent_0301.Fragment_LectionContent_0301_Listener,
+            Fragment_LectionContent_0401.Fragment_LectionContent_0401_Listener
 {
 
     //fragments
@@ -73,7 +77,9 @@ public class TutorialCategoryLection
                 new Fragment_LectionContent_0105(),
                 new Fragment_LectionContent_0106(),
                 new Fragment_LectionContent_0107(),
-                new Fragment_LectionContent_0108()
+                new Fragment_LectionContent_0108(),
+                new Fragment_LectionContent_0301(),
+                new Fragment_LectionContent_0401()
         };
 
         //intent stuff
@@ -233,7 +239,9 @@ public class TutorialCategoryLection
     public boolean isDragLesson(String id){
         return id.substring(0, 5).equals("01_09") ||
                 id.substring(0, 5).equals("01_10") ||
-                id.substring(0, 5).equals("01_11") ;
+                id.substring(0, 5).equals("01_11") ||
+                id.substring(0, 5).equals("03_01") ||
+                id.substring(0, 5).equals("04_01");
     }
 
     public String getNextLectionID(){

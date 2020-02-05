@@ -20,6 +20,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.example.dragandquery.practice.Complexity;
+import com.example.dragandquery.practice.Exercise;
+import com.example.dragandquery.practice.Practices;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -28,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,9 +38,7 @@ import android.widget.Toast;
 
 /***
  * TODO
- * -prac score
- * -title big+small in nd
- * -addFlag so that sp is updated even whne pressed back (if needed via override onBackPressed or onCreate)
+ * prac onForth
  */
 
 public class Navigation extends AppCompatActivity
@@ -49,7 +50,6 @@ public class Navigation extends AppCompatActivity
     private String user_mail;
     private int tutorial_exp_avg;
     private int[] tutorial_exps;
-    private int practise_exp;
 
     //coms
     private ImageView image;
@@ -59,6 +59,10 @@ public class Navigation extends AppCompatActivity
     private TextView tv_practise;
     private ProgressBar pb_tutorial;
     private ProgressBar pb_practise;
+    private TextView title_big;
+    private TextView title_small;
+    private DrawerLayout drawer;
+    private ImageView swipeHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,11 @@ public class Navigation extends AppCompatActivity
         tv_practise = (TextView) findViewById(R.id.tv_practise);
         pb_tutorial = (ProgressBar) findViewById(R.id.pb_tutorial);
         pb_practise = (ProgressBar) findViewById(R.id.pb_practise);
+        drawer = findViewById(R.id.drawer_layout);
+        swipeHint = (ImageView) findViewById(R.id.swipehint);
+
+        //show nd gesture hint
+        swipeHint.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromleft));
 
         //key value store
         if(i.hasExtra(Settings.UNAME)){
@@ -84,8 +93,6 @@ public class Navigation extends AppCompatActivity
         if(i.hasExtra(Settings.UMAIL)) {
             saveData(getString(R.string.userMail_key), i.getStringExtra(Settings.UMAIL));
         }
-        saveData(getString(R.string.pracScore_key), Integer.toString(70)); //todo just for now
-
         user_name = loadDataString(getString(R.string.userName_key), "Name");
         user_mail = loadDataString(getString(R.string.userMail_key), "Mail");
         tutorial_exps = new int[]{
@@ -95,13 +102,13 @@ public class Navigation extends AppCompatActivity
                 loadDataInt(getString(R.string.tutScore4_key), 40)
         };
         tutorial_exp_avg = calcAvg(tutorial_exps);
-        practise_exp = Integer.parseInt(loadDataString(getString(R.string.pracScore_key), Integer.toString(0)));
 
-        //show user details
+
+        //show user details in profile
         name.setText(user_name);
         mail.setText(user_mail);
         pb_tutorial.setProgress(tutorial_exp_avg);
-        pb_practise.setProgress(practise_exp);
+        pb_practise.setProgress(calcExAvg());
 
         //open settings via tv's
         name.setOnClickListener(new Navigation.OnSettingsClickListener());
@@ -110,6 +117,8 @@ public class Navigation extends AppCompatActivity
         //change profile image
         if(loadDataBoolean(getString(R.string.userImageBool_key), false)){
             image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
+        } else{
+            image.setImageResource(R.drawable.profile_image);
         }
 
         //open tutorial (and practise) via pb/tv
@@ -128,8 +137,6 @@ public class Navigation extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        //((TextView)findViewById(R.id.nav_title_small)).setText(user_name);
 
         //handle navigation menu
         navigationView.setNavigationItemSelectedListener(this);
@@ -173,6 +180,15 @@ public class Navigation extends AppCompatActivity
         return data;
     }
 
+    public int calcExAvg(){
+        String e1 = loadDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
+        String e2 = loadDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
+        String e3 = loadDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+        int num_exs = Practices.DEFAULT_EASY.length()+Practices.DEFAULT_MEDIUM.length()+Practices.DEFAULT_HARD.length();
+        int num_dones = getNonZeros(e1)+getNonZeros(e2)+getNonZeros(e3);
+        return num_dones==0? 1: 100*num_dones/num_exs;
+    }
+
     public int calcAvg(int[] partialExps){
         int num_cats = partialExps.length;
         int sum = 0;
@@ -182,19 +198,46 @@ public class Navigation extends AppCompatActivity
         return sum/num_cats;
     }
 
+    public int getNonZeros(String s){
+        int num_NonZeros = 0;
+        for(int i=0; i<s.length(); i++)
+            if(s.charAt(i)!='0')
+                num_NonZeros++;
+        return num_NonZeros;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //popup
+        if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            swipeHint.setVisibility(View.VISIBLE);
         } else {
-            super.onBackPressed();
+            Intent i = new Intent(getApplicationContext(), PopUp.class);
+            i.putExtra(PopUp.KEY, PopUp.CLOSEAPP);
+            startActivityForResult(i, PopUp.REQUEST_CODE);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.navigation, menu);
+        swipeHint.setVisibility(View.GONE);
         return true;
     }
 
@@ -217,10 +260,8 @@ public class Navigation extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    //TODO back stack + add all the navi stuff to the other main activities after creating the main activities each
+    //TODO add all the navi stuff to the other main activities after creating the main activities each
     public boolean onNavigationItemSelected(MenuItem item) {
-        //Toast.makeText(getApplicationContext(), "onNavigationItemSelected", Toast.LENGTH_LONG).show();
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
@@ -247,11 +288,14 @@ public class Navigation extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_impressum) {
-            //TODO basic scrollpage with text and links to mail etc
+            Intent i = new Intent(getApplicationContext(), Impressum.class);
+            startActivity(i);
+
+        } else if (id == R.id.nav_dbView) {
+            Intent i = new Intent(getApplicationContext(), DbView.class);
+            startActivity(i);
         }
 
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

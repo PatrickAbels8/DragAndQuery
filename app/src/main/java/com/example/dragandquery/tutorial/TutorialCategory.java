@@ -37,8 +37,6 @@ import static com.example.dragandquery.Navigation.SHARED_PREFS;
 /***
  * TODO:
  * - do done lections againg without reset
- * - !!! first time speech bubble that user should reset once (story time cause default ist wrong)
- * - reset into settings
  */
 public class TutorialCategory extends AppCompatActivity {
 
@@ -46,7 +44,6 @@ public class TutorialCategory extends AppCompatActivity {
     private LinearLayout lections;
     private List<Button> cat_lections;
     private List<ImageView> checksOrLocks;
-    private ImageButton reset;
     private Animation vibrate;
 
     //vars
@@ -71,7 +68,6 @@ public class TutorialCategory extends AppCompatActivity {
         Intent intent = getIntent();
 
         //init coms&vars
-        reset = (ImageButton) findViewById(R.id.reset);
         lections = (LinearLayout) findViewById(R.id.ll_tutorial_lections);
         cat_lections = new ArrayList<>();
         checksOrLocks = new ArrayList<>();
@@ -103,22 +99,13 @@ public class TutorialCategory extends AppCompatActivity {
             });
         }
 
-        //reset everything
-        reset.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                resetLocks();
-                return true;
-            }
-        });
-
         //toolbar stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    //start lection
+    //start lection todo change when lec change
     public void startLection(int lection_id){
         String lec = getLectionID(lection_id);
         if(lec.substring(0, 5).equals("01_01") ||
@@ -128,7 +115,9 @@ public class TutorialCategory extends AppCompatActivity {
                 lec.substring(0, 5).equals("01_05") ||
                 lec.substring(0, 5).equals("01_06") ||
                 lec.substring(0, 5).equals("01_07") ||
-                lec.substring(0, 5).equals("01_08")){
+                lec.substring(0, 5).equals("01_08") ||
+                lec.substring(0, 5).equals("03_01") ||
+                lec.substring(0, 5).equals("04_01")){
             Intent i = new Intent(context, TutorialCategoryLection.class);
             i.putExtra(LECTION_ID, lec);
             startActivity(i);
@@ -206,7 +195,6 @@ public class TutorialCategory extends AppCompatActivity {
         switch(cat_id){
             case 1:
                 setTitle(getString(R.string.tutorial_category1));
-                //todo make via menu/list and export half of the case to a method (exp key etc global)
                 addLection(getString(R.string.cat1_lec1));
                 addLection(getString(R.string.cat1_lec2));
                 addLection(getString(R.string.cat1_lec3));
@@ -224,7 +212,6 @@ public class TutorialCategory extends AppCompatActivity {
                 break;
             case 2:
                 setTitle(getString(R.string.tutorial_category2));
-                //todo make via menu/list
                 addLection(getString(R.string.cat2_lec1));
                 addLection(getString(R.string.cat2_lec2));
                 addLection(getString(R.string.cat2_lec3));
@@ -246,7 +233,6 @@ public class TutorialCategory extends AppCompatActivity {
                 break;
             case 3:
                 setTitle(getString(R.string.tutorial_category3));
-                //todo make via menu/list
                 addLection(getString(R.string.cat3_lec1));
                 addLection(getString(R.string.cat3_lec2));
                 addLection(getString(R.string.cat3_lec3));
@@ -261,7 +247,6 @@ public class TutorialCategory extends AppCompatActivity {
                 break;
             case 4:
                 setTitle(getString(R.string.tutorial_category4));
-                //todo make via menu/list
                 addLection(getString(R.string.cat4_lec1));
                 addLection(getString(R.string.cat4_lec2));
                 addLection(getString(R.string.cat4_lec3));
@@ -419,12 +404,10 @@ public class TutorialCategory extends AppCompatActivity {
         return ID;
     }
 
-    //reset everything
-    public void resetLocks(){
-        setLectionUnlocked(0);
-        for(int i=1; i<lections_achievement.size(); i++){
-            setLectionLocked(i);
-            cat_lections.get(i).clearAnimation();
-        }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }
