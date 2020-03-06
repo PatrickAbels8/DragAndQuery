@@ -65,6 +65,10 @@ public class Fragment_Blocks_Ex extends Fragment {
         blocks_open = false;
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
+        /***
+         * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
+         */
+
         blocks_of_categories[0].add(BlockT.TABLE.createView(context));
         blocks_of_categories[0].add(BlockT.ATTRIBUTE.createView(context));
         blocks_of_categories[0].add(BlockT.STAR.createView(context));

@@ -18,17 +18,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * TODO
+ * TODO when adding a block: fragment block (3x) + here + change map!!
  */
 
 public enum BlockT {
 
-    SELECT,
+    AND,
+    AS,
+    ATTRIBUTE,
+    BETWEEN,
+    COUNT,
     FROM,
-    WHERE,
+    GREATER,
+    GROUPBY,
+    HAVING,
+    IN,
+    ISNULL,
+    LIKE,
+    LIMIT,
+    NOT,
+    ORDERBY,
+    SELECT,
+    SELECTDISTINCT,
     STAR,
     TABLE,
-    ATTRIBUTE;
+    WHERE;
 
     public String getName() {
         switch(this){
@@ -44,6 +58,34 @@ public enum BlockT {
                 return "attribute";
             case STAR:
                 return "*";
+            case LIMIT:
+                return "LIMIT";
+            case BETWEEN:
+                return "BETWEEN";
+            case GROUPBY:
+                return "GROUP BY";
+            case HAVING:
+                return "HAVING";
+            case IN:
+                return "IN";
+            case ISNULL:
+                return "IS NULL";
+            case LIKE:
+                return "LIKE";
+            case NOT:
+                return "NOT";
+            case ORDERBY:
+                return "ORDER BY";
+            case SELECTDISTINCT:
+                return "SELECT DISTINCT";
+            case COUNT:
+                return "COUNT";
+            case AND:
+                return "AND";
+            case GREATER:
+                return ">";
+            case AS:
+                return "AS";
         }
         return "";
     }
@@ -62,6 +104,32 @@ public enum BlockT {
                 return BlockT.TABLE;
             case R.drawable.where_block:
                 return BlockT.WHERE;
+            case R.drawable.limit_block:
+                return BlockT.LIMIT;
+            case R.drawable.between_block:
+                return BlockT.BETWEEN;
+            case R.drawable.groupby_block:
+                return BlockT.GROUPBY;
+            case R.drawable.having_block:
+                return BlockT.HAVING;
+            case R.drawable.in_block:
+                return BlockT.IN;
+            case R.drawable.isnull_block:
+                return BlockT.ISNULL;
+            case R.drawable.not_block:
+                return BlockT.NOT;
+            case R.drawable.orderby_block:
+                return BlockT.ORDERBY;
+            case R.drawable.selectdistinct_block:
+                return BlockT.SELECTDISTINCT;
+            case R.drawable.count_block:
+                return BlockT.COUNT;
+            case R.drawable.and_block:
+                return BlockT.AND;
+            case R.drawable.greater_block:
+                return BlockT.GREATER;
+            case R.drawable.as_block:
+                return BlockT.AS;
         }
         return BlockT.SELECT;
     }
@@ -79,6 +147,32 @@ public enum BlockT {
                 return R.drawable.table_block;
             case ATTRIBUTE:
                 return R.drawable.attribute_block;
+            case LIMIT:
+                return R.drawable.limit_block;
+            case BETWEEN:
+                return R.drawable.between_block;
+            case GROUPBY:
+                return R.drawable.groupby_block;
+            case HAVING:
+                return R.drawable.having_block;
+            case IN:
+                return R.drawable.in_block;
+            case ISNULL:
+                return R.drawable.isnull_block;
+            case NOT:
+                return R.drawable.not_block;
+            case ORDERBY:
+                return R.drawable.orderby_block;
+            case SELECTDISTINCT:
+                return R.drawable.selectdistinct_block;
+            case COUNT:
+                return R.drawable.count_block;
+            case AND:
+                return R.drawable.and_block;
+            case GREATER:
+                return R.drawable.greater_block;
+            case AS:
+                return R.drawable.as_block;
         }
         return R.drawable.star_block;
     }
@@ -102,6 +196,8 @@ public enum BlockT {
                 break;
             case STAR:
                 break;
+            case LIMIT:
+                break;
         }
         return sucs;
     }
@@ -122,6 +218,8 @@ public enum BlockT {
             case ATTRIBUTE:
                 break;
             case STAR:
+                break;
+            case LIMIT:
                 break;
         }
         return sucs;

@@ -13,5 +13,9 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="tutorial_input_textSize">17dp</dimen>
     <dimen name="radio_button_textSize">20dp</dimen>
+
+    <!-- blocks -->
     <dimen name="block_ui_overlapping">5dp</dimen>
+    <dimen name="block_width">50dp</dimen>
+    <dimen name="block_height">30dp</dimen>
 </resources>
