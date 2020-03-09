@@ -120,7 +120,10 @@ public class Fragment_Blocks_Tut extends Fragment {
         return v;
     }
 
-    //todo add blocks
+    /***
+     * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
+     */
+
     public void addBlock(String name){
         if(name.equals(BlockT.ATTRIBUTE.getName()))
             blocks_of_categories[0].add(BlockT.ATTRIBUTE.createView(context));

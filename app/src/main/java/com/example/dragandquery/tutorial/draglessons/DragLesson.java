@@ -14,6 +14,9 @@ import com.example.dragandquery.tutorial.TutorialCategory;
 import com.example.dragandquery.tutorial.TutorialCategoryLection;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
@@ -28,6 +31,39 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     String lec_id;
     public static final String ARGS_KEY = "com.example.dragandquery.tutorial.draglessons.DragLesson.ARGS_KEY";
     public static final String ID_KEY = "com.example.dragandquery.tutorial.draglessons.DragLesson.ID_KEY";
+    public static final Map<String, String[]> map = new HashMap<String, String[]>(){{
+        put("01_09", new String[]{BlockT.STAR.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("01_10", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("01_11", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.LIMIT.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("02_01", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_02", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_03", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_04", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_05", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.BETWEEN.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_06", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_07", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_08", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.NOT.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_09", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_10", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_11", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.IN.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_12", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.LIKE.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("02_13", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECTDISTINCT.getName(), BlockT.TABLE.getName()});
+        put("02_14", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("02_15", new String[]{BlockT.AS.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("03_02", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("03_03", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.ISNULL.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("03_04", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("03_05", new String[]{BlockT.AS.getName(), BlockT.ATTRIBUTE.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.GROUPBY.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("03_06", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("03_07", new String[]{BlockT.ATTRIBUTE.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.IN.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("03_08", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.GROUPBY.getName(), BlockT.HAVING.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName()});
+        put("04_02", new String[]{BlockT.GREATER.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("04_03", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("04_04", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("04_05", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("04_06", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+        put("04_07", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.ATTRIBUTE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.TABLE.getName(), BlockT.WHERE.getName()});
+    }};
 
     //fragments
     Fragment_Query_Tut fragQuery;
@@ -113,12 +149,10 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         }
     }
 
+    // global hash map with 0 and 1, check row for lec id and add ones to list
     public ArrayList<String> getBlockStrings(){
-        //todo depending on ex id return blocks to choose
-        ArrayList<String> blocks = new ArrayList<>();
-        blocks.add(BlockT.SELECT.getName());
-        blocks.add(BlockT.ATTRIBUTE.getName());
-        return blocks;
+        String[] blocks = map.get(lec_id.substring(0, 5));
+        return new ArrayList(Arrays.asList(blocks));
     }
 
     public void setLectionDone(){
@@ -187,7 +221,34 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         return id.substring(0, 5).equals("01_09") ||
                 id.substring(0, 5).equals("01_10") ||
                 id.substring(0, 5).equals("01_11") ||
-                id.substring(0, 5).equals("03_01") ||
-                id.substring(0, 5).equals("04_01");
+                id.substring(0, 5).equals("02_01") ||
+                id.substring(0, 5).equals("02_02") ||
+                id.substring(0, 5).equals("02_03") ||
+                id.substring(0, 5).equals("02_04") ||
+                id.substring(0, 5).equals("02_05") ||
+                id.substring(0, 5).equals("02_06") ||
+                id.substring(0, 5).equals("02_07") ||
+                id.substring(0, 5).equals("02_08") ||
+                id.substring(0, 5).equals("02_09") ||
+                id.substring(0, 5).equals("02_10") ||
+                id.substring(0, 5).equals("02_11") ||
+                id.substring(0, 5).equals("02_12") ||
+                id.substring(0, 5).equals("02_13") ||
+                id.substring(0, 5).equals("02_15") ||
+                id.substring(0, 5).equals("03_02") ||
+                id.substring(0, 5).equals("03_03") ||
+                id.substring(0, 5).equals("03_04") ||
+                id.substring(0, 5).equals("03_05") ||
+                id.substring(0, 5).equals("03_06") ||
+                id.substring(0, 5).equals("03_07") ||
+                id.substring(0, 5).equals("03_08") ||
+                id.substring(0, 5).equals("04_01") ||
+                id.substring(0, 5).equals("04_02") ||
+                id.substring(0, 5).equals("04_03") ||
+                id.substring(0, 5).equals("04_04") ||
+                id.substring(0, 5).equals("04_05") ||
+                id.substring(0, 5).equals("04_06") ||
+                id.substring(0, 5).equals("04_07") ||
+                id.substring(0, 5).equals("04_08");
     }
 }
