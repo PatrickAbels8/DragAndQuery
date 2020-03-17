@@ -15,10 +15,13 @@ public class Node {
     private Node rightChild = null;
     private Node downChild = null;
     private Node parent = null;
+    private String value = "";
     //private int id;
 
-    public Node(BlockT block) {
+    public Node(BlockT block, String ... vals) {
         this.block = block;
+        if(vals.length == 1)
+            this.value = vals[0];
     }
 
     public void addRightChild(Node child){
@@ -83,13 +86,13 @@ public class Node {
     }
 
     public String toTreeString(){
-        String s = this.getBlock().getName();
+        String s = this.getValue();
         if(this.hasRight()) {
             s += " ";
             s += this.getRightChild().toTreeString();
         }
         if(this.hasDown()) {
-            s += "\n";
+            s += "\n"; //todo for parser later on not useful
             s += this.getDownChild().toTreeString();
         }
         return s;
@@ -131,6 +134,10 @@ public class Node {
 
     public void setBlock(BlockT block) {
         this.block = block;
+    }
+
+    public String getValue(){
+        return value;
     }
 
     public Node getRightChild() {

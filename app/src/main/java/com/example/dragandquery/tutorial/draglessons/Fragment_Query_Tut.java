@@ -107,15 +107,20 @@ public class Fragment_Query_Tut extends Fragment {
         BlockT blockT = BlockT.getBlock(((BlockT) view.getTag()).getDesign());
 
         //create a corresponding node and BlockView
-        Node root = new Node(blockT);
-        BlockView cur_view = blockT.createView(context, ((BlockView)view).getText().toString());
+        String val = ((BlockView)view).getText().toString();
+        Node root = new Node(blockT, val);
+        BlockView cur_view = blockT.createView(context, val);
+        cur_view.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
         cur_view.setNode(root);
 
         //add the new bv to rl
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins((int)x-cur_view.getWidth(), (int)y-cur_view.getHeight(), 0, 0);
+        if(x<0 || y<0)
+            params.setMargins(rl_query.getWidth()-cur_view.getWidth(), rl_query.getHeight()-cur_view.getHeight(), 0, 0);
+        else
+            params.setMargins((int)x-cur_view.getWidth(), (int)y-cur_view.getHeight(), 0, 0);
         rl_query.addView(cur_view, params);
 
         //add listeners
@@ -298,6 +303,13 @@ public class Fragment_Query_Tut extends Fragment {
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    //helper
+    public int dp_to_int(int dp){
+        float scale = getResources().getDisplayMetrics().density;
+        int pix = (int) (dp*scale+0.5f);
+        return pix;
     }
 
     /***

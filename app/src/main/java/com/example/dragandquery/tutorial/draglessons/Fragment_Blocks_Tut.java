@@ -2,6 +2,7 @@ package com.example.dragandquery.tutorial.draglessons;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -81,8 +82,8 @@ public class Fragment_Blocks_Tut extends Fragment {
                     Toast.makeText(context, "Text fehlt!", Toast.LENGTH_SHORT).show();
                 }else{
                     showOrHideBlocks(null, -1);
-                    float rawX = et.getX();
-                    float rawY = et.getY();
+                    float rawX = (float) Resources.getSystem().getDisplayMetrics().widthPixels/2-(float)view.getWidth()/2;
+                    float rawY = (float) Resources.getSystem().getDisplayMetrics().heightPixels/2-(float)view.getHeight()/2;
                     BlockView edit_block = BlockT.EMPTY.createView(context, s);
                     listener.onBlockDragged(edit_block, rawX, rawY);
                     et.setText("");
@@ -134,8 +135,8 @@ public class Fragment_Blocks_Tut extends Fragment {
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                             showOrHideBlocks(null, -1);
-                            float rawX = motionEvent.getRawX();
-                            float rawY = motionEvent.getRawY();
+                            float rawX = motionEvent.getRawX()-(float)view.getWidth()/2;
+                            float rawY = motionEvent.getRawY()-(float)view.getHeight()/2;
                             listener.onBlockDragged(view, rawX, rawY);
                         }
                         return true;
@@ -170,17 +171,23 @@ public class Fragment_Blocks_Tut extends Fragment {
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<BlockView> blocks_to_show, int index){
         if(!blocks_open){ //no cat opened yet
-            ll_blocks.addView(et);
-            for(BlockView iv: blocks_to_show){
-                ll_blocks.addView(iv);
+            et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+            ll_blocks.addView(et, BlockView.linear_params);
+            for(int i=0; i<blocks_to_show.size(); i++){
+                BlockView bv = blocks_to_show.get(i);
+                bv.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+                ll_blocks.addView(bv, BlockView.linear_params);
             }
             blocks_open = true;
             current_category_index = index;
         }else if(index>-1&&current_category_index!=index) { //another cat was already opened
             ll_blocks.removeAllViews();
+            et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
             ll_blocks.addView(et);
-            for(BlockView iv: blocks_to_show){
-                ll_blocks.addView(iv);
+            for(int i=0; i<blocks_to_show.size(); i++){
+                BlockView bv = blocks_to_show.get(i);
+                bv.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+                ll_blocks.addView(bv, BlockView.linear_params);
             }
             blocks_open = true;
             current_category_index = index;
@@ -222,5 +229,12 @@ public class Fragment_Blocks_Tut extends Fragment {
             }
         }
         return -1;
+    }
+
+    //helper
+    public int dp_to_int(int dp){
+        float scale = getResources().getDisplayMetrics().density;
+        int pix = (int) (dp*scale+0.5f);
+        return pix;
     }
 }

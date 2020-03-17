@@ -239,6 +239,7 @@ public enum BlockT {
             view.setText(getName());
         else
             view.setText(vals[0]);
+        view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view.setTag(this);
         return view;
     }
@@ -250,8 +251,6 @@ public enum BlockT {
     }
 
     public boolean hasDownSuccessor(BlockT draggedBlock){
-        if(this == BlockT.EMPTY || draggedBlock == BlockT.EMPTY)
-            return true;
         return this.getDownSuccessors().contains(draggedBlock);
     }
 

@@ -2,9 +2,11 @@ package com.example.dragandquery.free;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +35,7 @@ import java.util.List;
 
 public class Fragment_Blocks extends Fragment {
 
+
     //coms
     LinearLayout ll_blocks;
     LinearLayout ll_categories;
@@ -48,6 +52,8 @@ public class Fragment_Blocks extends Fragment {
     private boolean blocks_open;
     private int current_category_index;
     private Context context;
+
+    //private float[] editPosition = new float[2];
 
     //interface
     public interface Fragment_Blocks_Listener{
@@ -72,9 +78,20 @@ public class Fragment_Blocks extends Fragment {
         blocks_open = false;
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
 
+
         // edit block
         et = new EditText(context);
         et.setBackgroundResource(R.drawable.empty_block);
+        /*et.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    editPosition[0] = motionEvent.getRawX()-(float)view.getWidth()/2;
+                    editPosition[1] = motionEvent.getRawY()-(float)view.getHeight()/2;
+                }
+                return true;
+            }
+        });*/
         et.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -83,8 +100,8 @@ public class Fragment_Blocks extends Fragment {
                     Toast.makeText(context, "Text fehlt!", Toast.LENGTH_SHORT).show();
                 }else{
                     showOrHideBlocks(null, -1);
-                    float rawX = et.getX();
-                    float rawY = et.getY();
+                    float rawX = (float)Resources.getSystem().getDisplayMetrics().widthPixels/2-(float)view.getWidth()/2; //editPosition[0];
+                    float rawY = (float)Resources.getSystem().getDisplayMetrics().heightPixels/2-(float)view.getHeight()/2;
                     BlockView edit_block = BlockT.EMPTY.createView(context, s);
                     listener.onBlockDragged(edit_block, rawX, rawY);
                     et.setText("");
@@ -124,8 +141,8 @@ public class Fragment_Blocks extends Fragment {
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                             showOrHideBlocks(null, -1);
-                            float rawX = motionEvent.getRawX();
-                            float rawY = motionEvent.getRawY();
+                            float rawX = motionEvent.getRawX()-(float)view.getWidth()/2;
+                            float rawY = motionEvent.getRawY()-(float)view.getHeight()/2;
                             listener.onBlockDragged(view, rawX, rawY);
                         }
                         return true;
@@ -139,17 +156,23 @@ public class Fragment_Blocks extends Fragment {
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<BlockView> blocks_to_show, int index){
         if(!blocks_open){ //no cat opened yet
-            ll_blocks.addView(et);
+            et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+            ll_blocks.addView(et, BlockView.linear_params);
             for(int i=0; i<blocks_to_show.size(); i++){
-                ll_blocks.addView(blocks_to_show.get(i));
+                BlockView bv = blocks_to_show.get(i);
+                bv.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+                ll_blocks.addView(bv, BlockView.linear_params);
             }
             blocks_open = true;
             current_category_index = index;
         }else if(index>-1&&current_category_index!=index) { //another cat was already opened
             ll_blocks.removeAllViews();
+            et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
             ll_blocks.addView(et);
             for(int i=0; i<blocks_to_show.size(); i++){
-                ll_blocks.addView(blocks_to_show.get(i));
+                BlockView bv = blocks_to_show.get(i);
+                bv.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+                ll_blocks.addView(bv, BlockView.linear_params);
             }
             blocks_open = true;
             current_category_index = index;
@@ -191,5 +214,12 @@ public class Fragment_Blocks extends Fragment {
             }
         }
         return -1;
+    }
+
+    //helper
+    public int dp_to_int(int dp){
+        float scale = getResources().getDisplayMetrics().density;
+        int pix = (int) (dp*scale+0.5f);
+        return pix;
     }
 }

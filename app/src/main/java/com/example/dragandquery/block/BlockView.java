@@ -3,6 +3,8 @@ package com.example.dragandquery.block;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -10,6 +12,8 @@ import androidx.annotation.Nullable;
 
 public class BlockView extends TextView {
 
+    public static final LinearLayout.LayoutParams linear_params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+    public static final RelativeLayout.LayoutParams relative_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
     /***
      * Listeners
