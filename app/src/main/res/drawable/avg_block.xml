@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/block_width"
+    android:height="@dimen/block_height"
+    android:viewportWidth="100.0"
+    android:viewportHeight="100.0">
+
+    <path
+        android:pathData="M 10 20 L 0 60 L 10 100 L 95 100 L 95 20 z"
+        android:fillColor="#e93578"/>
+    <path
+        android:pathData="M 95 20 L 95 100 L 100 100 L 100 20 z"
+        android:fillColor="#aaaaaa"/>
+</vector>
+    <!--M=Move, L=Line, C=circle (3 Punkte: oberhalb von mir, oben rechts, rechts von mir)-->
