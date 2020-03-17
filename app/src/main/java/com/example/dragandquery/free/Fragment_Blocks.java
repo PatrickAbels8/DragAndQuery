@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -40,6 +41,8 @@ public class Fragment_Blocks extends Fragment {
                              //3: Others
     List<BlockView> [] blocks_of_categories;
 
+    EditText et;
+
     //vars
     private Fragment_Blocks_Listener listener;
     private boolean blocks_open;
@@ -68,6 +71,27 @@ public class Fragment_Blocks extends Fragment {
                 v.findViewById(R.id.block_category4)};
         blocks_open = false;
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
+
+        // edit block
+        et = new EditText(context);
+        et.setBackgroundResource(R.drawable.empty_block);
+        et.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                String s = et.getText().toString();
+                if(s.length() == 0){
+                    Toast.makeText(context, "Text fehlt!", Toast.LENGTH_SHORT).show();
+                }else{
+                    showOrHideBlocks(null, -1);
+                    float rawX = et.getX();
+                    float rawY = et.getY();
+                    BlockView edit_block = BlockT.EMPTY.createView(context, s);
+                    listener.onBlockDragged(edit_block, rawX, rawY);
+                    et.setText("");
+                }
+                return true;
+            }
+        });
 
         /***
          * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
@@ -115,15 +139,17 @@ public class Fragment_Blocks extends Fragment {
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<BlockView> blocks_to_show, int index){
         if(!blocks_open){ //no cat opened yet
-            for(BlockView iv: blocks_to_show){
-                ll_blocks.addView(iv);
+            ll_blocks.addView(et);
+            for(int i=0; i<blocks_to_show.size(); i++){
+                ll_blocks.addView(blocks_to_show.get(i));
             }
             blocks_open = true;
             current_category_index = index;
         }else if(index>-1&&current_category_index!=index) { //another cat was already opened
             ll_blocks.removeAllViews();
-            for(BlockView iv: blocks_to_show){
-                ll_blocks.addView(iv);
+            ll_blocks.addView(et);
+            for(int i=0; i<blocks_to_show.size(); i++){
+                ll_blocks.addView(blocks_to_show.get(i));
             }
             blocks_open = true;
             current_category_index = index;

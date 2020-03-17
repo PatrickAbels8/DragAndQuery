@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- *TODO:
+ *TODO: edit blocks miss their text in toTreeString
  */
 
 

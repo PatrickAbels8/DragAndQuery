@@ -99,7 +99,7 @@ public class Fragment_Query extends Fragment {
 
         //create a corresponding node and BlockView
         Node root = new Node(blockT);
-        BlockView cur_view = blockT.createView(context);
+        BlockView cur_view = blockT.createView(context, ((BlockView)view).getText().toString());
         cur_view.setNode(root);
 
         //add the new bv to rl

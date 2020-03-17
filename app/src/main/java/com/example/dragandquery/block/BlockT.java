@@ -28,6 +28,7 @@ public enum BlockT {
     ATTRIBUTE,
     BETWEEN,
     COUNT,
+    EMPTY,
     FROM,
     GREATER,
     GROUPBY,
@@ -86,6 +87,8 @@ public enum BlockT {
                 return ">";
             case AS:
                 return "AS";
+            case EMPTY:
+                return "";
         }
         return "";
     }
@@ -130,6 +133,8 @@ public enum BlockT {
                 return BlockT.GREATER;
             case R.drawable.as_block:
                 return BlockT.AS;
+            case R.drawable.empty_block:
+                return BlockT.EMPTY;
         }
         return BlockT.SELECT;
     }
@@ -173,6 +178,8 @@ public enum BlockT {
                 return R.drawable.greater_block;
             case AS:
                 return R.drawable.as_block;
+            case EMPTY:
+                return R.drawable.empty_block;
         }
         return R.drawable.star_block;
     }
@@ -225,19 +232,26 @@ public enum BlockT {
         return sucs;
     }
 
-    public BlockView createView(Context context){
+    public BlockView createView(Context context, String ... vals){
         BlockView view = new BlockView(context);
         view.setBackgroundResource(getDesign());
-        view.setText(getName());
+        if(vals.length==0)
+            view.setText(getName());
+        else
+            view.setText(vals[0]);
         view.setTag(this);
         return view;
     }
 
     public boolean hasRightSuccessor(BlockT draggedBlock){
+        if(this == BlockT.EMPTY || draggedBlock == BlockT.EMPTY)
+            return true;
         return this.getRightSuccessors().contains(draggedBlock);
     }
 
     public boolean hasDownSuccessor(BlockT draggedBlock){
+        if(this == BlockT.EMPTY || draggedBlock == BlockT.EMPTY)
+            return true;
         return this.getDownSuccessors().contains(draggedBlock);
     }
 

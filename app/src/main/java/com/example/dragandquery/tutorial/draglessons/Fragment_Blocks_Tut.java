@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +38,8 @@ public class Fragment_Blocks_Tut extends Fragment {
                              //2: KeyWords
                              //3: Others
     List<BlockView> [] blocks_of_categories;
+
+    EditText et;
 
     //vars
     private Fragment_Blocks_Tut_Listener listener;
@@ -65,6 +69,27 @@ public class Fragment_Blocks_Tut extends Fragment {
                 v.findViewById(R.id.block_category4)};
         blocks_open = false;
         blocks_of_categories = new ArrayList[]{new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()};
+
+        // edit block
+        et = new EditText(context);
+        et.setBackgroundResource(R.drawable.empty_block);
+        et.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                String s = et.getText().toString();
+                if(s.length() == 0){
+                    Toast.makeText(context, "Text fehlt!", Toast.LENGTH_SHORT).show();
+                }else{
+                    showOrHideBlocks(null, -1);
+                    float rawX = et.getX();
+                    float rawY = et.getY();
+                    BlockView edit_block = BlockT.EMPTY.createView(context, s);
+                    listener.onBlockDragged(edit_block, rawX, rawY);
+                    et.setText("");
+                }
+                return true;
+            }
+        });
 
         //match blocks to bundle
         Bundle args = this.getArguments();
@@ -121,6 +146,8 @@ public class Fragment_Blocks_Tut extends Fragment {
         return v;
     }
 
+
+
     /***
      * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
      */
@@ -143,6 +170,7 @@ public class Fragment_Blocks_Tut extends Fragment {
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<BlockView> blocks_to_show, int index){
         if(!blocks_open){ //no cat opened yet
+            ll_blocks.addView(et);
             for(BlockView iv: blocks_to_show){
                 ll_blocks.addView(iv);
             }
@@ -150,6 +178,7 @@ public class Fragment_Blocks_Tut extends Fragment {
             current_category_index = index;
         }else if(index>-1&&current_category_index!=index) { //another cat was already opened
             ll_blocks.removeAllViews();
+            ll_blocks.addView(et);
             for(BlockView iv: blocks_to_show){
                 ll_blocks.addView(iv);
             }
