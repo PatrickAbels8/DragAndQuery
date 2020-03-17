@@ -3,12 +3,13 @@ package com.example.dragandquery.block;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.EditText;
+//import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 //import androidx.appcompat.widget.AppCompatImageView;
 
-public class BlockView extends TextView {
+public class EditBlockView extends EditText {
 
 
     /***
@@ -17,12 +18,12 @@ public class BlockView extends TextView {
     public interface GroupDragListener{
         // void onGroupDrag(BlockView bv, BlockView v);
 
-        void onGroupDrag(BlockView bv, float x, float y);
-        void setDistance(BlockView bv, float x, float y); //distance from topleft to finger
+        void onGroupDrag(EditBlockView bv, float x, float y);
+        void setDistance(EditBlockView bv, float x, float y); //distance from topleft to finger
     }
     public interface MyOnDragListener{
 
-        void onMyDrag(BlockView me, BlockView him, float x, float y, int event);
+        void onMyDrag(EditBlockView me, EditBlockView him, float x, float y, int event);
     }
 
     //vars
@@ -34,15 +35,15 @@ public class BlockView extends TextView {
     public final static int MOVE = 1;
     public final static int UP = 2;
 
-    public BlockView(Context context) {
+    public EditBlockView(Context context) {
         super(context);
     }
 
-    public BlockView(Context context, @Nullable AttributeSet attrs) {
+    public EditBlockView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public BlockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public EditBlockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -95,7 +96,7 @@ public class BlockView extends TextView {
         }
     }
 
-    public void notifyMyDragListener(BlockView him, float x, float y, int ev){
+    public void notifyMyDragListener(EditBlockView him, float x, float y, int ev){
         if(mydrag_listener != null){
             mydrag_listener.onMyDrag(this, him, x, y, ev);
         }

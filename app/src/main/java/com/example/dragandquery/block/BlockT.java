@@ -227,7 +227,8 @@ public enum BlockT {
 
     public BlockView createView(Context context){
         BlockView view = new BlockView(context);
-        view.setImageResource(getDesign());
+        view.setBackgroundResource(getDesign());
+        view.setText(getName());
         view.setTag(this);
         return view;
     }
