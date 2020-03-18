@@ -84,7 +84,7 @@ public class Fragment_Table extends Fragment {
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
-        raw_query.setText(query);
+        raw_query.setText(response);
 
     }
 

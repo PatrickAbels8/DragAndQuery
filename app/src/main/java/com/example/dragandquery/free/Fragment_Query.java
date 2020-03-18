@@ -295,7 +295,7 @@ public class Fragment_Query extends Fragment {
                             for(int i=0; i<subtree.size(); i++){
                                 subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
                             }
-                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping_h));
                             him.setY(me.getY());
                             for(int i=0; i<subtree.size(); i++) {
                                 subtree.get(i).notifyListener(him.getX(), him.getY());
@@ -318,7 +318,7 @@ public class Fragment_Query extends Fragment {
                                 subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
                             }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping_v));
                             for(int i=0; i<subtree.size(); i++) {
                                 subtree.get(i).notifyListener(him.getX(), him.getY());
                             }

@@ -79,8 +79,9 @@ public class Fragment_Table_Ex extends Fragment {
         cl_table.setVisibility(View.GONE);
     }
 
-    public void goVisible(String query, int isCorrect){
+    public void goVisible(String query, String response, int isCorrect){
         cl_table.setVisibility(View.VISIBLE);
+        fillTable(response);
         cl_table.startAnimation(frombottom);
         raw_query.setText(query);
 
@@ -96,6 +97,10 @@ public class Fragment_Table_Ex extends Fragment {
             star3.setImageResource(R.drawable.star_full);
         else
             star3.setImageResource(R.drawable.star_empty);
+    }
+
+    public void fillTable(String response){
+        //todo fill table
     }
 
     @Override

@@ -88,8 +88,9 @@ public class Fragment_Table_Tut extends Fragment {
     }
 
     //todo good or bad feedback
-    public void goVisible(String query, boolean isCorrect){
+    public void goVisible(String query, String response, boolean isCorrect){
         cl_table.setVisibility(View.VISIBLE);
+        fillTable(response);
         cl_table.startAnimation(frombottom);
         raw_query.setText(query);
         if(isCorrect)
@@ -97,6 +98,10 @@ public class Fragment_Table_Tut extends Fragment {
         else
             btn_forth.setVisibility(View.INVISIBLE);
 
+    }
+
+    public void fillTable(String response){
+        //todo fill table
     }
 
     @Override

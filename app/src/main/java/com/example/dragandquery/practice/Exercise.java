@@ -74,10 +74,10 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     }
 
     @Override
-    public void onGo(String query, int isCorrect) {
+    public void onGo(String query, String response, int isCorrect) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        fragTable.goVisible(query, isCorrect);
+        fragTable.goVisible(query, response, isCorrect);
 
         if(isCorrect!=STAR_0){
             int index = ex_id%100;

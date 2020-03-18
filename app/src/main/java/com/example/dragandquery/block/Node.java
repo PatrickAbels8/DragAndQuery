@@ -92,7 +92,8 @@ public class Node {
             s += this.getRightChild().toTreeString();
         }
         if(this.hasDown()) {
-            s += "\n"; //todo for parser later on not useful
+            //s += "\n"; //todo for parser later on not useful
+            s += " ";
             s += this.getDownChild().toTreeString();
         }
         return s;

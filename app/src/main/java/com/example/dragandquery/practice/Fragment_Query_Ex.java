@@ -23,6 +23,7 @@ import com.example.dragandquery.R;
 import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
+import com.example.dragandquery.db.DatabaseAccess;
 import com.example.dragandquery.free.ClearView;
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -56,7 +57,7 @@ public class Fragment_Query_Ex extends Fragment {
 
     //interface
     public interface Fragment_Query_Ex_Listener{
-        void onGo(String query, int isCorrect);
+        void onGo(String query, String response, int isCorrect);
     }
 
     @Nullable
@@ -237,6 +238,14 @@ public class Fragment_Query_Ex extends Fragment {
         return pix;
     }
 
+    public String queryDB(String query){
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        databaseAccess.open();
+        String response = databaseAccess.query(query);
+        databaseAccess.close();
+        return response; //todo return null if no good response
+    }
+
     /***
      * Listeners
      */
@@ -306,7 +315,7 @@ public class Fragment_Query_Ex extends Fragment {
                             for(int i=0; i<subtree.size(); i++){
                                 subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
                             }
-                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            him.setX(me.getX()+me.getWidth()-getResources().getDimension(R.dimen.block_ui_overlapping_h));
                             him.setY(me.getY());
                             for(int i=0; i<subtree.size(); i++) {
                                 subtree.get(i).notifyListener(him.getX(), him.getY());
@@ -329,7 +338,7 @@ public class Fragment_Query_Ex extends Fragment {
                                 subtree.get(i).notifyListenerDistance(subtree.get(i).getX()-him.getX(), subtree.get(i).getY()-him.getY());
                             }
                             him.setX(me.getX());
-                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping));
+                            him.setY(me.getY()+me.getHeight()-getResources().getDimension(R.dimen.block_ui_overlapping_v));
                             for(int i=0; i<subtree.size(); i++) {
                                 subtree.get(i).notifyListener(him.getX(), him.getY());
                             }
@@ -383,8 +392,9 @@ public class Fragment_Query_Ex extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        listener.onGo(query, isCorrect(query));
-                        hideBird();
+                        String response = queryDB(query);
+                        if(response != null)
+                            listener.onGo(query, response, isCorrect(response));                        hideBird();
                         hideDB();
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
