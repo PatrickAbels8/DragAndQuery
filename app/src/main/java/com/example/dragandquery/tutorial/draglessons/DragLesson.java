@@ -16,6 +16,7 @@ import com.example.dragandquery.tutorial.TutorialCategoryLection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
@@ -110,13 +111,13 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     }
 
     @Override
-    public void onGo(String query, String response, boolean isCorrect) {
+    public void onGo(String query, List<String[]> response) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        if(isCorrect){
+        if(fragTable.isCorrect(query)){
             setLectionDone();
         }
-        fragTable.goVisible(query, response, isCorrect);
+        fragTable.goVisible(query, response);
     }
 
     @Override

@@ -63,7 +63,7 @@ public class Fragment_Query extends Fragment {
 
     //interface
     public interface Fragment_Query_Listener{
-        void onGo(String query, String response);
+        void onGo(String query, List<String[]> response);
     }
 
     @Nullable
@@ -219,12 +219,17 @@ public class Fragment_Query extends Fragment {
         return pix;
     }
 
-    public String queryDB(String query){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
-        databaseAccess.open();
-        String response = databaseAccess.query(query);
-        databaseAccess.close();
-        return response; //todo return null if no good response
+    public List<String[]> queryDB(String query){
+        try{
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            databaseAccess.open();
+            List<String[]> response = databaseAccess.query(query);
+            databaseAccess.close();
+            return response;
+        }catch(Exception e){
+            return null;
+        }
+
     }
 
     /***
@@ -372,9 +377,11 @@ public class Fragment_Query extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        String response = queryDB(query);
+                        List<String[]> response = queryDB(query);
                         if(response != null)
                             listener.onGo(query, response);
+                        else
+                            Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
                         hideDB();
                         //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));

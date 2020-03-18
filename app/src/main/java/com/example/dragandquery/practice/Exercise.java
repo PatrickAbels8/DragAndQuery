@@ -74,11 +74,12 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     }
 
     @Override
-    public void onGo(String query, String response, int isCorrect) {
+    public void onGo(String query, List<String[]> response) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        fragTable.goVisible(query, response, isCorrect);
+        fragTable.goVisible(query, response);
 
+        int isCorrect = fragTable.isCorrect(query);
         if(isCorrect!=STAR_0){
             int index = ex_id%100;
             String key = ex_id/100==1? getString(R.string.prac_easy_key): ex_id/100==2? getString(R.string.prac_medium_key): getString(R.string.prac_hard_key);

@@ -85,6 +85,10 @@ public class Node {
         }
     }
 
+    /***
+     * main parser from blocks to sql query
+     * @return string to perform query on db
+     */
     public String toTreeString(){
         String s = this.getValue();
         if(this.hasRight()) {

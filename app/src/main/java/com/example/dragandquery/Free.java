@@ -9,6 +9,8 @@ import com.example.dragandquery.free.Fragment_Blocks;
 import com.example.dragandquery.free.Fragment_Query;
 import com.example.dragandquery.free.Fragment_Table;
 
+import java.util.List;
+
 /***
  * TODO
  */
@@ -45,7 +47,7 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     }
 
     @Override
-    public void onGo(String query, String response) {
+    public void onGo(String query, List<String[]> response) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
         fragTable.goVisible(query, response);

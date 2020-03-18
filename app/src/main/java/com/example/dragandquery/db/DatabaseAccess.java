@@ -36,14 +36,25 @@ public class DatabaseAccess {
         }
     }
 
-    public String query(String query_string){ //todo throw exception
+    public List<String[]> query(String query_string){
+        List<String[]> data = new ArrayList<>();
         c = db.rawQuery(query_string, new String[]{});
-        StringBuffer buffer = new StringBuffer();
-        while (c.moveToNext()){
-            String address = c.getString(0);
-            buffer.append(""+address);
+        int num_rows = c.getCount();
+        int num_cols = c.getColumnCount();
+        String[] col_names = c.getColumnNames();
+
+        data.add(col_names);
+        if(c != null){
+            if(c.moveToFirst()){
+                do{
+                    String[] row = new String[num_cols];
+                    for(int i=0; i<num_cols; i++)
+                        row[i] = c.getString(i);
+                    data.add(row);
+                }while(c.moveToNext());
+            }
         }
-        Log.d(">>>>", buffer.toString());
-        return buffer.toString();
+
+        return data;
     }
 }

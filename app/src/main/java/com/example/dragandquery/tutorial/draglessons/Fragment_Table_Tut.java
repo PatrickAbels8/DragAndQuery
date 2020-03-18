@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,15 +20,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
 
+import java.util.List;
+
 /***
  * TODO
- * - show code button
- * - code to tableview
+ * -
  */
 
 public class Fragment_Table_Tut extends Fragment {
 
     //coms
+    private TableLayout table;
     private ConstraintLayout cl_table;
     private Button btn_back;
     private Button btn_forth;
@@ -60,6 +64,7 @@ public class Fragment_Table_Tut extends Fragment {
         raw_query = v.findViewById(R.id.raw_query);
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
+        table = v.findViewById(R.id.tl_table);
 
         //load lection id
         lec_id = this.getArguments().getString(DragLesson.ID_KEY);
@@ -88,7 +93,8 @@ public class Fragment_Table_Tut extends Fragment {
     }
 
     //todo good or bad feedback
-    public void goVisible(String query, String response, boolean isCorrect){
+    public void goVisible(String query, List<String[]> response){
+        boolean isCorrect = isCorrect(query);
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
@@ -100,8 +106,56 @@ public class Fragment_Table_Tut extends Fragment {
 
     }
 
-    public void fillTable(String response){
-        //todo fill table
+    public void fillTable(List<String[]> response){
+        removeRows();
+        addHeadRow(response.get(0));
+        int rows = response.size()-1;
+        if(rows>0)
+            for(int i=0; i<rows; i++)
+                addRow(response.get(i+1));
+    }
+
+    public void removeRows(){
+        table.removeAllViews();
+    }
+
+    public void addHeadRow(String[] col_names){
+        TableRow newRow = new TableRow(context);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        newRow.setLayoutParams(lp);
+        newRow.setBackground(getResources().getDrawable(R.drawable.border_white));
+
+        for(int i=0; i<col_names.length; i++){
+            TextView entry = new TextView(context);
+            entry.setText(col_names[i]);
+            entry.setTextColor(getResources().getColor(R.color.textcolor_white));
+            //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
+            newRow.addView(entry);
+        }
+
+        table.addView(newRow);
+
+    }
+
+    public void addRow(String[] row){
+        TableRow newRow = new TableRow(context);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        newRow.setLayoutParams(lp);
+
+        for(int i=0; i<row.length; i++){
+            TextView entry = new TextView(context);
+            entry.setText(row[i]);
+            entry.setTextColor(getResources().getColor(R.color.textcolor_white));
+            //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
+            newRow.addView(entry);
+        }
+
+        table.addView(newRow);
+    }
+
+    //todo depending on lec id
+    public boolean isCorrect(String query){
+        return true;
     }
 
     @Override

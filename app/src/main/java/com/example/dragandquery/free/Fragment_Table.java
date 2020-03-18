@@ -2,6 +2,7 @@ package com.example.dragandquery.free;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -30,8 +31,7 @@ import java.util.List;
 
 /***
  * TODO
- * - show code button
- * - code to tableview
+ * - padding and margins on cells
  */
 
 public class Fragment_Table extends Fragment {
@@ -85,27 +85,42 @@ public class Fragment_Table extends Fragment {
         cl_table.setVisibility(View.GONE);
     }
 
-    public void goVisible(String query, String response){
+    public void goVisible(String query, List<String[]> response){
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
-        raw_query.setText(response);
+        raw_query.setText(query);
 
     }
 
-    public void fillTable(String response){
-        /*removeRows();
-        addHeadRow();
-        List<String[]> rows = response;
-        for(int i=0; i<rows.size(); i++)
-            addRow(rows.get(i));*/
+    public void fillTable(List<String[]> response){
+        removeRows();
+        addHeadRow(response.get(0));
+        int rows = response.size()-1;
+        if(rows>0)
+            for(int i=0; i<rows; i++)
+                addRow(response.get(i+1));
     }
 
     public void removeRows(){
         table.removeAllViews();
     }
 
-    public void addHeadRow(){
+    public void addHeadRow(String[] col_names){
+        TableRow newRow = new TableRow(context);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        newRow.setLayoutParams(lp);
+        newRow.setBackground(getResources().getDrawable(R.drawable.border_white));
+
+        for(int i=0; i<col_names.length; i++){
+            TextView entry = new TextView(context);
+            entry.setText(col_names[i]);
+            entry.setTextColor(getResources().getColor(R.color.textcolor_white));
+            //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
+            newRow.addView(entry);
+        }
+
+        table.addView(newRow);
 
     }
 
@@ -117,6 +132,8 @@ public class Fragment_Table extends Fragment {
         for(int i=0; i<row.length; i++){
             TextView entry = new TextView(context);
             entry.setText(row[i]);
+            entry.setTextColor(getResources().getColor(R.color.textcolor_white));
+            //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
             newRow.addView(entry);
         }
 

@@ -471,10 +471,10 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="table_msg_well_done">Gut gemacht!</string>
 
     <!-- blocks -->
-    <string name="block_cat1">DB</string>
-    <string name="block_cat2">Logik</string>
-    <string name="block_cat3">Schlüssel Worte</string>
-    <string name="block_cat4">Sonstige</string>
+    <string name="block_cat1">Key</string>
+    <string name="block_cat2">DB</string>
+    <string name="block_cat3">Logik</string>
+    <string name="block_cat4">Agg</string>
 
     <string name="block_select">Select </string>
     <string name="block_from">From </string>

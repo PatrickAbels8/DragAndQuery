@@ -9,6 +9,7 @@
 
     <!-- veras primaries -->
     <color name="berry">#8f1243</color>
+    <color name="berry_dark">#5E0728</color>
     <color name="petrol">#05377a</color>
     <color name="mustard">#fdbc00</color>
     <color name="gradient_left">#80679BE2</color>

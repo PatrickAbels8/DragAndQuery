@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,7 +35,7 @@ public class Fragment_Blocks_Ex extends Fragment {
     //coms
     LinearLayout ll_blocks;
     LinearLayout ll_categories;
-    ImageView [] categories; //0: DB
+    Button[] categories; //0: DB
                              //1: Logic
                              //2: KeyWords
                              //3: Others
@@ -63,7 +64,7 @@ public class Fragment_Blocks_Ex extends Fragment {
         //init stuff
         ll_blocks = v.findViewById(R.id.ll_blocks);
         ll_categories = v.findViewById(R.id.ll_categories);
-        categories = new ImageView[]{
+        categories = new Button[]{
                 v.findViewById(R.id.block_category1),
                 v.findViewById(R.id.block_category2),
                 v.findViewById(R.id.block_category3),
@@ -121,8 +122,8 @@ public class Fragment_Blocks_Ex extends Fragment {
         }*/
 
         //open blocks when category iv is clicked
-        for(ImageView category: categories){
-            category.setOnClickListener(new View.OnClickListener() {
+        for(int i=0; i<categories.length; i++){
+            categories[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int index = findIndex(categories, view);
@@ -205,7 +206,7 @@ public class Fragment_Blocks_Ex extends Fragment {
         listener = null;
     }
 
-    public int findIndex(ImageView[] list, View element){
+    public int findIndex(Button[] list, View element){
         for(int i=0; i<list.length; i++){
             if(list[i].getId()==element.getId()){
                 return i;

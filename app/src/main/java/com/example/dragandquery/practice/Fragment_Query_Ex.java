@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,7 +58,7 @@ public class Fragment_Query_Ex extends Fragment {
 
     //interface
     public interface Fragment_Query_Ex_Listener{
-        void onGo(String query, String response, int isCorrect);
+        void onGo(String query, List<String[]> response);
     }
 
     @Nullable
@@ -189,11 +190,6 @@ public class Fragment_Query_Ex extends Fragment {
         return select.getNode().toTreeString();
     }
 
-    //todo depending on ex and runtime
-    public int isCorrect(String query){
-        return Character.getNumericValue("0123".charAt((int)(Math.random()*4)));
-    }
-
     //todo add exs via strings
     public String getExText(int ex_id){
         String text = "";
@@ -238,12 +234,16 @@ public class Fragment_Query_Ex extends Fragment {
         return pix;
     }
 
-    public String queryDB(String query){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
-        databaseAccess.open();
-        String response = databaseAccess.query(query);
-        databaseAccess.close();
-        return response; //todo return null if no good response
+    public List<String[]> queryDB(String query){
+        try{
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            databaseAccess.open();
+            List<String[]> response = databaseAccess.query(query);
+            databaseAccess.close();
+            return response;
+        }catch(Exception e){
+            return null;
+        }
     }
 
     /***
@@ -392,9 +392,12 @@ public class Fragment_Query_Ex extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        String response = queryDB(query);
+                        List<String[]> response = queryDB(query);
                         if(response != null)
-                            listener.onGo(query, response, isCorrect(response));                        hideBird();
+                            listener.onGo(query, response);
+                        else
+                            Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
+                        hideBird();
                         hideDB();
                         //sounds todo
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
