@@ -31,6 +31,8 @@ import com.example.dragandquery.R;
 import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
+import com.example.dragandquery.db.DatabaseAccess;
+import com.example.dragandquery.db.DatabaseOpenHelper;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class Fragment_Query extends Fragment {
 
     //interface
     public interface Fragment_Query_Listener{
-        void onGo(String query);
+        void onGo(String query, String response);
     }
 
     @Nullable
@@ -217,6 +219,14 @@ public class Fragment_Query extends Fragment {
         return pix;
     }
 
+    public String queryDB(String query){
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        databaseAccess.open();
+        String response = databaseAccess.query(query);
+        databaseAccess.close();
+        return response; //todo return null if no good response
+    }
+
     /***
      * Listeners
      */
@@ -362,7 +372,9 @@ public class Fragment_Query extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        listener.onGo(query);
+                        String response = queryDB(query);
+                        if(response != null)
+                            listener.onGo(query, response);
                         hideDB();
                         //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));

@@ -45,10 +45,10 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     }
 
     @Override
-    public void onGo(String query) {
+    public void onGo(String query, String response) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        fragTable.goVisible(query);
+        fragTable.goVisible(query, response);
     }
 
     @Override

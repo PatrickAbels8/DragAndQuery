@@ -80,11 +80,16 @@ public class Fragment_Table extends Fragment {
         cl_table.setVisibility(View.GONE);
     }
 
-    public void goVisible(String query){
+    public void goVisible(String query, String response){
         cl_table.setVisibility(View.VISIBLE);
+        fillTable(response);
         cl_table.startAnimation(frombottom);
         raw_query.setText(query);
 
+    }
+
+    public void fillTable(String response){
+        //todo fill table
     }
 
     @Override
