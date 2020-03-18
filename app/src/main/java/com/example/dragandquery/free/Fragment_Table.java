@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
 
+import java.util.List;
+
 /***
  * TODO
  * - show code button
@@ -34,6 +37,7 @@ import com.example.dragandquery.R;
 public class Fragment_Table extends Fragment {
 
     //coms
+    private TableLayout table;
     private ConstraintLayout cl_table;
     private Button btn_retry;
     private TextView raw_query;
@@ -63,6 +67,7 @@ public class Fragment_Table extends Fragment {
         raw_query = v.findViewById(R.id.raw_query);
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
+        table = v.findViewById(R.id.tl_table);
 
         //get back to edit
         btn_retry.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +94,33 @@ public class Fragment_Table extends Fragment {
     }
 
     public void fillTable(String response){
-        //todo fill table
+        /*removeRows();
+        addHeadRow();
+        List<String[]> rows = response;
+        for(int i=0; i<rows.size(); i++)
+            addRow(rows.get(i));*/
+    }
+
+    public void removeRows(){
+        table.removeAllViews();
+    }
+
+    public void addHeadRow(){
+
+    }
+
+    public void addRow(String[] row){
+        TableRow newRow = new TableRow(context);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        newRow.setLayoutParams(lp);
+
+        for(int i=0; i<row.length; i++){
+            TextView entry = new TextView(context);
+            entry.setText(row[i]);
+            newRow.addView(entry);
+        }
+
+        table.addView(newRow);
     }
 
     @Override
