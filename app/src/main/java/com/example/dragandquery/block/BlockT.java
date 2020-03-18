@@ -15,6 +15,7 @@ import com.example.dragandquery.R;
 import com.example.dragandquery.free.Fragment_Query;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /***
@@ -239,6 +240,11 @@ public enum BlockT {
             view.setText(getName());
         else
             view.setText(vals[0]);
+
+        if(Arrays.asList(new int[]{BlockT.SELECT.getDesign(), BlockT.SELECTDISTINCT.getDesign(), BlockT.FROM.getDesign(),
+                BlockT.WHERE.getDesign(), BlockT.LIMIT.getDesign(), BlockT.HAVING.getDesign(),
+                BlockT.GROUPBY.getDesign(), BlockT.ORDERBY.getDesign()}).contains(this.getDesign()))
+            view.setTextColor(R.color.textcolor_white);
         view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view.setTag(this);
         return view;
