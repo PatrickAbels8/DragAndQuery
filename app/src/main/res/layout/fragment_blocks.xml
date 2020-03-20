@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:id="@+id/ll_blocks"
         android:gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/ll_categories">
 
     </LinearLayout>
@@ -29,7 +28,7 @@
             android:id="@+id/block_category1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cat1_block"
+            android:background="@drawable/cat_block_inactive"
             android:text="@string/block_cat1"
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/textcolor_white"/>
@@ -38,7 +37,7 @@
             android:id="@+id/block_category2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cat2_block"
+            android:background="@drawable/cat_block_inactive"
             android:text="@string/block_cat2"
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/textcolor_white"/>
@@ -47,7 +46,7 @@
             android:id="@+id/block_category3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cat3_block"
+            android:background="@drawable/cat_block_inactive"
             android:text="@string/block_cat3"
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/textcolor_white"/>
@@ -56,7 +55,7 @@
             android:id="@+id/block_category4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cat4_block"
+            android:background="@drawable/cat_block_inactive"
             android:text="@string/block_cat4"
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/textcolor_white"/>

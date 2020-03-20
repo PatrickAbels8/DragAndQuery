@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+   <solid android:color="@color/cat_title_bg"/>
+    <stroke android:width="1pt" android:color="@color/cat_title_border"/>
+    <corners android:radius="1pt"/>
+    <size android:width="@dimen/cat_button_width" android:height="50dp"/>
+
+</shape>

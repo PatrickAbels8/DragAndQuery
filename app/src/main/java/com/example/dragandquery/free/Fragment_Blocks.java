@@ -166,6 +166,7 @@ public class Fragment_Blocks extends Fragment {
             }
             blocks_open = true;
             current_category_index = index;
+            changeActiveCats(index);
         }else if(index>-1&&current_category_index!=index) { //another cat was already opened
             ll_blocks.removeAllViews();
             et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
@@ -177,9 +178,38 @@ public class Fragment_Blocks extends Fragment {
             }
             blocks_open = true;
             current_category_index = index;
+            changeActiveCats(index);
         }else{ //same clicked as openend
             ll_blocks.removeAllViews();
             blocks_open = false;
+            changeActiveCats(-1);
+        }
+    }
+
+    public void changeActiveCats(int index){
+        for(int i=0; i<4; i++)
+            categories[i].setBackgroundResource(R.drawable.cat_block_inactive);
+        ll_blocks.setBackgroundColor(getResources().getColor(R.color.transparent));
+
+        switch(index){
+            case 0:
+                categories[0].setBackgroundResource(R.drawable.cat1_block_active);
+                ll_blocks.setBackgroundResource(R.drawable.cat1_border);
+                break;
+            case 1:
+                categories[1].setBackgroundResource(R.drawable.cat2_block_active);
+                ll_blocks.setBackgroundResource(R.drawable.cat2_border);
+                break;
+            case 2:
+                categories[2].setBackgroundResource(R.drawable.cat3_block_active);
+                ll_blocks.setBackgroundResource(R.drawable.cat3_border);
+                break;
+            case 3:
+                categories[3].setBackgroundResource(R.drawable.cat4_block_active);
+                ll_blocks.setBackgroundResource(R.drawable.cat4_border);
+                break;
+            default:
+                break;
         }
     }
 

@@ -33,7 +33,18 @@
     <color name="medium">#FF8C00</color>
     <color name="hard">#ff0000</color>
 
-    <!-- table fragment -->
+    <!-- block fragment -->
+    <color name="cat_title_bg">#c79403</color>
+    <color name="cat_title_border">#a07705</color>
+    <color name="cat1">#0000ff</color>
+    <color name="cat2">#e93578</color>
+    <color name="cat3">#e6ab00</color>
+    <color name="cat4">#72bb53</color>
+
+    <color name="transparent">#00000000</color>
+
+
+   <!-- table fragment -->
     <color name="attribute_background">#000000</color>
     <color name="attribute_text">#ffffff</color>
     <color name="cell_background">#4D171B04</color>
