@@ -27,11 +27,12 @@ import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /***
  * TODO
- * -
+ * - padding on blocks
  */
 
 public class Fragment_Blocks extends Fragment {
@@ -40,10 +41,7 @@ public class Fragment_Blocks extends Fragment {
     //coms
     LinearLayout ll_blocks;
     LinearLayout ll_categories;
-    Button[] categories; //0: DB
-                             //1: Logic
-                             //2: KeyWords
-                             //3: Others
+    Button[] categories; //0: Key, 1: DB, 2: Logic, 3: Agg
     List<BlockView> [] blocks_of_categories;
 
     EditText et;
@@ -115,13 +113,37 @@ public class Fragment_Blocks extends Fragment {
          * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
          */
 
-        blocks_of_categories[0].add(BlockT.TABLE.createView(context));
-        blocks_of_categories[0].add(BlockT.STAR.createView(context));
-        blocks_of_categories[0].add(BlockT.ATTRIBUTE.createView(context));
+        blocks_of_categories[0].addAll(Arrays.asList( //Key
+                BlockT.SELECT.createView(context),
+                BlockT.FROM.createView(context),
+                BlockT.WHERE.createView(context),
+                BlockT.ORDERBY.createView(context),
+                BlockT.GROUPBY.createView(context),
+                BlockT.LIMIT.createView(context),
+                BlockT.SELECTDISTINCT.createView(context)
+        ));
 
-        blocks_of_categories[2].add(BlockT.FROM.createView(context));
-        blocks_of_categories[2].add(BlockT.WHERE.createView(context));
-        blocks_of_categories[2].add(BlockT.SELECT.createView(context));
+        blocks_of_categories[1].addAll(Arrays.asList( //DB
+                BlockT.ATTRIBUTE.createView(context),
+                BlockT.TABLE.createView(context),
+                BlockT.STAR.createView(context),
+                BlockT.AS.createView(context),
+                BlockT.HAVING.createView(context)
+        ));
+
+        blocks_of_categories[2].addAll(Arrays.asList( //Logic
+                BlockT.AND.createView(context),
+                BlockT.NOT.createView(context),
+                BlockT.BETWEEN.createView(context),
+                BlockT.IN.createView(context),
+                BlockT.ISNULL.createView(context),
+                BlockT.LIKE.createView(context),
+                BlockT.GREATER.createView(context)
+        ));
+
+        blocks_of_categories[3].addAll(Arrays.asList( //Agg
+                BlockT.COUNT.createView(context)
+        ));
 
         //open blocks when category iv is clicked
         for(int i=0; i<categories.length; i++){

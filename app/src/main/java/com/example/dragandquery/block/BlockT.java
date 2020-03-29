@@ -189,22 +189,25 @@ public enum BlockT {
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
             case SELECT:
-                sucs.add(BlockT.STAR);
-                sucs.add(BlockT.ATTRIBUTE);
+                sucs.addAll(Arrays.asList(BlockT.STAR, BlockT.ATTRIBUTE));
                 break;
             case FROM:
-                sucs.add(BlockT.TABLE);
+                sucs.addAll(Arrays.asList(BlockT.TABLE));
                 break;
             case WHERE:
+                sucs.addAll(Arrays.asList());
                 break;
             case TABLE:
+                sucs.addAll(Arrays.asList());
                 break;
             case ATTRIBUTE:
-                sucs.add(BlockT.ATTRIBUTE);
+                sucs.addAll(Arrays.asList(BlockT.ATTRIBUTE));
                 break;
             case STAR:
+                sucs.addAll(Arrays.asList());
                 break;
             case LIMIT:
+                sucs.addAll(Arrays.asList());
                 break;
         }
         return sucs;
@@ -214,20 +217,25 @@ public enum BlockT {
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
             case SELECT:
-                sucs.add(BlockT.FROM);
+                sucs.addAll(Arrays.asList(BlockT.FROM));
                 break;
             case FROM:
-                sucs.add(BlockT.WHERE);
+                sucs.addAll(Arrays.asList(BlockT.WHERE, BlockT.LIMIT));
                 break;
             case WHERE:
+                sucs.addAll(Arrays.asList(BlockT.LIMIT));
                 break;
             case TABLE:
+                sucs.addAll(Arrays.asList());
                 break;
             case ATTRIBUTE:
+                sucs.addAll(Arrays.asList());
                 break;
             case STAR:
+                sucs.addAll(Arrays.asList());
                 break;
             case LIMIT:
+                sucs.addAll(Arrays.asList());
                 break;
         }
         return sucs;
@@ -241,9 +249,9 @@ public enum BlockT {
         else
             view.setText(vals[0]);
 
-        if(Arrays.asList(new int[]{BlockT.SELECT.getDesign(), BlockT.SELECTDISTINCT.getDesign(), BlockT.FROM.getDesign(),
-                BlockT.WHERE.getDesign(), BlockT.LIMIT.getDesign(), BlockT.HAVING.getDesign(),
-                BlockT.GROUPBY.getDesign(), BlockT.ORDERBY.getDesign()}).contains(this.getDesign()))
+        if(Arrays.asList(BlockT.SELECT, BlockT.SELECTDISTINCT, BlockT.FROM,
+                BlockT.WHERE, BlockT.LIMIT, BlockT.HAVING,
+                BlockT.GROUPBY, BlockT.ORDERBY).contains(this))
             view.setTextColor(R.color.textcolor_white);
         view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view.setTag(this);

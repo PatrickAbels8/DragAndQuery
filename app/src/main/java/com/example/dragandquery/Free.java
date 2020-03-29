@@ -13,6 +13,7 @@ import java.util.List;
 
 /***
  * TODO
+ * - update draglesson and drag exercise with state of art
  */
 
 //top: query fragment
@@ -47,10 +48,10 @@ public class Free extends AppCompatActivity implements Fragment_Table.Fragment_T
     }
 
     @Override
-    public void onGo(String query, List<String[]> response) {
+    public void onGo(String query, List<String[]> response, float runtime) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        fragTable.goVisible(query, response);
+        fragTable.goVisible(query, response, runtime);
     }
 
     @Override

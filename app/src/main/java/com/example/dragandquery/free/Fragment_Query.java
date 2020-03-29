@@ -63,7 +63,7 @@ public class Fragment_Query extends Fragment {
 
     //interface
     public interface Fragment_Query_Listener{
-        void onGo(String query, List<String[]> response);
+        void onGo(String query, List<String[]> response, float runtime);
     }
 
     @Nullable
@@ -219,7 +219,13 @@ public class Fragment_Query extends Fragment {
         return pix;
     }
 
+    /**
+     * main access point on DB
+     * @param query raw String "SELECT * FROM Schüler"
+     * @return List of Strnig[] per row in resonse table, 0 is column names
+     */
     public List<String[]> queryDB(String query){
+        //todo progress on front while query in back (asynctask)
         try{
             DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
             databaseAccess.open();
@@ -377,9 +383,11 @@ public class Fragment_Query extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
+                        long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
+                        long stop = System.currentTimeMillis();
                         if(response != null)
-                            listener.onGo(query, response);
+                            listener.onGo(query, response, (float)(stop-start)/1000);
                         else
                             Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
                         hideDB();

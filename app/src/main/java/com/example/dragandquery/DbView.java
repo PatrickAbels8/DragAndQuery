@@ -6,6 +6,12 @@ import android.os.Bundle;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
+
+/***
+ * TODO:
+ * - when sclaing 0.5 in on some entity show its informtion
+ */
+
 public class DbView extends AppCompatActivity {
 
     @Override

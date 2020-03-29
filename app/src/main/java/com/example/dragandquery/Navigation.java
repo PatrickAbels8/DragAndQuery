@@ -39,6 +39,7 @@ import android.widget.Toast;
 /***
  * TODO
  * prac onForth
+ * - default profile image
  */
 
 public class Navigation extends AppCompatActivity
@@ -115,7 +116,7 @@ public class Navigation extends AppCompatActivity
         mail.setOnClickListener(new Navigation.OnSettingsClickListener());
 
         //change profile image
-        if(loadDataBoolean(getString(R.string.userImageBool_key), false)){
+        if(loadDataBoolean(getString(R.string.userImageBool_key), false)){ //todo stays true when reinstalling
             image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
         } else{
             image.setImageResource(R.drawable.profile_image);
@@ -128,7 +129,7 @@ public class Navigation extends AppCompatActivity
         tv_practise.setOnClickListener(new Navigation.OnPracticeClickListener());
         pb_practise.setOnClickListener(new Navigation.OnPracticeClickListener());
 
-        //navigation stuff TODO first time show right swipe
+        //navigation stuff
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

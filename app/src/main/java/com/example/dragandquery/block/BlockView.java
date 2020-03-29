@@ -85,9 +85,7 @@ public class BlockView extends TextView {
 
     //public void notifyListener(BlockView v){
     public void notifyListener(float x, float y){
-        Log.d("############### ????", " ??");
         if(listener != null){
-            Log.d("############### LETS MOVE", "!!");
             //listener.onGroupDrag(this, v);
             listener.onGroupDrag(this, x, y);
         }

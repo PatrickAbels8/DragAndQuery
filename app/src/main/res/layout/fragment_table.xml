@@ -11,7 +11,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="300dp"
         android:layout_above="@id/raw_query"
         app:layout_constraintBottom_toTopOf="@id/frag_retry"
         app:layout_constraintRight_toRightOf="parent"
@@ -24,15 +24,14 @@
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center">
+            android:layout_height="wrap_content">
 
     <TableLayout
         android:id="@+id/tl_table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/border_berry_dark_filled">
-        <!--<TableRow
+        <TableRow
             android:background="@drawable/border_white">
             <TextView
                 android:text="Name"
@@ -49,68 +48,74 @@
                 android:textStyle="bold"
                 android:textColor="@color/attribute_text"
                 android:paddingLeft="2dp" />
-            <TextView
-                android:text="Lieblingsfach"
-                android:textStyle="bold"
-                android:textColor="@color/attribute_text"
-                android:paddingLeft="2dp" />
-            <TextView
-                android:text="Lieblingsfach"
-                android:textStyle="bold"
-                android:textColor="@color/attribute_text"
-                android:paddingLeft="2dp" />
-            <TextView
-                android:text="Lieblingsfach"
-                android:textStyle="bold"
-                android:textColor="@color/attribute_text"
-                android:paddingLeft="2dp" />
-            <TextView
-                android:text="Lieblingsfach"
-                android:textStyle="bold"
-                android:textColor="@color/attribute_text"
-                android:paddingLeft="2dp" />
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Anton"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
             <TextView
                 android:text="14"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
             <TextView
                 android:text="Mathematik"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted" />
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Beate"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
             <TextView
                 android:text="12"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
             <TextView
                 android:text="Englisch"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:text="Casper"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
             <TextView
                 android:text="14"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
             <TextView
                 android:text="Geschichte"
                 android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Dorian"
+                android:textColor="@color/cell_text"
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
+            <TextView
+                android:text="13"
+                android:textColor="@color/cell_text"
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
+            <TextView
+                android:text="Politik"
+                android:textColor="@color/cell_text"
+                android:paddingLeft="2dp"
+                android:background="@drawable/border_notdotted"/>
         </TableRow>
         <TableRow>
             <TextView
@@ -182,20 +187,6 @@
                 android:textColor="@color/cell_text"
                 android:paddingLeft="2dp" />
         </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Dorian"
-                android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
-            <TextView
-                android:text="13"
-                android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
-            <TextView
-                android:text="Politik"
-                android:textColor="@color/cell_text"
-                android:paddingLeft="2dp" />
-        </TableRow>-->
     </TableLayout>
 
         </HorizontalScrollView>
