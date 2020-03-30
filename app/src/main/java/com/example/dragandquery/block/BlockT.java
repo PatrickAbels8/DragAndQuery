@@ -2,6 +2,7 @@ package com.example.dragandquery.block;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.DragEvent;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.free.Fragment_Query;
@@ -19,14 +21,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /***
- * TODO when adding a block: fragment block (3x) + here + change map!!
+ * TODO when changing: fragment block (3x) + blockT + map in dragLesson!!
  */
 
 public enum BlockT {
 
     AND,
     AS,
-    ATTRIBUTE,
     BETWEEN,
     COUNT,
     EMPTY,
@@ -43,7 +44,6 @@ public enum BlockT {
     SELECT,
     SELECTDISTINCT,
     STAR,
-    TABLE,
     WHERE;
 
     public String getName() {
@@ -54,10 +54,6 @@ public enum BlockT {
                 return "FROM";
             case WHERE:
                 return "WHERE";
-            case TABLE:
-                return "table";
-            case ATTRIBUTE:
-                return "attribute";
             case STAR:
                 return "*";
             case LIMIT:
@@ -96,16 +92,12 @@ public enum BlockT {
 
     public static BlockT getBlock(int design){
         switch(design){
-            case R.drawable.attribute_block:
-                return BlockT.ATTRIBUTE;
             case R.drawable.from_block:
                 return BlockT.FROM;
             case R.drawable.select_block:
                 return BlockT.SELECT;
             case R.drawable.star_block:
                 return BlockT.STAR;
-            case R.drawable.table_block:
-                return BlockT.TABLE;
             case R.drawable.where_block:
                 return BlockT.WHERE;
             case R.drawable.limit_block:
@@ -149,10 +141,6 @@ public enum BlockT {
                 return R.drawable.from_block;
             case WHERE:
                 return R.drawable.where_block;
-            case TABLE:
-                return R.drawable.table_block;
-            case ATTRIBUTE:
-                return R.drawable.attribute_block;
             case LIMIT:
                 return R.drawable.limit_block;
             case BETWEEN:
@@ -188,27 +176,58 @@ public enum BlockT {
     public List<BlockT> getRightSuccessors(){
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
-            case SELECT:
-                sucs.addAll(Arrays.asList(BlockT.STAR, BlockT.ATTRIBUTE));
+            case AND:
+                sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.NOT));
+                break;
+            case AS:
+                sucs.addAll(Arrays.asList());
+                break;
+            case COUNT:
+                sucs.addAll(Arrays.asList(BlockT.ISNULL));
                 break;
             case FROM:
-                sucs.addAll(Arrays.asList(BlockT.TABLE));
-                break;
-            case WHERE:
                 sucs.addAll(Arrays.asList());
                 break;
-            case TABLE:
+            case GREATER:
+                sucs.addAll(Arrays.asList(BlockT.ISNULL));
+                break;
+            case GROUPBY:
+                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                break;
+            case HAVING:
+                sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.ISNULL, BlockT.NOT));
+                break;
+            case IN:
                 sucs.addAll(Arrays.asList());
                 break;
-            case ATTRIBUTE:
-                sucs.addAll(Arrays.asList(BlockT.ATTRIBUTE));
+            case ISNULL:
+                sucs.addAll(Arrays.asList());
                 break;
-            case STAR:
+            case LIKE:
                 sucs.addAll(Arrays.asList());
                 break;
             case LIMIT:
                 sucs.addAll(Arrays.asList());
                 break;
+            case NOT:
+                sucs.addAll(Arrays.asList());
+                break;
+            case ORDERBY:
+                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                break;
+            case SELECT:
+                sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.STAR));
+                break;
+            case SELECTDISTINCT:
+                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                break;
+            case STAR:
+                sucs.addAll(Arrays.asList());
+                break;
+            case WHERE:
+                sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.COUNT, BlockT.NOT));
+                break;
+
         }
         return sucs;
     }
@@ -216,26 +235,56 @@ public enum BlockT {
     public List<BlockT> getDownSuccessors(){
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
-            case SELECT:
-                sucs.addAll(Arrays.asList(BlockT.FROM));
+            case AND:
+                sucs.addAll(Arrays.asList());
+                break;
+            case AS:
+                sucs.addAll(Arrays.asList());
+                break;
+            case COUNT:
+                sucs.addAll(Arrays.asList());
                 break;
             case FROM:
-                sucs.addAll(Arrays.asList(BlockT.WHERE, BlockT.LIMIT));
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE));
                 break;
-            case WHERE:
-                sucs.addAll(Arrays.asList(BlockT.LIMIT));
-                break;
-            case TABLE:
+            case GREATER:
                 sucs.addAll(Arrays.asList());
                 break;
-            case ATTRIBUTE:
+            case GROUPBY:
+                sucs.addAll(Arrays.asList(BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY));
+                break;
+            case HAVING:
+                sucs.addAll(Arrays.asList(BlockT.LIMIT, BlockT.ORDERBY));
+                break;
+            case IN:
                 sucs.addAll(Arrays.asList());
                 break;
-            case STAR:
+            case ISNULL:
+                sucs.addAll(Arrays.asList());
+                break;
+            case LIKE:
                 sucs.addAll(Arrays.asList());
                 break;
             case LIMIT:
                 sucs.addAll(Arrays.asList());
+                break;
+            case NOT:
+                sucs.addAll(Arrays.asList());
+                break;
+            case ORDERBY:
+                sucs.addAll(Arrays.asList(BlockT.LIMIT));
+                break;
+            case SELECT:
+                sucs.addAll(Arrays.asList(BlockT.FROM));
+                break;
+            case SELECTDISTINCT:
+                sucs.addAll(Arrays.asList(BlockT.FROM));
+                break;
+            case STAR:
+                sucs.addAll(Arrays.asList());
+                break;
+            case WHERE:
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY));
                 break;
         }
         return sucs;
@@ -252,7 +301,8 @@ public enum BlockT {
         if(Arrays.asList(BlockT.SELECT, BlockT.SELECTDISTINCT, BlockT.FROM,
                 BlockT.WHERE, BlockT.LIMIT, BlockT.HAVING,
                 BlockT.GROUPBY, BlockT.ORDERBY).contains(this))
-            view.setTextColor(R.color.textcolor_white);
+            view.setTextColor(ContextCompat.getColor(context, R.color.textcolor_white));
+        view.setPadding(dp_to_int(16), dp_to_int(16), dp_to_int(16), dp_to_int(16));
         view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view.setTag(this);
         return view;
@@ -266,6 +316,14 @@ public enum BlockT {
 
     public boolean hasDownSuccessor(BlockT draggedBlock){
         return this.getDownSuccessors().contains(draggedBlock);
+    }
+
+    //helper
+    public int dp_to_int(int dp){
+        /*float scale = getResources().getDisplayMetrics().density;
+        int pix = (int) (dp*scale+0.5f);
+        return pix;*/
+        return 20; //todo
     }
 
     //bv --> draggedNod --> draggedlockT || view --> thisNode --> thisBlockT

@@ -63,7 +63,7 @@ public class Fragment_Query_Tut extends Fragment {
 
     //interface
     public interface Fragment_Query_Tut_Listener{
-        void onGo(String query, List<String[]> response);
+        void onGo(String query, List<String[]> response, float runtime);
     }
 
     @Nullable
@@ -112,7 +112,6 @@ public class Fragment_Query_Tut extends Fragment {
         String val = ((BlockView)view).getText().toString();
         Node root = new Node(blockT, val);
         BlockView cur_view = blockT.createView(context, val);
-        cur_view.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
         cur_view.setNode(root);
 
         //add the new bv to rl
@@ -467,9 +466,11 @@ public class Fragment_Query_Tut extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
+                        long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
+                        long stop = System.currentTimeMillis();
                         if(response != null)
-                            listener.onGo(query, response);
+                            listener.onGo(query, response, (float)(stop-start)/1000);
                         else
                             Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
                         hideBird();

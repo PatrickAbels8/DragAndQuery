@@ -93,12 +93,12 @@ public class Fragment_Table_Tut extends Fragment {
     }
 
     //todo good or bad feedback
-    public void goVisible(String query, List<String[]> response){
+    public void goVisible(String query, List<String[]> response, float runtime){
         boolean isCorrect = isCorrect(query);
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
-        raw_query.setText(query);
+        raw_query.setText(query.concat("\n Laufzeit: ").concat(Float.toString(runtime)).concat(" sec."));
         if(isCorrect)
             btn_forth.setVisibility(View.VISIBLE);
         else
@@ -128,6 +128,7 @@ public class Fragment_Table_Tut extends Fragment {
         for(int i=0; i<col_names.length; i++){
             TextView entry = new TextView(context);
             entry.setText(col_names[i]);
+            entry.setPadding(dp_to_int(2), 0, dp_to_int(2), 0);
             entry.setTextColor(getResources().getColor(R.color.textcolor_white));
             //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
             newRow.addView(entry);
@@ -145,6 +146,7 @@ public class Fragment_Table_Tut extends Fragment {
         for(int i=0; i<row.length; i++){
             TextView entry = new TextView(context);
             entry.setText(row[i]);
+            entry.setPadding(dp_to_int(2), 0, dp_to_int(2), 0);
             entry.setTextColor(getResources().getColor(R.color.textcolor_white));
             //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
             newRow.addView(entry);
@@ -173,5 +175,12 @@ public class Fragment_Table_Tut extends Fragment {
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    //helper
+    public int dp_to_int(int dp){
+        float scale = getResources().getDisplayMetrics().density;
+        int pix = (int) (dp*scale+0.5f);
+        return pix;
     }
 }

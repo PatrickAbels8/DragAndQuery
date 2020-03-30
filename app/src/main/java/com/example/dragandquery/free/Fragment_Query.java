@@ -103,7 +103,6 @@ public class Fragment_Query extends Fragment {
         String val = ((BlockView)view).getText().toString();
         Node root = new Node(blockT, val);
         BlockView cur_view = blockT.createView(context, val);
-        cur_view.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
         cur_view.setNode(root);
 
         //add the new bv to rl

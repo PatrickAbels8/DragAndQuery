@@ -124,8 +124,6 @@ public class Fragment_Blocks extends Fragment {
         ));
 
         blocks_of_categories[1].addAll(Arrays.asList( //DB
-                BlockT.ATTRIBUTE.createView(context),
-                BlockT.TABLE.createView(context),
                 BlockT.STAR.createView(context),
                 BlockT.AS.createView(context),
                 BlockT.HAVING.createView(context)
@@ -178,24 +176,15 @@ public class Fragment_Blocks extends Fragment {
 
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<BlockView> blocks_to_show, int index){
-        if(!blocks_open){ //no cat opened yet
-            et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+        if(!blocks_open || //no cat opened yet
+                index>-1&&current_category_index!=index){ //another cat was already opened
+            if(index>-1&&current_category_index!=index)
+                ll_blocks.removeAllViews();
+            et.setPadding(dp_to_int(16), dp_to_int(16), dp_to_int(16), dp_to_int(16));
             ll_blocks.addView(et, BlockView.linear_params);
             for(int i=0; i<blocks_to_show.size(); i++){
                 BlockView bv = blocks_to_show.get(i);
-                bv.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
-                ll_blocks.addView(bv, BlockView.linear_params);
-            }
-            blocks_open = true;
-            current_category_index = index;
-            changeActiveCats(index);
-        }else if(index>-1&&current_category_index!=index) { //another cat was already opened
-            ll_blocks.removeAllViews();
-            et.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
-            ll_blocks.addView(et);
-            for(int i=0; i<blocks_to_show.size(); i++){
-                BlockView bv = blocks_to_show.get(i);
-                bv.setPadding(dp_to_int(16), 0, dp_to_int(16), 0);
+                bv.setBackground(getResources().getDrawable(R.drawable.border_notdotted));
                 ll_blocks.addView(bv, BlockView.linear_params);
             }
             blocks_open = true;

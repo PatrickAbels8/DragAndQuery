@@ -111,13 +111,13 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     }
 
     @Override
-    public void onGo(String query, List<String[]> response) {
+    public void onGo(String query, List<String[]> response, float runtime) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
         if(fragTable.isCorrect(query)){
             setLectionDone();
         }
-        fragTable.goVisible(query, response);
+        fragTable.goVisible(query, response, runtime);
     }
 
     @Override
