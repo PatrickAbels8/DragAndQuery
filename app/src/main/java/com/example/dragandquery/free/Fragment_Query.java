@@ -80,7 +80,6 @@ public class Fragment_Query extends Fragment {
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
         btn_db = (ImageView) v.findViewById(R.id.frag_db);
         db_view = v.findViewById(R.id.db_view);
-        db_view.setImageResource(R.drawable.sad_berry);
         hideDB();
         context = getContext();
 
@@ -183,7 +182,7 @@ public class Fragment_Query extends Fragment {
     }
 
     public String interpret(BlockView select){
-        if(select.getNode().getBlock() != BlockT.SELECT){
+        if(select.getNode().getBlock() != BlockT.SELECT && select.getNode().getBlock() != BlockT.SELECTDISTINCT){
             return SELECT_MISSING_ERROR;
         }
         return select.getNode().toTreeString();
@@ -382,6 +381,7 @@ public class Fragment_Query extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
+                        Log.d("#########", query);
                         long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
                         long stop = System.currentTimeMillis();

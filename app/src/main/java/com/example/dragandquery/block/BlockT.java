@@ -219,7 +219,7 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.STAR));
                 break;
             case SELECTDISTINCT:
-                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.STAR));
                 break;
             case STAR:
                 sucs.addAll(Arrays.asList());

@@ -9,6 +9,7 @@
     <com.github.chrisbanes.photoview.PhotoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/db_view"/>
+        android:id="@+id/db_view"
+        android:src="@drawable/er_school_transparent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

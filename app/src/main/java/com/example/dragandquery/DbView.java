@@ -20,6 +20,5 @@ public class DbView extends AppCompatActivity {
         setContentView(R.layout.activity_db_view);
 
         PhotoView db = (PhotoView) findViewById(R.id.db_view);
-        db.setImageResource(R.drawable.sad_berry);
     }
 }

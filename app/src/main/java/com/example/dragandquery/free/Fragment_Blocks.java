@@ -184,7 +184,7 @@ public class Fragment_Blocks extends Fragment {
             ll_blocks.addView(et, BlockView.linear_params);
             for(int i=0; i<blocks_to_show.size(); i++){
                 BlockView bv = blocks_to_show.get(i);
-                bv.setBackground(getResources().getDrawable(R.drawable.border_notdotted));
+                //bv.setBackground(getResources().getDrawable(R.drawable.border_notdotted));
                 ll_blocks.addView(bv, BlockView.linear_params);
             }
             blocks_open = true;

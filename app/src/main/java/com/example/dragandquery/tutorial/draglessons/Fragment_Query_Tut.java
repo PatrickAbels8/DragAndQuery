@@ -81,7 +81,6 @@ public class Fragment_Query_Tut extends Fragment {
         btn_db = (ImageView) v.findViewById(R.id.frag_db);
         bird = (ImageView) v.findViewById(R.id.ex_bird);
         db_view = (PhotoView) v.findViewById(R.id.db_view);
-        db_view.setImageResource(R.drawable.sad_berry);
         hideDB();
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
