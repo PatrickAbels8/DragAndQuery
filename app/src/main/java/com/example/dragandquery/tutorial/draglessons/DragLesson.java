@@ -22,8 +22,7 @@ import java.util.Map;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO:
- * - cat 2-4 (keep hard coded stuff in mind)
+ * -
  */
 
 public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.Fragment_Table_Tut_Listener, Fragment_Query_Tut.Fragment_Query_Tut_Listener, Fragment_Blocks_Tut.Fragment_Blocks_Tut_Listener{
@@ -33,14 +32,14 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     public static final String ARGS_KEY = "com.example.dragandquery.tutorial.draglessons.DragLesson.ARGS_KEY";
     public static final String ID_KEY = "com.example.dragandquery.tutorial.draglessons.DragLesson.ID_KEY";
     public static final Map<String, String[]> map = new HashMap<String, String[]>(){{
-        put("01_09", new String[]{BlockT.STAR.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName()});
+        put("01_09", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName()});
         put("01_10", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName()});
         put("01_11", new String[]{BlockT.FROM.getName(), BlockT.LIMIT.getName(), BlockT.SELECT.getName()});
         put("02_01", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_02", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_03", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_04", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
-        put("02_05", new String[]{BlockT.BETWEEN.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
+        put("02_05", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_06", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_07", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_08", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.NOT.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
@@ -114,10 +113,11 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     public void onGo(String query, List<String[]> response, float runtime) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        if(fragTable.isCorrect(query)){
+        boolean isCorrect = fragTable.isCorrect(response);
+        if(isCorrect){
             setLectionDone();
         }
-        fragTable.goVisible(query, response, runtime);
+        fragTable.goVisible(query, response, runtime, isCorrect);
     }
 
     @Override
@@ -217,7 +217,6 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         return nextLectionID;
     }
 
-    //todo hard for every choice-->drag transition
     public boolean isDragLesson(String id){
         return id.substring(0, 5).equals("01_09") ||
                 id.substring(0, 5).equals("01_10") ||

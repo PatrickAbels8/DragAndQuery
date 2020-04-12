@@ -30,8 +30,7 @@ import com.example.dragandquery.R;
 import java.util.List;
 
 /***
- * TODO
- * - padding and margins on cells
+ * -
  */
 
 public class Fragment_Table extends Fragment {

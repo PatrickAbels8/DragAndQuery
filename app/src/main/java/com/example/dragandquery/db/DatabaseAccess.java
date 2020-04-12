@@ -55,7 +55,7 @@ public class DatabaseAccess {
                     String[] row = new String[num_cols];
                     for(int i=0; i<num_cols; i++) {
                         Log.d("------- found", "col");
-                        row[i] = c.getString(i); // todo parse to string
+                        row[i] = c.getString(i);
                     }
                     data.add(row);
                 }while(c.moveToNext());

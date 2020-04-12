@@ -39,9 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * TODO
- * - alpha/visible/shadow stuff
- * - db icon
+ * -
  */
 
 public class Fragment_Query extends Fragment {
@@ -119,7 +117,7 @@ public class Fragment_Query extends Fragment {
         cur_view.setMydragListener(new Fragment_Query.MyDragListener());
         cur_view.setListener(new Fragment_Query.MyGroupDragListener());
 
-        //todo simulate action down touch (no work yet)
+        // simulate action down touch (no work yet)
         simulateTouch(cur_view, x, y, MotionEvent.ACTION_DOWN);
     }
 
@@ -223,7 +221,7 @@ public class Fragment_Query extends Fragment {
      * @return List of Strnig[] per row in resonse table, 0 is column names
      */
     public List<String[]> queryDB(String query){
-        //todo progress on front while query in back (asynctask)
+        //progress on front while query in back (asynctask)
         try{
             DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
             databaseAccess.open();
@@ -346,7 +344,6 @@ public class Fragment_Query extends Fragment {
         }
     }
 
-    //todo has to be notified when parent is dropped on other block
     //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
@@ -415,7 +412,7 @@ public class Fragment_Query extends Fragment {
         }
     }
 
-    //todo dont notify all the time but only notify when isInMe fullfilled --> performane
+    //for better performance: dont notify all the time but only notify when isInMe fullfilled
     public class MyClearDragListener implements ClearView.MyClearDragListener{
 
         @Override

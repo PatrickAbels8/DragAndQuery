@@ -35,7 +35,6 @@ import java.util.List;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO:
  * - do done lections againg without reset
  */
 public class TutorialCategory extends AppCompatActivity {
@@ -105,7 +104,7 @@ public class TutorialCategory extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    //start lection todo change when lec change
+    //start lection
     public void startLection(int lection_id){
         String lec = getLectionID(lection_id);
         if(lec.substring(0, 5).equals("01_01") ||

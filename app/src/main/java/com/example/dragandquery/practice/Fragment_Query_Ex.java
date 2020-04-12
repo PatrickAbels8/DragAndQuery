@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * TODO
+ *
  */
 
 public class Fragment_Query_Ex extends Fragment {
@@ -188,7 +188,6 @@ public class Fragment_Query_Ex extends Fragment {
         return select.getNode().toTreeString();
     }
 
-    //todo add exs via strings
     public String getExText(int ex_id){
         String text = "";
         switch(ex_id){
@@ -355,7 +354,6 @@ public class Fragment_Query_Ex extends Fragment {
         }
     }
 
-    //todo has to be notified when parent is dropped on other block
     //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
@@ -399,7 +397,7 @@ public class Fragment_Query_Ex extends Fragment {
                             Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
                         hideBird();
                         hideDB();
-                        //sounds todo
+                        //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
 
@@ -424,7 +422,6 @@ public class Fragment_Query_Ex extends Fragment {
         }
     }
 
-    //todo dont notify all the time but only notify when isInMe fullfilled --> performane
     public class MyClearDragListener implements ClearView.MyClearDragListener{
 
         @Override

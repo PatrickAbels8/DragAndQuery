@@ -17,8 +17,7 @@ import com.example.dragandquery.R;
 import com.example.dragandquery.tutorial.Fragment_Content;
 
 /***
- * TODO:
- * - 
+ * -
  */
 
 public class Fragment_LectionContent_0104 extends Fragment_Content {

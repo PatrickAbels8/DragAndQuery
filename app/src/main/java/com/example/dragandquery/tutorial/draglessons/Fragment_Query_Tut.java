@@ -34,9 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * TODO
- * - db icon
- * - child doesnt move when parent dropped
+ * -
  */
 
 public class Fragment_Query_Tut extends Fragment {
@@ -194,7 +192,6 @@ public class Fragment_Query_Tut extends Fragment {
         return select.getNode().toTreeString();
     }
 
-    //todo add more input
     public String getExText(String lec_id){
         String text = "";
         if(lec_id.substring(0,5).equals("01_01")){
@@ -313,7 +310,7 @@ public class Fragment_Query_Tut extends Fragment {
             databaseAccess.open();
             List<String[]> response = databaseAccess.query(query);
             databaseAccess.close();
-            return response; //todo return null if no good response
+            return response;
         }catch(Exception e){
             return null;
         }
@@ -430,7 +427,6 @@ public class Fragment_Query_Tut extends Fragment {
         }
     }
 
-    //todo has to be notified when parent is dropped on other block
     //when notified move along with your parent
     public class MyGroupDragListener implements BlockView.GroupDragListener{
 
@@ -474,7 +470,7 @@ public class Fragment_Query_Tut extends Fragment {
                             Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
                         hideBird();
                         hideDB();
-                        //sounds todo
+                        //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
                     }
 
@@ -499,7 +495,6 @@ public class Fragment_Query_Tut extends Fragment {
         }
     }
 
-    //todo dont notify all the time but only notify when isInMe fullfilled --> performane
     public class MyClearDragListener implements ClearView.MyClearDragListener{
 
         @Override

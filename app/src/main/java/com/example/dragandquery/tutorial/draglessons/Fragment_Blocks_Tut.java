@@ -26,8 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * TODO
- * -block drag mode
+ * -
  */
 
 public class Fragment_Blocks_Tut extends Fragment {
@@ -128,7 +127,7 @@ public class Fragment_Blocks_Tut extends Fragment {
             });
         }
 
-        //add block to query fragment and hide blocks when block iv is clicked (todo drag mode)
+        //add block to query fragment and hide blocks when block iv is clicked
         for(int i=0; i<categories.length; i++){
             for(BlockView iv: blocks_of_categories[i]){
                 iv.setOnTouchListener(new View.OnTouchListener() {
@@ -221,8 +220,10 @@ public class Fragment_Blocks_Tut extends Fragment {
             et.setPadding(dp_to_int(16), dp_to_int(16), dp_to_int(16), dp_to_int(16));
             ll_blocks.addView(et, BlockView.linear_params);
             for(int i=0; i<blocks_to_show.size(); i++){
+                LinearLayout.LayoutParams lp_mB = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp_mB.setMargins(0, 0, 0, dp_to_int(8));
                 BlockView bv = blocks_to_show.get(i);
-                ll_blocks.addView(bv, BlockView.linear_params);
+                ll_blocks.addView(bv, lp_mB);
             }
             blocks_open = true;
             current_category_index = index;

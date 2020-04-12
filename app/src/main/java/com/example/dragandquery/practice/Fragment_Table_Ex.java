@@ -20,11 +20,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
+import com.example.dragandquery.db.DatabaseAccess;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /***
- * TODO
+ *
  * - btn to exs
  */
 
@@ -44,6 +47,35 @@ public class Fragment_Table_Ex extends Fragment {
 
     //vars
     private Fragment_Table_Ex_Listener listener;
+
+    public static final Map<String, String> map = new HashMap<String, String>(){{ //todo
+        put("100", "SELECT ...");
+        put("101", "");
+        put("102", "");
+        put("103", "");
+        put("104", "");
+        put("105", "");
+        put("200", "SELECT ...");
+        put("201", "");
+        put("202", "");
+        put("203", "");
+        put("204", "");
+        put("205", "");
+        put("206", "");
+        put("207", "");
+        put("300", "SELECT ...");
+        put("301", "");
+        put("302", "");
+        put("303", "");
+        put("304", "");
+        put("305", "");
+        put("306", "");
+        put("307", "");
+        put("308", "");
+        put("309", "");
+        put("310", "");
+        put("311", "");
+    }};
 
     //interface
     public interface Fragment_Table_Ex_Listener{
@@ -85,8 +117,7 @@ public class Fragment_Table_Ex extends Fragment {
         cl_table.setVisibility(View.GONE);
     }
 
-    public void goVisible(String query, List<String[]> response, float runtime){
-        int isCorrect = isCorrect(query);
+    public void goVisible(String query, List<String[]> response, float runtime, int isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
@@ -155,9 +186,19 @@ public class Fragment_Table_Ex extends Fragment {
         table.addView(newRow);
     }
 
-    //todo depending on ex and runtime
-    public int isCorrect(String query){
-        return Character.getNumericValue("0123".charAt((int)(Math.random()*4)));
+    public int isCorrect(List<String[]> response, int ex_id){
+        String correctQuery = map.get(Integer.toString(ex_id));
+
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        databaseAccess.open();
+        List<String[]> correctResponse = databaseAccess.query(correctQuery);
+        databaseAccess.close();
+
+        boolean num_rows = correctResponse.size() == response.size();
+        boolean num_cols = correctResponse.get(0).length == response.get(0).length;
+
+        int stars = (num_cols && num_rows)? 3: 0; //todo 0-3 stars
+        return stars;
     }
 
     @Override

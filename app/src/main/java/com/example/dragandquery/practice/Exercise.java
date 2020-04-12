@@ -17,7 +17,6 @@ import java.util.List;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO:
  * -stars not centered
  * - wait 24h before try again
  */
@@ -77,9 +76,9 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     public void onGo(String query, List<String[]> response, float runtime) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        fragTable.goVisible(query, response, runtime);
+        int isCorrect = fragTable.isCorrect(response, ex_id);
+        fragTable.goVisible(query, response, runtime, isCorrect);
 
-        int isCorrect = fragTable.isCorrect(query);
         if(isCorrect!=STAR_0){
             int index = ex_id%100;
             String key = ex_id/100==1? getString(R.string.prac_easy_key): ex_id/100==2? getString(R.string.prac_medium_key): getString(R.string.prac_hard_key);

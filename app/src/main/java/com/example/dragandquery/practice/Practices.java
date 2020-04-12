@@ -29,7 +29,6 @@ import java.util.Random;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO:
  * - show ex depending on tut exp
  */
 

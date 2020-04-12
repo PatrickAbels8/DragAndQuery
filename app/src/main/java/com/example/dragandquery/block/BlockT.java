@@ -21,8 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /***
- * TODO when changing: fragment block (3x) + blockT + map in dragLesson!!
- * new: avg, equal, max, min, or, sum, xor
+ * when changing: fragment block (3x) + blockT + map in dragLesson!!
  */
 
 public enum BlockT {
@@ -416,86 +415,5 @@ public enum BlockT {
         return pix;*/
         return 20; //todo
     }
-
-    //bv --> draggedNod --> draggedlockT || view --> thisNode --> thisBlockT
-   /* public static class OnDragListener implements View.OnDragListener {
-        @Override
-        public boolean onDrag(View view, DragEvent dragEvent) {
-            Object o = dragEvent.getLocalState();
-            if(o instanceof ImageView) {
-                BlockView bv = (BlockView) o;
-                //BlockT draggedBlock = (BlockT) iv.getTag();
-                //BlockT thisBlock = (BlockT) view.getTag();
-
-                Node draggedNode = bv.getNode();
-                Node thisNode = ((BlockView) view).getNode();
-                BlockT draggedBlock = draggedNode.getBlock();
-                BlockT thisBlock = thisNode.getBlock();
-                boolean fits_right = thisBlock.hasRightSuccessor(draggedBlock);
-                boolean fits_down = thisBlock.hasDownSuccessor(draggedBlock);
-                //boolean isOnRightSide = bv.getX() > view.getX();
-
-                switch (dragEvent.getAction()) {
-                    case DragEvent.ACTION_DRAG_ENTERED:
-                        if (fits_right) {
-                            bv.setVisibility(View.VISIBLE);
-                            bv.setAlpha(0.5f);
-                            bv.setX(view.getX()+view.getWidth());
-                            bv.setY(view.getY());
-                        }
-                        break;
-                    case DragEvent.ACTION_DRAG_EXITED:
-                        bv.setVisibility(View.INVISIBLE);
-                        bv.setAlpha(1f);
-                        break;
-                    case DragEvent.ACTION_DROP:
-                        bv.setAlpha(1f);
-                        if (fits_right) {
-                            bv.setX(view.getX()+view.getWidth()); //todo has to fit to drawables
-                            bv.setY(view.getY());
-                            thisNode.addRightChild(draggedNode);
-                            //sounds
-                            MediaPlayer.create(bv.getContext(), R.raw.dropblock).start();
-                        } else if(fits_down) {
-                            bv.setX(view.getX());
-                            bv.setY(view.getY() + view.getHeight()); //todo has to fit to drawables
-                            thisNode.addDownChild(draggedNode);
-                            //sounds
-                            MediaPlayer.create(bv.getContext(), R.raw.dropblock).start();
-                        } else{
-                        bv.setX(view.getX());
-                            bv.setY(view.getY()-5*view.getHeight()); //todo maybe somewhere else
-                        }
-                        bv.setVisibility(View.VISIBLE);
-
-                        if(thisBlock.getName().equals("SELECT")){
-                            thisNode.printTree();
-                        }
-                        break;
-
-                }
-            }
-            return true;
-        }
-    }*/
-
-    /*public static class OnTouchListener implements View.OnTouchListener{
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if((motionEvent.getAction()==MotionEvent.ACTION_DOWN)&&((ImageView)view).getDrawable()!=null){
-                List<ImageView> treeMembers =
-                Log.d("##################### count: ", Integer.toString(treeMembers.size()));
-                for(int i=0; i<treeMembers.size(); i++){
-                    Log.d("########################", "another one");
-                    ClipData data = ClipData.newPlainText("", "");
-                    View.DragShadowBuilder shadow = new View.DragShadowBuilder(treeMembers.get(i));
-                    treeMembers.get(i).startDragAndDrop(data, shadow, treeMembers.get(i), View.DRAG_FLAG_OPAQUE);
-                    treeMembers.get(i).setVisibility(View.INVISIBLE);
-                }
-                return true;
-            }else
-                return false;
-        }
-    }*/
 
 }

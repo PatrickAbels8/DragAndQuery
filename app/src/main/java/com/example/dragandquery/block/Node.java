@@ -69,7 +69,6 @@ public class Node {
         return this;
     }
 
-    //todo for parser
     public void printTree(){
         Log.d("############## tree ###############", this.getBlock().getName());
         if(this.hasRight()) {
@@ -96,7 +95,6 @@ public class Node {
             s += this.getRightChild().toTreeString();
         }
         if(this.hasDown()) {
-            //s += "\n"; //todo for parser later on not useful
             s += " ";
             s += this.getDownChild().toTreeString();
         }

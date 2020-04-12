@@ -19,11 +19,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
+import com.example.dragandquery.db.DatabaseAccess;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /***
- * TODO
  * -
  */
 
@@ -42,6 +45,40 @@ public class Fragment_Table_Tut extends Fragment {
     //vars
     private Fragment_Table_Tut_Listener listener;
     private String lec_id;
+
+    public static final Map<String, String> map = new HashMap<String, String>(){{ //todo
+        put("01_09", "SELECT ...");
+        put("01_10", "");
+        put("01_11", "");
+        put("02_01", "");
+        put("02_02", "");
+        put("02_03", "");
+        put("02_04", "");
+        put("02_05", "");
+        put("02_06", "");
+        put("02_07", "");
+        put("02_08", "");
+        put("02_09", "");
+        put("02_10", "");
+        put("02_11", "");
+        put("02_12", "");
+        put("02_13", "");
+        put("02_14", "");
+        put("02_15", "");
+        put("03_02", "");
+        put("03_03", "");
+        put("03_04", "");
+        put("03_05", "");
+        put("03_06", "");
+        put("03_07", "");
+        put("03_08", "");
+        put("04_02", "");
+        put("04_03", "");
+        put("04_04", "");
+        put("04_05", "");
+        put("04_06", "");
+        put("04_07", "");
+    }};
 
     //interface
     public interface Fragment_Table_Tut_Listener{
@@ -93,8 +130,7 @@ public class Fragment_Table_Tut extends Fragment {
     }
 
     //todo good or bad feedback
-    public void goVisible(String query, List<String[]> response, float runtime){
-        boolean isCorrect = isCorrect(query);
+    public void goVisible(String query, List<String[]> response, float runtime, boolean isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
@@ -155,9 +191,17 @@ public class Fragment_Table_Tut extends Fragment {
         table.addView(newRow);
     }
 
-    //todo depending on lec id
-    public boolean isCorrect(String query){
-        return true;
+    public boolean isCorrect(List<String[]> response){
+        String correctQuery = map.get(lec_id.substring(0, 5));
+
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        databaseAccess.open();
+        List<String[]> correctResponse = databaseAccess.query(correctQuery);
+        databaseAccess.close();
+
+        boolean num_rows = correctResponse.size() == response.size();
+        boolean num_cols = correctResponse.get(0).length == response.get(0).length;
+        return num_cols && num_rows;
     }
 
     @Override

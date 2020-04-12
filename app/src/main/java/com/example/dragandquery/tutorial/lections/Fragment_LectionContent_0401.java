@@ -17,7 +17,6 @@ import com.example.dragandquery.R;
 import com.example.dragandquery.tutorial.Fragment_Content;
 
 /***
- * TODO:
  * - 
  */
 
