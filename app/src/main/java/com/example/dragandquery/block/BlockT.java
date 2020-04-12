@@ -22,14 +22,16 @@ import java.util.List;
 
 /***
  * TODO when changing: fragment block (3x) + blockT + map in dragLesson!!
+ * new: avg, equal, max, min, or, sum, xor
  */
 
 public enum BlockT {
 
     AND,
     AS,
-    BETWEEN,
+    AVERAGE,
     COUNT,
+    EQUAL,
     EMPTY,
     FROM,
     GREATER,
@@ -39,27 +41,44 @@ public enum BlockT {
     ISNULL,
     LIKE,
     LIMIT,
+    MAX,
+    MIN,
+    NEQUAL,
     NOT,
+    OR,
     ORDERBY,
     SELECT,
     SELECTDISTINCT,
-    STAR,
-    WHERE;
+    SUM,
+    WHERE,
+    XOR;
 
     public String getName() {
         switch(this){
+            case MAX:
+                return "MAX";
+            case MIN:
+                return "MIN";
+            case OR:
+                return "OR";
+            case SUM:
+                return "SUM";
+            case XOR:
+                return "XOR";
+            case AVERAGE:
+                return "AVG";
+            case EQUAL:
+                return "=";
+            case NEQUAL:
+                return "!=";
             case SELECT:
                 return "SELECT";
             case FROM:
                 return "FROM";
             case WHERE:
                 return "WHERE";
-            case STAR:
-                return "*";
             case LIMIT:
                 return "LIMIT";
-            case BETWEEN:
-                return "BETWEEN";
             case GROUPBY:
                 return "GROUP BY";
             case HAVING:
@@ -92,18 +111,32 @@ public enum BlockT {
 
     public static BlockT getBlock(int design){
         switch(design){
+            case R.drawable.nequal_block:
+                return BlockT.NEQUAL;
+            case R.drawable.like_block:
+                return BlockT.LIKE;
+            case R.drawable.max_block:
+                return BlockT.MAX;
+            case R.drawable.min_block:
+                return BlockT.MIN;
+            case 0: //todo
+                return BlockT.OR;
+            case R.drawable.sum_block:
+                return BlockT.SUM;
+            case 1: //todo
+                return BlockT.XOR;
+            case R.drawable.equal_block:
+                return BlockT.EQUAL;
+            case R.drawable.avg_block:
+                return BlockT.AVERAGE;
             case R.drawable.from_block:
                 return BlockT.FROM;
             case R.drawable.select_block:
                 return BlockT.SELECT;
-            case R.drawable.star_block:
-                return BlockT.STAR;
             case R.drawable.where_block:
                 return BlockT.WHERE;
             case R.drawable.limit_block:
                 return BlockT.LIMIT;
-            case R.drawable.between_block:
-                return BlockT.BETWEEN;
             case R.drawable.groupby_block:
                 return BlockT.GROUPBY;
             case R.drawable.having_block:
@@ -132,9 +165,27 @@ public enum BlockT {
         return BlockT.SELECT;
     }
 
-    @DrawableRes
+    //@DrawableRes
     public int getDesign(){
         switch(this){
+            case NEQUAL:
+                return R.drawable.nequal_block;
+            case LIKE:
+                return R.drawable.like_block;
+            case MAX:
+                return R.drawable.max_block;
+            case MIN:
+                return R.drawable.min_block;
+            case OR:
+                return 0; //todo
+            case SUM:
+                return R.drawable.sum_block;
+            case XOR:
+                return 1; //todo
+            case EQUAL:
+                return R.drawable.equal_block;
+            case AVERAGE:
+                return R.drawable.avg_block;
             case SELECT:
                 return R.drawable.select_block;
             case FROM:
@@ -143,8 +194,6 @@ public enum BlockT {
                 return R.drawable.where_block;
             case LIMIT:
                 return R.drawable.limit_block;
-            case BETWEEN:
-                return R.drawable.between_block;
             case GROUPBY:
                 return R.drawable.groupby_block;
             case HAVING:
@@ -170,16 +219,40 @@ public enum BlockT {
             case EMPTY:
                 return R.drawable.empty_block;
         }
-        return R.drawable.star_block;
+        return R.drawable.empty_block;
     }
 
     public List<BlockT> getRightSuccessors(){
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
+            case NEQUAL:
+                sucs.addAll(Arrays.asList());
+                break;
+            case MAX:
+                sucs.addAll(Arrays.asList());
+                break;
+            case MIN:
+                sucs.addAll(Arrays.asList());
+                break;
+            case OR:
+                sucs.addAll(Arrays.asList());
+                break;
+            case SUM:
+                sucs.addAll(Arrays.asList());
+                break;
+            case XOR:
+                sucs.addAll(Arrays.asList());
+                break;
             case AND:
                 sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.NOT));
                 break;
             case AS:
+                sucs.addAll(Arrays.asList());
+                break;
+            case EQUAL:
+                sucs.addAll(Arrays.asList());
+                break;
+            case AVERAGE:
                 sucs.addAll(Arrays.asList());
                 break;
             case COUNT:
@@ -216,13 +289,10 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList(BlockT.COUNT));
                 break;
             case SELECT:
-                sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.STAR));
+                sucs.addAll(Arrays.asList(BlockT.COUNT));
                 break;
             case SELECTDISTINCT:
-                sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.STAR));
-                break;
-            case STAR:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.COUNT));
                 break;
             case WHERE:
                 sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.COUNT, BlockT.NOT));
@@ -235,10 +305,34 @@ public enum BlockT {
     public List<BlockT> getDownSuccessors(){
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
+            case NEQUAL:
+                sucs.addAll(Arrays.asList());
+                break;
+            case MAX:
+                sucs.addAll(Arrays.asList());
+                break;
+            case MIN:
+                sucs.addAll(Arrays.asList());
+                break;
+            case OR:
+                sucs.addAll(Arrays.asList());
+                break;
+            case SUM:
+                sucs.addAll(Arrays.asList());
+                break;
+            case XOR:
+                sucs.addAll(Arrays.asList());
+                break;
+            case EQUAL:
+                sucs.addAll(Arrays.asList());
+                break;
             case AND:
                 sucs.addAll(Arrays.asList());
                 break;
             case AS:
+                sucs.addAll(Arrays.asList());
+                break;
+            case AVERAGE:
                 sucs.addAll(Arrays.asList());
                 break;
             case COUNT:
@@ -279,9 +373,6 @@ public enum BlockT {
                 break;
             case SELECTDISTINCT:
                 sucs.addAll(Arrays.asList(BlockT.FROM));
-                break;
-            case STAR:
-                sucs.addAll(Arrays.asList());
                 break;
             case WHERE:
                 sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY));

@@ -155,16 +155,62 @@ public class Fragment_Blocks_Tut extends Fragment {
      */
 
     public void addBlock(String name){
-        if(name.equals(BlockT.SELECT.getName()))
-            blocks_of_categories[2].add(BlockT.SELECT.createView(context));
+        if(name.equals(BlockT.SELECT.getName())) //Key
+            blocks_of_categories[0].add(BlockT.SELECT.createView(context));
         else if(name.equals(BlockT.FROM.getName()))
-            blocks_of_categories[2].add(BlockT.FROM.createView(context));
+            blocks_of_categories[0].add(BlockT.FROM.createView(context));
         else if(name.equals(BlockT.WHERE.getName()))
-            blocks_of_categories[2].add(BlockT.WHERE.createView(context));
-        else if(name.equals(BlockT.STAR.getName()))
-            blocks_of_categories[0].add(BlockT.STAR.createView(context));
+            blocks_of_categories[0].add(BlockT.WHERE.createView(context));
+        else if(name.equals(BlockT.ORDERBY.getName()))
+            blocks_of_categories[0].add(BlockT.ORDERBY.createView(context));
+        else if(name.equals(BlockT.GROUPBY.getName()))
+            blocks_of_categories[0].add(BlockT.GROUPBY.createView(context));
+        else if(name.equals(BlockT.LIMIT.getName()))
+            blocks_of_categories[0].add(BlockT.LIMIT.createView(context));
+        else if(name.equals(BlockT.SELECTDISTINCT.getName()))
+            blocks_of_categories[0].add(BlockT.SELECTDISTINCT.createView(context));
+        else if(name.equals(BlockT.HAVING.getName()))
+            blocks_of_categories[0].add(BlockT.HAVING.createView(context));
+
+        else if(name.equals(BlockT.AS.getName())) //DB
+            blocks_of_categories[1].add(BlockT.AS.createView(context));
+
+        else if(name.equals(BlockT.AND.getName())) // Logic
+            blocks_of_categories[0].add(BlockT.AND.createView(context));
+        else if(name.equals(BlockT.NOT.getName()))
+            blocks_of_categories[0].add(BlockT.NOT.createView(context));
+        else if(name.equals(BlockT.IN.getName()))
+            blocks_of_categories[0].add(BlockT.IN.createView(context));
+        else if(name.equals(BlockT.ISNULL.getName()))
+            blocks_of_categories[0].add(BlockT.ISNULL.createView(context));
+        else if(name.equals(BlockT.LIKE.getName()))
+            blocks_of_categories[0].add(BlockT.LIKE.createView(context));
+        else if(name.equals(BlockT.GREATER.getName()))
+            blocks_of_categories[0].add(BlockT.GREATER.createView(context));
+        else if(name.equals(BlockT.EQUAL.getName()))
+            blocks_of_categories[0].add(BlockT.EQUAL.createView(context));
+        else if(name.equals(BlockT.NEQUAL.getName()))
+            blocks_of_categories[0].add(BlockT.NEQUAL.createView(context));
+        else if(name.equals(BlockT.OR.getName()))
+            blocks_of_categories[0].add(BlockT.OR.createView(context));
+        else if(name.equals(BlockT.XOR.getName()))
+            blocks_of_categories[0].add(BlockT.XOR.createView(context));
+
+        else if(name.equals(BlockT.COUNT.getName())) // Agg
+            blocks_of_categories[0].add(BlockT.COUNT.createView(context));
+        else if(name.equals(BlockT.MIN.getName()))
+            blocks_of_categories[0].add(BlockT.MIN.createView(context));
+        else if(name.equals(BlockT.MAX.getName()))
+            blocks_of_categories[0].add(BlockT.MAX.createView(context));
+        else if(name.equals(BlockT.AVERAGE.getName()))
+            blocks_of_categories[0].add(BlockT.AVERAGE.createView(context));
+        else if(name.equals(BlockT.SUM.getName()))
+            blocks_of_categories[0].add(BlockT.SUM.createView(context));
+
+
 
     }
+
 
     //open ll verti by adding all blocks / close it b removing all views of category x
     public void showOrHideBlocks(List<BlockView> blocks_to_show, int index){

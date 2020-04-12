@@ -120,27 +120,33 @@ public class Fragment_Blocks extends Fragment {
                 BlockT.ORDERBY.createView(context),
                 BlockT.GROUPBY.createView(context),
                 BlockT.LIMIT.createView(context),
-                BlockT.SELECTDISTINCT.createView(context)
+                BlockT.SELECTDISTINCT.createView(context),
+                BlockT.HAVING.createView(context)
         ));
 
         blocks_of_categories[1].addAll(Arrays.asList( //DB
-                BlockT.STAR.createView(context),
-                BlockT.AS.createView(context),
-                BlockT.HAVING.createView(context)
+                BlockT.AS.createView(context)
         ));
 
         blocks_of_categories[2].addAll(Arrays.asList( //Logic
                 BlockT.AND.createView(context),
                 BlockT.NOT.createView(context),
-                BlockT.BETWEEN.createView(context),
                 BlockT.IN.createView(context),
                 BlockT.ISNULL.createView(context),
                 BlockT.LIKE.createView(context),
-                BlockT.GREATER.createView(context)
+                BlockT.GREATER.createView(context),
+                BlockT.EQUAL.createView(context),
+                BlockT.NEQUAL.createView(context),
+                BlockT.OR.createView(context),
+                BlockT.XOR.createView(context)
         ));
 
         blocks_of_categories[3].addAll(Arrays.asList( //Agg
-                BlockT.COUNT.createView(context)
+                BlockT.COUNT.createView(context),
+                BlockT.MIN.createView(context),
+                BlockT.MAX.createView(context),
+                BlockT.AVERAGE.createView(context),
+                BlockT.SUM.createView(context)
         ));
 
         //open blocks when category iv is clicked
