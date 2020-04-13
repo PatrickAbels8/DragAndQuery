@@ -48,6 +48,7 @@ public enum BlockT {
     ORDERBY,
     SELECT,
     SELECTDISTINCT,
+    SMALLER,
     SUM,
     WHERE,
     XOR;
@@ -100,6 +101,8 @@ public enum BlockT {
                 return "AND";
             case GREATER:
                 return ">";
+            case SMALLER:
+                return "<";
             case AS:
                 return "AS";
             case EMPTY:
@@ -118,11 +121,11 @@ public enum BlockT {
                 return BlockT.MAX;
             case R.drawable.min_block:
                 return BlockT.MIN;
-            case 0: //todo
+            case R.drawable.or_block:
                 return BlockT.OR;
             case R.drawable.sum_block:
                 return BlockT.SUM;
-            case 1: //todo
+            case R.drawable.xor_block:
                 return BlockT.XOR;
             case R.drawable.equal_block:
                 return BlockT.EQUAL;
@@ -156,6 +159,8 @@ public enum BlockT {
                 return BlockT.AND;
             case R.drawable.greater_block:
                 return BlockT.GREATER;
+            case R.drawable.smaller_block:
+                return BlockT.SMALLER;
             case R.drawable.as_block:
                 return BlockT.AS;
             case R.drawable.empty_block:
@@ -176,11 +181,11 @@ public enum BlockT {
             case MIN:
                 return R.drawable.min_block;
             case OR:
-                return 0; //todo
+                return R.drawable.or_block;
             case SUM:
                 return R.drawable.sum_block;
             case XOR:
-                return 1; //todo
+                return R.drawable.xor_block;
             case EQUAL:
                 return R.drawable.equal_block;
             case AVERAGE:
@@ -213,6 +218,8 @@ public enum BlockT {
                 return R.drawable.and_block;
             case GREATER:
                 return R.drawable.greater_block;
+            case SMALLER:
+                return R.drawable.smaller_block;
             case AS:
                 return R.drawable.as_block;
             case EMPTY:
@@ -225,78 +232,83 @@ public enum BlockT {
         List<BlockT> sucs = new ArrayList<>();
         switch(this){
             case NEQUAL:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case MAX:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case MIN:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case OR:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL, BlockT.NOT));
                 break;
             case SUM:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case XOR:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL, BlockT.NOT));
                 break;
             case AND:
-                sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.NOT));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL, BlockT.NOT));
                 break;
             case AS:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case EQUAL:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case AVERAGE:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case COUNT:
-                sucs.addAll(Arrays.asList(BlockT.ISNULL));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case FROM:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case GREATER:
-                sucs.addAll(Arrays.asList(BlockT.ISNULL));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case GROUPBY:
-                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));
                 break;
             case HAVING:
-                sucs.addAll(Arrays.asList(BlockT.COUNT, BlockT.ISNULL, BlockT.NOT));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM, BlockT.ISNULL, BlockT.NOT));
                 break;
             case IN:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case ISNULL:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case LIKE:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case LIMIT:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case NOT:
-                sucs.addAll(Arrays.asList());
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case ORDERBY:
-                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));
                 break;
             case SELECT:
-                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));
                 break;
             case SELECTDISTINCT:
-                sucs.addAll(Arrays.asList(BlockT.COUNT));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));
                 break;
             case WHERE:
-                sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.COUNT, BlockT.NOT));
+                sucs.addAll(Arrays.asList(BlockT.ISNULL, BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM, BlockT.NOT));
                 break;
-
+            case SMALLER:
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
+                break;
+            case EMPTY:
+                sucs.addAll(Arrays.asList(BlockT.NEQUAL, BlockT.EMPTY, BlockT.SMALLER, BlockT.EQUAL, BlockT.GREATER, BlockT.AND, BlockT.AS, BlockT.AVERAGE, BlockT.COUNT, BlockT.IN, BlockT.ISNULL, BlockT.LIKE, BlockT.MAX, BlockT.MIN, BlockT.NOT, BlockT.OR, BlockT.SUM, BlockT.XOR));
+                break;
         }
         return sucs;
     }
@@ -375,6 +387,12 @@ public enum BlockT {
                 break;
             case WHERE:
                 sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY));
+                break;
+            case SMALLER:
+                sucs.addAll(Arrays.asList());
+                break;
+            case EMPTY:
+                sucs.addAll(Arrays.asList());
                 break;
         }
         return sucs;
