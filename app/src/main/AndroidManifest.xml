@@ -18,7 +18,10 @@
             android:name=".PopUp"
             android:theme="@style/AppTheme.PopUp"
             android:screenOrientation="sensorPortrait"/>
-        <activity android:name=".DbView" />
+        <activity
+            android:name=".DbView"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
         <activity
             android:name=".Impressum"
             android:screenOrientation="sensorPortrait"

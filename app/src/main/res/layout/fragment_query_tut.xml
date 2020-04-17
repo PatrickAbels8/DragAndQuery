@@ -28,11 +28,6 @@
                         android:id="@+id/frag_db"
                         android:src="@drawable/ic_menu_dbview"/>
 
-                <ImageView
-                    android:id="@+id/ex_bird"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                        android:src="@drawable/happy_berry"/>
 
                 <com.example.dragandquery.free.ClearView
                     android:id="@+id/frag_clear"
@@ -40,6 +35,11 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/garbage_collector" />
 
+                <ImageView
+                    android:id="@+id/ex_bird"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/happy_berry"/>
         </LinearLayout>
 
         <LinearLayout

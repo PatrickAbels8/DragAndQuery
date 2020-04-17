@@ -470,6 +470,10 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="btn_retry">Retry!</string>
     <string name="table_msg_well_done">Gut gemacht!</string>
 
+    <!-- db -->
+    <string name="db_title_school">Schule</string>
+    <string name="db_title_cafetaria">Cafetaria</string>
+
     <!-- blocks -->
     <string name="block_cat1">Key</string>
     <string name="block_cat2">DB</string>

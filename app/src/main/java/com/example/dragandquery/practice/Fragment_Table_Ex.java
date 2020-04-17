@@ -154,7 +154,7 @@ public class Fragment_Table_Ex extends Fragment {
         TableRow newRow = new TableRow(context);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
         newRow.setLayoutParams(lp);
-        newRow.setBackground(getResources().getDrawable(R.drawable.border_white));
+        newRow.setBackground(getResources().getDrawable(R.drawable.border_white_half));
 
         for(int i=0; i<col_names.length; i++){
             TextView entry = new TextView(context);

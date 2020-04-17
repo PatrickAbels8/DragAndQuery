@@ -52,7 +52,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="horizontal"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <ImageView
             android:id="@+id/star1"
@@ -79,9 +80,9 @@
         android:background="@drawable/border_white"
         android:textColor="@color/textcolor_white"
         android:fontFamily="@font/comfortaa"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
