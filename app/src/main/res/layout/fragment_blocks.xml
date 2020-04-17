@@ -12,8 +12,7 @@
         android:orientation="vertical"
         android:id="@+id/ll_blocks"
         android:gravity="center_horizontal"
-        app:layout_constraintBottom_toTopOf="@id/ll_categories"
-        android:background="@drawable/cat1_border">
+        app:layout_constraintBottom_toTopOf="@id/ll_categories">
 
        <!--<com.example.dragandquery.block.BlockView
             android:layout_width="wrap_content"
