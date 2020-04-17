@@ -185,7 +185,7 @@ public class Fragment_Blocks extends Fragment {
                 index>-1&&current_category_index!=index){ //another cat was already opened
             if(index>-1&&current_category_index!=index)
                 ll_blocks.removeAllViews();
-            et.setPadding(dp_to_int(16), dp_to_int(16), dp_to_int(16), dp_to_int(16));
+            et.setPadding(dp_to_int(25), dp_to_int(20), dp_to_int(25), dp_to_int(20));
             ll_blocks.addView(et, BlockView.linear_params);
             for(int i=0; i<blocks_to_show.size(); i++){
                 LinearLayout.LayoutParams lp_mB = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);

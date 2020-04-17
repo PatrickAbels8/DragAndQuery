@@ -410,7 +410,12 @@ public enum BlockT {
                 BlockT.WHERE, BlockT.LIMIT, BlockT.HAVING,
                 BlockT.GROUPBY, BlockT.ORDERBY).contains(this))
             view.setTextColor(ContextCompat.getColor(context, R.color.textcolor_white));
-        view.setPadding(dp_to_int(16), dp_to_int(16), dp_to_int(16), dp_to_int(16));
+        else
+            view.setTextColor(ContextCompat.getColor(context, R.color.textcolor_black));
+        if(this == BlockT.EMPTY)
+            view.setPadding(dp_to_int(25), dp_to_int(20), dp_to_int(25), dp_to_int(20));
+        else
+            view.setPadding(dp_to_int(20), dp_to_int(20), dp_to_int(20), dp_to_int(20));
         view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view.setTag(this);
         return view;
@@ -431,7 +436,7 @@ public enum BlockT {
         /*float scale = getResources().getDisplayMetrics().density;
         int pix = (int) (dp*scale+0.5f);
         return pix;*/
-        return 20; //todo
+        return dp+5; //todo
     }
 
 }

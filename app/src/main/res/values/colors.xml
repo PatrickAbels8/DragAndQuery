@@ -16,6 +16,7 @@
     <color name="gradient_middle">#1857ab</color>
     <color name="gradient_right">#00449e</color>
     <color name="textcolor_white">#f7f6f6</color>
+    <color name="textcolor_black">#000000</color>
 
 
     <color name="background_light">#4BB4FA</color>
