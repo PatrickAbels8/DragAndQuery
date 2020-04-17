@@ -37,9 +37,9 @@
     <color name="cat_title_bg">#c79403</color>
     <color name="cat_title_border">#a07705</color>
     <color name="cat1">#0000ff</color>
-    <color name="cat2">#e93578</color>
-    <color name="cat3">#e6ab00</color>
-    <color name="cat4">#72bb53</color>
+    <color name="cat2">#aaaaaa</color>
+    <color name="cat3">#72bb53</color>
+    <color name="cat4">#e93578</color>
 
     <color name="transparent">#00000000</color>
 
