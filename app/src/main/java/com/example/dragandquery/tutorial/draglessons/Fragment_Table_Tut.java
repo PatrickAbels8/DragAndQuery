@@ -194,7 +194,7 @@ public class Fragment_Table_Tut extends Fragment {
     public boolean isCorrect(List<String[]> response){
         String correctQuery = map.get(lec_id.substring(0, 5));
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, DatabaseAccess.DB_SCHOOL);
         databaseAccess.open();
         List<String[]> correctResponse = databaseAccess.query(correctQuery);
         databaseAccess.close();

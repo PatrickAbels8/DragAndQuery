@@ -189,7 +189,7 @@ public class Fragment_Table_Ex extends Fragment {
     public int isCorrect(List<String[]> response, int ex_id){
         String correctQuery = map.get(Integer.toString(ex_id));
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, DatabaseAccess.DB_CAFETARIA);
         databaseAccess.open();
         List<String[]> correctResponse = databaseAccess.query(correctQuery);
         databaseAccess.close();

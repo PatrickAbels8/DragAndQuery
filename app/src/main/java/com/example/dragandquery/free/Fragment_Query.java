@@ -1,28 +1,22 @@
 package com.example.dragandquery.free;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -32,14 +26,14 @@ import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
 import com.example.dragandquery.block.Node;
 import com.example.dragandquery.db.DatabaseAccess;
-import com.example.dragandquery.db.DatabaseOpenHelper;
+import com.example.dragandquery.db.DatabaseOpenHelperSchool;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /***
- * -
+ * - todo how to change dbaccess ??
  */
 
 public class Fragment_Query extends Fragment {
@@ -52,12 +46,17 @@ public class Fragment_Query extends Fragment {
     private ClearView btn_go;
     private ClearView btn_clear;
     private ImageView btn_db;
-    private PhotoView db_view;
+    private LinearLayout db_view;
+    private PhotoView db_img;
+    private TextView title_school;
+    private TextView title_cafetaria;
+    private TextView title_legend;
 
     //vars
     private Fragment_Query_Listener listener;
     public Context context;
     private boolean db_open = false;
+    public String dbaccess;
 
     //interface
     public interface Fragment_Query_Listener{
@@ -78,14 +77,22 @@ public class Fragment_Query extends Fragment {
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
         btn_db = (ImageView) v.findViewById(R.id.frag_db);
         db_view = v.findViewById(R.id.db_view);
+        db_img = v.findViewById(R.id.db_img);
+        title_school = v.findViewById(R.id.db_title_school);
+        title_cafetaria = v.findViewById(R.id.db_title_cafetaria);
+        title_legend = v.findViewById(R.id.db_title_legend);
         hideDB();
         context = getContext();
+        dbaccess = DatabaseAccess.DB_SCHOOL;
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query.MyGoListener());
         btn_clear.setOnLongClickListener(new Fragment_Query.MyClearLongClickListener());
         btn_clear.setMyClearDragListener(new Fragment_Query.MyClearDragListener());
         btn_db.setOnClickListener(new Fragment_Query.MyDBClickListener());
+        title_school.setOnClickListener(new Fragment_Query.SchoolListener());
+        title_cafetaria.setOnClickListener(new Fragment_Query.CafetariaListener());
+        title_legend.setOnClickListener(new Fragment_Query.LegendListener());
 
         return v;
     }
@@ -223,7 +230,7 @@ public class Fragment_Query extends Fragment {
     public List<String[]> queryDB(String query){
         //progress on front while query in back (asynctask)
         try{
-            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, dbaccess);
             databaseAccess.open();
             List<String[]> response = databaseAccess.query(query);
             databaseAccess.close();
@@ -454,6 +461,44 @@ public class Fragment_Query extends Fragment {
             }
         }
     }
+
+    public class SchoolListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_school.setBackground(getResources().getDrawable(R.drawable.border_white));
+            title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            db_img.setImageResource(R.drawable.er_school);
+
+        }
+    }
+
+    public class CafetariaListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_school.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_white));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            db_img.setImageResource(R.drawable.er_cafetaria);
+        }
+    }
+
+    public class LegendListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_school.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_white));
+            db_img.setImageResource(R.drawable.er_legend);
+        }
+    }
+
+
+
+
 
     public void showDB(){
         db_view.setVisibility(View.VISIBLE);

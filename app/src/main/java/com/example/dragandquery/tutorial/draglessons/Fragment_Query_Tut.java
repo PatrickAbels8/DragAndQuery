@@ -306,7 +306,7 @@ public class Fragment_Query_Tut extends Fragment {
 
     public List<String[]> queryDB(String query){
         try{
-            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, DatabaseAccess.DB_SCHOOL);
             databaseAccess.open();
             List<String[]> response = databaseAccess.query(query);
             databaseAccess.close();

@@ -10,18 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseAccess {
+    public final static String DB_SCHOOL = "school";
+    public final static String DB_CAFETARIA = "cafetaria";
+
+
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
     private static DatabaseAccess instance;
     Cursor c = null;
 
-    private DatabaseAccess(Context context){
-        this.openHelper = new DatabaseOpenHelper(context);
+    private DatabaseAccess(Context context, String db_name){
+        if(db_name.equals(DB_SCHOOL))
+            this.openHelper = new DatabaseOpenHelperSchool(context);
+        else if (db_name.equals(DB_CAFETARIA))
+            this.openHelper = new DatabaseOpenHelperCafetaria(context);
     }
 
-    public static DatabaseAccess getInstance(Context context){
+
+    public static DatabaseAccess getInstance(Context context, String db_name){
         if(instance==null){
-            instance = new DatabaseAccess(context);
+            instance = new DatabaseAccess(context, db_name);
         }
         return instance;
     }

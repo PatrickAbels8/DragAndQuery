@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -233,7 +234,7 @@ public class Fragment_Query_Ex extends Fragment {
 
     public List<String[]> queryDB(String query){
         try{
-            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, DatabaseAccess.DB_CAFETARIA);
             databaseAccess.open();
             List<String[]> response = databaseAccess.query(query);
             databaseAccess.close();

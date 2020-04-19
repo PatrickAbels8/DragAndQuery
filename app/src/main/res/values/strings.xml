@@ -473,6 +473,7 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <!-- db -->
     <string name="db_title_school">Schule</string>
     <string name="db_title_cafetaria">Cafetaria</string>
+    <string name="db_title_legend">Legende</string>
 
     <!-- blocks -->
     <string name="block_cat1">Key</string>
