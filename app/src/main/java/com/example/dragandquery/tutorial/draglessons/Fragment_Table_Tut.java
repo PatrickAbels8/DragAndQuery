@@ -22,9 +22,11 @@ import com.example.dragandquery.R;
 import com.example.dragandquery.db.DatabaseAccess;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /***
  * -
@@ -201,7 +203,25 @@ public class Fragment_Table_Tut extends Fragment {
 
         boolean num_rows = correctResponse.size() == response.size();
         boolean num_cols = correctResponse.get(0).length == response.get(0).length;
-        return num_cols && num_rows;
+        if (num_cols && num_rows){
+            for(int i=0; i<response.get(0).length; i++){
+                int ran_row = (new Random().nextInt(response.size()-1))+1;
+                String ran_cell = response.get(ran_row)[i];
+                boolean is_in = false;
+                for(int j=1; j<response.size(); j++){
+                    if(Arrays.asList(correctResponse.get(j)).contains(ran_cell)) {
+                        is_in = true;
+                        break;
+                    }
+                }
+                if(!is_in)
+                    return false;
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override

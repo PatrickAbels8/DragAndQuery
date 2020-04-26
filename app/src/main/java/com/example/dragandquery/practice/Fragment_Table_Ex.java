@@ -22,9 +22,11 @@ import androidx.fragment.app.Fragment;
 import com.example.dragandquery.R;
 import com.example.dragandquery.db.DatabaseAccess;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /***
  *
@@ -41,9 +43,6 @@ public class Fragment_Table_Ex extends Fragment {
     private Animation frombottom;
     private Animation tobottom;
     private Context context;
-    private ImageView star1;
-    private ImageView star2;
-    private ImageView star3;
 
     //vars
     private Fragment_Table_Ex_Listener listener;
@@ -96,9 +95,6 @@ public class Fragment_Table_Ex extends Fragment {
         raw_query = v.findViewById(R.id.raw_query);
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
-        star1 = (ImageView) v.findViewById(R.id.star1);
-        star2 = (ImageView) v.findViewById(R.id.star2);
-        star3 = (ImageView) v.findViewById(R.id.star3);
         table = v.findViewById(R.id.tl_table);
 
         //get back to edit or forth to next lec
@@ -117,24 +113,12 @@ public class Fragment_Table_Ex extends Fragment {
         cl_table.setVisibility(View.GONE);
     }
 
-    public void goVisible(String query, List<String[]> response, float runtime, int isCorrect){
+    // todo good or bad ffedback
+    public void goVisible(String query, List<String[]> response, float runtime, boolean isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
         raw_query.setText(query.concat("\n Laufzeit: ").concat(Float.toString(runtime)).concat(" sec."));
-
-        if(isCorrect>0)
-            star1.setImageResource(R.drawable.star_full);
-        else
-            star1.setImageResource(R.drawable.star_empty);
-        if(isCorrect>1)
-            star2.setImageResource(R.drawable.star_full);
-        else
-            star2.setImageResource(R.drawable.star_empty);
-        if(isCorrect>2)
-            star3.setImageResource(R.drawable.star_full);
-        else
-            star3.setImageResource(R.drawable.star_empty);
     }
 
     public void fillTable(List<String[]> response){
@@ -186,7 +170,7 @@ public class Fragment_Table_Ex extends Fragment {
         table.addView(newRow);
     }
 
-    public int isCorrect(List<String[]> response, int ex_id){
+    public boolean isCorrect(List<String[]> response, int ex_id){
         String correctQuery = map.get(Integer.toString(ex_id));
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, DatabaseAccess.DB_CAFETARIA);
@@ -197,8 +181,25 @@ public class Fragment_Table_Ex extends Fragment {
         boolean num_rows = correctResponse.size() == response.size();
         boolean num_cols = correctResponse.get(0).length == response.get(0).length;
 
-        int stars = (num_cols && num_rows)? 3: 0; //todo 0-3 stars
-        return stars;
+        if (num_cols && num_rows){
+            for(int i=0; i<response.get(0).length; i++){
+                int ran_row = (new Random().nextInt(response.size()-1))+1;
+                String ran_cell = response.get(ran_row)[i];
+                boolean is_in = false;
+                for(int j=1; j<response.size(); j++){
+                    if(Arrays.asList(correctResponse.get(j)).contains(ran_cell)) {
+                        is_in = true;
+                        break;
+                    }
+                }
+                if(!is_in)
+                    return false;
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override

@@ -183,7 +183,7 @@ public class Fragment_Query_Ex extends Fragment {
     }
 
     public String interpret(BlockView select){
-        if(select.getNode().getBlock() != BlockT.SELECT){
+        if(select.getNode().getBlock() != BlockT.SELECT || select.getNode().getBlock() != BlockT.SELECTDISTINCT){
             return SELECT_MISSING_ERROR;
         }
         return select.getNode().toTreeString();

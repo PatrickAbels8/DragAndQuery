@@ -43,7 +43,7 @@ public class Practices extends AppCompatActivity {
     public static final String EX_ID = "com.example.dragandquery.practice.Practices.EX_ID";
     private List<Button> exercises;
     private boolean neededLections[][]; //todo lections on exercises if needed
-    private String dones; //"0123102031"
+    private String dones; //"010111001010"
     public static final String DEFAULT_EASY = "000000";
     public static final String DEFAULT_MEDIUM = "00000000";
     public static final String DEFAULT_HARD = "000000000000";
@@ -146,19 +146,8 @@ public class Practices extends AppCompatActivity {
             star1.setImageResource(R.drawable.star_full);
         else
             star1.setImageResource(R.drawable.star_empty);
-        ImageView star2 = new ImageView(context);
-        if(numStars>1)
-            star2.setImageResource(R.drawable.star_full);
-        else
-            star2.setImageResource(R.drawable.star_empty);
-        ImageView star3 = new ImageView(context);
-        if(numStars>2)
-            star3.setImageResource(R.drawable.star_full);
-        else
-            star3.setImageResource(R.drawable.star_empty);
+
         ll_h.addView(star1);
-        ll_h.addView(star2);
-        ll_h.addView(star3);
 
         //button
         Button l = new Button(context);

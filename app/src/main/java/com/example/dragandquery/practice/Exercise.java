@@ -27,10 +27,6 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     //vars
     int ex_id;
     public static final String ID_KEY = "com.example.dragandquery.practice.Exercise.ID_KEY";
-    public static final int STAR_0 = 0;
-    public static final int STAR_1 = 1;
-    public static final int STAR_2 = 2;
-    public static final int STAR_3 = 3;
 
     //fragments
     Fragment_Query_Ex fragQuery;
@@ -76,15 +72,15 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     public void onGo(String query, List<String[]> response, float runtime) {
         fragQuery.goInclickable();
         fragBlocks.goInvisible();
-        int isCorrect = fragTable.isCorrect(response, ex_id);
+        boolean isCorrect = fragTable.isCorrect(response, ex_id);
         fragTable.goVisible(query, response, runtime, isCorrect);
 
-        if(isCorrect!=STAR_0){
+        if(isCorrect){
             int index = ex_id%100;
             String key = ex_id/100==1? getString(R.string.prac_easy_key): ex_id/100==2? getString(R.string.prac_medium_key): getString(R.string.prac_hard_key);
             String defalut = ex_id/100==1? "000000": ex_id/100==2? "00000000": "000000000000";
             String oldData = loadData(key, defalut);
-            String newData = oldData.substring(0, index)+Integer.toString(isCorrect)+oldData.substring(index+1);
+            String newData = oldData.substring(0, index)+Integer.toString(1)+oldData.substring(index+1);
             Log.d("#########", oldData);
             Log.d("#########", newData);
             saveData(key, newData);
