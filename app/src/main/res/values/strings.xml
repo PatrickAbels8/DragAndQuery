@@ -530,4 +530,7 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
 
     <!-- errors -->
     <string name="select_missing_error">Ich finde leider kein SELECT ...</string>
+    <string name="sql_error">Da stimmt etwas mit der Anfrage noch nicht ...</string>
+    <string name="no_db_chosen_error">Bitte wähle eine Datenbank aus ...</string>
+
 </resources>

@@ -41,6 +41,8 @@ public class Fragment_Query_Tut extends Fragment {
 
     //errors
     public static String SELECT_MISSING_ERROR;
+    public static String SQL_ERROR;
+
 
     //coms
     private RelativeLayout rl_query;
@@ -71,6 +73,8 @@ public class Fragment_Query_Tut extends Fragment {
 
         //errors
         SELECT_MISSING_ERROR = getString(R.string.select_missing_error);
+        SQL_ERROR = getString(R.string.sql_error);
+
 
         //init coms
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
@@ -187,7 +191,8 @@ public class Fragment_Query_Tut extends Fragment {
 
     public String interpret(BlockView select){
         if(select.getNode().getBlock() != BlockT.SELECT){
-            return SELECT_MISSING_ERROR;
+            Toast.makeText(context, SELECT_MISSING_ERROR, Toast.LENGTH_SHORT).show();
+            return null;
         }
         return select.getNode().toTreeString();
     }
@@ -461,6 +466,8 @@ public class Fragment_Query_Tut extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
+                        if(query == null)
+                            break;
                         long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
                         long stop = System.currentTimeMillis();

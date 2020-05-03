@@ -51,11 +51,11 @@ public enum BlockT {
     SMALLER,
     SUM,
     WHERE,
-    XOR;
-    INNER_JOIN;
-    LEFT_OUTER_JOIN;
-    RIGHT_OUTER_JOIN;
-    FULL_OUTER_JOIN;
+    XOR,
+    INNER_JOIN,
+    LEFT_OUTER_JOIN,
+    RIGHT_OUTER_JOIN,
+    FULL_OUTER_JOIN,
     ON;
 
     public String getName() {
@@ -472,7 +472,7 @@ public enum BlockT {
             view.setText(vals[0]);
 
         if(Arrays.asList(BlockT.SELECT, BlockT.SELECTDISTINCT, BlockT.FROM,
-                BlockT.WHERE, BlockT.LIMIT, BlockT.HAVING,
+                BlockT.WHERE, BlockT.LIMIT, BlockT.HAVING, BlockT.AS,
                 BlockT.GROUPBY, BlockT.ORDERBY).contains(this))
             view.setTextColor(ContextCompat.getColor(context, R.color.textcolor_white));
         else
@@ -480,7 +480,7 @@ public enum BlockT {
         if(this == BlockT.EMPTY)
             view.setPadding(dp_to_int(25), dp_to_int(20), dp_to_int(25), dp_to_int(20));
         else
-            view.setPadding(dp_to_int(20), dp_to_int(20), dp_to_int(20), dp_to_int(20));
+            view.setPadding(dp_to_int(20), dp_to_int(20), dp_to_int(25), dp_to_int(20));
         view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         view.setTag(this);
         return view;

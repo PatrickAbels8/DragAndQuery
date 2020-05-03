@@ -33,13 +33,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * - todo how to change dbaccess ??
  */
 
 public class Fragment_Query extends Fragment {
 
     //errors
     public static String SELECT_MISSING_ERROR;
+    public static String NO_DB_CHOSEN_ERROR;
+    public static String SQL_ERROR;
 
     //coms
     private RelativeLayout rl_query;
@@ -70,6 +71,8 @@ public class Fragment_Query extends Fragment {
 
         //errors
         SELECT_MISSING_ERROR = getString(R.string.select_missing_error);
+        NO_DB_CHOSEN_ERROR = getString(R.string.no_db_chosen_error);
+        SQL_ERROR = getString(R.string.sql_error);
 
         //init coms
         rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
@@ -83,7 +86,7 @@ public class Fragment_Query extends Fragment {
         title_legend = v.findViewById(R.id.db_title_legend);
         hideDB();
         context = getContext();
-        dbaccess = DatabaseAccess.DB_SCHOOL;
+        dbaccess = "";
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query.MyGoListener());
@@ -188,7 +191,12 @@ public class Fragment_Query extends Fragment {
 
     public String interpret(BlockView select){
         if(select.getNode().getBlock() != BlockT.SELECT && select.getNode().getBlock() != BlockT.SELECTDISTINCT){
-            return SELECT_MISSING_ERROR;
+            Toast.makeText(context, SELECT_MISSING_ERROR, Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if(dbaccess == ""){
+            Toast.makeText(context, NO_DB_CHOSEN_ERROR, Toast.LENGTH_SHORT).show();
+            return null;
         }
         return select.getNode().toTreeString();
     }
@@ -385,6 +393,8 @@ public class Fragment_Query extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
+                        if(query == null)
+                            break;
                         Log.d("#########", query);
                         long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
@@ -392,7 +402,7 @@ public class Fragment_Query extends Fragment {
                         if(response != null)
                             listener.onGo(query, response, (float)(stop-start)/1000);
                         else
-                            Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, SQL_ERROR, Toast.LENGTH_SHORT).show();
                         hideDB();
                         //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
@@ -470,6 +480,7 @@ public class Fragment_Query extends Fragment {
             title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             db_img.setImageResource(R.drawable.er_school);
+            dbaccess = DatabaseAccess.DB_SCHOOL;
 
         }
     }
@@ -482,6 +493,7 @@ public class Fragment_Query extends Fragment {
             title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_white));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             db_img.setImageResource(R.drawable.er_cafetaria);
+            dbaccess = DatabaseAccess.DB_CAFETARIA;
         }
     }
 
@@ -493,6 +505,7 @@ public class Fragment_Query extends Fragment {
             title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_white));
             db_img.setImageResource(R.drawable.er_legend);
+            dbaccess = "";
         }
     }
 

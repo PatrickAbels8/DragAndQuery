@@ -191,7 +191,9 @@ public class Fragment_Blocks extends Fragment {
             if(index>-1&&current_category_index!=index)
                 ll_blocks.removeAllViews();
             et.setPadding(dp_to_int(15), dp_to_int(10), dp_to_int(15), dp_to_int(10));
-            ll_blocks.addView(et, BlockView.linear_params);
+            LinearLayout.LayoutParams lp_eB = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp_eB.setMargins(0, dp_to_int(8), 0, dp_to_int(8));
+            ll_blocks.addView(et, lp_eB);
             for(int i=0; i<blocks_to_show.size(); i++){
                 LinearLayout.LayoutParams lp_mB = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 lp_mB.setMargins(0, 0, 0, dp_to_int(8));
