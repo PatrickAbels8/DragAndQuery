@@ -52,6 +52,11 @@ public enum BlockT {
     SUM,
     WHERE,
     XOR;
+    INNER_JOIN;
+    LEFT_OUTER_JOIN;
+    RIGHT_OUTER_JOIN;
+    FULL_OUTER_JOIN;
+    ON;
 
     public String getName() {
         switch(this){
@@ -107,6 +112,16 @@ public enum BlockT {
                 return "AS";
             case EMPTY:
                 return "";
+            case INNER_JOIN:
+                return "inner join";
+            case LEFT_OUTER_JOIN:
+                return "left outer join";
+            case RIGHT_OUTER_JOIN:
+                return "right outer join";
+            case FULL_OUTER_JOIN:
+                return "full outer join";
+            case ON:
+                return "on";
         }
         return "";
     }
@@ -165,6 +180,16 @@ public enum BlockT {
                 return BlockT.AS;
             case R.drawable.empty_block:
                 return BlockT.EMPTY;
+            case R.drawable.inner_join_block:
+                return BlockT.INNER_JOIN;
+            case R.drawable.left_outer_join_block:
+                return BlockT.LEFT_OUTER_JOIN;
+            case R.drawable.right_outer_join_block:
+                return BlockT.RIGHT_OUTER_JOIN;
+            case R.drawable.full_outer_join_block:
+                return BlockT.FULL_OUTER_JOIN;
+            case R.drawable.on_block:
+                return BlockT.ON;
         }
         return BlockT.SELECT;
     }
@@ -224,6 +249,16 @@ public enum BlockT {
                 return R.drawable.as_block;
             case EMPTY:
                 return R.drawable.empty_block;
+            case INNER_JOIN:
+                return R.drawable.inner_join_block;
+            case LEFT_OUTER_JOIN:
+                return R.drawable.left_outer_join_block;
+            case RIGHT_OUTER_JOIN:
+                return R.drawable.right_outer_join_block;
+            case FULL_OUTER_JOIN:
+                return R.drawable.full_outer_join_block;
+            case ON:
+                return R.drawable.on_block;
         }
         return R.drawable.empty_block;
     }
@@ -307,7 +342,22 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.ISNULL));
                 break;
             case EMPTY:
-                sucs.addAll(Arrays.asList(BlockT.NEQUAL, BlockT.EMPTY, BlockT.SMALLER, BlockT.EQUAL, BlockT.GREATER, BlockT.AND, BlockT.AS, BlockT.AVERAGE, BlockT.COUNT, BlockT.IN, BlockT.ISNULL, BlockT.LIKE, BlockT.MAX, BlockT.MIN, BlockT.NOT, BlockT.OR, BlockT.SUM, BlockT.XOR));
+                sucs.addAll(Arrays.asList(BlockT.ON, BlockT.NEQUAL, BlockT.EMPTY, BlockT.SMALLER, BlockT.EQUAL, BlockT.GREATER, BlockT.AND, BlockT.AS, BlockT.AVERAGE, BlockT.COUNT, BlockT.IN, BlockT.ISNULL, BlockT.LIKE, BlockT.MAX, BlockT.MIN, BlockT.NOT, BlockT.OR, BlockT.SUM, BlockT.XOR));
+                break;
+            case INNER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
+                break;
+            case LEFT_OUTER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
+                break;
+            case RIGHT_OUTER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
+                break;
+            case FULL_OUTER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
+                break;
+            case ON:
+                sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
         }
         return sucs;
@@ -350,7 +400,7 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList());
                 break;
             case FROM:
-                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE));
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE, BlockT.INNER_JOIN, BlockT.LEFT_OUTER_JOIN, BlockT.RIGHT_OUTER_JOIN, BlockT.FULL_OUTER_JOIN));
                 break;
             case GREATER:
                 sucs.addAll(Arrays.asList());
@@ -393,6 +443,21 @@ public enum BlockT {
                 break;
             case EMPTY:
                 sucs.addAll(Arrays.asList());
+                break;
+            case ON:
+                sucs.addAll(Arrays.asList());
+                break;
+            case INNER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE, BlockT.INNER_JOIN, BlockT.LEFT_OUTER_JOIN, BlockT.RIGHT_OUTER_JOIN, BlockT.FULL_OUTER_JOIN));
+                break;
+            case LEFT_OUTER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE, BlockT.INNER_JOIN, BlockT.LEFT_OUTER_JOIN, BlockT.RIGHT_OUTER_JOIN, BlockT.FULL_OUTER_JOIN));
+                break;
+            case RIGHT_OUTER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE, BlockT.INNER_JOIN, BlockT.LEFT_OUTER_JOIN, BlockT.RIGHT_OUTER_JOIN, BlockT.FULL_OUTER_JOIN));
+                break;
+            case FULL_OUTER_JOIN:
+                sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.HAVING, BlockT.LIMIT, BlockT.ORDERBY, BlockT.WHERE, BlockT.INNER_JOIN, BlockT.LEFT_OUTER_JOIN, BlockT.RIGHT_OUTER_JOIN, BlockT.FULL_OUTER_JOIN));
                 break;
         }
         return sucs;

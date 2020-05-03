@@ -170,12 +170,21 @@ public class Fragment_Blocks_Tut extends Fragment {
             blocks_of_categories[0].add(BlockT.SELECTDISTINCT.createView(context));
         else if(name.equals(BlockT.HAVING.getName()))
             blocks_of_categories[0].add(BlockT.HAVING.createView(context));
-
         else if(name.equals(BlockT.AS.getName())) //DB
             blocks_of_categories[1].add(BlockT.AS.createView(context));
+        else if(name.equals(BlockT.INNER_JOIN.getName())) //DB
+            blocks_of_categories[1].add(BlockT.INNER_JOIN.createView(context));
+        else if(name.equals(BlockT.LEFT_OUTER_JOIN.getName())) //DB
+            blocks_of_categories[1].add(BlockT.LEFT_OUTER_JOIN.createView(context));
+        else if(name.equals(BlockT.RIGHT_OUTER_JOIN.getName())) //DB
+            blocks_of_categories[1].add(BlockT.RIGHT_OUTER_JOIN.createView(context));
+        else if(name.equals(BlockT.FULL_OUTER_JOIN.getName())) //DB
+            blocks_of_categories[1].add(BlockT.FULL_OUTER_JOIN.createView(context));
+        else if(name.equals(BlockT.ON.getName())) //DB
+            blocks_of_categories[1].add(BlockT.ON.createView(context));
 
         else if(name.equals(BlockT.AND.getName())) // Logic
-            blocks_of_categories[0].add(BlockT.AND.createView(context));
+            blocks_of_categories[0].add(BlockT.AND.createView(context));//müsste hier nicht überall 2 in den eckigen Klammer stehen?
         else if(name.equals(BlockT.NOT.getName()))
             blocks_of_categories[0].add(BlockT.NOT.createView(context));
         else if(name.equals(BlockT.IN.getName()))

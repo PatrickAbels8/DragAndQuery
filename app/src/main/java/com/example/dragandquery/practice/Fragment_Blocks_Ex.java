@@ -109,7 +109,12 @@ public class Fragment_Blocks_Ex extends Fragment {
         ));
 
         blocks_of_categories[1].addAll(Arrays.asList( //DB
-                BlockT.AS.createView(context)
+                BlockT.AS.createView(context),
+                BlockT.INNER_JOIN.createView(context),
+                BlockT.LEFT_OUTER_JOIN.createView(context),
+                BlockT.RIGHT_OUTER_JOIN.createView(context),
+                BlockT.FULL_OUTER_JOIN.createView(context),
+                BlockT.ON.createView(context)
         ));
 
         blocks_of_categories[2].addAll(Arrays.asList( //Logic
