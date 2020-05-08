@@ -474,7 +474,7 @@ public class Fragment_Query_Tut extends Fragment {
                         if(response != null)
                             listener.onGo(query, response, (float)(stop-start)/1000);
                         else
-                            Toast.makeText(context, "Oops! Da hat etwas noch nicht gestimmt!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, SQL_ERROR+": "+query, Toast.LENGTH_LONG).show();
                         hideBird();
                         hideDB();
                         //sounds

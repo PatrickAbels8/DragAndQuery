@@ -14,7 +14,6 @@ public class BlockView extends TextView {
 
     public static final LinearLayout.LayoutParams linear_params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
     public static final RelativeLayout.LayoutParams relative_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-
     /***
      * Listeners
      */

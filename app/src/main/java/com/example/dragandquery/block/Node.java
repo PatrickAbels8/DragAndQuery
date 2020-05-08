@@ -2,6 +2,8 @@ package com.example.dragandquery.block;
 
 import android.util.Log;
 
+import com.example.dragandquery.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,11 +91,26 @@ public class Node {
      * @return string to perform query on db
      */
     public String toTreeString(){
-        String s = this.getValue();
+        String s = "";
+
+        //self
+        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.EMPTY ||
+            this.getBlock().getCategory()==R.string.block_cat4 && this.getParent().getBlock()==BlockT.EMPTY)
+            s += ", ";
+        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4)
+            s += "(";
+        s += this.getValue();
+        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4)
+            s += ")";
+
+
+        //right
         if(this.hasRight()) {
             s += " ";
             s += this.getRightChild().toTreeString();
         }
+
+        //down
         if(this.hasDown()) {
             s += " ";
             s += this.getDownChild().toTreeString();

@@ -402,7 +402,7 @@ public class Fragment_Query extends Fragment {
                         if(response != null)
                             listener.onGo(query, response, (float)(stop-start)/1000);
                         else
-                            Toast.makeText(context, SQL_ERROR, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, SQL_ERROR+": "+query, Toast.LENGTH_LONG).show();
                         hideDB();
                         //sounds
                         btn_go.startAnimation(AnimationUtils.loadAnimation(me.getContext(), R.anim.vibrate_short));
