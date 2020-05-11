@@ -166,8 +166,8 @@ public class Fragment_Blocks_Tut extends Fragment {
             blocks_of_categories[0].add(BlockT.GROUPBY.createView(context));
         else if(name.equals(BlockT.LIMIT.getName()))
             blocks_of_categories[0].add(BlockT.LIMIT.createView(context));
-        else if(name.equals(BlockT.SELECTDISTINCT.getName()))
-            blocks_of_categories[0].add(BlockT.SELECTDISTINCT.createView(context));
+        else if(name.equals(BlockT.DISTINCT.getName()))
+            blocks_of_categories[0].add(BlockT.DISTINCT.createView(context));
         else if(name.equals(BlockT.HAVING.getName()))
             blocks_of_categories[0].add(BlockT.HAVING.createView(context));
         else if(name.equals(BlockT.AS.getName())) //DB

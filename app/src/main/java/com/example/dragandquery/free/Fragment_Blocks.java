@@ -119,7 +119,7 @@ public class Fragment_Blocks extends Fragment {
                 BlockT.ORDERBY.createView(context),
                 BlockT.GROUPBY.createView(context),
                 BlockT.LIMIT.createView(context),
-                BlockT.SELECTDISTINCT.createView(context),
+                BlockT.DISTINCT.createView(context),
                 BlockT.HAVING.createView(context)
         ));
 

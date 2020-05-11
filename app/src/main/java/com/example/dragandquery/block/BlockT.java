@@ -1,20 +1,11 @@
 package com.example.dragandquery.block;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.util.Log;
-import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
-import androidx.annotation.DrawableRes;
 import androidx.core.content.ContextCompat;
 
 import com.example.dragandquery.R;
-import com.example.dragandquery.free.Fragment_Query;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,7 +38,7 @@ public enum BlockT {
     OR,
     ORDERBY,
     SELECT,
-    SELECTDISTINCT,
+    DISTINCT,
     SMALLER,
     SUM,
     WHERE,
@@ -61,7 +52,7 @@ public enum BlockT {
     public int getCategory(){
         switch(this){
             case SELECT:
-            case SELECTDISTINCT:
+            case DISTINCT:
                 return R.string.block_cat1;
             case SUM:
                 return R.string.block_cat4;
@@ -109,7 +100,7 @@ public enum BlockT {
                 return "NOT";
             case ORDERBY:
                 return "ORDER BY";
-            case SELECTDISTINCT:
+            case DISTINCT:
                 return "SELECT DISTINCT";
             case COUNT:
                 return "COUNT";
@@ -177,8 +168,8 @@ public enum BlockT {
                 return BlockT.NOT;
             case R.drawable.orderby_block:
                 return BlockT.ORDERBY;
-            case R.drawable.selectdistinct_block:
-                return BlockT.SELECTDISTINCT;
+            case R.drawable.distinct_block:
+                return BlockT.DISTINCT;
             case R.drawable.count_block:
                 return BlockT.COUNT;
             case R.drawable.and_block:
@@ -246,8 +237,8 @@ public enum BlockT {
                 return R.drawable.not_block;
             case ORDERBY:
                 return R.drawable.orderby_block;
-            case SELECTDISTINCT:
-                return R.drawable.selectdistinct_block;
+            case DISTINCT:
+                return R.drawable.distinct_block;
             case COUNT:
                 return R.drawable.count_block;
             case AND:
@@ -341,9 +332,9 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));
                 break;
             case SELECT:
-                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM, BlockT.ISNULL));
+                sucs.addAll(Arrays.asList(BlockT.DISTINCT, BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM, BlockT.ISNULL));
                 break;
-            case SELECTDISTINCT:
+            case DISTINCT:
                 sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM, BlockT.ISNULL));
                 break;
             case WHERE:
@@ -443,8 +434,8 @@ public enum BlockT {
             case SELECT:
                 sucs.addAll(Arrays.asList(BlockT.FROM));
                 break;
-            case SELECTDISTINCT:
-                sucs.addAll(Arrays.asList(BlockT.FROM));
+            case DISTINCT:
+                sucs.addAll(Arrays.asList());
                 break;
             case WHERE:
                 sucs.addAll(Arrays.asList(BlockT.GROUPBY, BlockT.LIMIT, BlockT.ORDERBY));
@@ -482,7 +473,7 @@ public enum BlockT {
         else
             view.setText(vals[0]);
 
-        if(Arrays.asList(BlockT.SELECT, BlockT.SELECTDISTINCT, BlockT.FROM,
+        if(Arrays.asList(BlockT.SELECT, BlockT.DISTINCT, BlockT.FROM,
                 BlockT.WHERE, BlockT.LIMIT, BlockT.HAVING, BlockT.AS,
                 BlockT.GROUPBY, BlockT.ORDERBY).contains(this))
             view.setTextColor(ContextCompat.getColor(context, R.color.textcolor_white));
