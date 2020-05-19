@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.dragandquery.R;
 import com.example.dragandquery.Tutorial;
 import com.example.dragandquery.tutorial.draglessons.DragLesson;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0100;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0101;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0102;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0103;
@@ -20,6 +21,9 @@ import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0105;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0106;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0107;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0108;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0109;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0110;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0111;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0301;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0401;
 
@@ -36,6 +40,7 @@ public class TutorialCategoryLection
         implements
             Fragment_Feedback.Fragment_Feedback_Listener,
             Fragment_Input.Fragment_Input_Listener,
+            Fragment_LectionContent_0108.Fragment_LectionContent_0100_Listener,
             Fragment_LectionContent_0101.Fragment_LectionContent_0101_Listener,
             Fragment_LectionContent_0102.Fragment_LectionContent_0102_Listener,
             Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
@@ -44,6 +49,9 @@ public class TutorialCategoryLection
             Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener,
             Fragment_LectionContent_0107.Fragment_LectionContent_0107_Listener,
             Fragment_LectionContent_0108.Fragment_LectionContent_0108_Listener,
+            Fragment_LectionContent_0108.Fragment_LectionContent_0109_Listener,
+            Fragment_LectionContent_0108.Fragment_LectionContent_0110_Listener,
+            Fragment_LectionContent_0108.Fragment_LectionContent_0111_Listener,
             Fragment_LectionContent_0301.Fragment_LectionContent_0301_Listener,
             Fragment_LectionContent_0401.Fragment_LectionContent_0401_Listener
 {
@@ -70,6 +78,7 @@ public class TutorialCategoryLection
         fragFeedback = new Fragment_Feedback();
         fragInput = new Fragment_Input();
         frags = new Fragment_Content[]{ //todo add lections here
+                new Fragment_LectionContent_0100(),
                 new Fragment_LectionContent_0101(),
                 new Fragment_LectionContent_0102(),
                 new Fragment_LectionContent_0103(),
@@ -78,6 +87,9 @@ public class TutorialCategoryLection
                 new Fragment_LectionContent_0106(),
                 new Fragment_LectionContent_0107(),
                 new Fragment_LectionContent_0108(),
+                new Fragment_LectionContent_0109(),
+                new Fragment_LectionContent_0110(),
+                new Fragment_LectionContent_0111(),
                 new Fragment_LectionContent_0301(),
                 new Fragment_LectionContent_0401()
         };
@@ -147,7 +159,7 @@ public class TutorialCategoryLection
 
     @Override
     public void onGo(boolean isCorrect) {
-        fragFeedback.goVisible(isCorrect);
+        fragFeedback.goVisible(isCorrect, lection_id);
         fragInput.goInclickable();
         fragInput.hideBird();
 
@@ -235,13 +247,11 @@ public class TutorialCategoryLection
         return !(numLec == numLecs);
     }
 
-    //todo hard for every choice-->drag transition
+    // hard for every choice-->drag transition
     public boolean isDragLesson(String id){
-        return id.substring(0, 5).equals("01_09") ||
-                id.substring(0, 5).equals("01_10") ||
-                id.substring(0, 5).equals("01_11") ||
+        return !(id.substring(0, 2).equals("01") ||
                 id.substring(0, 5).equals("03_01") ||
-                id.substring(0, 5).equals("04_01");
+                id.substring(0, 5).equals("04_01"));
     }
 
     public String getNextLectionID(){
@@ -253,12 +263,12 @@ public class TutorialCategoryLection
         return nextLectionID;
     }
 
-    //todo change when lections changed
+    // change when lections changed
     public int getFragIndex(int chapter, int lection){
         int idx = 0;
 
-        idx += chapter>1? 11: 0;
-        idx += chapter>2? 15: 0;
+        idx += chapter>1? 12: 0;
+        idx += chapter>2? 16: 0;
         idx += chapter>3? 8: 0;
         idx += lection-1;
 

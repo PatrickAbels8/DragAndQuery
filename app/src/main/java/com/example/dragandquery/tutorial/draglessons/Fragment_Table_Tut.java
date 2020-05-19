@@ -49,9 +49,6 @@ public class Fragment_Table_Tut extends Fragment {
     private String lec_id;
 
     public static final Map<String, String> map = new HashMap<String, String>(){{ //todo
-        put("01_09", "SELECT ...");
-        put("01_10", "");
-        put("01_11", "");
         put("02_01", "");
         put("02_02", "");
         put("02_03", "");
@@ -67,19 +64,22 @@ public class Fragment_Table_Tut extends Fragment {
         put("02_13", "");
         put("02_14", "");
         put("02_15", "");
-        put("03_02", "");
-        put("03_03", "");
-        put("03_04", "");
-        put("03_05", "");
-        put("03_06", "");
-        put("03_07", "");
-        put("03_08", "");
-        put("04_02", "");
-        put("04_03", "");
-        put("04_04", "");
+        put("02_16", "");
+        put("03_02", "select count(kürzel) from lehrkraft");
+        put("03_03", "select lehrkraftid, ifnull(fahrzeit, \"-1\") from lehrkraft");
+        put("03_04", "select sum(fahrzeit*2) from lehrkraft");
+        put("03_05", "select ort, count(schülerid) as Anzahl from schüler group by ort");
+        put("03_06", "select avg(plätze) from raum");
+        put("03_07", "select ort, min(fahrzeit), nachname from lehrkraft where ort in (\"Ingelheim\", \"Engelstadt\", \"Oppenheim\"");
+        put("03_08", "select count(schülerid), klassenid from schüler group by klassenid having count(schülerid) > 28");
+        put("04_02", "select nachname, name from klasse inner join schüler on schüler.klassenid = klasse.klassenid");
+        put("04_03", "select name, plätze from raum join klasse on klasse.raumnummer = raum.raumnummer where (plätze>20) order by plätze asc");
+        put("04_04", "select raum, raumnummer, klasse, name from raum left outer join klasse on raum.raumnummer = klasse.klassenraumnummer");
         put("04_05", "");
         put("04_06", "");
         put("04_07", "");
+        put("04_08", "");
+        put("04_09", "");
     }};
 
     //interface

@@ -107,7 +107,8 @@ public class TutorialCategory extends AppCompatActivity {
     //start lection
     public void startLection(int lection_id){
         String lec = getLectionID(lection_id);
-        if(lec.substring(0, 5).equals("01_01") ||
+        if(lec.substring(0, 5).equals("01_00") ||
+                lec.substring(0, 5).equals("01_01") ||
                 lec.substring(0, 5).equals("01_02") ||
                 lec.substring(0, 5).equals("01_03") ||
                 lec.substring(0, 5).equals("01_04") ||
@@ -115,6 +116,9 @@ public class TutorialCategory extends AppCompatActivity {
                 lec.substring(0, 5).equals("01_06") ||
                 lec.substring(0, 5).equals("01_07") ||
                 lec.substring(0, 5).equals("01_08") ||
+                lec.substring(0, 5).equals("01_09") ||
+                lec.substring(0, 5).equals("01_10") ||
+                lec.substring(0, 5).equals("01_11") ||
                 lec.substring(0, 5).equals("03_01") ||
                 lec.substring(0, 5).equals("04_01")){
             Intent i = new Intent(context, TutorialCategoryLection.class);
@@ -194,6 +198,7 @@ public class TutorialCategory extends AppCompatActivity {
         switch(cat_id){
             case 1:
                 setTitle(getString(R.string.tutorial_category1));
+                addLection(getString(R.string.cat1_lec0));
                 addLection(getString(R.string.cat1_lec1));
                 addLection(getString(R.string.cat1_lec2));
                 addLection(getString(R.string.cat1_lec3));
@@ -226,6 +231,7 @@ public class TutorialCategory extends AppCompatActivity {
                 addLection(getString(R.string.cat2_lec13));
                 addLection(getString(R.string.cat2_lec14));
                 addLection(getString(R.string.cat2_lec15));
+                addLection(getString(R.string.cat2_lec16));
 
                 exp_key = getString(R.string.tutScore2_key);
                 exp_unlocked_key = getString(R.string.tutScore2_unlocked_key);
@@ -253,6 +259,8 @@ public class TutorialCategory extends AppCompatActivity {
                 addLection(getString(R.string.cat4_lec5));
                 addLection(getString(R.string.cat4_lec6));
                 addLection(getString(R.string.cat4_lec7));
+                addLection(getString(R.string.cat4_lec8));
+                addLection(getString(R.string.cat4_lec9));
 
                 exp_key = getString(R.string.tutScore4_key);
                 exp_unlocked_key = getString(R.string.tutScore4_unlocked_key);

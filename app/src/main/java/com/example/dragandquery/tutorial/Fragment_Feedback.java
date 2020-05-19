@@ -21,6 +21,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /***
  * TODO
  * -
@@ -41,6 +45,35 @@ public class Fragment_Feedback extends Fragment {
     //vars
     private Fragment_Feedback_Listener listener;
     public static final long TORIGHT_DURATION = 2000;
+    public static final Map<String, Integer> goods = new HashMap<String, Integer>(){{
+        put("01_00", R.string.c1l0_good); put("01_01", R.string.c1l1_good); put("01_02", R.string.c1l2_good); put("01_03", R.string.c1l3_good);
+        put("01_04", R.string.c1l4_good); put("01_05", R.string.c1l5_good); put("01_06", R.string.c1l6_good); put("01_07", R.string.c1l7_good);
+        put("01_08", R.string.c1l8_good); put("01_09", R.string.c1l9_good); put("01_10", R.string.c1l10_good); put("01_11", R.string.c1l11_good);
+        put("02_01", R.string.c2l1_good); put("02_02", R.string.c2l2_good); put("02_03", R.string.c2l3_good); put("02_04", R.string.c2l4_good);
+        put("02_05", R.string.c2l5_good); put("02_06", R.string.c2l6_good); put("02_07", R.string.c2l7_good); put("02_08", R.string.c2l8_good);
+        put("02_09", R.string.c2l9_good); put("02_10", R.string.c2l10_good); put("02_11", R.string.c2l11_good); put("02_12", R.string.c2l12_good);
+        put("02_13", R.string.c2l13_good); put("02_14", R.string.c2l14_good); put("02_15", R.string.c2l15_good); put("02_16", R.string.c2l16_good);
+        put("03_01", R.string.c3l1_good); put("03_02", R.string.c3l2_good); put("03_03", R.string.c3l3_good); put("03_04", R.string.c3l4_good);
+        put("03_05", R.string.c3l5_good); put("03_06", R.string.c3l6_good); put("03_07", R.string.c3l7_good); put("03_08", R.string.c3l8_good);
+        put("04_01", R.string.c4l1_good); put("04_02", R.string.c4l2_good); put("04_03", R.string.c4l3_good); put("04_04", R.string.c4l4_good);
+        put("04_05", R.string.c4l5_good); put("04_06", R.string.c4l6_good); put("04_07", R.string.c4l7_good); put("04_08", R.string.c4l8_good);
+        put("04_09", R.string.c4l9_good);
+    }};
+    public static final Map<String, Integer> bads = new HashMap<String, Integer>(){{
+        put("01_00", R.string.c1l0_bad); put("01_01", R.string.c1l1_bad); put("01_02", R.string.c1l2_bad); put("01_03", R.string.c1l3_bad);
+        put("01_04", R.string.c1l4_bad); put("01_05", R.string.c1l5_bad); put("01_06", R.string.c1l6_bad); put("01_07", R.string.c1l7_bad);
+        put("01_08", R.string.c1l8_bad); put("01_09", R.string.c1l9_bad); put("01_10", R.string.c1l10_bad); put("01_11", R.string.c1l11_bad);
+        put("02_01", R.string.c2l1_bad); put("02_02", R.string.c2l2_bad); put("02_03", R.string.c2l3_bad); put("02_04", R.string.c2l4_bad);
+        put("02_05", R.string.c2l5_bad); put("02_06", R.string.c2l6_bad); put("02_07", R.string.c2l7_bad); put("02_08", R.string.c2l8_bad);
+        put("02_09", R.string.c2l9_bad); put("02_10", R.string.c2l10_bad); put("02_11", R.string.c2l11_bad); put("02_12", R.string.c2l12_bad);
+        put("02_13", R.string.c2l13_bad); put("02_14", R.string.c2l14_bad); put("02_15", R.string.c2l15_bad); put("02_16", R.string.c2l16_bad);
+        put("03_01", R.string.c3l1_bad); put("03_02", R.string.c3l2_bad); put("03_03", R.string.c3l3_bad); put("03_04", R.string.c3l4_bad);
+        put("03_05", R.string.c3l5_bad); put("03_06", R.string.c3l6_bad); put("03_07", R.string.c3l7_bad); put("03_08", R.string.c3l8_bad);
+        put("04_01", R.string.c4l1_bad); put("04_02", R.string.c4l2_bad); put("04_03", R.string.c4l3_bad); put("04_04", R.string.c4l4_bad);
+        put("04_05", R.string.c4l5_bad); put("04_06", R.string.c4l6_bad); put("04_07", R.string.c4l7_bad); put("04_08", R.string.c4l8_bad);
+        put("04_09", R.string.c4l9_bad);
+    }};
+
 
     //interface
     public interface Fragment_Feedback_Listener{
@@ -88,25 +121,25 @@ public class Fragment_Feedback extends Fragment {
         rl_feedback.setVisibility(View.INVISIBLE);
     }
 
-    public void goVisible(boolean isCorrect){
+    public void goVisible(boolean isCorrect, String lecid){
         rl_feedback.setVisibility(View.VISIBLE);
         rl_feedback.startAnimation(fromright);
         if(isCorrect){
-            startGoodFeedback();
+            startGoodFeedback(getResources().getString(goods.get(lecid)));
         }else{
-            startBadFeedback();
+            startBadFeedback(getResources().getString(bads.get(lecid)));
         }
     }
 
-    public void startGoodFeedback(){
-        tv_msg.setText(R.string.feedback_msg_good);
+    public void startGoodFeedback(String good){
+        tv_msg.setText(good);
         bird.setImageResource(R.drawable.happy_berry);
         btn_back.setVisibility(View.VISIBLE);
         btn_forth.setVisibility(View.VISIBLE);
     }
 
-    public void startBadFeedback(){
-        tv_msg.setText(R.string.feedback_msg_bad);
+    public void startBadFeedback(String bad){
+        tv_msg.setText(bad);
         bird.setImageResource(R.drawable.sad_berry);
         btn_back.setVisibility(View.VISIBLE);
         btn_forth.setVisibility(View.INVISIBLE);

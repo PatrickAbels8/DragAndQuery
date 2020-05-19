@@ -117,7 +117,9 @@ public class Fragment_Input extends Fragment {
     //todo make global (just test in category class and intent)
     public void setText(){
         String text = "";
-        if(lection_id.substring(0,5).equals("01_01")){
+        if(lection_id.substring(0,5).equals("01_00")){
+            text = getString(R.string.c1l0_input);
+        }else if(lection_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
         }else if(lection_id.substring(0,5).equals("01_02")){
             text = getString(R.string.c1l2_input);
@@ -147,7 +149,6 @@ public class Fragment_Input extends Fragment {
         tv_input.setText(text);
     }
 
-    //todo add more
     public void goVisible(){
         ll_input.setVisibility(View.VISIBLE);
         isOpen = true;

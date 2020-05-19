@@ -199,7 +199,9 @@ public class Fragment_Query_Tut extends Fragment {
 
     public String getExText(String lec_id){
         String text = "";
-        if(lec_id.substring(0,5).equals("01_01")){
+        if(lec_id.substring(0,5).equals("01_00")){
+            text = getString(R.string.c1l0_input);
+        }else if(lec_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
         }else if(lec_id.substring(0,5).equals("01_02")){
             text = getString(R.string.c1l2_input);
@@ -251,6 +253,8 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c2l14_input);
         }else if(lec_id.substring(0,5).equals("02_15")){
             text = getString(R.string.c2l15_input);
+        }else if(lec_id.substring(0,5).equals("02_16")){
+            text = getString(R.string.c2l16_input);
         }else if(lec_id.substring(0,5).equals("03_01")){
             text = getString(R.string.c3l1_input);
         }else if(lec_id.substring(0,5).equals("03_02")){
@@ -281,6 +285,10 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c4l6_input);
         }else if(lec_id.substring(0,5).equals("04_07")){
             text = getString(R.string.c4l7_input);
+        }else if(lec_id.substring(0,5).equals("04_08")){
+            text = getString(R.string.c4l8_input);
+        }else if(lec_id.substring(0,5).equals("04_09")) {
+            text = getString(R.string.c4l9_input);
         }
         return text;
     }

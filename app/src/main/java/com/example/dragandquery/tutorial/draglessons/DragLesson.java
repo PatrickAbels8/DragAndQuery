@@ -32,9 +32,6 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     public static final String ARGS_KEY = "com.example.dragandquery.tutorial.draglessons.DragLesson.ARGS_KEY";
     public static final String ID_KEY = "com.example.dragandquery.tutorial.draglessons.DragLesson.ID_KEY";
     public static final Map<String, String[]> map = new HashMap<String, String[]>(){{
-        put("01_09", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName()});
-        put("01_10", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName()});
-        put("01_11", new String[]{BlockT.FROM.getName(), BlockT.LIMIT.getName(), BlockT.SELECT.getName()});
         put("02_01", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_02", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_03", new String[]{BlockT.GREATER.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
@@ -47,9 +44,10 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         put("02_10", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_11", new String[]{BlockT.FROM.getName(), BlockT.IN.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("02_12", new String[]{BlockT.FROM.getName(), BlockT.LIKE.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
-        put("02_13", new String[]{BlockT.FROM.getName(), BlockT.SELECTDISTINCT.getName()});
+        put("02_13", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.DISTINCT.getName()});
         put("02_14", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName()});
         put("02_15", new String[]{BlockT.AS.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName()});
+        put("02_16", new String[]{BlockT.AS.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName()});
         put("03_02", new String[]{BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(),});
         put("03_03", new String[]{BlockT.FROM.getName(), BlockT.ISNULL.getName(), BlockT.SELECT.getName()});
         put("03_04", new String[]{BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName()});
@@ -63,6 +61,9 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         put("04_05", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("04_06", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("04_07", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
+        put("04_08", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
+        put("04_09", new String[]{BlockT.GREATER.getName(), BlockT.AND.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
+
     }};
 
     //fragments
@@ -218,37 +219,8 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
     }
 
     public boolean isDragLesson(String id){
-        return id.substring(0, 5).equals("01_09") ||
-                id.substring(0, 5).equals("01_10") ||
-                id.substring(0, 5).equals("01_11") ||
-                id.substring(0, 5).equals("02_01") ||
-                id.substring(0, 5).equals("02_02") ||
-                id.substring(0, 5).equals("02_03") ||
-                id.substring(0, 5).equals("02_04") ||
-                id.substring(0, 5).equals("02_05") ||
-                id.substring(0, 5).equals("02_06") ||
-                id.substring(0, 5).equals("02_07") ||
-                id.substring(0, 5).equals("02_08") ||
-                id.substring(0, 5).equals("02_09") ||
-                id.substring(0, 5).equals("02_10") ||
-                id.substring(0, 5).equals("02_11") ||
-                id.substring(0, 5).equals("02_12") ||
-                id.substring(0, 5).equals("02_13") ||
-                id.substring(0, 5).equals("02_15") ||
-                id.substring(0, 5).equals("03_02") ||
-                id.substring(0, 5).equals("03_03") ||
-                id.substring(0, 5).equals("03_04") ||
-                id.substring(0, 5).equals("03_05") ||
-                id.substring(0, 5).equals("03_06") ||
-                id.substring(0, 5).equals("03_07") ||
-                id.substring(0, 5).equals("03_08") ||
-                id.substring(0, 5).equals("04_01") ||
-                id.substring(0, 5).equals("04_02") ||
-                id.substring(0, 5).equals("04_03") ||
-                id.substring(0, 5).equals("04_04") ||
-                id.substring(0, 5).equals("04_05") ||
-                id.substring(0, 5).equals("04_06") ||
-                id.substring(0, 5).equals("04_07") ||
-                id.substring(0, 5).equals("04_08");
+        return !(id.substring(0, 2).equals("01") ||
+                id.substring(0, 5).equals("03_01") ||
+                id.substring(0, 5).equals("04_01"));
     }
 }

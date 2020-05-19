@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frag_lectioncontent_0110"
+    android:visibility="invisible"
+    tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/c1l10_question"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:textColor="@color/textcolor_white"
+                    android:gravity="center_horizontal"
+                    android:layout_above="@id/rg_c1l10"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_c1l10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="50dp"
+                    android:paddingTop="8dp">
+
+                        <RadioButton
+                            android:id="@+id/rb1_c1l10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l10_answer1"
+                            android:textSize="@dimen/radio_button_textSize"
+                            android:fontFamily="@font/comfortaa"
+                            android:textColor="@color/textcolor_white"
+                            android:buttonTint="@color/textcolor_white"
+                            />
+                        <RadioButton
+                            android:id="@+id/rb2_c1l10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l10_answer2"
+                            android:textSize="@dimen/radio_button_textSize"
+                            android:fontFamily="@font/comfortaa"
+                            android:textColor="@color/textcolor_white"
+                            android:buttonTint="@color/textcolor_white"
+                            />
+                        <RadioButton
+                            android:id="@+id/rb3_c1l10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l10_answer3"
+                            android:textSize="@dimen/radio_button_textSize"
+                            android:fontFamily="@font/comfortaa"
+                            android:textColor="@color/textcolor_white"
+                            android:buttonTint="@color/textcolor_white"
+                            />
+
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btn_lectioncontent_0110_go"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_btn_go"
+                    android:fontFamily="@font/comfortaa"
+                    android:textColor="@color/textcolor_white"
+                    android:background="@drawable/border_white"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"/>
+
+
+
+</RelativeLayout>
