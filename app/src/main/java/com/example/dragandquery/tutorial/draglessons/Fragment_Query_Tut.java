@@ -54,6 +54,7 @@ public class Fragment_Query_Tut extends Fragment {
     private LinearLayout exercise;
     private TextView exercise_text;
     private Button acceptInput;
+    private ImageView scroller_img;
 
     //vars
     private Fragment_Query_Tut_Listener listener;
@@ -88,6 +89,7 @@ public class Fragment_Query_Tut extends Fragment {
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
         acceptInput = (Button) v.findViewById(R.id.btn_input);
+        scroller_img = (ImageView) v.findViewById(R.id.scroll_img);
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query_Tut.MyGoListener());
@@ -198,6 +200,7 @@ public class Fragment_Query_Tut extends Fragment {
     }
 
     public String getExText(String lec_id){
+        scroller_img.setVisibility(View.INVISIBLE);
         String text = "";
         if(lec_id.substring(0,5).equals("01_00")){
             text = getString(R.string.c1l0_input);
@@ -277,12 +280,18 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c4l2_input);
         }else if(lec_id.substring(0,5).equals("04_03")){
             text = getString(R.string.c4l3_input);
+            scroller_img.setImageDrawable(getResources().getDrawable(R.drawable.tut4_3));
+            scroller_img.setVisibility(View.VISIBLE);
         }else if(lec_id.substring(0,5).equals("04_04")){
             text = getString(R.string.c4l4_input);
+            scroller_img.setImageDrawable(getResources().getDrawable(R.drawable.tut4_4));
+            scroller_img.setVisibility(View.VISIBLE);
         }else if(lec_id.substring(0,5).equals("04_05")){
             text = getString(R.string.c4l5_input);
         }else if(lec_id.substring(0,5).equals("04_06")){
             text = getString(R.string.c4l6_input);
+            scroller_img.setImageDrawable(getResources().getDrawable(R.drawable.tut4_6));
+            scroller_img.setVisibility(View.VISIBLE);
         }else if(lec_id.substring(0,5).equals("04_07")){
             text = getString(R.string.c4l7_input);
         }else if(lec_id.substring(0,5).equals("04_08")){

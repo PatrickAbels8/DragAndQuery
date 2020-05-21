@@ -61,7 +61,8 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="350dp">
+                    android:layout_height="350dp"
+                    android:id="@+id/scroller">
 
                         <TextView
                             android:id="@+id/tv_ex"
@@ -74,6 +75,12 @@
                             android:scrollHorizontally="true"
                             android:fontFamily="@font/comfortaa"
                             android:textColor="@color/textcolor_white"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/scroll_img"
+                            android:src="@drawable/tut4_3"/>
 
                 </ScrollView>
 

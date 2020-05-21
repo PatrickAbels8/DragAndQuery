@@ -40,7 +40,7 @@ public class TutorialCategoryLection
         implements
             Fragment_Feedback.Fragment_Feedback_Listener,
             Fragment_Input.Fragment_Input_Listener,
-            Fragment_LectionContent_0108.Fragment_LectionContent_0100_Listener,
+            Fragment_LectionContent_0100.Fragment_LectionContent_0100_Listener,
             Fragment_LectionContent_0101.Fragment_LectionContent_0101_Listener,
             Fragment_LectionContent_0102.Fragment_LectionContent_0102_Listener,
             Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
@@ -49,9 +49,9 @@ public class TutorialCategoryLection
             Fragment_LectionContent_0106.Fragment_LectionContent_0106_Listener,
             Fragment_LectionContent_0107.Fragment_LectionContent_0107_Listener,
             Fragment_LectionContent_0108.Fragment_LectionContent_0108_Listener,
-            Fragment_LectionContent_0108.Fragment_LectionContent_0109_Listener,
-            Fragment_LectionContent_0108.Fragment_LectionContent_0110_Listener,
-            Fragment_LectionContent_0108.Fragment_LectionContent_0111_Listener,
+            Fragment_LectionContent_0109.Fragment_LectionContent_0109_Listener,
+            Fragment_LectionContent_0110.Fragment_LectionContent_0110_Listener,
+            Fragment_LectionContent_0111.Fragment_LectionContent_0111_Listener,
             Fragment_LectionContent_0301.Fragment_LectionContent_0301_Listener,
             Fragment_LectionContent_0401.Fragment_LectionContent_0401_Listener
 {

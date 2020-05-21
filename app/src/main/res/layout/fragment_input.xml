@@ -36,6 +36,7 @@
         >
 
         <ScrollView
+            android:id="@+id/scroll_input"
             android:layout_width="match_parent"
             android:layout_height="350dp">
 
@@ -50,8 +51,8 @@
                 android:scrollHorizontally="true"
                 android:fontFamily="@font/comfortaa"
                 android:textColor="@color/textcolor_white"/>
-
         </ScrollView>
+
         <Button
             android:id="@+id/btn_input"
             android:layout_width="wrap_content"

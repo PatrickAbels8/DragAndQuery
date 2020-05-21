@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class Fragment_Input extends Fragment {
     private Animation fromtop;
     private Animation totop;
     private Context context;
+    private ScrollView scroller;
 
     //vars
     private Fragment_Input_Listener listener;
@@ -61,6 +63,7 @@ public class Fragment_Input extends Fragment {
         bird = v.findViewById(R.id.bird_input);
         fromtop = AnimationUtils.loadAnimation(context, R.anim.fromtop);
         totop = AnimationUtils.loadAnimation(context, R.anim.totop);
+        scroller = v.findViewById(R.id.scroll_input);
 
         //match input to lec id
         lection_id = getArguments().getString(TutorialCategoryLection.LEC_KEY);
