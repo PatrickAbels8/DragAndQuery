@@ -599,7 +599,7 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
 
     <!-- db -->
     <string name="db_title_school">Schule</string>
-    <string name="db_title_cafetaria">Cafetaria</string>
+    <string name="db_title_cafetaria">Cafeteria</string>
     <string name="db_title_legend">Legende</string>
 
     <!-- blocks -->
@@ -615,38 +615,14 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
 
     <!-- impressum -->
     <string name="impressum">
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
-        Mailadressen, Danksagungen, Arbeitsaufteilung, Documentation, Referenzen, Diagramme, etc.\n\n
+      Diese Anwendung wurde im Rahmen der Veranstaltung „Programmierprojekt“ im Master of Education Informatik im Wintersemester 2019/20 an der Johannes-Gutenberg Universität Mainz erstellt.\n\n
+      Entwicklung Back-End: Patrick Abels (pabels@students.uni-mainz.de)\n
+      Entwicklung Front-End: Vera Ruß (vruss@students.uni-mainz.de)\n
+      Datenbanken:Philipp Kötz (pkoetz@students.uni-mainz.de)\n
+      Redaktionelle Inhalte: Vera Ruß, Philipp Kötz\n\n
+      Betreuende Lehrende: Ak. Dir.,  Dr. rer. nat. Hans-Jürgen Schröder (schroeder@uni-mainz.de), Dr. Stefan Endler (endler@uni-mainz.de)\n\n      
+      Die Dokumentation und der Programmcode finden Sie unter git@github.com:PatrickAbels8/DragAndQuery.git\n
+        
 
     </string>
 

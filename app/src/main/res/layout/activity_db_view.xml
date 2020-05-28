@@ -75,7 +75,7 @@
         android:id="@+id/db_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/er_school"
+        android:src="@drawable/er_school_colourful_background"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"/>
 
