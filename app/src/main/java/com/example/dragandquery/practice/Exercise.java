@@ -17,8 +17,6 @@ import java.util.List;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * -stars not centered
- * - wait 24h before try again
  */
 
 //exp: "02001203"
@@ -78,7 +76,7 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
         if(isCorrect){
             int index = ex_id%100;
             String key = ex_id/100==1? getString(R.string.prac_easy_key): ex_id/100==2? getString(R.string.prac_medium_key): getString(R.string.prac_hard_key);
-            String defalut = ex_id/100==1? "000000": ex_id/100==2? "00000000": "000000000000";
+            String defalut = ex_id/100==1? Practices.DEFAULT_EASY: ex_id/100==2? Practices.DEFAULT_MEDIUM: Practices.DEFAULT_HARD;
             String oldData = loadData(key, defalut);
             String newData = oldData.substring(0, index)+Integer.toString(1)+oldData.substring(index+1);
             Log.d("#########", oldData);

@@ -47,34 +47,7 @@ public class Fragment_Table_Ex extends Fragment {
     //vars
     private Fragment_Table_Ex_Listener listener;
 
-    public static final Map<String, String> map = new HashMap<String, String>(){{ //todo
-        put("100", "SELECT ...");
-        put("101", "");
-        put("102", "");
-        put("103", "");
-        put("104", "");
-        put("105", "");
-        put("200", "SELECT ...");
-        put("201", "");
-        put("202", "");
-        put("203", "");
-        put("204", "");
-        put("205", "");
-        put("206", "");
-        put("207", "");
-        put("300", "SELECT ...");
-        put("301", "");
-        put("302", "");
-        put("303", "");
-        put("304", "");
-        put("305", "");
-        put("306", "");
-        put("307", "");
-        put("308", "");
-        put("309", "");
-        put("310", "");
-        put("311", "");
-    }};
+    public Map<String, String> map;
 
     //interface
     public interface Fragment_Table_Ex_Listener{
@@ -96,6 +69,38 @@ public class Fragment_Table_Ex extends Fragment {
         frombottom = AnimationUtils.loadAnimation(context, R.anim.frombottom);
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
         table = v.findViewById(R.id.tl_table);
+
+        map = new HashMap<String, String>(){{ //todo
+            put("100", getString(R.string.ex_easy_1_sol));
+            put("101", getString(R.string.ex_easy_2_sol));
+            put("102", getString(R.string.ex_easy_3_sol));
+            put("103", getString(R.string.ex_easy_4_sol));
+            put("104", getString(R.string.ex_easy_5_sol));
+            put("105", getString(R.string.ex_easy_6_sol));
+            put("106", getString(R.string.ex_easy_7_sol));
+            put("107", getString(R.string.ex_easy_8_sol));
+            put("108", getString(R.string.ex_easy_9_sol));
+            put("109", getString(R.string.ex_easy_10_sol));
+            put("200", getString(R.string.ex_medium_1_sol));
+            put("201", getString(R.string.ex_medium_2_sol));
+            put("202", getString(R.string.ex_medium_3_sol));
+            put("203", getString(R.string.ex_medium_4_sol));
+            put("204", getString(R.string.ex_medium_5_sol));
+            put("205", getString(R.string.ex_medium_6_sol));
+            put("206", getString(R.string.ex_medium_7_sol));
+            put("207", getString(R.string.ex_medium_8_sol));
+            put("208", getString(R.string.ex_medium_9_sol));
+            put("300", getString(R.string.ex_hard_1_sol));
+            put("301", getString(R.string.ex_hard_2_sol));
+            put("302", getString(R.string.ex_hard_3_sol));
+            put("303", getString(R.string.ex_hard_4_sol));
+            put("304", getString(R.string.ex_hard_5_sol));
+            put("305", getString(R.string.ex_hard_6_sol));
+            put("306", getString(R.string.ex_hard_7_sol));
+            put("307", getString(R.string.ex_hard_8_sol));
+
+
+        }};
 
         //get back to edit or forth to next lec
         btn_retry.setOnClickListener(new View.OnClickListener() {

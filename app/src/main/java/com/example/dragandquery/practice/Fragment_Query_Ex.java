@@ -210,6 +210,75 @@ public class Fragment_Query_Ex extends Fragment {
             case 103:
                 text += getString(R.string.ex_easy_4_text);
                 break;
+            case 104:
+                text += getString(R.string.ex_easy_5_text);
+                break;
+            case 105:
+                text += getString(R.string.ex_easy_6_text);
+                break;
+            case 106:
+                text += getString(R.string.ex_easy_7_text);
+                break;
+            case 107:
+                text += getString(R.string.ex_easy_8_text);
+                break;
+            case 108:
+                text += getString(R.string.ex_easy_9_text);
+                break;
+            case 109:
+                text += getString(R.string.ex_easy_10_text);
+                break;
+            case 200:
+                text += getString(R.string.ex_medium_1_text);
+                break;
+            case 201:
+                text += getString(R.string.ex_medium_2_text);
+                break;
+            case 202:
+                text += getString(R.string.ex_medium_3_text);
+                break;
+            case 203:
+                text += getString(R.string.ex_medium_4_text);
+                break;
+            case 204:
+                text += getString(R.string.ex_medium_5_text);
+                break;
+            case 205:
+                text += getString(R.string.ex_medium_6_text);
+                break;
+            case 206:
+                text += getString(R.string.ex_medium_7_text);
+                break;
+            case 207:
+                text += getString(R.string.ex_medium_8_text);
+                break;
+            case 208:
+                text += getString(R.string.ex_medium_9_text);
+                break;
+            case 300:
+                text += getString(R.string.ex_hard_1_text);
+                break;
+            case 301:
+                text += getString(R.string.ex_hard_2_text);
+                break;
+            case 302:
+                text += getString(R.string.ex_hard_3_text);
+                break;
+            case 303:
+                text += getString(R.string.ex_hard_4_text);
+                break;
+            case 304:
+                text += getString(R.string.ex_hard_5_text);
+                break;
+            case 305:
+                text += getString(R.string.ex_hard_6_text);
+                break;
+            case 306:
+                text += getString(R.string.ex_hard_7_text);
+                break;
+            case 307:
+                text += getString(R.string.ex_hard_8_text);
+                break;
         }
         return text;
     }

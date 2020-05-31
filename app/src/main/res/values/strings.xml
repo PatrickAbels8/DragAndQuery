@@ -32,19 +32,6 @@
     <string name="prac_medium">Mittel</string>
     <string name="prac_hard">Schwer</string>
 
-    <string name="ex_easy_1">Schlüssel</string>
-    <string name="ex_easy_1_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_2">Join</string>
-    <string name="ex_easy_2_text">Baue eine Join Anfrage nach.</string>
-    <string name="ex_easy_3">Select</string>
-    <string name="ex_easy_3_text">Baue eine Select Anfrage nach.</string>
-    <string name="ex_easy_4">Aggregate</string>
-    <string name="ex_easy_4_text">Baue eine Aggregate Anfrage nach.</string>
-    <string name="ex_easy_5">Stern</string>
-    <string name="ex_easy_5_text">Baue eine Stern Anfrage nach.</string>
-    <string name="ex_easy_6">DB</string>
-    <string name="ex_easy_6_text">Baue eine DB Anfrage nach.</string>
-
     <string name="title_activity_practice">Schwierigkeitsgrad</string>
     <string name="title_activity_practices">Übungen</string>
     <string name="title_prac_easy">Leichte Übungen</string>
@@ -52,6 +39,91 @@
     <string name="title_prac_hard">Schwere Übungen</string>
 
     <string name="ex_title">Aufgabe</string>
+
+    <string name="ex_easy_1">Schlüssel</string>
+    <string name="ex_easy_1_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_1_sol">SELECT</string>
+    <string name="ex_easy_2">Schlüssel</string>
+    <string name="ex_easy_2_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_2_sol">SELECT</string>
+    <string name="ex_easy_3">Schlüssel</string>
+    <string name="ex_easy_3_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_3_sol">SELECT</string>
+    <string name="ex_easy_4">Schlüssel</string>
+    <string name="ex_easy_4_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_4_sol">SELECT</string>
+    <string name="ex_easy_5">Schlüssel</string>
+    <string name="ex_easy_5_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_5_sol">SELECT</string>
+    <string name="ex_easy_6">Schlüssel</string>
+    <string name="ex_easy_6_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_6_sol">SELECT</string>
+    <string name="ex_easy_7">Schlüssel</string>
+    <string name="ex_easy_7_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_7_sol">SELECT</string>
+    <string name="ex_easy_8">Schlüssel</string>
+    <string name="ex_easy_8_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_8_sol">SELECT</string>
+    <string name="ex_easy_9">Schlüssel</string>
+    <string name="ex_easy_9_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_9_sol">SELECT</string>
+    <string name="ex_easy_10">Schlüssel</string>
+    <string name="ex_easy_10_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_easy_10_sol">SELECT</string>
+
+    <string name="ex_medium_1">Schlüssel</string>
+    <string name="ex_medium_1_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_1_sol">SELECT</string>
+    <string name="ex_medium_2">Schlüssel</string>
+    <string name="ex_medium_2_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_2_sol">SELECT</string>
+    <string name="ex_medium_3">Schlüssel</string>
+    <string name="ex_medium_3_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_3_sol">SELECT</string>
+    <string name="ex_medium_4">Schlüssel</string>
+    <string name="ex_medium_4_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_4_sol">SELECT</string>
+    <string name="ex_medium_5">Schlüssel</string>
+    <string name="ex_medium_5_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_5_sol">SELECT</string>
+    <string name="ex_medium_6">Schlüssel</string>
+    <string name="ex_medium_6_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_6_sol">SELECT</string>
+    <string name="ex_medium_7">Schlüssel</string>
+    <string name="ex_medium_7_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_7_sol">SELECT</string>
+    <string name="ex_medium_8">Schlüssel</string>
+    <string name="ex_medium_8_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_8_sol">SELECT</string>
+    <string name="ex_medium_9">Schlüssel</string>
+    <string name="ex_medium_9_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_medium_9_sol">SELECT</string>
+
+    <string name="ex_hard_1">Schlüssel</string>
+    <string name="ex_hard_1_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_1_sol">SELECT</string>
+    <string name="ex_hard_2">Schlüssel</string>
+    <string name="ex_hard_2_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_2_sol">SELECT</string>
+    <string name="ex_hard_3">Schlüssel</string>
+    <string name="ex_hard_3_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_3_sol">SELECT</string>
+    <string name="ex_hard_4">Schlüssel</string>
+    <string name="ex_hard_4_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_4_sol">SELECT</string>
+    <string name="ex_hard_5">Schlüssel</string>
+    <string name="ex_hard_5_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_5_sol">SELECT</string>
+    <string name="ex_hard_6">Schlüssel</string>
+    <string name="ex_hard_6_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_6_sol">SELECT</string>
+    <string name="ex_hard_7">Schlüssel</string>
+    <string name="ex_hard_7_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_7_sol">SELECT</string>
+    <string name="ex_hard_8">Schlüssel</string>
+    <string name="ex_hard_8_text">Baue eine Schlüssel Anfrage nach.</string>
+    <string name="ex_hard_8_sol">SELECT</string>
+
 
     <!-- tutorial -->
     <string name="feedback_back">Zurück</string>

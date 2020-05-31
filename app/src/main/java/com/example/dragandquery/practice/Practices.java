@@ -42,11 +42,10 @@ public class Practices extends AppCompatActivity {
     private int complexity; //1 easy:6, 2 medium:8, 3 hard:12
     public static final String EX_ID = "com.example.dragandquery.practice.Practices.EX_ID";
     private List<Button> exercises;
-    private boolean neededLections[][]; //todo lections on exercises if needed
     private String dones; //"010111001010"
-    public static final String DEFAULT_EASY = "000000";
-    public static final String DEFAULT_MEDIUM = "00000000";
-    public static final String DEFAULT_HARD = "000000000000";
+    public static final String DEFAULT_EASY = "0000000000";
+    public static final String DEFAULT_MEDIUM = "000000000";
+    public static final String DEFAULT_HARD = "00000000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +56,6 @@ public class Practices extends AppCompatActivity {
         context = getApplicationContext();
         layout = (LinearLayout) findViewById(R.id.ll_practices_lections);
         exercises = new ArrayList<>();
-        neededLections = new boolean[][]{
-                {false, false, true, true},
-                {false, false, true, true},
-                {true, false, false, true}
-        };
 
         //intent stuff
         Intent intent = getIntent();
@@ -83,32 +77,48 @@ public class Practices extends AppCompatActivity {
 
     }
 
-    //todo check if already done in tutorial
     public void loadExercises(){
         switch(complexity){
             case Complexity.EASY:
                 setTitle(getString(R.string.title_prac_easy));
                 dones = loadData(getString(R.string.prac_easy_key), DEFAULT_EASY);
-                if(lectionsDone(1))
-                    addExercise(0, getString(R.string.ex_easy_1));
-                if(lectionsDone(2))
-                    addExercise(1, getString(R.string.ex_easy_2));
-                if(lectionsDone(3))
-                    addExercise(2, getString(R.string.ex_easy_3));
-                if(lectionsDone(4))
-                    addExercise(3, getString(R.string.ex_easy_4));
-                if(lectionsDone(5))
-                    addExercise(4, getString(R.string.ex_easy_5));
-                if(lectionsDone(6))
-                    addExercise(5, getString(R.string.ex_easy_6));
+                addExercise(0, getString(R.string.ex_easy_1));
+                addExercise(1, getString(R.string.ex_easy_2));
+                addExercise(2, getString(R.string.ex_easy_3));
+                addExercise(3, getString(R.string.ex_easy_4));
+                addExercise(4, getString(R.string.ex_easy_5));
+                addExercise(5, getString(R.string.ex_easy_6));
+                addExercise(6, getString(R.string.ex_easy_7));
+                addExercise(7, getString(R.string.ex_easy_8));
+                addExercise(8, getString(R.string.ex_easy_9));
+                addExercise(9, getString(R.string.ex_easy_10));
                 break;
+
             case Complexity.MEDIUM:
                 setTitle(getString(R.string.title_prac_medium));
                 dones = loadData(getString(R.string.prac_medium_key), DEFAULT_MEDIUM);
+                addExercise(0, getString(R.string.ex_medium_1));
+                addExercise(1, getString(R.string.ex_medium_2));
+                addExercise(2, getString(R.string.ex_medium_3));
+                addExercise(3, getString(R.string.ex_medium_4));
+                addExercise(4, getString(R.string.ex_medium_5));
+                addExercise(5, getString(R.string.ex_medium_6));
+                addExercise(6, getString(R.string.ex_medium_7));
+                addExercise(7, getString(R.string.ex_medium_8));
+                addExercise(8, getString(R.string.ex_medium_9));
                 break;
+
             case Complexity.HARD:
                 setTitle(getString(R.string.title_prac_hard));
                 dones = loadData(getString(R.string.prac_hard_key), DEFAULT_HARD);
+                addExercise(0, getString(R.string.ex_hard_1));
+                addExercise(1, getString(R.string.ex_hard_2));
+                addExercise(2, getString(R.string.ex_hard_3));
+                addExercise(3, getString(R.string.ex_hard_4));
+                addExercise(4, getString(R.string.ex_hard_5));
+                addExercise(5, getString(R.string.ex_hard_6));
+                addExercise(6, getString(R.string.ex_hard_7));
+                addExercise(7, getString(R.string.ex_hard_8));
                 break;
         }
     }
@@ -123,7 +133,7 @@ public class Practices extends AppCompatActivity {
         return R.color.hard;
     }
 
-    //add a new exercise to every list and layout todo change view when already done
+    //add a new exercise to every list and layout
     public void addExercise(int id, String name){
         int numStars = Character.getNumericValue(dones.charAt(id));
 
