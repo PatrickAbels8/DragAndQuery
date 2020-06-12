@@ -40,89 +40,131 @@
 
     <string name="ex_title">Aufgabe</string>
 
-    <string name="ex_easy_1">Schlüssel</string>
-    <string name="ex_easy_1_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_1_sol">SELECT</string>
-    <string name="ex_easy_2">Schlüssel</string>
-    <string name="ex_easy_2_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_2_sol">SELECT</string>
-    <string name="ex_easy_3">Schlüssel</string>
-    <string name="ex_easy_3_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_3_sol">SELECT</string>
-    <string name="ex_easy_4">Schlüssel</string>
-    <string name="ex_easy_4_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_4_sol">SELECT</string>
-    <string name="ex_easy_5">Schlüssel</string>
-    <string name="ex_easy_5_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_5_sol">SELECT</string>
-    <string name="ex_easy_6">Schlüssel</string>
-    <string name="ex_easy_6_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_6_sol">SELECT</string>
-    <string name="ex_easy_7">Schlüssel</string>
-    <string name="ex_easy_7_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_7_sol">SELECT</string>
-    <string name="ex_easy_8">Schlüssel</string>
-    <string name="ex_easy_8_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_8_sol">SELECT</string>
-    <string name="ex_easy_9">Schlüssel</string>
-    <string name="ex_easy_9_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_9_sol">SELECT</string>
-    <string name="ex_easy_10">Schlüssel</string>
-    <string name="ex_easy_10_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_easy_10_sol">SELECT</string>
+    <string name="ex_easy_1">Übung 1</string>
+    <string name="ex_easy_1_text">Für die Mitarbeiter im Büro soll eine Kontaktliste erstellt werden. \n\n
+        Lasse dir dafür den Firmennamen, die Kontaktperson und die Telefonnummer der Lieferanten ausgeben</string>
+    <string name="ex_easy_1_sol">SELECT Firma, Kontaktperson, Telefon FROM Lieferant </string>
+    <string name="ex_easy_2">Übung 2</string>
+    <string name="ex_easy_2_text">In der Cafeteria gibt es auch vegetarische und vegane Hauptgerichte.
+        Diese gehören zur Kategorie Nummer 5.\n\n
+        Lasse dir 15 dieser Gerichte ausgeben.</string>
+    <string name="ex_easy_2_sol">SELECT Artikelname FROM Artikel WHERE KategorieNr = 5 LIMIT 15 </string>
+    <string name="ex_easy_3">Übung 3</string>
+    <string name="ex_easy_3_text">Wie viele Hauptgerichte (Kategorien 3, 4 und 5) gibt es insgesamt in der Cafeteria? </string>
+    <string name="ex_easy_3_sol">SELECT count(ArtikelName)FROM Artikel WHERE KategorieNr = 3 OR KategorieNr = 4 OR KategorieNr = 5 </string>
+    <string name="ex_easy_4">Übung 4</string>
+    <string name="ex_easy_4_text">Welche Angestellten wohnen in Wiesbaden? \n\n
+        Lasse dir die Vor-und Nachnamen ausgeben.</string>
+    <string name="ex_easy_4_sol">SELECT Vorname, Nachname FROM Personal WHERE Ort = "Wiesbaden" </string>
+    <string name="ex_easy_5">Übung 5</string>
+    <string name="ex_easy_5_text">Wie viele Artikel enthält jede Bestellung im Durchschnitt? </string>
+    <string name="ex_easy_5_sol">SELECT avg(Anzahl) FROM Bestelldetails </string>
+    <string name="ex_easy_6">Übung 6</string>
+    <string name="ex_easy_6_text">Wie viele Kunden hat die Cafeteria?</string>
+    <string name="ex_easy_6_sol">SELECT count(KontoID) FROM Kundenkonto</string>
+    <string name="ex_easy_7">Übung 7</string>
+    <string name="ex_easy_7_text">Gesunde Ernährung ist wichtig, deshalb gibt es nicht nur Hauptgerichte, sondern auch Beilagen und Salate.
+        Aber natürlich darf an einem anstrengenden Schultag auch ein leckerer Nachtisch nicht fehlen.\n\n
+        Lasse dir die Namen und Beschreibungen der Kategorien ausgeben, die keine Hauptgerichte (3, 4, 5) sind. </string>
+    <string name="ex_easy_7_sol">SELECT KategorieName, Beschreibung FROM Kategorie WHERE KategorieNr NOT IN (3, 4, 5) </string>
+    <string name="ex_easy_8">Übung 8</string>
+    <string name="ex_easy_8_text">Die Chefköchin erstellt den Speiseplan für die kommende Woche.
+        Sie muss dazu wissen, wieviel Kartoffelsalat(ArtikelNr 117) und wieviel Nudelsalat (ArtikelNr 119) noch im Lager ist,
+        da es einen Grilltag geben soll. \n\n
+        Lasse dir also den Lagerbestand für die beiden Artikel, sowie die LieferantenNr und die Liefereinheit ausgeben. </string>
+    <string name="ex_easy_8_sol">SELECT ArtikelNr, Lagerbestand, LieferantenNr, Liefereinheit FROM Artikel WHERE ArtikelNr = 117 OR ArtikelNr = 119</string>
+    <string name="ex_easy_9">Übung 9</string>
+    <string name="ex_easy_9_text">Frau Blum vom Kartoffelhof hat angekündigt, dass sich die nächste Lieferung verspäten wird.
+        Um den Speiseplan entsprechend anzupassen, wird eine Liste aller Artikel mit Name, Nummer und Lagerbestand benötigt,
+        welche vom Kartoffelhof (LiefernatenNr 1) kommen. \n\n
+        Gib diese aus.</string>
+    <string name="ex_easy_9_sol">SELECT ArtikelNr, ArtikelName, Lagerbestand FROM Artikel WHERE LieferantenNr = 1</string>
+    <string name="ex_easy_10">Übung 10</string>
+    <string name="ex_easy_10_text">Die neue Bürokraft will einen Geburtstagskalender für das Personal erstellen.
+        Sie benötigt dafür eine Liste mit Vor-und Zunamen aller Angestellten, sowie deren Geburtstag. \n\n
+        Gib diese aus.</string>
+    <string name="ex_easy_10_sol">SELECT Vorname, Nachname, Geburtstag FROM Personal </string>
 
-    <string name="ex_medium_1">Schlüssel</string>
-    <string name="ex_medium_1_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_1_sol">SELECT</string>
-    <string name="ex_medium_2">Schlüssel</string>
-    <string name="ex_medium_2_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_2_sol">SELECT</string>
-    <string name="ex_medium_3">Schlüssel</string>
-    <string name="ex_medium_3_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_3_sol">SELECT</string>
-    <string name="ex_medium_4">Schlüssel</string>
-    <string name="ex_medium_4_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_4_sol">SELECT</string>
-    <string name="ex_medium_5">Schlüssel</string>
-    <string name="ex_medium_5_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_5_sol">SELECT</string>
-    <string name="ex_medium_6">Schlüssel</string>
-    <string name="ex_medium_6_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_6_sol">SELECT</string>
-    <string name="ex_medium_7">Schlüssel</string>
-    <string name="ex_medium_7_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_7_sol">SELECT</string>
-    <string name="ex_medium_8">Schlüssel</string>
-    <string name="ex_medium_8_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_8_sol">SELECT</string>
-    <string name="ex_medium_9">Schlüssel</string>
-    <string name="ex_medium_9_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_medium_9_sol">SELECT</string>
+    <string name="ex_medium_1">Übung 1</string>
+    <string name="ex_medium_1_text">Wie viele Bestellungen haben mehr als 4€ gekostet?</string>
+    <string name="ex_medium_1_sol">SELECT count(BestellNr) FROM Bestelldetails WHERE Anzahl * Einzelpreis > 4</string>
+    <string name="ex_medium_2">Übung 2</string>
+    <string name="ex_medium_2_text">Lasse dir die Nach-und Vornamen aller Angestellten aus Mainz in
+        alphabetischer Reihenfolge absteigend nach dem Nachnamen sortiert anzeigen. </string>
+    <string name="ex_medium_2_sol">SELECT Nachname, Vorname FROM Personal WHERE Ort = "Mainz" ORDER BY Nachname desc</string>
+    <string name="ex_medium_3">Übung 3</string>
+    <string name="ex_medium_3_text">Was hat die teuerste Bestellung gekostet und welche war es (Bestellnr)?</string>
+    <string name="ex_medium_3_sol">SELECT BestellNr, max(Anzahl * Einzelpreis) FROM Bestelldetails</string>
+    <string name="ex_medium_4">Übung 4</string>
+    <string name="ex_medium_4_text">Was ist wohl beliebter: Spaghetti Bolognese (ArtikelNr 62) oder
+        Spaghetti mit Gemüsebolognese (ArtikelNr88)? \n\n
+        Lasse dir ausgeben, wieviele Bestellungen mit Bolognese und wieviele mit Gemüsebolognesees es gab.</string>
+    <string name="ex_medium_4_sol">SELECT count(BestellNr) FROM Bestelldetails WHERE ArtikelNr IN (62, 88)GROUP BY ArtikelNr</string>
+    <string name="ex_medium_5">Übung 5</string>
+    <string name="ex_medium_5_text">Das Team für Qualitätsmanagement will das Speisenangebot der Cafeteria überprüfen.
+        Dazu benötigen sie unter anderem eine Liste der verschiedenen Speisekategorien, sowie die Information,
+        wie groß das Angebot in jeder Kategorie ist. \n\n
+        Lasse dir also zu jeder Kategorie den Kategorienamen und die Anzahl Artikel der Kategorie anzeigen</string>
+    <string name="ex_medium_5_sol">SELECT KategorieName, count(ArtikelNr) FROM Kategorie INNER JOIN Artikel ON Kategorie.KategorieNr = Artikel.KategorieNr GROUP BY Artikel.KategorieNr</string>
+    <string name="ex_medium_6">Übung 6</string>
+    <string name="ex_medium_6_text">Lilli will sich von ihrem Mensageld heute Nachmittag noch ein Eis gönnen.
+        Deshalb möchte sie heute Mittag möglichst günstig essen. \n\n
+        Findefür sie heraus, bei welcher Kategorie der Durchschnittspreis der Artikel günstiger als 1€ ist.</string>
+    <string name="ex_medium_6_sol">SELECT KategorieNr FROM Artikel GROUP BY Kategorienr HAVING avg(Einzelpreis) < 1</string>
+    <string name="ex_medium_7">Übung 7</string>
+    <string name="ex_medium_7_text">Es muss festgestellt werden, wie abhängig die Cafeteria von einzelnen Lieferanten ist.
+        Finde dazu heraus, von welchen Lieferanten mehr als 1500 Artikel bei uns im Lager vorrätig sind. \n\n
+        Gib dazu sowohl die Summe der Lagerbestände als auch die jeweilige Lieferantennummer aus.(\n\n
+        <i>Tipp: Group by und having verwenden)</i></string>
+    <string name="ex_medium_7_sol">SELECT sum(Lagerbestand), Artikel.LieferantenNr FROM Artikel GROUP BY LieferantenNr HAVING sum(lagerbestand) > 1500</string>
+    <string name="ex_medium_8">Übung 8</string>
+    <string name="ex_medium_8_text">Um herauszufinden, wie viele Angestellte nicht im Büro arbeiten, zähle einfach die
+        Personalnummern, die schon einmal eine Bestellung bearbeitet haben.\n\n
+        Kannst du das? </string>
+    <string name="ex_medium_8_sol">SELECT count(DISTINCT PersonalNr) FROM Bestellung </string>
+    <string name="ex_medium_9">Übung 9</string>
+    <string name="ex_medium_9_text">Die Leitung der Cafeteria will versuchen einen Sonderrabatt mit der Metro (LieferantenNr2) auszuhandeln. \n\n
+        Dazu möchte sie wissen, wie viele Artikel der Metro im Schnitt in jeder Bestellung sind. </string>
+    <string name="ex_medium_9_sol">SELECT avg(Anzahl) FROM Bestelldetails INNER JOIN Artikel ON ArtikelNr WHERE Artikel.LieferantenNr = 2</string>
 
-    <string name="ex_hard_1">Schlüssel</string>
-    <string name="ex_hard_1_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_1_sol">SELECT</string>
-    <string name="ex_hard_2">Schlüssel</string>
-    <string name="ex_hard_2_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_2_sol">SELECT</string>
-    <string name="ex_hard_3">Schlüssel</string>
-    <string name="ex_hard_3_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_3_sol">SELECT</string>
-    <string name="ex_hard_4">Schlüssel</string>
-    <string name="ex_hard_4_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_4_sol">SELECT</string>
-    <string name="ex_hard_5">Schlüssel</string>
-    <string name="ex_hard_5_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_5_sol">SELECT</string>
-    <string name="ex_hard_6">Schlüssel</string>
-    <string name="ex_hard_6_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_6_sol">SELECT</string>
-    <string name="ex_hard_7">Schlüssel</string>
-    <string name="ex_hard_7_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_7_sol">SELECT</string>
-    <string name="ex_hard_8">Schlüssel</string>
-    <string name="ex_hard_8_text">Baue eine Schlüssel Anfrage nach.</string>
-    <string name="ex_hard_8_sol">SELECT</string>
+    <string name="ex_hard_1">Übung 1</string>
+    <string name="ex_hard_1_text">Die Leitung der Cafeteria überlegt diese freitags zu schließen. Vorher soll eine Übersicht generiert werden, in der die Anzahl Bestellungen pro Tag im Februar 2018 abgebildet sind.\n\n
+        <i>Tipp: Arbeite mit dem LIKE-Baustein, um alle Tage aus dem Februar 2018 selektieren zu können.</i></string>
+    <string name="ex_hard_1_sol">SELECT Bestelldatum, count(BestellNr) FROM Bestellung WHERE Bestelldatum LIKE "__.02.2018" GROUP BY Bestelldatum</string>
+    <string name="ex_hard_2">Übung 2</string>
+    <string name="ex_hard_2_text">Die Cafeteria will Fahrgemeinschaften unter den Angestellten fördern.
+        Es wird davon ausgegangen, dass nur Personal zusammenfährt, dass im selben Postleitzahlbereich wohnt. \n\n
+        Wie viele Leute würden aus welchem Postleitzahlbereich zusammenfahren?</string>
+    <string name="ex_hard_2_sol">SELECT PLZ, count(PLZ) FROM Personal GROUP BY PLZ</string>
+    <string name="ex_hard_3">Übung 3</string>
+    <string name="ex_hard_3_text">Peters Mutter glaubt ihm nicht, dass er mehr Geld für die Cafeteria braucht.
+        Sie weiß seine KontoID (17) und fragt nun in der Mensa nach, für wieviel Geld er bisher gegessen hat. \n\n
+        Findest du es heraus? .</string>
+    <string name="ex_hard_3_sol">SELECT sum(Einzelpreis * Anzahl) FROM Bestelldetails INNER JOIN Bestellung ON Bestelldetails.BestellNr = Bestellung.BestellNr INNER JOIN Kundenkonto ON Kundenkonto.KontoID = Bestellung.KontoID WHERE Kundenkonto.KontoID = 17</string>
+    <string name="ex_hard_4">Übung 4</string>
+    <string name="ex_hard_4_text">Frau Schmid (PersonalNr 5) beschwert sich darüber, dass in jeder Bestellung,
+        die sie bearbeitet Fleisch enthalten ist, obwohl sie streng vegan lebt. \n\n
+        Wie viele Bestellungen mit Fleisch hat Frau Müller bearbeitet?</string>
+    <string name="ex_hard_4_sol">SELECT count(Bestelldetails.BestellNr) FROM BestelldetailsINNER JOIN Artikel ON Artikel.ArtikelNr = Bestelldetails.ArtikelNr INNER JOIN Bestellung ON Bestelldetails.BestellNr = Bestellung.BestellNr WHERE Artikel.KategorieNr = 3 AND Bestellung.PersonalNr = 5</string>
+    <string name="ex_hard_5">Übung 5</string>
+    <string name="ex_hard_5_text">Der Elternbeirat will eine Gemüsepflicht für die Mahlzeiten in der Cafeteria fordern.
+        So soll jede Bestellung mindestens eine Gemüsebeilage (KategorieNr 2) enthalten.
+        Die Schulleitung ist dagegen und möchte nun wissen, wie viele Bestellungen <b>ohne</b> Gemüsebeilage es gab. \n\n
+        <i>(Denk an den Distinct-Operator.)</i></string>
+    <string name="ex_hard_5_sol">SELECT count(distinct Bestelldetails.BestellNr) FROM Bestelldetails INNER JOIN Artikel ON Artikel.ArtikelNr = Bestelldetails.ArtikelNr WHERE Artikel.KategorieNr != 2</string>
+    <string name="ex_hard_6">Übung 6</string>
+    <string name="ex_hard_6_text">Die Leitung der Cafeteria möchte wissen, wie viele Bestellungen jeder Nutzer getätigt hat. \n\n
+        Gib dazu die KontoID und die Anzahl Bestellungen aus.</string>
+    <string name="ex_hard_6_sol">SELECT Kundenkonto.KontoID, count(BestellNr) FROM Kundenkonto LEFT OUTER JOIN Bestellung ON Kundenkonto.KontoID = Bestellung.KontoID GROUP BY Kundenkonto.KontoID</string>
+    <string name="ex_hard_7">Übung 7</string>
+    <string name="ex_hard_7_text">Das Team für Qualitätsmanagement will auch die Portionsgröße prüfen. Hierzu soll gezählt werden, bei wie vielen Bestellungen eine Gemüse-oder Sättigungsbeilage mehrfach gekauft wurde (KategorieNr 1, 2).</string>
+    <string name="ex_hard_7_sol">SELECT count(BestellNr) FROM Bestelldetails INNER JOIN Artikel ON Bestelldetails.ArtikelNr = Artikel.ArtikelNr WHERE Artikel.KategorieNr IN (1, 2) AND (Bestelldetails.Anzahl) > 1</string>
+    <string name="ex_hard_8">Übung 8</string>
+    <string name="ex_hard_8_text">Die Personalleitung möchte wissen, welche Personen als Mitarbeiter*in
+        des Monats Februar 2018 in Frage kommt. Es sollen alle Mitarbeiter*innen gefunden werden, die mehr als 5
+        Bestellungen im Februar bearbeitet haben. \n\n
+        Der Personalleitung reichen die jeweiligen PersonalIDs.</string>
+    <string name="ex_hard_8_sol">SELECT count(Bestellnr), PersonalNr FROM Bestellung WHERE Bestelldatum LIKE "__.02.2018" GROUP BY PersonalNr HAVING count(Bestellnr) > 5</string>
 
 
     <!-- tutorial -->
@@ -344,7 +386,7 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="c2l1_bad">Ungut</string>
 
     <string name="c2l2_input">
-        Du kannst dir auch alle anderen Wohnorte ausgeben lassen außer Mainz, indem du im Vergleichsblockl “!=” (das schicke ungleich) auswählst.
+        Du kannst dir auch alle anderen Wohnorte ausgeben lassen außer Mainz, indem du im Vergleichsblockl &#8800; (das schicke ungleich) auswählst.
     </string>
     <string name="c2l2_good">Gut</string>
     <string name="c2l2_bad">Ungut</string>
@@ -366,7 +408,7 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
     <string name="c2l4_bad">Ungut</string>
 
     <string name="c2l5_input">
-        Wenn du dir alle Schüler*innen der Mittelstufe ausgeben lassen willst, so geht das, indem du den logischen Block BETWEEN auswählst, hier wird &lt;= und &gt;= kombiniert.\n\n
+        Wenn du dir alle Schüler*innen der Mittelstufe ausgeben lassen willst, so geht das, indem du den logischen Block BETWEEN auswählst, hier wird &#8805; und &gt;= kombiniert.\n\n
         Lasse dir die Schüler_ID von allen Schüler*innen aus der Tabelle Schüler in der Mittelstufe (Klassenstufe 7 bis 10) ausgeben.
     </string>
     <string name="c2l5_good">Gut</string>
