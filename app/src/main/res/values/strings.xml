@@ -87,7 +87,7 @@
 
     <string name="ex_medium_1">Übung 1</string>
     <string name="ex_medium_1_text">Wie viele Bestellungen haben mehr als 4€ gekostet?</string>
-    <string name="ex_medium_1_sol">SELECT count(BestellNr) FROM Bestelldetails WHERE Anzahl * Einzelpreis > 4</string>
+    <string name="ex_medium_1_sol">SELECT <!--count(BestellNr) FROM Bestelldetails WHERE Anzahl * Einzelpreis > 4--></string>
     <string name="ex_medium_2">Übung 2</string>
     <string name="ex_medium_2_text">Lasse dir die Nach-und Vornamen aller Angestellten aus Mainz in
         alphabetischer Reihenfolge absteigend nach dem Nachnamen sortiert anzeigen. </string>
@@ -110,13 +110,13 @@
     <string name="ex_medium_6_text">Lilli will sich von ihrem Mensageld heute Nachmittag noch ein Eis gönnen.
         Deshalb möchte sie heute Mittag möglichst günstig essen. \n\n
         Findefür sie heraus, bei welcher Kategorie der Durchschnittspreis der Artikel günstiger als 1€ ist.</string>
-    <string name="ex_medium_6_sol">SELECT KategorieNr FROM Artikel GROUP BY Kategorienr HAVING avg(Einzelpreis) < 1</string>
+    <string name="ex_medium_6_sol">SELECT <!--KategorieNr FROM Artikel GROUP BY Kategorienr HAVING avg(Einzelpreis) < 1--></string>
     <string name="ex_medium_7">Übung 7</string>
     <string name="ex_medium_7_text">Es muss festgestellt werden, wie abhängig die Cafeteria von einzelnen Lieferanten ist.
         Finde dazu heraus, von welchen Lieferanten mehr als 1500 Artikel bei uns im Lager vorrätig sind. \n\n
         Gib dazu sowohl die Summe der Lagerbestände als auch die jeweilige Lieferantennummer aus.(\n\n
         <i>Tipp: Group by und having verwenden)</i></string>
-    <string name="ex_medium_7_sol">SELECT sum(Lagerbestand), Artikel.LieferantenNr FROM Artikel GROUP BY LieferantenNr HAVING sum(lagerbestand) > 1500</string>
+    <string name="ex_medium_7_sol">SELECT <!--sum(Lagerbestand), Artikel.LieferantenNr FROM Artikel GROUP BY LieferantenNr HAVING sum(lagerbestand) > 1500--></string>
     <string name="ex_medium_8">Übung 8</string>
     <string name="ex_medium_8_text">Um herauszufinden, wie viele Angestellte nicht im Büro arbeiten, zähle einfach die
         Personalnummern, die schon einmal eine Bestellung bearbeitet haben.\n\n
@@ -158,13 +158,13 @@
     <string name="ex_hard_6_sol">SELECT Kundenkonto.KontoID, count(BestellNr) FROM Kundenkonto LEFT OUTER JOIN Bestellung ON Kundenkonto.KontoID = Bestellung.KontoID GROUP BY Kundenkonto.KontoID</string>
     <string name="ex_hard_7">Übung 7</string>
     <string name="ex_hard_7_text">Das Team für Qualitätsmanagement will auch die Portionsgröße prüfen. Hierzu soll gezählt werden, bei wie vielen Bestellungen eine Gemüse-oder Sättigungsbeilage mehrfach gekauft wurde (KategorieNr 1, 2).</string>
-    <string name="ex_hard_7_sol">SELECT count(BestellNr) FROM Bestelldetails INNER JOIN Artikel ON Bestelldetails.ArtikelNr = Artikel.ArtikelNr WHERE Artikel.KategorieNr IN (1, 2) AND (Bestelldetails.Anzahl) > 1</string>
+    <string name="ex_hard_7_sol">SELECT<!-- count(BestellNr) FROM Bestelldetails INNER JOIN Artikel ON Bestelldetails.ArtikelNr = Artikel.ArtikelNr WHERE Artikel.KategorieNr IN (1, 2) AND (Bestelldetails.Anzahl) > 1--></string>
     <string name="ex_hard_8">Übung 8</string>
     <string name="ex_hard_8_text">Die Personalleitung möchte wissen, welche Personen als Mitarbeiter*in
         des Monats Februar 2018 in Frage kommt. Es sollen alle Mitarbeiter*innen gefunden werden, die mehr als 5
         Bestellungen im Februar bearbeitet haben. \n\n
         Der Personalleitung reichen die jeweiligen PersonalIDs.</string>
-    <string name="ex_hard_8_sol">SELECT count(Bestellnr), PersonalNr FROM Bestellung WHERE Bestelldatum LIKE "__.02.2018" GROUP BY PersonalNr HAVING count(Bestellnr) > 5</string>
+    <string name="ex_hard_8_sol">SELECT <!--count(Bestellnr), PersonalNr FROM Bestellung WHERE Bestelldatum LIKE "__.02.2018" GROUP BY PersonalNr HAVING count(Bestellnr) > -->5</string>
 
 
     <!-- tutorial -->
@@ -393,7 +393,7 @@ Jede SQL-Abfrage enthält die drei Hauptbefehle SELECT (engl. auswählen) und FR
 
     <string name="c2l3_input">
         In der Tabelle Lehrkräfte wird auch für jede Lehrkraft die ungefähre Fahrtzeit zur Schule in Minuten gespeichert.\n\n
-        Wähle im Vergleichsblock > (alle 4) aus, um dir die Kürzel aller Lehrkräfte anzeigen zu lassen, die weniger als 30 Minuten zur Schule brauchen.
+        Wähle im Vergleichsblock &gt; (alle 4) aus, um dir die Kürzel aller Lehrkräfte anzeigen zu lassen, die weniger als 30 Minuten zur Schule brauchen.
     </string>
     <string name="c2l3_good">Gut</string>
     <string name="c2l3_bad">Ungut</string>

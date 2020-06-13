@@ -25,7 +25,7 @@
             android:id="@+id/tv_feedback_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/feedback_msg_bad"
+            android:text="@string/feedback_back"
             android:textSize="30dp"
             android:textColor="@color/textcolor_white"
             android:fontFamily="@font/comfortaa"
