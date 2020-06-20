@@ -22,7 +22,6 @@ import androidx.fragment.app.Fragment;
 import com.example.dragandquery.R;
 
 /***
- * TODO
  */
 
 public class Fragment_Input extends Fragment {

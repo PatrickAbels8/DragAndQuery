@@ -178,11 +178,6 @@ public class Practices extends AppCompatActivity {
 
     }
 
-    //todo
-    public boolean lectionsDone(int ex){
-        return true;
-    }
-
     //key value store
     public void saveData(String key, String data){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);

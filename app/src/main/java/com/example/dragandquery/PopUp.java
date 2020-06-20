@@ -10,10 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /***
- *TODO
- * - global reset
- * - close app
- * - change profile image
  */
 public class PopUp extends AppCompatActivity {
 

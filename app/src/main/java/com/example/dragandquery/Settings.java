@@ -27,7 +27,6 @@ import com.example.dragandquery.practice.Practices;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO
  */
 public class Settings extends AppCompatActivity {
 
@@ -120,7 +119,7 @@ public class Settings extends AppCompatActivity {
         }));
         pb_prac.setProgress(calcExAvg());
 
-        //global tut/prac reset //todo popup reask
+        //global tut/prac reset
         reset_tut.setOnClickListener(new Settings.OnTutResetClickListener());
     }
 
@@ -232,10 +231,10 @@ public class Settings extends AppCompatActivity {
         saveDataInt(getString(R.string.tutScore3_key), 1);
         saveDataInt(getString(R.string.tutScore4_key), 1);
         //reset unlocked lections todo hard
-        saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/11f+1));
-        saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/15f+1));
+        saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/12f+1));
+        saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/16f+1));
         saveDataInt(getString(R.string.tutScore3_unlocked_key), (int)(100f/8f+1));
-        saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/7f+1));
+        saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/9f+1));
         //reset done exercises
         saveDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
         saveDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);

@@ -17,8 +17,6 @@ import android.widget.TextView;
 
 
 /***
- * TODO:
- * -bird from dropbox
  */
 public class SplashScreen extends AppCompatActivity {
 

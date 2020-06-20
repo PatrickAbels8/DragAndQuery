@@ -70,7 +70,7 @@ public class Fragment_Table_Ex extends Fragment {
         tobottom = AnimationUtils.loadAnimation(context, R.anim.tobottom);
         table = v.findViewById(R.id.tl_table);
 
-        map = new HashMap<String, String>(){{ //todo
+        map = new HashMap<String, String>(){{
             put("100", "SELECT Firma, Kontaktperson, Telefon FROM Lieferant");
             put("101", "SELECT Artikelname FROM Artikel WHERE KategorieNr = 5 LIMIT 15");
             put("102", "SELECT count(ArtikelName)FROM Artikel WHERE KategorieNr = 3 OR KategorieNr = 4 OR KategorieNr = 5");
@@ -118,7 +118,6 @@ public class Fragment_Table_Ex extends Fragment {
         cl_table.setVisibility(View.GONE);
     }
 
-    // todo good or bad ffedback
     public void goVisible(String query, List<String[]> response, float runtime, boolean isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);

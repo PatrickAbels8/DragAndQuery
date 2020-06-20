@@ -37,9 +37,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /***
- * TODO
- * prac onForth
- * - default profile image
  */
 
 public class Navigation extends AppCompatActivity

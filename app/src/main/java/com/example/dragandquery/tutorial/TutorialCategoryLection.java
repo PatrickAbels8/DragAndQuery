@@ -30,7 +30,6 @@ import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0401;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO
  * -
  */
 
@@ -77,7 +76,7 @@ public class TutorialCategoryLection
         //init coms and vars
         fragFeedback = new Fragment_Feedback();
         fragInput = new Fragment_Input();
-        frags = new Fragment_Content[]{ //todo add lections here
+        frags = new Fragment_Content[]{
                 new Fragment_LectionContent_0100(),
                 new Fragment_LectionContent_0101(),
                 new Fragment_LectionContent_0102(),

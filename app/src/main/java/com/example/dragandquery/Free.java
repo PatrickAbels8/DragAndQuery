@@ -12,8 +12,6 @@ import com.example.dragandquery.free.Fragment_Table;
 import java.util.List;
 
 /***
- * TODO
- * - update draglesson and drag exercise with state of art
  */
 
 //top: query fragment

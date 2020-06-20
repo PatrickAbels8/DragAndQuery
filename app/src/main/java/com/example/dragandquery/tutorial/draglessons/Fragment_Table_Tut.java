@@ -48,23 +48,23 @@ public class Fragment_Table_Tut extends Fragment {
     private Fragment_Table_Tut_Listener listener;
     private String lec_id;
 
-    public static final Map<String, String> map = new HashMap<String, String>(){{ //todo
-        put("02_01", "");
-        put("02_02", "");
-        put("02_03", "");
-        put("02_04", "");
-        put("02_05", "");
-        put("02_06", "");
-        put("02_07", "");
-        put("02_08", "");
-        put("02_09", "");
-        put("02_10", "");
-        put("02_11", "");
-        put("02_12", "");
-        put("02_13", "");
-        put("02_14", "");
-        put("02_15", "");
-        put("02_16", "");
+    public static final Map<String, String> map = new HashMap<String, String>(){{
+        put("02_01", "select * from schüler");
+        put("02_02", "select vorname, nachname from schüler ");
+        put("02_03", "select vorname from schüler limit 10");
+        put("02_04", "SELECT Vorname FROM Schüler WHERE Ort = \"Mainz\"");
+        put("02_05", "SELECT Ort FROM Schüler WHERE Ort != \"Mainz\"");
+        put("02_06", "SELECT Kürzel FROM Lehrkraft WHERE Fahrzeit < 30");
+        put("02_07", "select kürzel FROM Lehrkraft WHERE Fahrzeit < 30 ORDER BY Fahrzeit ASC");
+        put("02_08", "SELECT SchülerID FROM Schüler WHERE Ort = \"Budenheim\" OR Ort = \"Nackenheim\" OR Ort = \"Wackernheim\"");
+        put("02_09", "SELECT Vorname FROM Lehrkraft WHERE Ort = \"Mainz\" AND Nachname = \"Meier\"");
+        put("02_10", "SELECT SchülerID, Vorname, Nachname, Ort FROM Schüler WHERE NOT Ort = \"Mainz\"");
+        put("02_11", "SELECT Raumnummer FROM Raum WHERE Beamer = 1");
+        put("02_12", "SELECT Nachname,Ort FROM Lehrkraft WHERE Ort IN (\"Mommenheim\",\"Lörzweiler\", \"Harxheim\", \"Gau-Bischofsheim\")");
+        put("02_13", "SELECT SchülerID FROM Schüler WHERE SchülerID LIKE \"_6%0\"");
+        put("02_14", "SELECT DISTINCT Ort FROM Lehrkraft");
+        put("02_15", "select Kürzel, Fahrzeit/60*50 FROM Lehrkraft");
+        put("02_16", "SELECT Kürzel, Fahrzeit/60*50 AS Strecke FROM Lehrkraft ORDER BY Strecke ASC");
         put("03_02", "select count(kürzel) from lehrkraft");
         put("03_03", "select lehrkraftid, ifnull(fahrzeit, \"-1\") from lehrkraft");
         put("03_04", "select sum(fahrzeit*2) from lehrkraft");
@@ -76,10 +76,10 @@ public class Fragment_Table_Tut extends Fragment {
         put("04_03", "select name, plätze from raum join klasse on klasse.raumnummer = raum.raumnummer where (plätze>20) order by plätze asc");
         put("04_04", "select raum, raumnummer, klasse, name from raum left outer join klasse on raum.raumnummer = klasse.klassenraumnummer");
         put("04_05", "");
-        put("04_06", "");
-        put("04_07", "");
-        put("04_08", "");
-        put("04_09", "");
+        put("04_06", "Select Klasse.Name, Klasse.KlassenID, Lehrkraft.Kürzel From Klasse FULL OUTER JOIN Lehrkraft ON Klasse.KlassenlehrerID=Lehrkraft.LehrkraftID");
+        put("04_07", "select Vorname, Nachname from Klasse join Lehrkrafton Klasse.KlassenlehrerID = Lehrkraft.LehrkraftID where (KlassenID = 33)");
+        put("04_08", "select Nachname, Name, RaumNummer from Schüler join Klasse on Schüler.KlassenID = Klasse.KlassenID join Raum on Klasse.Klassenraumnummer = Raum.Raumnummer");
+        put("04_09", "select Fach.Fachname, Kürzel, Fachleiterkürzel, Stunden from Lehrkraft join Lehren on Lehrkraft.LehrkraftID = Lehren.LehrkraftID Join Fach on Lehren.FachID = Fach.FachID where (Stunden >= 10) order by Stunden asc");
     }};
 
     //interface
@@ -131,7 +131,6 @@ public class Fragment_Table_Tut extends Fragment {
         cl_table.setVisibility(View.INVISIBLE);
     }
 
-    //todo good or bad feedback
     public void goVisible(String query, List<String[]> response, float runtime, boolean isCorrect){
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
