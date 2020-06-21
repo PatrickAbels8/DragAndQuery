@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/frag_lectioncontent_0100"
+    android:id="@+id/frag_lectioncontent_0112"
     android:visibility="invisible"
     tools:visibility="visible">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/c1l0_question"
+                    android:text="@string/c1l12_question"
                     android:textSize="20dp"
                     android:fontFamily="@font/comfortaa"
                     android:textColor="@color/textcolor_white"
                     android:gravity="center_horizontal"
-                    android:layout_above="@id/rg_c1l0"/>
+                    android:layout_above="@id/rg_c1l12"/>
 
                 <RadioGroup
-                    android:id="@+id/rg_c1l0"
+                    android:id="@+id/rg_c1l12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -28,30 +28,30 @@
                     android:paddingTop="8dp">
 
                         <RadioButton
-                            android:id="@+id/rb1_c1l0"
+                            android:id="@+id/rb1_c1l12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/c1l0_answer1"
+                            android:text="@string/c1l12_answer1"
                             android:textSize="@dimen/radio_button_textSize"
                             android:fontFamily="@font/comfortaa"
                             android:textColor="@color/textcolor_white"
                             android:buttonTint="@color/textcolor_white"
                             />
                         <RadioButton
-                            android:id="@+id/rb2_c1l0"
+                            android:id="@+id/rb2_c1l12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/c1l0_answer2"
+                            android:text="@string/c1l12_answer2"
                             android:textSize="@dimen/radio_button_textSize"
                             android:fontFamily="@font/comfortaa"
                             android:textColor="@color/textcolor_white"
                             android:buttonTint="@color/textcolor_white"
                             />
                         <RadioButton
-                            android:id="@+id/rb3_c1l0"
+                            android:id="@+id/rb3_c1l12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/c1l0_answer3"
+                            android:text="@string/c1l12_answer3"
                             android:textSize="@dimen/radio_button_textSize"
                             android:fontFamily="@font/comfortaa"
                             android:textColor="@color/textcolor_white"
@@ -61,7 +61,7 @@
                 </RadioGroup>
 
                 <Button
-                    android:id="@+id/btn_lectioncontent_0100_go"
+                    android:id="@+id/btn_lectioncontent_0112_go"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/start_btn_go"

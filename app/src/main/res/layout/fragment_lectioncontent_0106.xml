@@ -60,15 +60,14 @@
 
                 </RadioGroup>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@id/btn_lectioncontent_0106_go"
-                    android:layout_below="@id/rg_c1l6"
-                    android:src="@drawable/tut1_6"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="16dp"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/tut1_5"
+        android:layout_below="@id/rg_c1l6"
+        android:layout_above="@id/btn_lectioncontent_0106_go"/>
 
                 <Button
                     android:id="@+id/btn_lectioncontent_0106_go"

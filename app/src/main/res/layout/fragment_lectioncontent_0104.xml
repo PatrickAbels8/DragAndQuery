@@ -59,15 +59,6 @@
 
                 </RadioGroup>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tut1_4"
-        android:layout_below="@id/rg_c1l4"
-        android:layout_above="@id/btn_lectioncontent_0104_go"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"/>
-
                 <Button
                     android:id="@+id/btn_lectioncontent_0104_go"
                     android:layout_width="match_parent"

@@ -119,9 +119,7 @@ public class Fragment_Input extends Fragment {
     //todo make global (just test in category class and intent)
     public void setText(){
         String text = "";
-        if(lection_id.substring(0,5).equals("01_00")){
-            text = getString(R.string.c1l0_input);
-        }else if(lection_id.substring(0,5).equals("01_01")){
+        if(lection_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
         }else if(lection_id.substring(0,5).equals("01_02")){
             text = getString(R.string.c1l2_input);
@@ -143,6 +141,8 @@ public class Fragment_Input extends Fragment {
             text = getString(R.string.c1l10_input);
         }else if(lection_id.substring(0,5).equals("01_11")){
             text = getString(R.string.c1l11_input);
+        }else if(lection_id.substring(0,5).equals("01_12")){
+            text = getString(R.string.c1l12_input);
         }else if(lection_id.substring(0,5).equals("03_01")){
             text = getString(R.string.c3l1_input);
         }else if(lection_id.substring(0,5).equals("04_01")){

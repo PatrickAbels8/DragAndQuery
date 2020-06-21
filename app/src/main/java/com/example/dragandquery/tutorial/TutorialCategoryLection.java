@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.Tutorial;
 import com.example.dragandquery.tutorial.draglessons.DragLesson;
-import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0100;
+import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0112;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0101;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0102;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0103;
@@ -39,7 +37,6 @@ public class TutorialCategoryLection
         implements
             Fragment_Feedback.Fragment_Feedback_Listener,
             Fragment_Input.Fragment_Input_Listener,
-            Fragment_LectionContent_0100.Fragment_LectionContent_0100_Listener,
             Fragment_LectionContent_0101.Fragment_LectionContent_0101_Listener,
             Fragment_LectionContent_0102.Fragment_LectionContent_0102_Listener,
             Fragment_LectionContent_0103.Fragment_LectionContent_0103_Listener,
@@ -51,6 +48,7 @@ public class TutorialCategoryLection
             Fragment_LectionContent_0109.Fragment_LectionContent_0109_Listener,
             Fragment_LectionContent_0110.Fragment_LectionContent_0110_Listener,
             Fragment_LectionContent_0111.Fragment_LectionContent_0111_Listener,
+            Fragment_LectionContent_0112.Fragment_LectionContent_0112_Listener,
             Fragment_LectionContent_0301.Fragment_LectionContent_0301_Listener,
             Fragment_LectionContent_0401.Fragment_LectionContent_0401_Listener
 {
@@ -77,7 +75,6 @@ public class TutorialCategoryLection
         fragFeedback = new Fragment_Feedback();
         fragInput = new Fragment_Input();
         frags = new Fragment_Content[]{
-                new Fragment_LectionContent_0100(),
                 new Fragment_LectionContent_0101(),
                 new Fragment_LectionContent_0102(),
                 new Fragment_LectionContent_0103(),
@@ -89,6 +86,7 @@ public class TutorialCategoryLection
                 new Fragment_LectionContent_0109(),
                 new Fragment_LectionContent_0110(),
                 new Fragment_LectionContent_0111(),
+                new Fragment_LectionContent_0112(),
                 new Fragment_LectionContent_0301(),
                 new Fragment_LectionContent_0401()
         };

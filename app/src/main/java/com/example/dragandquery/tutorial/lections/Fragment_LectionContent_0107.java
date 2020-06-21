@@ -63,7 +63,7 @@ public class Fragment_LectionContent_0107 extends Fragment_Content {
     }
 
     public boolean verifyAnswer(){
-        return !rb1.isChecked() && !rb2.isChecked() && rb3.isChecked();
+        return !rb1.isChecked() && rb2.isChecked() && !rb3.isChecked();
     }
 
     public void pauseExercise(){

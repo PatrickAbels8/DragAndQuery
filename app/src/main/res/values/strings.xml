@@ -152,18 +152,18 @@
     <string name="title_activity_tutorial_category">Tutorial Category</string>
     <string name="title_activity_tutorial">Tutorial</string>
 
-    <string name="cat1_lec0">Intro</string>
-    <string name="cat1_lec1">Einsatzmöglichkeiten für Datenbanken </string>
-    <string name="cat1_lec2">Von Datenbanken und Tabellen</string>
-    <string name="cat1_lec3">Warum relational? </string>
-    <string name="cat1_lec4">Zeilen, Spalten, Attribute </string>
-    <string name="cat1_lec5">Anforderungen an Tabellen </string>
-    <string name="cat1_lec6">Datentypen von Attributen</string>
-    <string name="cat1_lec7">Eindeutigkeit dank Schlüsseln </string>
-    <string name="cat1_lec8">Fremdschlüssel</string>
-    <string name="cat1_lec9">Kardinalitäten</string>
-    <string name="cat1_lec10">Die erste Datenbank</string>
-    <string name="cat1_lec11">Mehr zu n-m-Beziehungen</string>
+    <string name="cat1_lec1">Intro</string>
+    <string name="cat1_lec2">Einsatzmöglichkeiten für Datenbanken </string>
+    <string name="cat1_lec3">Von Datenbanken und Tabellen</string>
+    <string name="cat1_lec4">Warum relational? </string>
+    <string name="cat1_lec5">Zeilen, Spalten, Attribute </string>
+    <string name="cat1_lec6">Anforderungen an Tabellen </string>
+    <string name="cat1_lec7">Datentypen von Attributen</string>
+    <string name="cat1_lec8">Eindeutigkeit dank Schlüsseln </string>
+    <string name="cat1_lec9">Fremdschlüssel</string>
+    <string name="cat1_lec10">Kardinalitäten</string>
+    <string name="cat1_lec11">Die erste Datenbank</string>
+    <string name="cat1_lec12">Mehr zu n-m-Beziehungen</string>
 
     <string name="cat2_lec1">Erste Anfrage mit dem SELECT-Befehl</string>
     <string name="cat2_lec2">Attribute im SELECT-Block</string>
@@ -202,48 +202,48 @@
     <string name="cat4_lec9">Darf es ein bisschen mehr sein?</string>
 
     <!-- cat 1 -->
-    <string name="c1l0_input">
+    <string name="c1l1_input">
         Willkommen im Tutorial von Drag &amp; Query. \n\n
         Du lernst in diesem Tutorial die Funktionsweise von relationalen Datenbanken kennen.
         Dein bester Freund in diesem Tutorial ist Barry der Flamingo. Wenn du mal eine Frage nicht beantworten kannst,
         dann klicke auf Barry, um dir erneut den Informationstext anzusehen. \n\n
         Nun tippe unten auf "Verstanden", um zu deiner ersten Frage in diesem Tutorial zu gelangen.
     </string>
-    <string name="c1l0_question"> Tippe auf die richtige Aussage und dann auf (absenden oder so?)</string>
-    <string name="c1l0_answer1">Der Flamingo heißt Bert.</string>
-    <string name="c1l0_answer2">Der Flamingo heißt Berry.</string>
-    <string name="c1l0_answer3">Der Flamingo heißt Barry.</string>
-    <string name="c1l0_good">Jetzt geht\'s los!</string>
-    <string name="c1l0_bad">Tippe lieber nochmal auf den Flamingo. </string>
+    <string name="c1l1_question"> Tippe auf die richtige Aussage und dann auf (absenden oder so?)</string>
+    <string name="c1l1_answer1">Der Flamingo heißt Bert.</string>
+    <string name="c1l1_answer2">Der Flamingo heißt Berry.</string>
+    <string name="c1l1_answer3">Der Flamingo heißt Barry.</string>
+    <string name="c1l1_good">Jetzt geht\'s los!</string>
+    <string name="c1l1_bad">Tippe lieber nochmal auf den Flamingo. </string>
 
 
-    <string name="c1l1_input">
+    <string name="c1l2_input">
         Datenbanken sichern die Vollständigkeit, Richtigkeit und Verfügbarkeit von großen Datenmengen.\n\n
         In jeder Schule müssen Kontaktdaten von Lehrkräften und Schüler*innen, Stundenpläne, Raumpläne und andere Daten gespeichert werden.\n\n
         Durch die Nutzung einer Datenbank geschieht das effizient, widerspruchsfrei und dauerhaft.
     </string>
-    <string name="c1l1_question">In welchem der folgenden Bereiche lohnt sich der Einsatz einer Datenbank nicht?</string>
-    <string name="c1l1_answer1">Addressbuch</string>
-    <string name="c1l1_answer2">Familienkalender</string>
-    <string name="c1l1_answer3">Einkaufsliste</string>
-    <string name="c1l1_good">Korrekt, da eine Einkaufsliste für einen Haushalt nicht wirklich eine große Datenmenge ist,
+    <string name="c1l2_question">In welchem der folgenden Bereiche lohnt sich der Einsatz einer Datenbank nicht?</string>
+    <string name="c1l2_answer1">Addressbuch</string>
+    <string name="c1l2_answer2">Familienkalender</string>
+    <string name="c1l2_answer3">Einkaufsliste</string>
+    <string name="c1l2_good">Korrekt, da eine Einkaufsliste für einen Haushalt nicht wirklich eine große Datenmenge ist,
         lohnt sich der Aufwand einer richtigen Datenbank nicht.</string>
-    <string name="c1l1_bad">Das stimmt leider nicht. </string>
+    <string name="c1l2_bad">Das stimmt leider nicht. </string>
 
-    <string name="c1l2_input">
+    <string name="c1l3_input">
         Im Grunde ist auch dein Stundenplan schon eine kleine Datenbank.
         Es wird gespeichert wann welcher Unterricht stattfindet.
         Deine Adresse passt jedoch nicht in dieses Format und hat ja auch mit deinen Unterrichtszeiten nichts zu tun.\n\n
         Daher gibt es in einer Datenbank nicht nur eine, sondern verschiedene Tabellen für verschiedene Datensätze.
     </string>
-    <string name="c1l2_question">Wähle das Falsche aus:</string>
-    <string name="c1l2_answer1">Eine Datenbank besteht immer aus mindestens einer Tabelle</string>
-    <string name="c1l2_answer2">Eine Datenbank kann aus mehreren Tabellen bestehen</string>
-    <string name="c1l2_answer3">Eine Datenbank besteht immer aus genau einer Tabelle</string>
-    <string name="c1l2_good">Richtig, wie schon beschrieben kann eine Datenbank aus mehreren Tabellen bestehen.</string>
-    <string name="c1l2_bad">Schade. Schau dir den Informationstext nochmal an. </string>
+    <string name="c1l3_question">Wähle das Falsche aus:</string>
+    <string name="c1l3_answer1">Eine Datenbank besteht immer aus mindestens einer Tabelle</string>
+    <string name="c1l3_answer2">Eine Datenbank kann aus mehreren Tabellen bestehen</string>
+    <string name="c1l3_answer3">Eine Datenbank besteht immer aus genau einer Tabelle</string>
+    <string name="c1l3_good">Richtig, wie schon beschrieben kann eine Datenbank aus mehreren Tabellen bestehen.</string>
+    <string name="c1l3_bad">Schade. Schau dir den Informationstext nochmal an. </string>
 
-    <string name="c1l3_input">
+    <string name="c1l4_input">
         Am häufigsten werden relationale Datenbanken verwendet.\n\n
         Eine Relation bezeichnet allgemein die Beziehung zwischen etwas.
         In relationalen Datenbanken werden die Inhalte also in Beziehung zueinander gestellt.\n\n
@@ -251,87 +251,87 @@
         Jede*r Schüler*in hat eine Adresse.\n\n
         Diese werden einander in einer Tabelle eindeutig zugeordnet.
     </string>
-    <string name="c1l3_question">Welche der Folgenden stehen nicht in Relation zueinander?</string>
-    <string name="c1l3_answer1">Jede*r Schüler*in gehört zu einer Klasse</string>
-    <string name="c1l3_answer2">Jedes Unterrichtsfach hat einen Raum</string>
-    <string name="c1l3_answer3">Jeder Raum hat eine Nummer</string>
-    <string name="c1l3_good">Super! Es gibt zwar Musik-oder Kunsträume, aber reine Deutsch-oder Matheräume gibt es nicht.</string>
-    <string name="c1l3_bad">Hmm… Überleg noch einmal. </string>
+    <string name="c1l4_question">Welche der Folgenden stehen nicht in Relation zueinander?</string>
+    <string name="c1l4_answer1">Jede*r Schüler*in gehört zu einer Klasse</string>
+    <string name="c1l4_answer2">Jedes Unterrichtsfach hat einen Raum</string>
+    <string name="c1l4_answer3">Jeder Raum hat eine Nummer</string>
+    <string name="c1l4_good">Super! Es gibt zwar Musik-oder Kunsträume, aber reine Deutsch-oder Matheräume gibt es nicht.</string>
+    <string name="c1l4_bad">Hmm… Überleg noch einmal. </string>
 
-    <string name="c1l4_input">
+    <string name="c1l5_input">
         Jede Tabelle hat einen Namen und besteht aus Zeilen und Spalten.\n\n
         Die Spaltennamen werden als „Attribute“ bezeichnet, in jeder Zeile steht ein zusammengehörender Datensatz, ein „Tupel“.\n\n
         So bildet jede Tabelle ein „Relationenschema“.\n\n
         Man kann Tabellen auch in der Form Tabellenname (Attribut 1, …, Attribut n) darstellen, wenn man die Einträge nicht sehen will.
     </string>
-    <string name="c1l4_question">Orden den weißen Feldern die richtigen Begriffe zu.</string>
-    <string name="c1l4_answer1">1 Spalte, 2 Tabelle, 3 Relation, 4 Zeile</string>
-    <string name="c1l4_answer2">1 Eintrag, 2 Attribute, 3 Tabelle, 4Tupel</string>
-    <string name="c1l4_answer3">1 Attribute, 2 Tabellenname, 3 Relationenschema, 4 Tupel</string>
-    <string name="c1l4_good">Sehr gut! Diese Begriffe sind wichtig, um die einzelnen Bestandteile einer Datenbank klar zu benennen</string>
-    <string name="c1l4_bad">Das stimmt leider nicht. Lies noch einmal den Informationstext.</string>
+    <string name="c1l5_question">Orden den weißen Feldern die richtigen Begriffe zu.</string>
+    <string name="c1l5_answer1">1 Spalte, 2 Tabelle, 3 Relation, 4 Zeile</string>
+    <string name="c1l5_answer2">1 Eintrag, 2 Attribute, 3 Tabelle, 4Tupel</string>
+    <string name="c1l5_answer3">1 Attribute, 2 Tabellenname, 3 Relationenschema, 4 Tupel</string>
+    <string name="c1l5_good">Sehr gut! Diese Begriffe sind wichtig, um die einzelnen Bestandteile einer Datenbank klar zu benennen</string>
+    <string name="c1l5_bad">Das stimmt leider nicht. Lies noch einmal den Informationstext.</string>
 
-    <string name="c1l5_input">
+    <string name="c1l6_input">
         Damit man effizient auf die Datenbank zugreifen kann, müssen die einzelnen Einträge atomar sein.
         Das bedeutet, dass in jeder Zelle nur eine Information steht.\n\n
         Außerdem sollte keine Information doppelt gespeichert werden, sondern lieber mehrere Tabellen miteinander verknüpft werden.
     </string>
-    <string name="c1l5_question">Welche Tabellenstruktur erfüllt die Bedingungen und enthält Name, Personalnummer, Adresse und Fächer?</string>
-    <string name="c1l5_answer1">tba</string>
-    <string name="c1l5_answer2">tba</string>
-    <string name="c1l5_answer3">tba</string>
-    <string name="c1l5_good">Richtig!! Bei den beiden falschen Tabellen waren die Informationen nicht atomar
+    <string name="c1l6_question">Welche Tabellenstruktur erfüllt die Bedingungen und enthält Name, Personalnummer, Adresse und Fächer?</string>
+    <string name="c1l6_answer1">tba</string>
+    <string name="c1l6_answer2">tba</string>
+    <string name="c1l6_answer3">tba</string>
+    <string name="c1l6_good">Richtig!! Bei den beiden falschen Tabellen waren die Informationen nicht atomar
         (Straße und Hausnummer in einer Spalte bzw. haben die Informationen über die unterrichteten Fächer gefehlt).</string>
-    <string name="c1l5_bad">Hmmm… Schau dir die Tabellen nochmal genau an.</string>
+    <string name="c1l6_bad">Hmmm… Schau dir die Tabellen nochmal genau an.</string>
 
-    <string name="c1l6_input">
+    <string name="c1l7_input">
         Die Attribute legen fest, welche Einträge in eine Zelle geschrieben werden können.
         So kann als Geburtsdatum nur ein Datum gespeichert werden und kein Wort.\n\n
         Manchmal sind nicht alle Informationen eines Datensatzes bekannt.
         Daher gibt es die Möglichkeit “NULL” in die betreffende Zelle zu schreiben.
         NULL passt zu jedem Attribut.
     </string>
-    <string name="c1l6_question">Welcher Eintrag ist falsch?</string>
-    <string name="c1l6_answer1">tba</string>
-    <string name="c1l6_answer2">tba</string>
-    <string name="c1l6_answer3">tba</string>
-    <string name="c1l6_good">Super: Die Raumnummer ist, wie der Name schon sagt eine Zahl.
+    <string name="c1l7_question">Welcher Eintrag ist falsch?</string>
+    <string name="c1l7_answer1">tba</string>
+    <string name="c1l7_answer2">tba</string>
+    <string name="c1l7_answer3">tba</string>
+    <string name="c1l7_good">Super: Die Raumnummer ist, wie der Name schon sagt eine Zahl.
         Hier muss der Eintrag also 104 statt "hundertvier" sein.</string>
-    <string name="c1l6_bad">Das ist leider falsch. Lies nochmal den Informationstext.</string>
+    <string name="c1l7_bad">Das ist leider falsch. Lies nochmal den Informationstext.</string>
 
-    <string name="c1l7_input">
+    <string name="c1l8_input">
         Um einen Datensatz zu identifizieren wird ihm ein eindeutiger Schlüssel zugeordnet.\n\n
         Gibt es in einer Tabelle keine eindeutigen Spalte, so kann auch auf einen künstlichen Schlüssel
         zurückgegriffen werden, der dann ein eigenes Attribut wird.
         Meistens handelt es sich um irgendeine Art von Nummer.\n\n
         In der Darstellung einer Datenbank erkennt man Schlüsselattribute daran, dass sie unterstrichen sind.
     </string>
-    <string name="c1l7_question">Was eignet sich gut als Schlüssel?</string>
-    <string name="c1l7_answer1">Nachname</string>
-    <string name="c1l7_answer2">Personalnummer</string>
-    <string name="c1l7_answer3">Kürzel</string>
-    <string name="c1l7_good">Richtig! Es kann an einer Schule sehr wohl mehrere Lehrkräfte mit dem
+    <string name="c1l8_question">Was eignet sich gut als Schlüssel?</string>
+    <string name="c1l8_answer1">Nachname</string>
+    <string name="c1l8_answer2">Personalnummer</string>
+    <string name="c1l8_answer3">Kürzel</string>
+    <string name="c1l8_good">Richtig! Es kann an einer Schule sehr wohl mehrere Lehrkräfte mit dem
         Nachnamen "Maier" geben. Aber sowohl Personalnummer als auch Kürzel sind immer genau einmal pro Schule vergeben.</string>
-    <string name="c1l7_bad">Das ist nicht richtig, versuche es noch einmal.</string>
+    <string name="c1l8_bad">Das ist nicht richtig, versuche es noch einmal.</string>
 
-    <string name="c1l8_input">
+    <string name="c1l9_input">
         Manchmal werden Primärschlüssel einer Tabelle als Eintrag in einer anderen Tabelle verwendet.
         Mit deren Hilfe findet man schnell zusammengehörende Informationen, wie beispielsweise die Adresse und die Fächer einer Lehrkraft.\n\n
         Manchmal ergibt es keinen Sinn, einen Schlüssel extra zu "erfinden".
         Dann werden mehrere Fremdschlüssel im Verbund als Schlüssel verwendet.\n\n
         In der Darstellung einer Datenbank sind Fremdschlüsselattribute ebenfalls unterstrichen und werden mit einem kleinen Pfeil ↑ markiert.
     </string>
-    <string name="c1l8_question"> Klasse (<u>KlassenID</u>, Klassenlehrer, Klassensprecher, Klassenraum)\n\n
+    <string name="c1l9_question"> Klasse (<u>KlassenID</u>, Klassenlehrer, Klassensprecher, Klassenraum)\n\n
         Schüler (<u>SchülerID</u>, Vorname, Nachname, Straße, Hausnummer, PLZ, Ort, Geburtsdatum, KlassenID)\n\n
         Vor welches Attribut gehört der ↑, da es ein Fremdschlüssel ist?</string>
-    <string name="c1l8_answer1">SchülerID</string>
-    <string name="c1l8_answer2">Nachname</string>
-    <string name="c1l8_answer3">KlassenID</string>
-    <string name="c1l8_good">Richtig, die KlassenID ist eigentlich der Primärschlüssel der Tabelle Klasse.
+    <string name="c1l9_answer1">SchülerID</string>
+    <string name="c1l9_answer2">Nachname</string>
+    <string name="c1l9_answer3">KlassenID</string>
+    <string name="c1l9_good">Richtig, die KlassenID ist eigentlich der Primärschlüssel der Tabelle Klasse.
         Sie ist aber auch als Fremdschlüssel in der Tabelle Schülerenthalten und erhält daher den ↑.</string>
-    <string name="c1l8_bad">Das war das falsche Attribut. Lies dir die Fragestellung nochmal genau durch. </string>
+    <string name="c1l9_bad">Das war das falsche Attribut. Lies dir die Fragestellung nochmal genau durch. </string>
 
-    <string name="c1l9_input">
+    <string name="c1l10_input">
         Du hast jetzt schon viel über Relationenschemata, Tabellen und so weiter gehört. Du hast auch gelernt,
         dass einzelne Tabellen in Relation zueinanderstehen.\n\n
         Hierbei muss man beachten, wie das Mengenverhältnis einer solchen Beziehung aussieht.\n\n
@@ -347,15 +347,15 @@
         Hier spricht man dann von einer <b>n:m-Beziehung</b> (m steht ebenfalls für eine beliebig große Zahl).
         Lehrkraft(n) — Fach(m)
     </string>
-    <string name="c1l9_question"> Welche Tabellen können ebenfalls eine n:m-Beziehung zueinander haben?</string>
-    <string name="c1l9_answer1">Klasse — Klassenraum</string>
-    <string name="c1l9_answer2">Schule — Lehrkraft</string>
-    <string name="c1l9_answer3">Lehrer — Klasse</string>
-<string name="c1l9_good">Richtig! Klasse — Raum ist sogar eine 1:1-Beziehung. In einer Schule arbeiten
+    <string name="c1l10_question"> Welche Tabellen können ebenfalls eine n:m-Beziehung zueinander haben?</string>
+    <string name="c1l10_answer1">Klasse — Klassenraum</string>
+    <string name="c1l10_answer2">Schule — Lehrkraft</string>
+    <string name="c1l10_answer3">Lehrer — Klasse</string>
+<string name="c1l10_good">Richtig! Klasse — Raum ist sogar eine 1:1-Beziehung. In einer Schule arbeiten
     mehrere Lehrkräfte, eine Lehrkraft arbeitet aber (im Normalfall) immer nur an einer Schule.</string>
-    <string name="c1l9_bad">Hmm… Da stimmt etwas nicht. Probiere es nochmal! </string>
+    <string name="c1l10_bad">Hmm… Da stimmt etwas nicht. Probiere es nochmal! </string>
 
-    <string name="c1l10_input">
+    <string name="c1l11_input">
         Um im nächsten Kapitel des Tutorials deine ersten Anfragen an die Datenbank stellen zu können,
         musst du nun erstmal die Datenbank selbst kennenlernen. \n\n
         Du kennst schon die Darstellung als Relationenschema, es gib aber auch eine andere Darstellung,
@@ -365,30 +365,30 @@
         Legende oder das Diagramm für die Datenbank "Schule" anzeigen lassen möchtest. \n\n
         Beantworte danach die Frage.
     </string>
-    <string name="c1l10_question">Aus wie vielen Tabellen besteht die Datenbank Schule?</string>
-    <string name="c1l10_answer1">6</string>
-    <string name="c1l10_answer2">5</string>
-    <string name="c1l10_answer3">7</string>
-    <string name="c1l10_good">Super! Jedes Rechteck repräsentiert eine Tabelle und jede Beziehung
+    <string name="c1l11_question">Aus wie vielen Tabellen besteht die Datenbank Schule?</string>
+    <string name="c1l11_answer1">6</string>
+    <string name="c1l11_answer2">5</string>
+    <string name="c1l11_answer3">7</string>
+    <string name="c1l11_good">Super! Jedes Rechteck repräsentiert eine Tabelle und jede Beziehung
         mit eigenen Attributen ebenfalls.</string>
-    <string name="c1l10_bad">Das ist nicht richtig. Schau dir auch die Legende an, um das Diagramm lesen zu können.</string>
+    <string name="c1l11_bad">Das ist nicht richtig. Schau dir auch die Legende an, um das Diagramm lesen zu können.</string>
 
-    <string name="c1l11_input">
+    <string name="c1l12_input">
         Wie du gerade gesehen hast, gibt es zwischen Tabellen mit einer n:m-Beziehung eine Relation, an der wiederum Attribute angehängt sind. \n\n
         Dies ist erforderlich, da man in einem in einer relationalen Datenbank eine n:m-Beziehung nur
         mit einer extra Tabelle realisieren kann, die natürlich auch zusätzliche Attribute habe kann. \n\n
         Diese "neue" Tabelle repräsentiert die Beziehung der verknüpften Tabellen und sie enthält alle
         Primärschlüssel der anderen Tabellen als Fremdschlüssel. Diese können in Kombination den Primärschlüssel bilden.
     </string>
-    <string name="c1l11_question">Sieh im ER-Diagramm nach und entscheide dann, welche Darstellung korrekt ist.</string>
-    <string name="c1l11_answer1">unterrichten (LehrkraftID, Stunden, FachID)</string>
-    <string name="c1l11_answer2">unterrichten(<u>↑LehrkraftID</u>, <u>↑FachID</u>)</string>
-    <string name="c1l11_answer3">unterrichten(<u>↑LehrkraftID</u>, Stunden, <u>↑FachID</u>)</string>
-    <string name="c1l11_good">Richtig! In einem Fall haben die Pfeile gefehlt und es gab keinen Primärschlüssel.
+    <string name="c1l12_question">Sieh im ER-Diagramm nach und entscheide dann, welche Darstellung korrekt ist.</string>
+    <string name="c1l12_answer1">unterrichten (LehrkraftID, Stunden, FachID)</string>
+    <string name="c1l12_answer2">unterrichten(<u>↑LehrkraftID</u>, <u>↑FachID</u>)</string>
+    <string name="c1l12_answer3">unterrichten(<u>↑LehrkraftID</u>, Stunden, <u>↑FachID</u>)</string>
+    <string name="c1l12_good">Richtig! In einem Fall haben die Pfeile gefehlt und es gab keinen Primärschlüssel.
         Im anderen Fall hat das Attribut "Stunden" gefehlt. \n\n
         Du kennst nun die Datenbank "Schule" schon recht gut. Im 2. Kapitel des Tutorials stellst du
         nun erste Anfragen an diese Datenbank.</string>
-    <string name="c1l11_bad">Diese Darstellung ist nicht korrekt. Schau nochmal im ER-Diagramm nach. </string>
+    <string name="c1l12_bad">Diese Darstellung ist nicht korrekt. Schau nochmal im ER-Diagramm nach. </string>
 
     <!-- cat 2 -->
     <string name="c2l1_input">

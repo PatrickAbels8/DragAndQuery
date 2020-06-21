@@ -20,7 +20,7 @@ import com.example.dragandquery.tutorial.Fragment_Content;
  * -
  */
 
-public class Fragment_LectionContent_0100 extends Fragment_Content {
+public class Fragment_LectionContent_0112 extends Fragment_Content {
 
     //coms
     private RelativeLayout rl_exercise;
@@ -31,27 +31,27 @@ public class Fragment_LectionContent_0100 extends Fragment_Content {
     private RadioButton rb3;
 
     //vars
-    private Fragment_LectionContent_0100_Listener listener;
+    private Fragment_LectionContent_0112_Listener listener;
     public Context context;
 
     //interface
-    public interface Fragment_LectionContent_0100_Listener{
+    public interface Fragment_LectionContent_0112_Listener{
         void onGo(boolean isCorrect);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_lectioncontent_0100, container, false);
+        View v = inflater.inflate(R.layout.fragment_lectioncontent_0112, container, false);
 
         //init coms
-        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0100);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0100_go);
+        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0112);
+        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0112_go);
         context = getContext();
-        rg = (RadioGroup) v.findViewById(R.id.rg_c1l0);
-        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l0);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l0);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l0);
+        rg = (RadioGroup) v.findViewById(R.id.rg_c1l12);
+        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l12);
+        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l12);
+        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l12);
 
         //exercise mode
         rg.clearCheck();
@@ -63,7 +63,7 @@ public class Fragment_LectionContent_0100 extends Fragment_Content {
     }
 
     public boolean verifyAnswer(){
-        return !rb1.isChecked() && !rb2.isChecked() && rb3.isChecked();
+        return !rb1.isChecked() && rb2.isChecked() && !rb3.isChecked();
     }
 
     public void pauseExercise(){
@@ -86,8 +86,8 @@ public class Fragment_LectionContent_0100 extends Fragment_Content {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof Fragment_LectionContent_0100_Listener){
-            listener = (Fragment_LectionContent_0100_Listener) context;
+        if(context instanceof Fragment_LectionContent_0112_Listener){
+            listener = (Fragment_LectionContent_0112_Listener) context;
         } else{
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
