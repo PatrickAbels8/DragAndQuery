@@ -190,7 +190,7 @@ public class Fragment_Query extends Fragment {
     }
 
     public String interpret(BlockView select){
-        if(select.getNode().getBlock() != BlockT.SELECT && select.getNode().getBlock() != BlockT.SELECTDISTINCT){
+        if(select.getNode().getBlock() != BlockT.SELECT && select.getNode().getBlock() != BlockT.DISTINCT){
             Toast.makeText(context, SELECT_MISSING_ERROR, Toast.LENGTH_SHORT).show();
             return null;
         }
