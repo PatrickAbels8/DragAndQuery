@@ -45,9 +45,10 @@ public class Fragment_Feedback extends Fragment {
     private Fragment_Feedback_Listener listener;
     public static final long TORIGHT_DURATION = 2000;
     public static final Map<String, Integer> goods = new HashMap<String, Integer>(){{
-        put("01_00", R.string.c1l0_good); put("01_01", R.string.c1l1_good); put("01_02", R.string.c1l2_good); put("01_03", R.string.c1l3_good);
-        put("01_04", R.string.c1l4_good); put("01_05", R.string.c1l5_good); put("01_06", R.string.c1l6_good); put("01_07", R.string.c1l7_good);
-        put("01_08", R.string.c1l8_good); put("01_09", R.string.c1l9_good); put("01_10", R.string.c1l10_good); put("01_11", R.string.c1l11_good);
+        put("01_01", R.string.c1l1_good); put("01_02", R.string.c1l2_good); put("01_03", R.string.c1l3_good);
+        put("01_04", R.string.c1l4_good); put("01_05", R.string.c1l5_good); put("01_06", R.string.c1l6_good);
+        put("01_07", R.string.c1l7_good); put("01_08", R.string.c1l8_good); put("01_09", R.string.c1l9_good);
+        put("01_10", R.string.c1l10_good); put("01_11", R.string.c1l11_good);put("01_12", R.string.c1l12_good);
         put("02_01", R.string.c2l1_good); put("02_02", R.string.c2l2_good); put("02_03", R.string.c2l3_good); put("02_04", R.string.c2l4_good);
         put("02_05", R.string.c2l5_good); put("02_06", R.string.c2l6_good); put("02_07", R.string.c2l7_good); put("02_08", R.string.c2l8_good);
         put("02_09", R.string.c2l9_good); put("02_10", R.string.c2l10_good); put("02_11", R.string.c2l11_good); put("02_12", R.string.c2l12_good);
@@ -59,9 +60,9 @@ public class Fragment_Feedback extends Fragment {
         put("04_09", R.string.c4l9_good);
     }};
     public static final Map<String, Integer> bads = new HashMap<String, Integer>(){{
-        put("01_00", R.string.c1l0_bad); put("01_01", R.string.c1l1_bad); put("01_02", R.string.c1l2_bad); put("01_03", R.string.c1l3_bad);
+        put("01_01", R.string.c1l1_bad); put("01_02", R.string.c1l2_bad); put("01_03", R.string.c1l3_bad);
         put("01_04", R.string.c1l4_bad); put("01_05", R.string.c1l5_bad); put("01_06", R.string.c1l6_bad); put("01_07", R.string.c1l7_bad);
-        put("01_08", R.string.c1l8_bad); put("01_09", R.string.c1l9_bad); put("01_10", R.string.c1l10_bad); put("01_11", R.string.c1l11_bad);
+        put("01_08", R.string.c1l8_bad); put("01_09", R.string.c1l9_bad); put("01_10", R.string.c1l10_bad); put("01_11", R.string.c1l11_bad);put("01_12", R.string.c1l12_bad);
         put("02_01", R.string.c2l1_bad); put("02_02", R.string.c2l2_bad); put("02_03", R.string.c2l3_bad); put("02_04", R.string.c2l4_bad);
         put("02_05", R.string.c2l5_bad); put("02_06", R.string.c2l6_bad); put("02_07", R.string.c2l7_bad); put("02_08", R.string.c2l8_bad);
         put("02_09", R.string.c2l9_bad); put("02_10", R.string.c2l10_bad); put("02_11", R.string.c2l11_bad); put("02_12", R.string.c2l12_bad);

@@ -202,9 +202,7 @@ public class Fragment_Query_Tut extends Fragment {
     public String getExText(String lec_id){
         scroller_img.setVisibility(View.INVISIBLE);
         String text = "";
-        if(lec_id.substring(0,5).equals("01_00")){
-            text = getString(R.string.c1l0_input);
-        }else if(lec_id.substring(0,5).equals("01_01")){
+        if(lec_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
         }else if(lec_id.substring(0,5).equals("01_02")){
             text = getString(R.string.c1l2_input);
@@ -226,6 +224,8 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c1l10_input);
         }else if(lec_id.substring(0,5).equals("01_11")){
             text = getString(R.string.c1l11_input);
+        }else if(lec_id.substring(0,5).equals("01_12")){
+            text = getString(R.string.c1l12_input);
         }else if(lec_id.substring(0,5).equals("02_01")){
             text = getString(R.string.c2l1_input);
         }else if(lec_id.substring(0,5).equals("02_02")){
