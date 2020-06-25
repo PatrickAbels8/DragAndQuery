@@ -99,6 +99,14 @@ public class Navigation extends AppCompatActivity
                 loadDataInt(getString(R.string.tutScore3_key), 30),
                 loadDataInt(getString(R.string.tutScore4_key), 40)
         };
+
+        //if key store has wrong length for easy/medium/hard just reset to right OO...oo
+        if (loadDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY).length() != Practices.DEFAULT_EASY.length())
+            saveData(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
+        if (loadDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM).length() != Practices.DEFAULT_MEDIUM.length())
+            saveData(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
+        if (loadDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD).length() != Practices.DEFAULT_HARD.length())
+            saveData(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
         tutorial_exp_avg = calcAvg(tutorial_exps);
 
 

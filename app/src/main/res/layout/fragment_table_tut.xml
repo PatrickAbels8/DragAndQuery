@@ -12,7 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_above="@id/raw_query"
+        android:layout_above="@id/ll_feedback_btns"
         app:layout_constraintBottom_toTopOf="@id/ll_feedback_btns"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -38,14 +38,6 @@
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/raw_query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/ll_feedback_btns"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_centerHorizontal="true"
-        android:text="SELECT * \n FROM table" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,6 +50,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
         android:id="@+id/ll_feedback_btns">
+
+
+        <TextView
+            android:id="@+id/raw_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_centerHorizontal="true"
+            android:text="SELECT * \n FROM table" />
 
         <Button
             android:id="@+id/btn_feedback_forth"

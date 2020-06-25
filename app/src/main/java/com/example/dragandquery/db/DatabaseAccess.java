@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseAccess {
-    public final static String DB_SCHOOL = "school";
-    public final static String DB_CAFETARIA = "cafetaria";
+    public final static String DB_SCHOOL = "School";
+    public final static String DB_CAFETARIA = "Cafetaria";
 
 
     private SQLiteOpenHelper openHelper;

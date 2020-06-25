@@ -7,8 +7,7 @@ import android.util.Log;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class DatabaseOpenHelperSchool extends SQLiteAssetHelper {
-    private static final String DATABASE_NAME = "Schule3.db";
-    private static final String DATABASE = "Schule3";
+    private static final String DATABASE_NAME = "Schule.db";
     private static final int DATABASE_VERSION = 1;
 
     public DatabaseOpenHelperSchool(Context context){

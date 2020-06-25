@@ -2,6 +2,7 @@ package com.example.dragandquery.tutorial;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,9 +126,9 @@ public class Fragment_Feedback extends Fragment {
         rl_feedback.setVisibility(View.VISIBLE);
         rl_feedback.startAnimation(fromright);
         if(isCorrect){
-            startGoodFeedback(getResources().getString(goods.get(lecid)));
+            startGoodFeedback(getResources().getString(goods.get(lecid.substring(0, 5))));
         }else{
-            startBadFeedback(getResources().getString(bads.get(lecid)));
+            startBadFeedback(getResources().getString(bads.get(lecid.substring(0, 5))));
         }
     }
 

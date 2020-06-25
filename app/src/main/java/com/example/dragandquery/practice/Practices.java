@@ -39,7 +39,7 @@ public class Practices extends AppCompatActivity {
     LinearLayout layout;
 
     //vars
-    private int complexity; //1 easy:6, 2 medium:8, 3 hard:12
+    private int complexity; //1 easy:10, 2 medium:9, 3 hard:8
     public static final String EX_ID = "com.example.dragandquery.practice.Practices.EX_ID";
     private List<Button> exercises;
     private String dones; //"010111001010"

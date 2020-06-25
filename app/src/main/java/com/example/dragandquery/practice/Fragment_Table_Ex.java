@@ -179,6 +179,7 @@ public class Fragment_Table_Ex extends Fragment {
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context, DatabaseAccess.DB_CAFETARIA);
         databaseAccess.open();
+
         List<String[]> correctResponse = databaseAccess.query(correctQuery);
         databaseAccess.close();
 

@@ -5,8 +5,7 @@ import android.content.Context;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class DatabaseOpenHelperCafetaria extends SQLiteAssetHelper {
-    private static final String DATABASE_NAME = "Cafetaria0.db";
-    private static final String DATABASE = "Cafetaria0";
+    private static final String DATABASE_NAME = "Cafetaria.db";
     private static final int DATABASE_VERSION = 1;
 
     public DatabaseOpenHelperCafetaria(Context context){

@@ -315,6 +315,7 @@ public class Fragment_Query_Ex extends Fragment {
             databaseAccess.close();
             return response;
         }catch(Exception e){
+            Log.d("database", e.toString());
             return null;
         }
     }
