@@ -277,9 +277,9 @@
         Außerdem sollte keine Information doppelt gespeichert werden, sondern lieber mehrere Tabellen miteinander verknüpft werden.
     </string>
     <string name="c1l6_question">Welche Tabellenstruktur erfüllt die Bedingungen und enthält Name, Personalnummer, Adresse und Fächer?</string>
-    <string name="c1l6_answer1">tba</string>
-    <string name="c1l6_answer2">tba</string>
-    <string name="c1l6_answer3">tba</string>
+    <string name="c1l6_answer1">Oben</string>
+    <string name="c1l6_answer2">Mitte</string>
+    <string name="c1l6_answer3">Unten</string>
     <string name="c1l6_good">Richtig!! Bei den beiden falschen Tabellen waren die Informationen nicht atomar
         (Straße und Hausnummer in einer Spalte bzw. haben die Informationen über die unterrichteten Fächer gefehlt).</string>
     <string name="c1l6_bad">Hmmm… Schau dir die Tabellen nochmal genau an.</string>
@@ -306,7 +306,7 @@
         Meistens handelt es sich um irgendeine Art von Nummer.\n\n
         In der Darstellung einer Datenbank erkennt man Schlüsselattribute daran, dass sie unterstrichen sind.
     </string>
-    <string name="c1l8_question">Was eignet sich gut als Schlüssel?</string>
+    <string name="c1l8_question">Was eignet sich nicht als Schlüssel?</string>
     <string name="c1l8_answer1">Nachname</string>
     <string name="c1l8_answer2">Personalnummer</string>
     <string name="c1l8_answer3">Kürzel</string>
