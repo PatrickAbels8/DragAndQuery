@@ -391,133 +391,171 @@
     <string name="c1l12_bad">Diese Darstellung ist nicht korrekt. Schau nochmal im ER-Diagramm nach. </string>
 
     <!-- cat 2 -->
-    <string name="c2l1_input">
-        Manchmal willst du nicht irgendwelche Datensätze anzeigen lassen, sondern nur solche, die eine bestimmte Bedingung erfüllen.\n\n
-        Diese Bedingung kannst du mit dem WHERE-Befehl stellen.\n\n
-        Versuche die Vornamen alle Schüler*innen (Tabelle Schüler) auszugeben, die als Wohnort Mainz eingetragen haben. Hänge dazu einen Vergleichsblock (&lt; o Ä) an den WHERE-Block und wähle im Dropdown-Menü “=” aus.\n\n
-        Nutze außerdem einen Attribut-Block.
+    <string name="c2l1_input">Um zu sehen was in der Datenbank gespeichert ist stellt man Anfragen.
+        Damit der Computer diese verarbeiten kann nutzen wir Befehle in SQL (Structured Query Language).\n\n
+        Jede SQL-Abfrage enthält die zwei Hauptbefehle <i>SELECT</i> (engl. auswählen) und <i>FROM</i>
+        (engl. von, aus). Mit SELECT gibt man an, welche Spalten man ausgegeben haben möchte; mit
+        FROM gibt man die Tabelle an, aus der die Spalten stammen.\n\n
+        Du siehst gleich eine einfache SQL-Anfrage. Versuche sie nachzubauen und die Vorlage
+        in den Müll zu schieben. Danach ziehe deine eigene Anfrage auf das grüne Dreieck am oberen
+        Bildschirmrand, um sie abzuschicken.\n\n
+        (<b>Tipp</b>: Der graue Block ist unser Alleskönner. Hier kannst du mit einem Tippen auf den 
+        Block etwas hineinschreiben. Die wichtigsten SQL-Befehle findest du alle bereits vorformuliert
+        in den unterschiedlichen Kategorien.)
     </string>
     <string name="c2l1_good">Gut</string>
     <string name="c2l1_bad">Ungut</string>
 
     <string name="c2l2_input">
-        Du kannst dir auch alle anderen Wohnorte ausgeben lassen außer Mainz, indem du im Vergleichsblockl &#8800; (das schicke ungleich) auswählst.
+        Das Ergebnis eben war ganz schön groß, weil * für alles steht, was in der Tabelle gespeichert
+        ist. Versuche jetzt, dir nur die Spalten <b>Vorname</b> und <b>Nachname</b> anzeigen zu lassen.
     </string>
     <string name="c2l2_good">Gut</string>
     <string name="c2l2_bad">Ungut</string>
 
     <string name="c2l3_input">
-        In der Tabelle Lehrkräfte wird auch für jede Lehrkraft die ungefähre Fahrtzeit zur Schule in Minuten gespeichert.\n\n
-        Wähle im Vergleichsblock &gt; (alle 4) aus, um dir die Kürzel aller Lehrkräfte anzeigen zu lassen, die weniger als 30 Minuten zur Schule brauchen.
+        In dieser Schule sind ganz schön viele Schüler. Versuche mit dem <i>LIMIT</i> Befehl, der sich
+        in der Kategorie <i>KEY</i> befindet, dir nur die ersten <b>10 Vornamen</b> anzeigen zu lassen.
     </string>
     <string name="c2l3_good">Gut</string>
     <string name="c2l3_bad">Ungut</string>
 
     <string name="c2l4_input">
-        Du hast dir eben aus der Tabelle Lehrer die Kürzel der Lehrenden anzeigen lassen, die eine Fahrtzeit von weniger als 30 Minuten zur Schule haben.\n\n
-        Sinnvoller wäre es jedoch, die Ausgabe direkt zu sortieren, sodass man sieht welche Lehrkraft am schnellsten da sein kann.\n\n
-        Das erreichst du mit dem Befehl ORDER BY. Gib nach ORDER BY an, nach welchem Attribut die Liste sortiert werden soll.\n\n
-        Mit Doppeltippen auf den Pfeil wechselst du die Sortierung zwischen aufsteigend und absteigend.
+        Meistens willst du nicht alle Datensätze anzeigen lassen, sondern nur solche, die eine bestimmte
+        Bedingung erfüllen. Diese Bedingung kannst du mit dem <i>WHERE</i>-Befehl stellen. \n\n
+        Versuche die <b>Vornamen</b> alle Schüler*innen (Tabelle <b>Schüler</b>) auszugeben, die
+        als <b>Ort Mainz</b> eingetragen haben. Hänge dazu den “=”-Block aus der Kategorie “<i>LOGIK</i>”
+        an den WHERE-Block, nutze dann den grauen Block. Der Vergleichstext (also “Mainz“) gehört in
+        obere Anführungszeichen: ““.
     </string>
     <string name="c2l4_good">Gut</string>
     <string name="c2l4_bad">Ungut</string>
 
     <string name="c2l5_input">
-        Wenn du dir alle Schüler*innen der Mittelstufe ausgeben lassen willst, so geht das, indem du den logischen Block BETWEEN auswählst, hier wird &#8805; und &gt;= kombiniert.\n\n
-        Lasse dir die Schüler_ID von allen Schüler*innen aus der Tabelle Schüler in der Mittelstufe (Klassenstufe 7 bis 10) ausgeben.
+        Du kannst dir auch alle <b>Orte</b> aus der Tabelle <b>Schüler</b> ausgeben lassen, außer Mainz,
+        indem du statt des Gleichheitszeichens “≠” aus der Kategorie <i>LOGIK</i> auswählst.\n\n
+        <b>Tipp</b>: Denke an die Anführungszeichen!
     </string>
     <string name="c2l5_good">Gut</string>
     <string name="c2l5_bad">Ungut</string>
 
     <string name="c2l6_input">
-        Alle Schüler*innen, die als Wohnort Budenheim oder Nackenheim haben, fahren mit dem Zug nach Mainz.\n\n
-        Du kannst dir alle Schüler_IDs anzeigen lassen, indem du die logischen Blöcke “=” und “OR” verwendest.\n\n
-        (Ein Datensatz wird angezeigt, wenn mindestens eine der beiden Bedingungen erfüllt ist. )
+        In der Tabelle <b>Lehrkräfte</b> wird auch für fast jede Lehrkraft die ungefähre <b>Fahrzeit</b>
+        zur Schule in Minuten gespeichert. Wähle in der Kategorie <i>LOGIK</i> den “&lt;”-Block, um dir
+        die <b>Kürzel</b> aller Lehrkräfte anzeigen zu lassen, die weniger als 30 Minuten zur Schule brauchen.\n\n
+        <b>Tipp</b>: Da die Fahrzeit kein Text sondern nur eine Zahl ist, brauchst du hier keine Anführungszeichen.
     </string>
     <string name="c2l6_good">Gut</string>
     <string name="c2l6_bad">Ungut</string>
 
     <string name="c2l7_input">
-        Frau Müller hat den Vornamen ihres Kollegen Meier vergessen und weiß auch sein Kürzel nicht.\n\n
-        Sie möchte ihm aber eine Geburtstagskarte schreiben. Sie weiß, dass er in Mainz wohnt.\n\n
-        Versuche den Vornamen mit Hilfe des Nachnamens und des Wohnortes herauszufinden, indem du die logischen Blöcke “=” und “AND” verwendest.\n\n
-        (Ein Datensatz wird angezeigt, wenn beide Bedingungen erfüllt sind. )
+        Du hast dir eben aus der Tabelle <b>Lehrkraft</b> die <b>Kürzel</b> der Lehrkräfte anzeigen
+        lassen, die eine <b>Fahrzeit</b> von weniger als 30 Minuten zur Schule haben.\n
+        Sinnvoller wäre es jedoch, die Ausgabe direkt zu sortieren, sodass man sieht welche Lehrkraft
+        <b>am schnellsten</b> da sein kann. Das erreichst du mit dem Befehl <i>ORDER BY</i>. Gib nach
+        ORDER BY an, nach welchem Attribut die Liste sortiert werden soll. \n\n
+        (<b>Tipp</b>: Der ORDER BY-Befehl sortiert standardmäßig aufsteigend. Wenn du absteigend
+        sortieren möchtest, benutze den grauen Block, hänge ihn an das zu sortierende Attribut und
+        tippe <b>DSC</b> in den grauen Block.)
     </string>
     <string name="c2l7_good">Gut</string>
     <string name="c2l7_bad">Ungut</string>
 
     <string name="c2l8_input">
-        Die Schulleitung möchte wissen, welche Schüler*innen nicht in Mainz wohnen.\n\n
-        Anstatt alle anderen Wohnorte abzufragen kann man auch den NOT Befehl vor die Bedingung stellen.\n\n
-        Dann werden die Datensätze ausgegeben, die die Bedingung nicht erfüllen. Gib die SchülerID, sowie vorname, Nachname und WOhnort aller Schüler*innen aus, die nicht in Mainz wohnen.
+        Alle Schüler*innen, die als <b>Ort</b> Budenheim oder Nackenheim haben, fahren mit dem Zug
+        nach Mainz. Du kannst dir alle <b>SchülerID</b>s dieser Schüler*innen anzeigen lassen, indem
+        du die logischen Blöcke “=” und “OR” verwendest. \n\n
+        (Ein Datensatz wird angezeigt, wenn mindestens eine der beiden Bedingungen erfüllt ist.)
     </string>
     <string name="c2l8_good">Gut</string>
     <string name="c2l8_bad">Ungut</string>
 
     <string name="c2l9_input">
-        In der Tabelle Raum ist ein Attribut Beamer, dessen Attributwerte true (im Raum ist ein Beamer) oder false (im Raum ist kein Beamer) sein können.\n\n
-        Verwende nach dem WHERE Befehl den logischen Block “=”, um dir die Raumnummer jedes Raums, in dem ein Beamer ist ausgeben zu lassen.
+        Frau Müller hat den <b>Vornamen</b> ihres Kollegen Meier vergessen und weiß auch sein Kürzel
+        nicht. Sie möchte ihm aber eine Geburtstagskarte schreiben. Sie weiß, dass er in Mainz wohnt. \n\n
+        Versuche den <b>Vornamen</b> mit Hilfe des <b>Nachnamens</b> und des <b>Ortes</b> herauszufinden,
+        indem du die logischen Blöcke “=” und “AND” verwendest.\n\n
+        (Ein Datensatz wird angezeigt, wenn beide Bedingungen erfüllt sind.)
     </string>
     <string name="c2l9_good">Gut</string>
     <string name="c2l9_bad">Ungut</string>
 
     <string name="c2l10_input">
-        In kleinen Räumen (weniger als 20 Plätze) werden keine Beamer eingebaut.\n\n
-        Um im Unterricht einen Film schauen zu können muss im Raum entweder ein Beamer vorhanden sein, oder weniger als 15 Plätze, damit alle Schüler*innen Blick auf einen Laptop haben können.\n\n
-        Du kannst die Raumnummern alle Räume in der Tabelle Raum finden, die genau eine der Bedingungen erfüllen, indem du den logischen Block XOR (entweder oder) verwendest
+        Die Schulleitung möchte wissen, welche Schüler*innen nicht in Mainz wohnen. Anstatt alle anderen
+        Wohnorte abzufragen kann man auch den <i>NOT</i> Befehl vor die Bedingung stellen. Dann werden
+        die Datensätze ausgegeben, die die Bedingung nicht erfüllen. \n\n
+        Gib die <b>SchülerID</b>, sowie <b>Vorname, Nachname</b> und <b>Ort</b> aller Schüler*innen
+        aus, die nicht in Mainz wohnen.\n\n
+        <b>Tipp</b>: Denke auch hier an die Anführungszeichen ““
     </string>
     <string name="c2l10_good">Gut</string>
     <string name="c2l10_bad">Ungut</string>
 
     <string name="c2l11_input">
-        Für die Lehrkräfte aus den Ortschaften süd-östlich von Mainz würde sich eine Fahrgemeinschaft lohnen.\n\n
-        Du kannst viele OR Verknüpfungen mit dem logischen Baustein IN vermeiden. Wählst du nach dem WHERE-Befehl IN aus, so kannst du auflisten, zu was dein gesuchter Wert gleich sein darf.\n\n
-        Versuche so alle Nachnamen der Lehrkräfte in der Tabelle Lehrer aufzulisten, deren Wohnort Mommenheim, Lörzweiler, Harxheim oder Gau-Bischofsheim ist.
+        In der Tabelle <b>Raum</b> ist ein Attribut <b>Beamer</b>, dessen Attributwert 1 (also <b>wahr</b>
+        = im Raum ist ein Beamer) oder 0 (also <b>falsch</b> = im Raum ist kein Beamer) sein kann. \n\n
+        Verwende nach dem <i>WHERE</i>-Befehl den “=”-Block aus der Kategorie <i>LOGIK</i>, um dir
+        die <b>Raumnummer</b> jedes Raums, in dem ein Beamer ist ausgeben zu lassen.
     </string>
     <string name="c2l11_good">Gut</string>
     <string name="c2l11_bad">Ungut</string>
 
     <string name="c2l12_input">
-        Manchmal weiß man nicht genau, wie ein Eintrag in der Datenbank geschrieben wird, oder wie eine ID lautet.\n\n
-        Kennt man nur einige Teile, so kann man im Baustein LIKE einzelne Zeichen durch _ und beliebig viele Zeichen durch % ersetzen.\n\n
-        Suche jetzt alle IDs von Schüler*innen, die 6 an der zweiten Stelle und 0 an der letzten Stelle haben.
+        Für die Lehrkräfte aus den Ortschaften süd-östlich von Mainz würde sich eine Fahrgemeinschaft
+        lohnen. Du kannst viele OR Verknüpfungen mit dem logischen Baustein <i>IN</i> vermeiden. \n\n
+        Wählst du nach dem WHERE-Befehl IN aus, so kannst du auflisten, zu was dein gesuchter Wert
+        gleich sein darf. \n\n
+        Versuche so alle <b>Nachnamen</b> der Lehrkräfte in der Tabelle <b>Lehrkraft</b> aufzulisten,
+        deren <b>Ort “Mommenheim“, “Lörzweiler“, “Harxheim“</b> oder <b>“Gau-Bischofsheim“</b> ist.
     </string>
     <string name="c2l12_good">Gut</string>
     <string name="c2l12_bad">Ungut</string>
 
     <string name="c2l13_input">
-        Es interessiert die Schulleitung, aus welchen Ortschaften die Lehrkräfte an der Schule kommen.\n\n
-        Lässt sie sich alle Lehrkräfte mit WOhnort anzeigen, doppeln sich aber viele Orte. Um das zu verhindern gibt es den Befehl DISTINCT.\n\n
-        Wird SELECT DISTINCT verwendet, wird jeder Attributwert nur höchstens ein mal angezeigt.\n\n
-        Lasse jetzt die Wohnorte der Lehrkräfte anzeigen.
+        Manchmal weiß man nicht genau, wie ein Eintrag in der Datenbank geschrieben wird, oder wie
+        eine ID lautet. Kennt man nur einige Teile, so kann man im Baustein im Baustein, der auf den
+        <i>LIKE</i>-Baustein folgt, einzelne Zeichen durch _ und beliebig viele Zeichen durch % ersetzen.
+        Setze den folgenden Baustein zusätzlich in Anführungszeichen.\n\n
+        <b>Beispiel</b>: Die Anfrage: SELECT Vorname FROM Schüler WHERE Vorname LIKE “A%“ liefert alle
+        Vornamen, die mit A anfangen.\n\n
+        Die Anfrage: SELECT Nachname FROM Schüler WHERE PLZ LIKE “_5555“ liefert alle Nachnamen von
+        Schüler*innen, die eine PLZ haben, bei der die 1. Stelle egal ist und die dann auf „5555“ endet.\n\n
+        Suche jetzt alle <b>IDs</b> von Schüler*innen, die <b>6</b> an der <b>zweiten Stelle</b> und
+        <b>0</b> an der <b>letzten Stelle</b> haben.
     </string>
     <string name="c2l13_good">Gut</string>
     <string name="c2l13_bad">Ungut</string>
 
     <string name="c2l14_input">
-        Wir haben in unserer Tabelle Lehrkraft leider nur die durchschnittliche Anfahrtszeit pro Lehrkraft.\n\n
-        Wir brauchen nun für die Pendlerpauschale auch die ungefähre Anzahl der Kilometer, die jede Lehrkraft zurücklegt.\n\n
-        Dafür gehen wir davon aus, dass die Lehrkräfte mit einer durchschnittlichen Geschwindigkeit von 50 km/h fahren.\n\n
-        Benutze die Grundrechenarten (+,-,*,/) um im Attribut-Block mit Hilfe der Fahrtzeit die Kilometeranzahl auszurechnen.\n\n
-        Gib zusätzlich das Kürzel der Lehrkraft aus. (Hinweis: Die Fahrtzeit ist in Minuten gegeben!)
+        Es interessiert die Schulleitung, aus welchen Ortschaften die Lehrkräfte an der Schule kommen.
+        Lässt sie sich alle Lehrkräfte mit Wohnort anzeigen, doppeln sich aber viele Orte. \n\n
+        Um das zu verhindern gibt es den Befehl <i>DISTINCT</i>. Wird <i>SELECT DISTINCT</i> verwendet,
+        wird jeder Attributwert nur höchstens ein mal angezeigt.\n\n
+        Lasse jetzt die <b>Wohnorte</b> der Lehrkräfte anzeigen.
     </string>
     <string name="c2l14_good">Gut</string>
     <string name="c2l14_bad">Ungut</string>
 
     <string name="c2l15_input">
-        Wie du gerade bemerkt hast, ist der Spaltenname deiner Ergebnistabelle ziemlich unschön.\n\n
-        Du kannst Berechnungen oder Attribute, die du mit dem SELECT-BEFEHL auswählst, umbenennen, indem du den AS-Befehl benutzt und danach den neuen Namen angibst, der später in deiner Ergebnistabelle angezeigt werden soll.\n\n
-        Führe die Berechnung für die Kilometeranzahl nochmal aus, benenne das Ergebnis jedoch um in “Strecke”.\n\n
-        Gib zusätzlich das Kürzel an und sortiere deine Tabelle aufsteigend nach Strecke.
+        Wir haben in unserer Tabelle <b>Lehrkraft</b> leider nur die durchschnittliche Anfahrtszeit
+        pro Lehrkraft. Wir brauchen nun für die Pendlerpauschale auch die ungefähre Anzahl der Kilometer,
+        die jede Lehrkraft zurücklegt. Dafür gehen wir davon aus, dass die Lehrkräfte mit einer
+        durchschnittlichen Geschwindigkeit von 50 km/h fahren.\n\n
+        Benutze die Grundrechenarten (+,-,*,/) um im Attribut-Block mit Hilfe der <b>Fahrtzeit</b>
+        die <b>Kilometeranzahl</b> auszurechnen. Gib zusätzlich das <b>Kürzel</b> der Lehrkraft aus. \n\n
+        (<b>Hinweis</b>: Die Fahrtzeit ist in Minuten gegeben!)
     </string>
     <string name="c2l15_good">Gut</string>
     <string name="c2l15_bad">Ungut</string>
 
     <string name="c2l16_input">
         Wie du gerade bemerkt hast, ist der Spaltenname deiner Ergebnistabelle ziemlich unschön.\n\n
-        Du kannst Berechnungen oder Attribute, die du mit dem SELECT-BEFEHL auswählst, umbenennen, indem du den AS-Befehl benutzt und danach den neuen Namen angibst, der später in deiner Ergebnistabelle angezeigt werden soll.\n\n
-        Führe die Berechnung für die Kilometeranzahl nochmal aus, benenne das Ergebnis jedoch um in “Strecke”.\n\n
-        Gib zusätzlich das Kürzel an und sortiere deine Tabelle aufsteigend nach Strecke.
+        Du kannst Berechnungen oder Attribute, die du mit dem SELECT-BEFEHL auswählst, umbenennen,
+        indem du den <i>AS</i>-Befehl benutzt und danach den neuen Namen angibst, der später in deiner
+        Ergebnistabelle angezeigt werden soll.\n\n
+        Führe die Berechnung für die Kilometeranzahl nochmal aus, benenne das Ergebnis jedoch um in
+        “<b>Streck</b>e”.\n
+        Gib zusätzlich das <b>Kürzel</b> an und <b>sortiere</b> deine Tabelle <b>aufsteigend</b> nach <b>Strecke</b>.
     </string>
     <string name="c2l16_good">Gut</string>
     <string name="c2l16_bad">Ungut</string>
