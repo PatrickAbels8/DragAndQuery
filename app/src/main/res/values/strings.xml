@@ -563,24 +563,26 @@
     <!-- cat 3 -->
 
     <string name="c3l1_input">
-        Mit Aggregatfunktionen können numerische Daten ausgewertet werden.\n\n
-        Jede Aggregatfunktion wird auf ein Attribut einer Tabelle angewendet und liefert als Ergebnis einen Zahlenwert zurück.\n\n
-        Die Blöcke für die Aggregatfunktionen findest du bei den logischen Blöcken.
+        Mit Aggregatfunktionen können Daten numerisch ausgewertet werden. Jede Aggregatfunktion wird
+        auf ein Attribut einer Tabelle angewendet und liefert als Ergebnis einen Zahlenwert zurück. \n\n
+        Die Blöcke für die Aggregatfunktionen findest du unter „AGG“.
     </string>
     <string name="c3l1_question">Welche Aussagen über Aggregatfunktionen stimmt nicht?</string>
     <string name="c3l1_answer1">Aggregatfunktionen liefern immer einen Zahlwert.</string>
     <string name="c3l1_answer2">Aggregatfunktionen können nur auf Zahlwerte angewendet werden.</string>
     <string name="c3l1_answer3">Aggregatfunktionen dienen zur Datenauswertung.</string>
-    <string name="c3l1_good">Stimmt. Aggregatfunktionen haben zwar als Ergebnis immer einen Zahlenwert, können aber auf beliebige Attribute angewendet werden. \n\n
+    <string name="c3l1_good">Stimmt. Aggregatfunktionen haben zwar als Ergebnis immer einen Zahlenwert,
+        können aber auf beliebige Attribute angewendet werden. \n
         Beispielsweise kann man alle Nachnamen zählen.
     </string>
     <string name="c3l1_bad">Ungut</string>
 
     <string name="c3l2_input">
-        Ein Beispiel für eine Aggregatfunktion ist <b>count</b>(Attribut).\n\n
-        Diese zählt die Einträge einer Spalte, die von NULL verschieden sind und gibt die Anzahl aus.\n\n
-        Mit <b>count</b>(*) zählt man alle Datensätze.\n\n
-        Will man nur die <b>verschiedenen</b> Werte einer Spalte zählen, so benutzt man <b>count</b>(distinct Spaltenname).\n\n
+        Ein Beispiel für eine Aggregatfunktion ist <b>count</b>(Attribut). Diese zählt die Einträge
+        einer Spalte, die von NULL verschieden sind und gibt die Anzahl aus.\n\n
+        Mit <b>count</b>(*) zählt man alle Datensätze.\n
+        Will man nur die <b>verschiedenen</b> Werte einer Spalte zählen, so benutzt man <b>count</b>
+        (distinct Spaltenname).\n\n
         Aggregatfunktionen werden, wie Rechenoperatoren, nach dem SELECT Befehl verwendet.\n\n
         Versuche anhand der <b>Kürzel</b> die <b>Lehrkräfte</b> der Schule zu <b>zählen</b>.
     </string>
@@ -588,35 +590,43 @@
     <string name="c3l2_bad">Ungut</string>
 
     <string name="c3l3_input">
-        Die Funktion IFNULL(Attribut, "Alternative") prüft ob der Attributwert NULL ist und ersetzt ihn für den Ausdruck durch die (in Anführungszeichen gesetzte) Alternative.\n\n
-        Besonders bei der Verwendung von Aggregatfunktionen kann dies nützlich sein, da mit NULL zum Beispiel nicht gerechnet werden kann.\n\n
-        Lasse dir die IDs und Fahrtzeiten aller Lehrkräfte ausgeben, die weniger als 10 Minuten Fahrtzeit haben.\n\n
-        Ersetze unbekannte Fahrtzeiten (NULL) durch -1.
+        Die Funktion IFNULL(Attribut, "Alternative") prüft ob der Attributwert NULL ist und ersetzt
+        ihn für den Ausdruck durch die (in Anführungszeichen gesetzte) Alternative.\n\n
+        Besonders bei der Verwendung von Aggregatfunktionen kann dies nützlich sein, da mit NULL zum
+        Beispiel nicht gerechnet werden kann.\n\n
+        Lasse dir die IDs und Fahrtzeiten aller Lehrkräfte ausgeben, die weniger als 10 Minuten
+        Fahrtzeit haben. Ersetze unbekannte Fahrtzeiten (NULL) durch -1.
     </string>
     <string name="c3l3_good">Gut</string>
     <string name="c3l3_bad">Ungut</string>
 
     <string name="c3l4_input">
-        Um die Lehrkräfte dazu zu bringen mehr Fahrgemeinschaften zu bilden, will die Schulleitung die gesamt Fahrtzeit aller Lehrkräfte pro Tag wissen.\n\n
-        Dazu muss die einfache <b>Fahrzeit</b> für jede <b>Lehrkraft</b> zunächst verdoppelt und außerdem mit Hilfe der <b>sum</b>() Funktion aufsummiert werden.\n\n
+        Um die Lehrkräfte dazu zu bringen mehr Fahrgemeinschaften zu bilden, will die Schulleitung
+        die gesamt Fahrtzeit aller Lehrkräfte pro Tag wissen.\n\n
+        Dazu muss die einfache <b>Fahrzeit</b> für jede <b>Lehrkraft</b> zunächst verdoppelt und
+        außerdem mit Hilfe der <b>sum</b>() Funktion aufsummiert werden.\n\n
         Wie lange fahren die Lehrkräfte täglich Auto?
     </string>
     <string name="c3l4_good">Gut</string>
     <string name="c3l4_bad">Ungut</string>
 
     <string name="c3l5_input">
-        Damit alle Schüler*innen in den Schulbus passen, will das Busunternehmen wissen, wie viele Schüler*innen in welchem Ort wohnen.\n\n
-        Zunächst müssen die Schüler*innen in jedem Ort gezählt werden. Dazu musst du den GROUP BY-Befehl nutzen, er folgt in einer Anfrage auf den WHERE-Befehl.\n\n
-        Sobald man Datensätze gruppiert hat, kann man nur noch Aussagen über die Gruppen, nicht mehr über einzelne Datensätze machen.\n\n
-        Durch die Nutzung von GROUP BY können Attribute und Aggregatfunktionen im SELECT Befehl gemischt werden.\n\n
-        Lasse dir die <b>Orte</b> und die <b>Anzahl</b> der dort wohnenden <b>Schüler*innen</b> (zähle am besten die IDs) ausgeben. \n\n
-        Benenne die entsprechende Aggregatsfunktion mittels AS-Befehl in <b>Anzahl</b> um.
+        Damit alle Schüler*innen in den Schulbus passen, will das Busunternehmen wissen, wie viele
+        Schüler*innen in welchem Ort wohnen.\n\n
+        Zunächst müssen die Schüler*innen in jedem Ort gezählt werden. Dazu musst du den GROUP BY-Befehl
+        nutzen, er folgt in einer Anfrage auf den WHERE-Befehl.\n\n
+        Sobald man Datensätze gruppiert hat, kann man nur noch Aussagen über die Gruppen, nicht mehr
+        über einzelne Datensätze machen. Durch die Nutzung von GROUP BY können Attribute und
+        Aggregatfunktionen im SELECT Befehl gemischt werden.\n\n
+        Lasse dir die <b>Orte</b> und die <b>Anzahl</b> der dort wohnenden <b>Schüler*innen</b>
+        (zähle am besten die IDs) ausgeben. Benenne die entsprechende Aggregatsfunktion mittels
+        AS-Befehl in <b>Anzahl</b> um.
     </string>
     <string name="c3l5_good">Gut</string>
     <string name="c3l5_bad">Ungut</string>
 
     <string name="c3l6_input">
-        Für die Schulhomepage soll die ungefähre Größe der Klassenräume herausgefunden werden.\n\n
+        Für die Schulhomepage soll die ungefähre Größe der Klassenräume herausgefunden werden.
         Dazu interessiert uns der Durchschnitt der Sitzplätze pro Raum.\n\n
         Auch hierfür gibt es eine passende Aggregatfunktion: <b>avg</b>().\n\n
         Berechne mit <b>avg</b>()die durchschnittliche Anzahl <b>Plätze</b> pro <b>Raum</b>.
@@ -625,11 +635,13 @@
     <string name="c3l6_bad">Ungut</string>
 
     <string name="c3l7_input">
-        Um die Fahrtzeiten möglichst kurz zu halten wollen einige Lehrkräfte wissen, wer aus ihrem Ort die geringste Fahrtzeit hat.\n\n
-        Die betreffenden Lehrkräfte wohnen in <b>Ingelheim</b>, <b>Engelstadt</b> und <b>Oppenheim</b>.\n\n
-        Dazu kannst du die Aggregatfunktion <b>min</b>() nutzen.\n\n
-        Suche jetzt die Nachnamen der Lehrkräfte mit den <b>kürzesten Fahrtzeiten</b> und dem entsprechenden <b>Ort</b>.\n\n
-        Beschränke deine Anfrage mit Hilfe des <b>WHERE</b>-Befehls auf die drei genannten Orte.\n\n
+        Um die Fahrtzeiten möglichst kurz zu halten wollen einige Lehrkräfte wissen, wer aus ihrem
+        Ort die geringste Fahrtzeit hat. Die betreffenden Lehrkräfte wohnen in <b>Ingelheim</b>,
+        <b>Engelstadt</b> und <b>Oppenheim</b>.\n\n
+        Du kannst hier die Aggregatfunktion <b>min</b>() nutzen.\n\n
+        Suche jetzt die Nachnamen der Lehrkräfte mit den <b>kürzesten Fahrtzeiten</b> und dem entsprechenden
+        <b>Ort</b>.\n
+        Beschränke deine Anfrage mit Hilfe des <b>WHERE</b>-Befehls auf die drei genannten Orte.\n
         Vergiss nicht deine Ausgabe mit dem <b>GROUP BY</b>-Befehl zu gruppieren.
     </string>
     <string name="c3l7_good">Gut</string>
@@ -637,9 +649,12 @@
 
     <string name="c3l8_input">
         Die Schulleitung möchte wissen, welche Klassen mehr als 28 Schüler*innen haben.\n\n
-        Dazu müssen die Schüler*innen jeder Klasse gezählt werden und die Klasse nur dann ausgegeben, wenn die Summe größer als 28 ist.\n\n
-        Da sich die Bedingung auf das Ergebnis einer Aggregatfunktion bezieht, kann man keinen WHERE Befehl verwenden (WHERE bezieht sich immer auf einzelne Attribute).\n\n
-        Verwende stattdessen den HAVING-Befehl um zu prüfen welche Klassen groß genug sind, nutze GROUP BY um die Schüler*innen klassenweise zu zählen und gib die betreffenden <b>KlassenID</b>s aus.
+        Dazu müssen die Schüler*innen jeder Klasse gezählt werden und die Klasse nur dann ausgegeben,
+        wenn die Summe größer als 28 ist.\n\n
+        Da sich die Bedingung auf das Ergebnis einer Aggregatfunktion bezieht, kann man keinen WHERE
+        Befehl verwenden (WHERE bezieht sich immer auf einzelne Attribute).\n\n
+        Verwende stattdessen den HAVING-Befehl um zu prüfen welche Klassen groß genug sind, nutze
+        GROUP BY um die Schüler*innen klassenweise zu zählen und gib die betreffenden <b>KlassenID</b>s aus.
     </string>
     <string name="c3l8_good">Gut</string>
     <string name="c3l8_bad">Ungut</string>
