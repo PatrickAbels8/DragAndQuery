@@ -52,9 +52,39 @@ public enum BlockT {
     public int getCategory(){
         switch(this){
             case SELECT:
+            case FROM:
+            case GROUPBY:
+            case HAVING:
+            case LIMIT:
+            case LIKE:
+            case ORDERBY:
+            case WHERE:
             case DISTINCT:
                 return R.string.block_cat1;
+            case LEFT_OUTER_JOIN:
+            case RIGHT_OUTER_JOIN:
+            case FULL_OUTER_JOIN:
+            case ON:
+            case INNER_JOIN:
+            case AS:
+            case EMPTY:
+                return R.string.block_cat2;
+            case AND:
+            case OR:
+            case XOR:
+            case EQUAL:
+            case NEQUAL:
+            case GREATER:
+            case SMALLER:
+            case IN:
+            case ISNULL:
+            case NOT:
+                return R.string.block_cat3;
             case SUM:
+            case AVERAGE:
+            case MAX:
+            case MIN:
+            case COUNT:
                 return R.string.block_cat4;
         }
         return 0;
