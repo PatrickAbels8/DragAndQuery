@@ -98,6 +98,7 @@ public class Node {
             this.getBlock().getCategory()==R.string.block_cat4 && this.getParent().getBlock()==BlockT.EMPTY)
             s += ", ";
         if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4)
+            //this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.IN)
             s += "(";
         s += this.getValue();
         if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4)

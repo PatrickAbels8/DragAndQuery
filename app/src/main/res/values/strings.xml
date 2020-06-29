@@ -505,7 +505,7 @@
         lohnen. Du kannst viele OR Verknüpfungen mit dem logischen Baustein <i>IN</i> vermeiden. \n\n
         Wählst du nach dem WHERE-Befehl IN aus, so kannst du auflisten, zu was dein gesuchter Wert
         gleich sein darf. \n\n
-        Versuche so alle <b>Nachnamen</b> der Lehrkräfte in der Tabelle <b>Lehrkraft</b> aufzulisten,
+        Versuche so alle <b>Nachnamen und Orte</b> der Lehrkräfte in der Tabelle <b>Lehrkraft</b> aufzulisten,
         deren <b>Ort “Mommenheim“, “Lörzweiler“, “Harxheim“</b> oder <b>“Gau-Bischofsheim“</b> ist.
     </string>
     <string name="c2l12_good">Gut</string>
@@ -513,7 +513,7 @@
 
     <string name="c2l13_input">
         Manchmal weiß man nicht genau, wie ein Eintrag in der Datenbank geschrieben wird, oder wie
-        eine ID lautet. Kennt man nur einige Teile, so kann man im Baustein im Baustein, der auf den
+        eine ID lautet. Kennt man nur einige Teile, so kann man im Baustein, der auf den
         <i>LIKE</i>-Baustein folgt, einzelne Zeichen durch _ und beliebig viele Zeichen durch % ersetzen.
         Setze den folgenden Baustein zusätzlich in Anführungszeichen.\n\n
         <b>Beispiel</b>: Die Anfrage: SELECT Vorname FROM Schüler WHERE Vorname LIKE “A%“ liefert alle

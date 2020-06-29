@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/frag_lectioncontent_0111"
     android:visibility="invisible"
-    tools:visibility="visible"
-    android:background="@color/colorAccent">
+    tools:visibility="visible">
 
     <ImageView
         android:layout_width="80dp"

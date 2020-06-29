@@ -131,7 +131,7 @@ public enum BlockT {
             case ORDERBY:
                 return "ORDER BY";
             case DISTINCT:
-                return "SELECT DISTINCT";
+                return "DISTINCT";
             case COUNT:
                 return "COUNT";
             case AND:

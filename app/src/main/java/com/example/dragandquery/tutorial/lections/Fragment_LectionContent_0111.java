@@ -7,15 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.dragandquery.R;
+import com.example.dragandquery.db.DatabaseAccess;
 import com.example.dragandquery.tutorial.Fragment_Content;
+import com.github.chrisbanes.photoview.PhotoView;
 
 /***
  * -
@@ -30,12 +34,18 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
+
     private ImageView btn_db;
+    private LinearLayout db_view;
+    private PhotoView db_img;
+    private TextView title_school;
+    private TextView title_legend;
 
 
     //vars
     private Fragment_LectionContent_0111_Listener listener;
     public Context context;
+    private boolean db_open = false;
 
     //interface
     public interface Fragment_LectionContent_0111_Listener{
@@ -56,12 +66,23 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
         rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l11);
         rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l11);
 
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
+        db_view = v.findViewById(R.id.db_view);
+        db_img = v.findViewById(R.id.db_img);
+        title_school = v.findViewById(R.id.db_title_school);
+        title_legend = v.findViewById(R.id.db_title_legend);
+        hideDB();
+
 
         //exercise mode
         rg.clearCheck();
         btn_go.setOnClickListener((View view) -> {
             listener.onGo(verifyAnswer());
         });
+
+        btn_db.setOnClickListener(new Fragment_LectionContent_0111.MyDBClickListener());
+        title_school.setOnClickListener(new Fragment_LectionContent_0111.SchoolListener());
+        title_legend.setOnClickListener(new Fragment_LectionContent_0111.LegendListener());
 
         return v;
     }
@@ -102,5 +123,47 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    public class MyDBClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(db_open){
+                hideDB();
+            }else{
+                showDB();
+            }
+        }
+    }
+
+    public class SchoolListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_school.setBackground(getResources().getDrawable(R.drawable.border_white));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            db_img.setImageResource(R.drawable.er_school_colourful_background);
+        }
+    }
+
+    public class LegendListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_school.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_white));
+            db_img.setImageResource(R.drawable.er_legend);
+        }
+    }
+
+    public void showDB(){
+        db_view.setVisibility(View.VISIBLE);
+        db_open = true;
+    }
+
+    public void hideDB(){
+        db_view.setVisibility(View.GONE);
+        db_open = false;
     }
 }
