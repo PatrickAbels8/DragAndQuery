@@ -6,7 +6,27 @@
     android:layout_height="match_parent"
     android:id="@+id/frag_lectioncontent_0111"
     android:visibility="invisible"
-    tools:visibility="visible">
+    tools:visibility="visible"
+    android:background="@color/colorAccent">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/frag_db"
+        android:src="@drawable/ic_menu_dbview"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/db_view"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/er_school_colourful_background"
+        />
 
                 <TextView
                     android:layout_width="match_parent"

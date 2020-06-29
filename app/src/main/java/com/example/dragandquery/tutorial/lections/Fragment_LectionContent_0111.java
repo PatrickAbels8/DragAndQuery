@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -29,6 +30,8 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
+    private ImageView btn_db;
+
 
     //vars
     private Fragment_LectionContent_0111_Listener listener;
@@ -52,6 +55,7 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
         rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l11);
         rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l11);
         rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l11);
+        btn_db = (ImageView) v.findViewById(R.id.frag_db);
 
         //exercise mode
         rg.clearCheck();

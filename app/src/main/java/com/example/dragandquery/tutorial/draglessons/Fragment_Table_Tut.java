@@ -135,7 +135,8 @@ public class Fragment_Table_Tut extends Fragment {
         cl_table.setVisibility(View.VISIBLE);
         fillTable(response);
         cl_table.startAnimation(frombottom);
-        raw_query.setText(query.concat("\n Laufzeit: ").concat(Float.toString(runtime)).concat(" sec."));
+        //raw_query.setText(query.concat("\n Laufzeit: ").concat(Float.toString(runtime)).concat(" sec."));
+        raw_query.setText("Laufzeit: ".concat(Float.toString(runtime)).concat(" sec."));
         if(isCorrect)
             btn_forth.setVisibility(View.VISIBLE);
         else
@@ -183,7 +184,7 @@ public class Fragment_Table_Tut extends Fragment {
         for(int i=0; i<row.length; i++){
             TextView entry = new TextView(context);
             entry.setText(row[i]);
-            entry.setPadding(dp_to_int(2), 0, dp_to_int(2), 0);
+            entry.setPadding(dp_to_int(4), 0, dp_to_int(4), 0);
             entry.setTextColor(getResources().getColor(R.color.textcolor_white));
             //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
             newRow.addView(entry);

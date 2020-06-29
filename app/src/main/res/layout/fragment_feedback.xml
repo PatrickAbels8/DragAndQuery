@@ -23,10 +23,10 @@
 
         <TextView
             android:id="@+id/tv_feedback_msg"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/feedback_back"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textColor="@color/textcolor_white"
             android:fontFamily="@font/comfortaa"
             />

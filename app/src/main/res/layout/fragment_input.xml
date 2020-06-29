@@ -12,7 +12,7 @@
         android:id="@+id/bird_input"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/happy_berry"
         android:layout_alignParentRight="true"/>
 
