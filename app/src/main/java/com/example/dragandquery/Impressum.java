@@ -20,7 +20,7 @@ public class Impressum extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_impressum);
 
-        jgu_logo = (ImageView) findViewById(R.id.jgu_logo);
+        /*jgu_logo = (ImageView) findViewById(R.id.jgu_logo);
 
         jgu_logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +31,6 @@ public class Impressum extends AppCompatActivity {
                 i.setData(Uri.parse(url));
                 startActivity(i);
             }
-        });
+        });*/
     }
 }

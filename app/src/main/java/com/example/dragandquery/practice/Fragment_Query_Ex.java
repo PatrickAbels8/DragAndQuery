@@ -42,16 +42,18 @@ public class Fragment_Query_Ex extends Fragment {
     public static String SELECT_MISSING_ERROR;
     public static String SQL_ERROR;
 
-
     //coms
     private RelativeLayout rl_query;
     private ClearView btn_go;
     private ClearView btn_clear;
     private ImageView btn_db;
     private ImageView bird;
-    private PhotoView db_view;
+    private LinearLayout db_view;
     private LinearLayout exercise;
     private TextView exercise_text;
+    private PhotoView db_img;
+    private TextView title_cafetaria;
+    private TextView title_legend;
 
     //vars
     private Fragment_Query_Ex_Listener listener;
@@ -80,7 +82,7 @@ public class Fragment_Query_Ex extends Fragment {
         btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
         btn_db = (ImageView) v.findViewById(R.id.frag_db);
         bird = (ImageView) v.findViewById(R.id.ex_bird);
-        db_view = (PhotoView) v.findViewById(R.id.db_view);
+        db_view = (LinearLayout) v.findViewById(R.id.db_view);
         hideDB();
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
@@ -554,6 +556,26 @@ public class Fragment_Query_Ex extends Fragment {
                 showDB();
                 hideBird();
             }
+        }
+    }
+
+    public class CafetariaListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_white));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            db_img.setImageResource(R.drawable.er_cafetaria);
+        }
+    }
+
+    public class LegendListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_transparent));
+            title_legend.setBackground(getResources().getDrawable(R.drawable.border_white));
+            db_img.setImageResource(R.drawable.er_legend);
         }
     }
 
