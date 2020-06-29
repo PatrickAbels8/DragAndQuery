@@ -126,27 +126,6 @@
 
 
                         <TextView
-                            android:id="@+id/db_title_school"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/db_title_school"
-                            android:textColor="@color/textcolor_white"
-                            android:fontFamily="@font/comfortaa"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/db_title_cafetaria"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/db_title_cafetaria"
-                            android:textColor="@color/textcolor_white"
-                            android:fontFamily="@font/comfortaa"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="16dp"/>
-
-                        <TextView
                             android:id="@+id/db_title_legend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -156,6 +135,17 @@
                             android:textSize="16dp"
                             android:textStyle="bold"
                             android:layout_marginLeft="16dp"/>
+                        <TextView
+                            android:id="@+id/db_title_school"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/db_title_school"
+                            android:textColor="@color/textcolor_white"
+                            android:fontFamily="@font/comfortaa"
+                            android:textSize="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:textStyle="bold" />
+
                 </LinearLayout>
 
                 <com.github.chrisbanes.photoview.PhotoView
@@ -166,7 +156,7 @@
                     android:paddingBottom="8dp"
                     android:paddingRight="8dp"
                     android:paddingTop="8dp"
-                    android:src="@drawable/er_school_colourful_background"/>
+                    android:src="@drawable/er_school"/>
 
 
         </LinearLayout>

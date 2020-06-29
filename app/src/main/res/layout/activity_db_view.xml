@@ -8,6 +8,7 @@
     android:background="@color/mustard">
 
     <LinearLayout
+        android:id="@+id/titles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -74,7 +75,8 @@
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/db_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/titles"
         android:src="@drawable/er_school"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"/>
