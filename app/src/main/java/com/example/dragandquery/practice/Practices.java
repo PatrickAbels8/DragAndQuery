@@ -7,25 +7,19 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
-import android.widget.TextView;
 
 import com.example.dragandquery.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
