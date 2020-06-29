@@ -8,6 +8,19 @@
     android:background="@color/mustard"
     android:id="@+id/frag_query">
 
+        <TextView
+            android:id="@+id/tut_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_tools"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="SELECT * FROM Schüler"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="20dp"
+            android:visibility="invisible"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

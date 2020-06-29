@@ -396,8 +396,7 @@
         Jede SQL-Abfrage enthält die zwei Hauptbefehle <i>SELECT</i> (engl. auswählen) und <i>FROM</i>
         (engl. von, aus). Mit SELECT gibt man an, welche Spalten man ausgegeben haben möchte; mit
         FROM gibt man die Tabelle an, aus der die Spalten stammen.\n\n
-        Du siehst gleich eine einfache SQL-Anfrage. Versuche sie nachzubauen und die Vorlage
-        in den Müll zu schieben. Danach ziehe deine eigene Anfrage auf das grüne Dreieck am oberen
+        Du siehst gleich eine einfache SQL-Anfrage. Versuche sie nachzubauen und ziehe deine eigene Anfrage auf das grüne Dreieck am oberen
         Bildschirmrand, um sie abzuschicken.\n\n
         (<b>Tipp</b>: Der graue Block ist unser Alleskönner. Hier kannst du mit einem Tippen auf den 
         Block etwas hineinschreiben. Die wichtigsten SQL-Befehle findest du alle bereits vorformuliert
@@ -405,6 +404,7 @@
     </string>
     <string name="c2l1_good">Gut</string>
     <string name="c2l1_bad">Ungut</string>
+    <string name="c2l1_hint">SELECT * FROM Schüler</string>
 
     <string name="c2l2_input">
         Das Ergebnis eben war ganz schön groß, weil * für alles steht, was in der Tabelle gespeichert

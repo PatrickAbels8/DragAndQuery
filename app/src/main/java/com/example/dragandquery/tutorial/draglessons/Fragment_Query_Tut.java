@@ -58,12 +58,14 @@ public class Fragment_Query_Tut extends Fragment {
     private PhotoView db_img;
     private TextView title_school;
     private TextView title_legend;
+    private TextView hint;
 
     //vars
     private Fragment_Query_Tut_Listener listener;
     public Context context;
     private boolean ex_open = true;
     private boolean db_open = false;
+    private String lec_id;
 
     //interface
     public interface Fragment_Query_Tut_Listener{
@@ -93,6 +95,9 @@ public class Fragment_Query_Tut extends Fragment {
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
         acceptInput = (Button) v.findViewById(R.id.btn_input);
         scroller_img = (ImageView) v.findViewById(R.id.scroll_img);
+        hint = (TextView) v.findViewById(R.id.tut_hint);
+        hint.setVisibility(View.INVISIBLE);
+
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query_Tut.MyGoListener());
@@ -104,6 +109,15 @@ public class Fragment_Query_Tut extends Fragment {
 
         //set ex text
         exercise_text.setText(getExText(this.getArguments().getString(DragLesson.ID_KEY)));
+
+        //load lection id
+        lec_id = this.getArguments().getString(DragLesson.ID_KEY);
+
+        //special lections: 2.1
+        if(lec_id.substring(0, 5).equals("02_01")){
+            hint.setText(getString(R.string.c2l1_hint));
+            hint.setVisibility(View.VISIBLE);
+        }
 
         return v;
     }
