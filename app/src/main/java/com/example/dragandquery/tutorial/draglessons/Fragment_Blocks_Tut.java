@@ -170,6 +170,7 @@ public class Fragment_Blocks_Tut extends Fragment {
             blocks_of_categories[0].add(BlockT.DISTINCT.createView(context));
         else if(name.equals(BlockT.HAVING.getName()))
             blocks_of_categories[0].add(BlockT.HAVING.createView(context));
+
         else if(name.equals(BlockT.AS.getName())) //DB
             blocks_of_categories[1].add(BlockT.AS.createView(context));
         else if(name.equals(BlockT.INNER_JOIN.getName())) //DB
@@ -184,36 +185,38 @@ public class Fragment_Blocks_Tut extends Fragment {
             blocks_of_categories[1].add(BlockT.ON.createView(context));
 
         else if(name.equals(BlockT.AND.getName())) // Logic
-            blocks_of_categories[0].add(BlockT.AND.createView(context));//müsste hier nicht überall 2 in den eckigen Klammer stehen?
+            blocks_of_categories[2].add(BlockT.AND.createView(context));//müsste hier nicht überall 2 in den eckigen Klammer stehen?
         else if(name.equals(BlockT.NOT.getName()))
-            blocks_of_categories[0].add(BlockT.NOT.createView(context));
+            blocks_of_categories[2].add(BlockT.NOT.createView(context));
         else if(name.equals(BlockT.IN.getName()))
-            blocks_of_categories[0].add(BlockT.IN.createView(context));
+            blocks_of_categories[2].add(BlockT.IN.createView(context));
         else if(name.equals(BlockT.ISNULL.getName()))
-            blocks_of_categories[0].add(BlockT.ISNULL.createView(context));
+            blocks_of_categories[2].add(BlockT.ISNULL.createView(context));
         else if(name.equals(BlockT.LIKE.getName()))
-            blocks_of_categories[0].add(BlockT.LIKE.createView(context));
+            blocks_of_categories[2].add(BlockT.LIKE.createView(context));
         else if(name.equals(BlockT.GREATER.getName()))
-            blocks_of_categories[0].add(BlockT.GREATER.createView(context));
+            blocks_of_categories[2].add(BlockT.GREATER.createView(context));
+        else if(name.equals(BlockT.SMALLER.getName()))
+            blocks_of_categories[2].add(BlockT.SMALLER.createView(context));
         else if(name.equals(BlockT.EQUAL.getName()))
-            blocks_of_categories[0].add(BlockT.EQUAL.createView(context));
+            blocks_of_categories[2].add(BlockT.EQUAL.createView(context));
         else if(name.equals(BlockT.NEQUAL.getName()))
-            blocks_of_categories[0].add(BlockT.NEQUAL.createView(context));
+            blocks_of_categories[2].add(BlockT.NEQUAL.createView(context));
         else if(name.equals(BlockT.OR.getName()))
-            blocks_of_categories[0].add(BlockT.OR.createView(context));
+            blocks_of_categories[2].add(BlockT.OR.createView(context));
         else if(name.equals(BlockT.XOR.getName()))
-            blocks_of_categories[0].add(BlockT.XOR.createView(context));
+            blocks_of_categories[2].add(BlockT.XOR.createView(context));
 
         else if(name.equals(BlockT.COUNT.getName())) // Agg
-            blocks_of_categories[0].add(BlockT.COUNT.createView(context));
+            blocks_of_categories[3].add(BlockT.COUNT.createView(context));
         else if(name.equals(BlockT.MIN.getName()))
-            blocks_of_categories[0].add(BlockT.MIN.createView(context));
+            blocks_of_categories[3].add(BlockT.MIN.createView(context));
         else if(name.equals(BlockT.MAX.getName()))
-            blocks_of_categories[0].add(BlockT.MAX.createView(context));
+            blocks_of_categories[3].add(BlockT.MAX.createView(context));
         else if(name.equals(BlockT.AVERAGE.getName()))
-            blocks_of_categories[0].add(BlockT.AVERAGE.createView(context));
+            blocks_of_categories[3].add(BlockT.AVERAGE.createView(context));
         else if(name.equals(BlockT.SUM.getName()))
-            blocks_of_categories[0].add(BlockT.SUM.createView(context));
+            blocks_of_categories[3].add(BlockT.SUM.createView(context));
 
 
 

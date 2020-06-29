@@ -56,7 +56,7 @@ public class Fragment_Table_Tut extends Fragment {
         put("02_05", "SELECT Ort FROM Schüler WHERE Ort != \"Mainz\"");
         put("02_06", "SELECT Kürzel FROM Lehrkraft WHERE Fahrzeit < 30");
         put("02_07", "select kürzel FROM Lehrkraft WHERE Fahrzeit < 30 ORDER BY Fahrzeit ASC");
-        put("02_08", "SELECT SchülerID FROM Schüler WHERE Ort = \"Budenheim\" OR Ort = \"Nackenheim\" OR Ort = \"Wackernheim\"");
+        put("02_08", "SELECT SchülerID FROM Schüler WHERE Ort = \"Budenheim\" OR Ort = \"Nackenheim\"");
         put("02_09", "SELECT Vorname FROM Lehrkraft WHERE Ort = \"Mainz\" AND Nachname = \"Meier\"");
         put("02_10", "SELECT SchülerID, Vorname, Nachname, Ort FROM Schüler WHERE NOT Ort = \"Mainz\"");
         put("02_11", "SELECT Raumnummer FROM Raum WHERE Beamer = 1");

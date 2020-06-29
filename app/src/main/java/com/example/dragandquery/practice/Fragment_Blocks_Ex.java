@@ -97,7 +97,7 @@ public class Fragment_Blocks_Ex extends Fragment {
          * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
          */
 
-        blocks_of_categories[0].addAll(Arrays.asList( //Key
+        blocks_of_categories[0].addAll(Arrays.asList( //key
                 BlockT.SELECT.createView(context),
                 BlockT.FROM.createView(context),
                 BlockT.WHERE.createView(context),
@@ -108,7 +108,7 @@ public class Fragment_Blocks_Ex extends Fragment {
                 BlockT.HAVING.createView(context)
         ));
 
-        blocks_of_categories[1].addAll(Arrays.asList( //DB
+        blocks_of_categories[1].addAll(Arrays.asList( //db
                 BlockT.AS.createView(context),
                 BlockT.INNER_JOIN.createView(context),
                 BlockT.LEFT_OUTER_JOIN.createView(context),
@@ -117,7 +117,7 @@ public class Fragment_Blocks_Ex extends Fragment {
                 BlockT.ON.createView(context)
         ));
 
-        blocks_of_categories[2].addAll(Arrays.asList( //Logic
+        blocks_of_categories[2].addAll(Arrays.asList( //logic
                 BlockT.AND.createView(context),
                 BlockT.NOT.createView(context),
                 BlockT.IN.createView(context),
@@ -130,7 +130,7 @@ public class Fragment_Blocks_Ex extends Fragment {
                 BlockT.XOR.createView(context)
         ));
 
-        blocks_of_categories[3].addAll(Arrays.asList( //Agg
+        blocks_of_categories[3].addAll(Arrays.asList( //agg
                 BlockT.COUNT.createView(context),
                 BlockT.MIN.createView(context),
                 BlockT.MAX.createView(context),

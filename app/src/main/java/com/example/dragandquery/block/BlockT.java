@@ -107,7 +107,7 @@ public enum BlockT {
             case EQUAL:
                 return "=";
             case NEQUAL:
-                return "!=";
+                return "≠";
             case SELECT:
                 return "SELECT";
             case FROM:

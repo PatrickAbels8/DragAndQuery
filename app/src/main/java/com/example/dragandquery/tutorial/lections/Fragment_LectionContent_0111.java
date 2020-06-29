@@ -55,7 +55,7 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
         rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l11);
         rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l11);
         rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l11);
-        btn_db = (ImageView) v.findViewById(R.id.frag_db);
+
 
         //exercise mode
         rg.clearCheck();
