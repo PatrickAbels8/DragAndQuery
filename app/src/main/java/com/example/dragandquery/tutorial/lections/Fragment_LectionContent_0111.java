@@ -143,7 +143,7 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
         public void onClick(View view) {
             title_school.setBackground(getResources().getDrawable(R.drawable.border_white));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
-            db_img.setImageResource(R.drawable.er_school_colourful_background);
+            db_img.setImageResource(R.drawable.er_school);
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -163,8 +164,14 @@ public class Practices extends AppCompatActivity {
         Button l = new Button(context);
         l.setText(name);
         l.setTextColor(getResources().getColor(getColor()));
+        l.setTextSize(20);
         l.setBackgroundColor(Color.parseColor("#00000000"));
         l.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        Typeface face = Typeface.createFromAsset(getAssets(),
+                "font/comfortaa.ttf");
+        l.setTypeface(face);
+
         ll_v.addView(l, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));

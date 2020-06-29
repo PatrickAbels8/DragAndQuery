@@ -479,7 +479,7 @@ public class Fragment_Query extends Fragment {
             title_school.setBackground(getResources().getDrawable(R.drawable.border_white));
             title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
-            db_img.setImageResource(R.drawable.er_school_colourful_background);
+            db_img.setImageResource(R.drawable.er_school);
             dbaccess = DatabaseAccess.DB_SCHOOL;
 
         }
@@ -492,7 +492,7 @@ public class Fragment_Query extends Fragment {
             title_school.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             title_cafetaria.setBackground(getResources().getDrawable(R.drawable.border_white));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
-            db_img.setImageResource(R.drawable.er_cafeteria_colourfull_background);
+            db_img.setImageResource(R.drawable.er_cafetaria);
             dbaccess = DatabaseAccess.DB_CAFETARIA;
         }
     }

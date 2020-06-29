@@ -114,7 +114,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginBottom="32dp"
-            android:src="@drawable/er_school_colourful_background"/>
+            android:src="@drawable/er_school"/>
 
 
 

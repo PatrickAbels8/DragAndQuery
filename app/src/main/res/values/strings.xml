@@ -772,8 +772,8 @@
     <string name="prac_hard_key">pracHard</string>
 
     <!-- profile -->
-    <string name="default_name">admin</string>
-    <string name="default_mail">admin@dnq.de</string>
+    <string name="default_name">Fritzchen</string>
+    <string name="default_mail">fritzchen@dnq.de</string>
     <string name="pb_tutorial">Tutorial</string>
     <string name="pb_practise">Übungen</string>
     <string name="btn_retry">Retry!</string>

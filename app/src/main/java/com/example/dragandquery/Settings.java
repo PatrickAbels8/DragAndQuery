@@ -239,6 +239,9 @@ public class Settings extends AppCompatActivity {
         saveDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
         saveDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);
         saveDataString(getString(R.string.prac_hard_key), Practices.DEFAULT_HARD);
+        //reset bars
+        pb_tut.setProgress(0);
+        pb_prac.setProgress(1);
     }
 
     //listeners
