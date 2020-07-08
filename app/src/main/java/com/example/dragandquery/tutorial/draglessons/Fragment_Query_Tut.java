@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.dragandquery.DbView;
 import com.example.dragandquery.R;
 import com.example.dragandquery.block.BlockT;
 import com.example.dragandquery.block.BlockView;
@@ -598,7 +599,7 @@ public class Fragment_Query_Tut extends Fragment {
         public void onClick(View view) {
             title_school.setBackground(getResources().getDrawable(R.drawable.border_white));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
-            db_img.setImageResource(R.drawable.er_school);
+            db_img.setImageResource(DbView.DB_SCHOOL_ER);
         }
     }
 
@@ -608,7 +609,7 @@ public class Fragment_Query_Tut extends Fragment {
         public void onClick(View view) {
             title_school.setBackground(getResources().getDrawable(R.drawable.border_transparent));
             title_legend.setBackground(getResources().getDrawable(R.drawable.border_white));
-            db_img.setImageResource(R.drawable.er_legend);
+            db_img.setImageResource(DbView.DB_LEGEND);
         }
     }
 

@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.dragandquery.tutorial.TutorialCategory;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -40,10 +38,6 @@ public class Tutorial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
-        //intent stuff
-        Intent intent = getIntent();
-
-
         //init coms
         cats_exp = new int[]{
                 loadData(getString(R.string.tutScore1_key), 10),
@@ -52,17 +46,16 @@ public class Tutorial extends AppCompatActivity {
                 loadData(getString(R.string.tutScore4_key), 40)
         };
 
-        Log.d("###############exp: ", Integer.toString(cats_exp[0]));
         cats = new ProgressBar[]{
-                (ProgressBar) findViewById(R.id.pb_cat1), //Rel DB
-                (ProgressBar) findViewById(R.id.pb_cat2), //Anfragen
-                (ProgressBar) findViewById(R.id.pb_cat3), //Aggreg. fkt.
-                (ProgressBar) findViewById(R.id.pb_cat4)}; //Join
+                findViewById(R.id.pb_cat1), //Rel DB
+                findViewById(R.id.pb_cat2), //Anfragen
+                findViewById(R.id.pb_cat3), //Aggreg. fkt.
+                findViewById(R.id.pb_cat4)}; //Join
         titles = new TextView[]{
-                (TextView) findViewById(R.id.tv_title_cat1),
-                (TextView) findViewById(R.id.tv_title_cat2),
-                (TextView) findViewById(R.id.tv_title_cat3),
-                (TextView) findViewById(R.id.tv_title_cat4)};
+                findViewById(R.id.tv_title_cat1),
+                findViewById(R.id.tv_title_cat2),
+                findViewById(R.id.tv_title_cat3),
+                findViewById(R.id.tv_title_cat4)};
 
         for(int i=0; i<num_cats; i++){
             cats[i].setProgress(cats_exp[i]);
@@ -74,7 +67,7 @@ public class Tutorial extends AppCompatActivity {
         }
 
         //toolbar stuff
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -89,8 +82,7 @@ public class Tutorial extends AppCompatActivity {
     //key value store
     public int loadData(String key, int default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int data = sharedPref.getInt(key, default_value);
-        return data;
+        return sharedPref.getInt(key, default_value);
     }
 
     //key value store

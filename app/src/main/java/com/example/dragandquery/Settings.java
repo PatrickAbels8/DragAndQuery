@@ -9,14 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -49,17 +45,15 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        //intent stuff
-        Intent intent = getIntent();
 
         //components
-        name = (EditText) findViewById(R.id.settings_name);
-        mail = (EditText) findViewById(R.id.settings_mail);
-        image = (ImageView) findViewById(R.id.settings_image);
-        save = (TextView) findViewById(R.id.save_settings);
-        pb_prac = (ProgressBar) findViewById(R.id.settings_pb_practise);
-        pb_tut = (ProgressBar) findViewById(R.id.settings_pb_tutorial);
-        reset_tut = (TextView) findViewById(R.id.tv_reset_tutorial);
+        name = findViewById(R.id.settings_name);
+        mail = findViewById(R.id.settings_mail);
+        image = findViewById(R.id.settings_image);
+        save = findViewById(R.id.save_settings);
+        pb_prac = findViewById(R.id.settings_pb_practise);
+        pb_tut = findViewById(R.id.settings_pb_tutorial);
+        reset_tut = findViewById(R.id.tv_reset_tutorial);
 
         //text hints should be the currentty saved data
         String cur_name = loadDataString(getString(R.string.userName_key), getString(R.string.default_name));
@@ -73,40 +67,30 @@ public class Settings extends AppCompatActivity {
         } else{
             image.setImageResource(R.drawable.profile_image);
         }
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-                    if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
-                        String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                        requestPermissions(permissions, PERMISSION_CODE);
-                    }else{
-                        pickImageFromGallery();
-                    }
-                }else{
-                    pickImageFromGallery();
-                }
+        image.setOnClickListener(view -> {
+            if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PERMISSION_CODE);
+            }else{
+                pickImageFromGallery();
             }
         });
 
         //lets go back to navigation
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String userName = name.getText().toString();
-                String userMail = mail.getText().toString();
+        save.setOnClickListener(view -> {
+            String userName = name.getText().toString();
+            String userMail = mail.getText().toString();
 
-                if(userMail.contains("@")){
-                    Intent i = new Intent(getApplicationContext(), Navigation.class);
-                    i.putExtra(UNAME, userName);
-                    i.putExtra(UMAIL, userMail);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(i);
-                    finish();
-                } else{
-                    Toast.makeText(getApplicationContext(), "Oops! Da hat wohl etwas noch nicht gestimmt!", Toast.LENGTH_LONG).show();
-                }
+            if(userMail.contains("@")){
+                Intent i = new Intent(getApplicationContext(), Navigation.class);
+                i.putExtra(UNAME, userName);
+                i.putExtra(UMAIL, userMail);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                finish();
+            } else{
+                Toast.makeText(getApplicationContext(), "Oops! Da hat wohl etwas noch nicht gestimmt!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -131,13 +115,11 @@ public class Settings extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResult){
-        switch(requestCode){
-            case PERMISSION_CODE:{
-                if(grantResult.length>0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
-                    pickImageFromGallery();
-                }else{
-                    Toast.makeText(this, getString(R.string.toast_ImagePermissionDenied), Toast.LENGTH_SHORT).show();
-                }
+        if (requestCode == PERMISSION_CODE) {
+            if (grantResult.length > 0 && grantResult[0] == PackageManager.PERMISSION_GRANTED) {
+                pickImageFromGallery();
+            } else {
+                Toast.makeText(this, getString(R.string.toast_ImagePermissionDenied), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -160,8 +142,7 @@ public class Settings extends AppCompatActivity {
 
     public boolean loadDataBoolean(String key, boolean default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        boolean data = sharedPref.getBoolean(key, default_value);
-        return data;
+        return sharedPref.getBoolean(key, default_value);
     }
 
     public void saveDataBoolean(String key, boolean data){
@@ -187,14 +168,12 @@ public class Settings extends AppCompatActivity {
 
     public String loadDataString(String key, String default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        String data = sharedPref.getString(key, default_value);
-        return data;
+        return sharedPref.getString(key, default_value);
     }
 
     public int loadDataInt(String key, int default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int data = sharedPref.getInt(key, default_value);
-        return data;
+        return sharedPref.getInt(key, default_value);
     }
 
     public int calcAvg(int[] partialExps){

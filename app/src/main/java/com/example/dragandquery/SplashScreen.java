@@ -2,12 +2,9 @@ package com.example.dragandquery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -35,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        text = (TextView) findViewById(R.id.splash_text);
+        text = findViewById(R.id.splash_text);
         appear = new AlphaAnimation(0.0f, 1.0f);
         appear.setDuration(APPEAR_TIME);
         appear.setFillAfter(true);
@@ -47,13 +44,10 @@ public class SplashScreen extends AppCompatActivity {
 
         text.startAnimation(anims);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(getApplicationContext(), Navigation.class);
-                startActivity(i);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent i = new Intent(getApplicationContext(), Navigation.class);
+            startActivity(i);
+            finish();
         }, SPLASH_TIME_OUT);
 
     }
