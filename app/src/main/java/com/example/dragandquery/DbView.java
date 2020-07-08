@@ -36,7 +36,7 @@ public class DbView extends AppCompatActivity {
                 db_title_school.setBackground(getResources().getDrawable(R.drawable.border_white));
                 db_title_cafetarie.setBackground(getResources().getDrawable(R.drawable.border_transparent));
                 db_title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
-                db_view.setImageResource(R.drawable.er_school);
+                db_view.setImageResource(R.drawable.er_school_colourful_background);
             }
         });
 
@@ -46,7 +46,7 @@ public class DbView extends AppCompatActivity {
                 db_title_school.setBackground(getResources().getDrawable(R.drawable.border_transparent));
                 db_title_cafetarie.setBackground(getResources().getDrawable(R.drawable.border_white));
                 db_title_legend.setBackground(getResources().getDrawable(R.drawable.border_transparent));
-                db_view.setImageResource(R.drawable.er_cafetaria);
+                db_view.setImageResource(R.drawable.er_cafeteria_colourfull_background);
             }
         });
 

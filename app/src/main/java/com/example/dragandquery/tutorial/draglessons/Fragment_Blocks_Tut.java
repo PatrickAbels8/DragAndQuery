@@ -154,7 +154,22 @@ public class Fragment_Blocks_Tut extends Fragment {
      */
 
     public void addBlock(String name){
-        if(name.equals(BlockT.SELECT.getName())) //Key
+        BlockT[] myblocks = BlockT.class.getEnumConstants();
+        for(int i=0; i<myblocks.length; i++){
+            if(name.equals(myblocks[i].getName())){
+                if(myblocks[i].getCategory()==R.string.block_cat1){
+                    blocks_of_categories[0].add(myblocks[i].createView(context));
+                }else if(myblocks[i].getCategory()==R.string.block_cat2){
+                    blocks_of_categories[1].add(myblocks[i].createView(context));
+                }else if(myblocks[i].getCategory()==R.string.block_cat3){
+                    blocks_of_categories[2].add(myblocks[i].createView(context));
+                }else if(myblocks[i].getCategory()==R.string.block_cat4){
+                    blocks_of_categories[3].add(myblocks[i].createView(context));
+                }
+                return;
+            }
+        }
+        /*if(name.equals(BlockT.SELECT.getName())) //Key
             blocks_of_categories[0].add(BlockT.SELECT.createView(context));
         else if(name.equals(BlockT.FROM.getName()))
             blocks_of_categories[0].add(BlockT.FROM.createView(context));
@@ -216,10 +231,7 @@ public class Fragment_Blocks_Tut extends Fragment {
         else if(name.equals(BlockT.AVERAGE.getName()))
             blocks_of_categories[3].add(BlockT.AVERAGE.createView(context));
         else if(name.equals(BlockT.SUM.getName()))
-            blocks_of_categories[3].add(BlockT.SUM.createView(context));
-
-
-
+            blocks_of_categories[3].add(BlockT.SUM.createView(context));**/
     }
 
 

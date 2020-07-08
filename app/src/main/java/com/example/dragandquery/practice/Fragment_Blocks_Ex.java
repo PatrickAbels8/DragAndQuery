@@ -97,7 +97,20 @@ public class Fragment_Blocks_Ex extends Fragment {
          * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
          */
 
-        blocks_of_categories[0].addAll(Arrays.asList( //key
+        BlockT[] myblocks = BlockT.class.getEnumConstants();
+        for(int i=0; i<myblocks.length; i++){
+            if(myblocks[i].getCategory()==R.string.block_cat1){
+                blocks_of_categories[0].add(myblocks[i].createView(context));
+            }else if(myblocks[i].getCategory()==R.string.block_cat2){
+                blocks_of_categories[1].add(myblocks[i].createView(context));
+            }else if(myblocks[i].getCategory()==R.string.block_cat3){
+                blocks_of_categories[2].add(myblocks[i].createView(context));
+            }else if(myblocks[i].getCategory()==R.string.block_cat4){
+                blocks_of_categories[3].add(myblocks[i].createView(context));
+            }
+        }
+
+        /*blocks_of_categories[0].addAll(Arrays.asList( //key
                 BlockT.SELECT.createView(context),
                 BlockT.FROM.createView(context),
                 BlockT.WHERE.createView(context),
@@ -136,7 +149,7 @@ public class Fragment_Blocks_Ex extends Fragment {
                 BlockT.MAX.createView(context),
                 BlockT.AVERAGE.createView(context),
                 BlockT.SUM.createView(context)
-        ));
+        ));**/
 
 
         //drag
