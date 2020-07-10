@@ -1,18 +1,12 @@
 package com.example.dragandquery;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,7 +14,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.example.dragandquery.practice.Complexity;
-import com.example.dragandquery.practice.Exercise;
 import com.example.dragandquery.practice.Practices;
 import com.google.android.material.navigation.NavigationView;
 
@@ -34,7 +27,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /***
  */
@@ -71,15 +63,15 @@ public class Navigation extends AppCompatActivity
         Intent i = getIntent();
 
         //components
-        image = (ImageView) findViewById(R.id.profile_image);
-        name = (TextView) findViewById(R.id.profile_name);
-        mail = (TextView) findViewById(R.id.profile_mail);
-        tv_tutorial = (TextView) findViewById(R.id.tv_tutorial);
-        tv_practise = (TextView) findViewById(R.id.tv_practise);
-        pb_tutorial = (ProgressBar) findViewById(R.id.pb_tutorial);
-        pb_practise = (ProgressBar) findViewById(R.id.pb_practise);
+        image = findViewById(R.id.profile_image);
+        name = findViewById(R.id.profile_name);
+        mail = findViewById(R.id.profile_mail);
+        tv_tutorial = findViewById(R.id.tv_tutorial);
+        tv_practise = findViewById(R.id.tv_practise);
+        pb_tutorial = findViewById(R.id.pb_tutorial);
+        pb_practise = findViewById(R.id.pb_practise);
         drawer = findViewById(R.id.drawer_layout);
-        swipeHint = (ImageView) findViewById(R.id.swipehint);
+        swipeHint = findViewById(R.id.swipehint);
 
         //show nd gesture hint
         swipeHint.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromleft));
@@ -169,21 +161,18 @@ public class Navigation extends AppCompatActivity
     //key value store
     public String loadDataString(String key, String default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        String data = sharedPref.getString(key, default_value);
-        return data;
+        return sharedPref.getString(key, default_value);
     }
 
     //key value store
     public int loadDataInt(String key, int default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int data = sharedPref.getInt(key, default_value);
-        return data;
+        return sharedPref.getInt(key, default_value);
     }
 
     public boolean loadDataBoolean(String key, boolean default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        boolean data = sharedPref.getBoolean(key, default_value);
-        return data;
+        return sharedPref.getBoolean(key, default_value);
     }
 
     public int calcExAvg(){
@@ -338,7 +327,6 @@ public class Navigation extends AppCompatActivity
     //key value store
     public int loadData(String key, int default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int data = sharedPref.getInt(key, default_value);
-        return data;
+        return sharedPref.getInt(key, default_value);
     }
 }

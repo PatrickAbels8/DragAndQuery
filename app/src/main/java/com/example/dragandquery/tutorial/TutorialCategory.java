@@ -67,7 +67,7 @@ public class TutorialCategory extends AppCompatActivity {
         Intent intent = getIntent();
 
         //init coms&vars
-        lections = (LinearLayout) findViewById(R.id.ll_tutorial_lections);
+        lections = findViewById(R.id.ll_tutorial_lections);
         cat_lections = new ArrayList<>();
         checksOrLocks = new ArrayList<>();
         lections_achievement = new ArrayList<>();
@@ -82,18 +82,15 @@ public class TutorialCategory extends AppCompatActivity {
 
         //what if someone advanced their experience on some lection
         for(Button b: cat_lections){
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int lection_id = cat_lections.indexOf(view); //0-9
-                    int level_of_achievement = lections_achievement.get(lection_id);
-                    if(level_of_achievement == UNLOCKED){
-                        startLection(lection_id);
-                    }else if(level_of_achievement == DONE){
-                        showLectionDone();
-                    }else if(level_of_achievement == LOCKED){
-                        showLectionLocked();
-                    }
+            b.setOnClickListener(view -> {
+                int lection_id = cat_lections.indexOf(view); //0-9
+                int level_of_achievement = lections_achievement.get(lection_id);
+                if(level_of_achievement == UNLOCKED){
+                    startLection(lection_id);
+                }else if(level_of_achievement == DONE){
+                    showLectionDone();
+                }else if(level_of_achievement == LOCKED){
+                    showLectionLocked();
                 }
             });
         }
@@ -354,8 +351,7 @@ public class TutorialCategory extends AppCompatActivity {
             }
         }
         int numTotal = lections_achievement.size();
-        int exp = 100*numDone/numTotal +1;
-        return exp;
+        return 100*numDone/numTotal +1;
     }
 
     //when 3 out of 5 lections are unlocked or done, saved unlocked exp should be 61
@@ -367,22 +363,19 @@ public class TutorialCategory extends AppCompatActivity {
             }
         }
         int numTotal = lections_achievement.size();
-        int exp = 100*numDone/numTotal +1;
-        return exp;
+        return 100*numDone/numTotal +1;
     }
 
     //when exp is 61 , 3 out of 5 lections should be done
     public int experienceToAchievements(){
         int numTotal = lections_achievement.size();
-        int ach = numTotal*cat_exp/100;
-        return ach;
+        return numTotal*cat_exp/100;
     }
 
     //when unlocked exp is 61 , 3 out of 5 lections should be unlocked
     public int unlockedexperienceToAchievements(){
         int numTotal = lections_achievement.size();
-        int ach = numTotal*cat_exp_unlocked/100;
-        return ach;
+        return numTotal*cat_exp_unlocked/100;
     }
 
     //when in cat1 return lec 4 (index = 3) out of 5 as "01_04_05"

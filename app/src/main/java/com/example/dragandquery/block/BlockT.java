@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 /***
- * when changing: fragment block (3x) + blockT + map in dragLesson!!
  */
 
 public enum BlockT {

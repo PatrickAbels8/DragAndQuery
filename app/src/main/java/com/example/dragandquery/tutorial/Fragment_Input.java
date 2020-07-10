@@ -72,24 +72,16 @@ public class Fragment_Input extends Fragment {
 
 
         //get on to exercise
-        btn_accept_input.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onAccept();
-            }
-        });
+        btn_accept_input.setOnClickListener(view -> listener.onAccept());
 
         //move on/back to exercise
-        bird.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(isOpen){
-                    listener.onAccept();
-                }else{
-                    listener.onBird(isOpen);
-                }
-
+        bird.setOnClickListener(view -> {
+            if(isOpen){
+                listener.onAccept();
+            }else{
+                listener.onBird(isOpen);
             }
+
         });
 
         return v;
@@ -119,34 +111,49 @@ public class Fragment_Input extends Fragment {
     //todo make global (just test in category class and intent)
     public void setText(){
         String text = "";
-        if(lection_id.substring(0,5).equals("01_01")){
-            text = getString(R.string.c1l1_input);
-        }else if(lection_id.substring(0,5).equals("01_02")){
-            text = getString(R.string.c1l2_input);
-        }else if(lection_id.substring(0,5).equals("01_03")){
-            text = getString(R.string.c1l3_input);
-        }else if(lection_id.substring(0,5).equals("01_04")){
-            text = getString(R.string.c1l4_input);
-        }else if(lection_id.substring(0,5).equals("01_05")){
-            text = getString(R.string.c1l5_input);
-        }else if(lection_id.substring(0,5).equals("01_06")){
-            text = getString(R.string.c1l6_input);
-        }else if(lection_id.substring(0,5).equals("01_07")){
-            text = getString(R.string.c1l7_input);
-        }else if(lection_id.substring(0,5).equals("01_08")){
-            text = getString(R.string.c1l8_input);
-        }else if(lection_id.substring(0,5).equals("01_09")){
-            text = getString(R.string.c1l9_input);
-        }else if(lection_id.substring(0,5).equals("01_10")){
-            text = getString(R.string.c1l10_input);
-        }else if(lection_id.substring(0,5).equals("01_11")){
-            text = getString(R.string.c1l11_input);
-        }else if(lection_id.substring(0,5).equals("01_12")){
-            text = getString(R.string.c1l12_input);
-        }else if(lection_id.substring(0,5).equals("03_01")){
-            text = getString(R.string.c3l1_input);
-        }else if(lection_id.substring(0,5).equals("04_01")){
-            text = getString(R.string.c4l1_input);
+        switch (lection_id.substring(0, 5)) {
+            case "01_01":
+                text = getString(R.string.c1l1_input);
+                break;
+            case "01_02":
+                text = getString(R.string.c1l2_input);
+                break;
+            case "01_03":
+                text = getString(R.string.c1l3_input);
+                break;
+            case "01_04":
+                text = getString(R.string.c1l4_input);
+                break;
+            case "01_05":
+                text = getString(R.string.c1l5_input);
+                break;
+            case "01_06":
+                text = getString(R.string.c1l6_input);
+                break;
+            case "01_07":
+                text = getString(R.string.c1l7_input);
+                break;
+            case "01_08":
+                text = getString(R.string.c1l8_input);
+                break;
+            case "01_09":
+                text = getString(R.string.c1l9_input);
+                break;
+            case "01_10":
+                text = getString(R.string.c1l10_input);
+                break;
+            case "01_11":
+                text = getString(R.string.c1l11_input);
+                break;
+            case "01_12":
+                text = getString(R.string.c1l12_input);
+                break;
+            case "03_01":
+                text = getString(R.string.c3l1_input);
+                break;
+            case "04_01":
+                text = getString(R.string.c4l1_input);
+                break;
         }
         tv_input.setText(text);
     }

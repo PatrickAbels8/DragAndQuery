@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -41,8 +40,8 @@ public class PopUp extends AppCompatActivity {
         getWindow().setLayout((int) (width*width_factor), (int) (height*height_factor));
 
         //init stuff
-        msg = (TextView) findViewById(R.id.popup_msg);
-        accepted = (Button) findViewById(R.id.popup_accepted);
+        msg = findViewById(R.id.popup_msg);
+        accepted = findViewById(R.id.popup_accepted);
 
         //set text to show up
         Intent i = getIntent();
@@ -60,12 +59,9 @@ public class PopUp extends AppCompatActivity {
         }
 
         //button logic
-        accepted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setResult(RESULT_OK);
-                onBackPressed();
-            }
+        accepted.setOnClickListener(view -> {
+            setResult(RESULT_OK);
+            onBackPressed();
         });
 
 

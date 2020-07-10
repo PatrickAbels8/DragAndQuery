@@ -88,6 +88,9 @@ public class Fragment_Query_Ex extends Fragment {
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
+        db_img = v.findViewById(R.id.db_img);
+        title_cafetaria = v.findViewById(R.id.db_title_cafetaria);
+        title_legend = v.findViewById(R.id.db_title_legend);
 
         //listeners
         btn_go.setMyClearDragListener(new Fragment_Query_Ex.MyGoListener());
@@ -95,6 +98,8 @@ public class Fragment_Query_Ex extends Fragment {
         btn_clear.setMyClearDragListener(new Fragment_Query_Ex.MyClearDragListener());
         bird.setOnClickListener(new Fragment_Query_Ex.MyBirdClickListener());
         btn_db.setOnClickListener(new Fragment_Query_Ex.MyDBClickListener());
+        title_legend.setOnClickListener(new Fragment_Query_Ex.LegendListener());
+        title_cafetaria.setOnClickListener(new Fragment_Query_Ex.CafetariaListener());
 
         //set ex text
         exercise_text.setText(getExText(this.getArguments().getInt(Exercise.ID_KEY)));
@@ -306,8 +311,7 @@ public class Fragment_Query_Ex extends Fragment {
     //helper
     public int dp_to_int(int dp){
         float scale = getResources().getDisplayMetrics().density;
-        int pix = (int) (dp*scale+0.5f);
-        return pix;
+        return (int) (dp*scale+0.5f);
     }
 
     public List<String[]> queryDB(String query){

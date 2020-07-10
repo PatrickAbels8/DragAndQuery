@@ -28,9 +28,9 @@ public class Complexity extends AppCompatActivity {
         setContentView(R.layout.activity_complexity);
 
         //init stuff
-        easy = (TextView) findViewById(R.id.prac_easy);
-        medium = (TextView) findViewById(R.id.prac_medium);
-        hard = (TextView) findViewById(R.id.prac_hard);
+        easy = findViewById(R.id.prac_easy);
+        medium = findViewById(R.id.prac_medium);
+        hard = findViewById(R.id.prac_hard);
 
         //tag for listener
         easy.setTag(EASY);

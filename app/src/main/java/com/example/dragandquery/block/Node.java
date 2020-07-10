@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- *TODO: edit blocks miss their text in toTreeString
+ *
  */
 
 
@@ -18,7 +18,6 @@ public class Node {
     private Node downChild = null;
     private Node parent = null;
     private String value = "";
-    //private int id;
 
     public Node(BlockT block, String ... vals) {
         this.block = block;
@@ -76,14 +75,8 @@ public class Node {
         if(this.hasRight()) {
             this.getRightChild().printTree();
         }
-        else {
-            //Log.d("############## tree ###############", "no right");
-        }
         if(this.hasDown())
             this.getDownChild().printTree();
-        else{
-            //Log.d("############## tree ###############", "no down");
-        }
     }
 
     /***
@@ -146,9 +139,6 @@ public class Node {
         return members;
     }
 
-    /***
-     * getter & setter
-     */
     public BlockT getBlock() {
         return block;
     }
@@ -176,12 +166,4 @@ public class Node {
     public void setParent(Node parent) {
         this.parent = parent;
     }
-
-    /*public int getId(){
-        return id;
-    }
-
-    public void setId(int id){
-        this.id = id;
-    }*/
 }

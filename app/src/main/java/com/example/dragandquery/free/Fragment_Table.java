@@ -69,12 +69,7 @@ public class Fragment_Table extends Fragment {
         table = v.findViewById(R.id.tl_table);
 
         //get back to edit
-        btn_retry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onRetry();
-            }
-        });
+        btn_retry.setOnClickListener(view -> listener.onRetry());
 
         return v;
     }
@@ -162,7 +157,6 @@ public class Fragment_Table extends Fragment {
     //helper
     public int dp_to_int(int dp){
         float scale = getResources().getDisplayMetrics().density;
-        int pix = (int) (dp*scale+0.5f);
-        return pix;
+        return (int) (dp*scale+0.5f);
     }
 }

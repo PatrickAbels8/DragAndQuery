@@ -45,19 +45,17 @@ public class Fragment_LectionContent_0301 extends Fragment_Content {
         View v = inflater.inflate(R.layout.fragment_lectioncontent_0301, container, false);
 
         //init coms
-        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0301);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0301_go);
+        rl_exercise = v.findViewById(R.id.frag_lectioncontent_0301);
+        btn_go = v.findViewById(R.id.btn_lectioncontent_0301_go);
         context = getContext();
-        rg = (RadioGroup) v.findViewById(R.id.rg_c3l1);
-        rb1 = (RadioButton) v.findViewById(R.id.rb1_c3l1);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2_c3l1);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3_c3l1);
+        rg = v.findViewById(R.id.rg_c3l1);
+        rb1 = v.findViewById(R.id.rb1_c3l1);
+        rb2 = v.findViewById(R.id.rb2_c3l1);
+        rb3 = v.findViewById(R.id.rb3_c3l1);
 
         //exercise mode
         rg.clearCheck();
-        btn_go.setOnClickListener((View view) -> {
-            listener.onGo(verifyAnswer());
-        });
+        btn_go.setOnClickListener((View view) -> listener.onGo(verifyAnswer()));
 
         return v;
     }

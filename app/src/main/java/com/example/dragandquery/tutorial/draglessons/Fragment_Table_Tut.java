@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ import androidx.fragment.app.Fragment;
 import com.example.dragandquery.R;
 import com.example.dragandquery.db.DatabaseAccess;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +46,7 @@ public class Fragment_Table_Tut extends Fragment {
     private Fragment_Table_Tut_Listener listener;
     private String lec_id;
 
-    public static final Map<String, String> map = new HashMap<String, String>(){{
+    private static final Map<String, String> map = new HashMap<String, String>(){{
         put("02_01", "select * from schüler");
         put("02_02", "select vorname, nachname from schüler ");
         put("02_03", "select vorname from schüler limit 10");
@@ -109,18 +107,8 @@ public class Fragment_Table_Tut extends Fragment {
         lec_id = this.getArguments().getString(DragLesson.ID_KEY);
 
         //get back to edit or forth to next lec
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onBack();
-            }
-        });
-        btn_forth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onForth();
-            }
-        });
+        btn_back.setOnClickListener(view -> listener.onBack());
+        btn_forth.setOnClickListener(view -> listener.onForth());
 
 
         return v;
@@ -244,7 +232,6 @@ public class Fragment_Table_Tut extends Fragment {
     //helper
     public int dp_to_int(int dp){
         float scale = getResources().getDisplayMetrics().density;
-        int pix = (int) (dp*scale+0.5f);
-        return pix;
+        return (int) (dp*scale+0.5f);
     }
 }

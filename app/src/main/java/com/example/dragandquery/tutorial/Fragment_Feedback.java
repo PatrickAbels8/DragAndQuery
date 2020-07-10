@@ -99,20 +99,10 @@ public class Fragment_Feedback extends Fragment {
         toright.setDuration(TORIGHT_DURATION);
 
         //get back to wherever you came from
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onBack();
-            }
-        });
+        btn_back.setOnClickListener(view -> listener.onBack());
 
         //move on to wherever you wanna go to
-        btn_forth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onForth();
-            }
-        });
+        btn_forth.setOnClickListener(view -> listener.onForth());
 
         return v;
     }
@@ -125,11 +115,10 @@ public class Fragment_Feedback extends Fragment {
     public void goVisible(boolean isCorrect, String lecid){
         rl_feedback.setVisibility(View.VISIBLE);
         rl_feedback.startAnimation(fromright);
-        if(isCorrect){
+        if(isCorrect)
             startGoodFeedback(getResources().getString(goods.get(lecid.substring(0, 5))));
-        }else{
+        else
             startBadFeedback(getResources().getString(bads.get(lecid.substring(0, 5))));
-        }
     }
 
     public void startGoodFeedback(String good){

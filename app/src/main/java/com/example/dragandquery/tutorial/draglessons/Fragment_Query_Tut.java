@@ -98,6 +98,9 @@ public class Fragment_Query_Tut extends Fragment {
         scroller_img = (ImageView) v.findViewById(R.id.scroll_img);
         hint = (TextView) v.findViewById(R.id.tut_hint);
         hint.setVisibility(View.INVISIBLE);
+        db_img = v.findViewById(R.id.db_img);
+        title_school = v.findViewById(R.id.db_title_school);
+        title_legend = v.findViewById(R.id.db_title_legend);
 
 
         //listeners
@@ -107,6 +110,8 @@ public class Fragment_Query_Tut extends Fragment {
         bird.setOnClickListener(new Fragment_Query_Tut.MyBirdClickListener());
         btn_db.setOnClickListener(new Fragment_Query_Tut.MyDBClickListener());
         acceptInput.setOnClickListener(new Fragment_Query_Tut.MyBirdClickListener());
+        title_legend.setOnClickListener(new Fragment_Query_Tut.LegendListener());
+        title_school.setOnClickListener(new Fragment_Query_Tut.SchoolListener());
 
         //set ex text
         exercise_text.setText(getExText(this.getArguments().getString(DragLesson.ID_KEY)));

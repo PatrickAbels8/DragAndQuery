@@ -14,8 +14,6 @@ import java.util.List;
 /***
  */
 
-//top: query fragment
-//bottom: blocks fragment / table fragment
 public class Free extends AppCompatActivity implements Fragment_Table.Fragment_Table_Listener, Fragment_Query.Fragment_Query_Listener, Fragment_Blocks.Fragment_Blocks_Listener{
 
     //fragments

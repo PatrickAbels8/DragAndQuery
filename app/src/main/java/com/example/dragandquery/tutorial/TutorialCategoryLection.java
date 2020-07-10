@@ -120,12 +120,9 @@ public class TutorialCategoryLection
     @Override
     public void onBack() {
         fragFeedback.goInvisible();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fragInput.goClickable();
-                fragInput.showBird();
-            }
+        new Handler().postDelayed(() -> {
+            fragInput.goClickable();
+            fragInput.showBird();
         }, Fragment_Feedback.TORIGHT_DURATION);
 
         curFrag.startExercise();
@@ -210,8 +207,7 @@ public class TutorialCategoryLection
         String[] counts = lection_id.split("_");
         int numDone = Integer.parseInt(counts[1]);
         int numTotal = Integer.parseInt(counts[2]);
-        int exp = 100*numDone/numTotal +1;
-        return exp;
+        return 100*numDone/numTotal +1;
     }
 
     //when 3 out of 5 lections are unlocked or done, saved unlocked exp should be 61
@@ -219,8 +215,7 @@ public class TutorialCategoryLection
         String[] counts = lection_id.split("_");
         int numUnlocked = Integer.parseInt(counts[1])+1;
         int numTotal = Integer.parseInt(counts[2]);
-        int exp = 100*numUnlocked/numTotal +1;
-        return exp;
+        return 100*numUnlocked/numTotal +1;
     }
 
 
@@ -235,8 +230,7 @@ public class TutorialCategoryLection
     //key value store
     public int loadData(String key, int default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int data = sharedPref.getInt(key, default_value);
-        return data;
+        return sharedPref.getInt(key, default_value);
     }
 
     //check whether you are the last lection of your category

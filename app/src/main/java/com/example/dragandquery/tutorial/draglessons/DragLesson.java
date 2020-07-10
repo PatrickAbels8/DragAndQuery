@@ -191,8 +191,7 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         String[] counts = lec_id.split("_");
         int numDone = Integer.parseInt(counts[1]);
         int numTotal = Integer.parseInt(counts[2]);
-        int exp = 100*numDone/numTotal +1;
-        return exp;
+        return 100*numDone/numTotal +1;
     }
 
     //when 3 out of 5 lections are unlocked or done, saved unlocked exp should be 61
@@ -200,8 +199,7 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         String[] counts = lec_id.split("_");
         int numUnlocked = Integer.parseInt(counts[1])+1;
         int numTotal = Integer.parseInt(counts[2]);
-        int exp = 100*numUnlocked/numTotal +1;
-        return exp;
+        return 100*numUnlocked/numTotal +1;
     }
 
     //check whether you are the last lection of your category

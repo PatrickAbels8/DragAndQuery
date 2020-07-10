@@ -57,15 +57,15 @@ public class Fragment_LectionContent_0112 extends Fragment_Content {
         View v = inflater.inflate(R.layout.fragment_lectioncontent_0112, container, false);
 
         //init coms
-        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0112);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0112_go);
+        rl_exercise = v.findViewById(R.id.frag_lectioncontent_0112);
+        btn_go = v.findViewById(R.id.btn_lectioncontent_0112_go);
         context = getContext();
-        rg = (RadioGroup) v.findViewById(R.id.rg_c1l12);
-        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l12);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l12);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l12);
+        rg = v.findViewById(R.id.rg_c1l12);
+        rb1 = v.findViewById(R.id.rb1_c1l12);
+        rb2 = v.findViewById(R.id.rb2_c1l12);
+        rb3 = v.findViewById(R.id.rb3_c1l12);
 
-        btn_db = (ImageView) v.findViewById(R.id.frag_db);
+        btn_db = v.findViewById(R.id.frag_db);
         db_view = v.findViewById(R.id.db_view);
         db_img = v.findViewById(R.id.db_img);
         title_school = v.findViewById(R.id.db_title_school);
@@ -74,9 +74,7 @@ public class Fragment_LectionContent_0112 extends Fragment_Content {
 
         //exercise mode
         rg.clearCheck();
-        btn_go.setOnClickListener((View view) -> {
-            listener.onGo(verifyAnswer());
-        });
+        btn_go.setOnClickListener((View view) -> listener.onGo(verifyAnswer()));
 
         btn_db.setOnClickListener(new Fragment_LectionContent_0112.MyDBClickListener());
         title_school.setOnClickListener(new Fragment_LectionContent_0112.SchoolListener());

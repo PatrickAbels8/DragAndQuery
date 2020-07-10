@@ -1,31 +1,20 @@
 package com.example.dragandquery.tutorial.lections;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.dragandquery.R;
 import com.example.dragandquery.tutorial.Fragment_Content;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /***
  * -
@@ -56,19 +45,17 @@ public class Fragment_LectionContent_0101 extends Fragment_Content {
         View v = inflater.inflate(R.layout.fragment_lectioncontent_0101, container, false);
 
         //init coms
-        rl_exercise = (RelativeLayout) v.findViewById(R.id.frag_lectioncontent_0101);
-        btn_go = (Button) v.findViewById(R.id.btn_lectioncontent_0101_go);
+        rl_exercise = v.findViewById(R.id.frag_lectioncontent_0101);
+        btn_go = v.findViewById(R.id.btn_lectioncontent_0101_go);
         context = getContext();
-        rg = (RadioGroup) v.findViewById(R.id.rg_c1l1);
-        rb1 = (RadioButton) v.findViewById(R.id.rb1_c1l1);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2_c1l1);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3_c1l1);
+        rg = v.findViewById(R.id.rg_c1l1);
+        rb1 = v.findViewById(R.id.rb1_c1l1);
+        rb2 = v.findViewById(R.id.rb2_c1l1);
+        rb3 = v.findViewById(R.id.rb3_c1l1);
 
         //exercise mode
         rg.clearCheck();
-        btn_go.setOnClickListener((View view) -> {
-            listener.onGo(verifyAnswer());
-        });
+        btn_go.setOnClickListener((View view) -> listener.onGo(verifyAnswer()));
 
         return v;
     }

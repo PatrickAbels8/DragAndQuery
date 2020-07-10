@@ -76,10 +76,10 @@ public class Fragment_Query extends Fragment {
         SQL_ERROR = getString(R.string.sql_error);
 
         //init coms
-        rl_query = (RelativeLayout) v.findViewById(R.id.frag_query);
-        btn_go = (ClearView) v.findViewById(R.id.frag_go);
-        btn_clear = (ClearView) v.findViewById(R.id.frag_clear);
-        btn_db = (ImageView) v.findViewById(R.id.frag_db);
+        rl_query = v.findViewById(R.id.frag_query);
+        btn_go = v.findViewById(R.id.frag_go);
+        btn_clear = v.findViewById(R.id.frag_clear);
+        btn_db = v.findViewById(R.id.frag_db);
         db_view = v.findViewById(R.id.db_view);
         db_img = v.findViewById(R.id.db_img);
         title_school = v.findViewById(R.id.db_title_school);
@@ -195,7 +195,7 @@ public class Fragment_Query extends Fragment {
             Toast.makeText(context, SELECT_MISSING_ERROR, Toast.LENGTH_SHORT).show();
             return null;
         }
-        if(dbaccess == ""){
+        if(dbaccess.equals("")){
             Toast.makeText(context, NO_DB_CHOSEN_ERROR, Toast.LENGTH_SHORT).show();
             return null;
         }

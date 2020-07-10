@@ -40,7 +40,6 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
         Intent intent = getIntent();
         if(intent.hasExtra(Practices.EX_ID)){
             ex_id = intent.getIntExtra(Practices.EX_ID, 100);
-            Log.d("#######", Integer.toString(ex_id));
         }
 
         fragQuery = new Fragment_Query_Ex();
@@ -79,8 +78,6 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
             String defalut = ex_id/100==1? Practices.DEFAULT_EASY: ex_id/100==2? Practices.DEFAULT_MEDIUM: Practices.DEFAULT_HARD;
             String oldData = loadData(key, defalut);
             String newData = oldData.substring(0, index)+Integer.toString(1)+oldData.substring(index+1);
-            Log.d("#########", oldData);
-            Log.d("#########", newData);
             saveData(key, newData);
         }
 
@@ -104,7 +101,6 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     //key value store
     public String loadData(String key,  String default_value){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        String data = sharedPref.getString(key, default_value);
-        return data;
+        return sharedPref.getString(key, default_value);
     }
 }

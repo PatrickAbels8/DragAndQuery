@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -32,15 +31,14 @@ import java.util.List;
 public class Fragment_Blocks_Tut extends Fragment {
 
     //coms
-    LinearLayout ll_blocks;
-    LinearLayout ll_categories;
-    Button[] categories; //0: DB
+    private LinearLayout ll_blocks;
+    private LinearLayout ll_categories;
+    private Button[] categories; //0: DB
                              //1: Logic
                              //2: KeyWords
                              //3: Others
-    List<BlockView> [] blocks_of_categories;
-
-    EditText et;
+    private List<BlockView> [] blocks_of_categories;
+    private EditText et;
 
     //vars
     private Fragment_Blocks_Tut_Listener listener;
@@ -74,22 +72,19 @@ public class Fragment_Blocks_Tut extends Fragment {
         // edit block
         et = new EditText(context);
         et.setBackgroundResource(R.drawable.empty_block);
-        et.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                String s = et.getText().toString();
-                if(s.length() == 0){
-                    Toast.makeText(context, "Text fehlt!", Toast.LENGTH_SHORT).show();
-                }else{
-                    showOrHideBlocks(null, -1);
-                    float rawX = (float) Resources.getSystem().getDisplayMetrics().widthPixels/2-(float)view.getWidth()/2;
-                    float rawY = (float) Resources.getSystem().getDisplayMetrics().heightPixels/2-(float)view.getHeight()/2;
-                    BlockView edit_block = BlockT.EMPTY.createView(context, s);
-                    listener.onBlockDragged(edit_block, rawX, rawY);
-                    et.setText("");
-                }
-                return true;
+        et.setOnLongClickListener(view -> {
+            String s = et.getText().toString();
+            if(s.length() == 0){
+                Toast.makeText(context, "Text fehlt!", Toast.LENGTH_SHORT).show();
+            }else{
+                showOrHideBlocks(null, -1);
+                float rawX = (float) Resources.getSystem().getDisplayMetrics().widthPixels/2-(float)view.getWidth()/2;
+                float rawY = (float) Resources.getSystem().getDisplayMetrics().heightPixels/2-(float)view.getHeight()/2;
+                BlockView edit_block = BlockT.EMPTY.createView(context, s);
+                listener.onBlockDragged(edit_block, rawX, rawY);
+                et.setText("");
             }
+            return true;
         });
 
         //match blocks to bundle
@@ -118,40 +113,28 @@ public class Fragment_Blocks_Tut extends Fragment {
 
         //open blocks when category iv is clicked
         for(int i=0; i<categories.length; i++){
-            categories[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int index = findIndex(categories, view);
-                    showOrHideBlocks(blocks_of_categories[index], index);
-                }
+            categories[i].setOnClickListener(view -> {
+                int index = findIndex(categories, view);
+                showOrHideBlocks(blocks_of_categories[index], index);
             });
         }
 
         //add block to query fragment and hide blocks when block iv is clicked
         for(int i=0; i<categories.length; i++){
             for(BlockView iv: blocks_of_categories[i]){
-                iv.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-                            showOrHideBlocks(null, -1);
-                            float rawX = motionEvent.getRawX()-(float)view.getWidth()/2;
-                            float rawY = motionEvent.getRawY()-(float)view.getHeight()/2;
-                            listener.onBlockDragged(view, rawX, rawY);
-                        }
-                        return true;
+                iv.setOnTouchListener((view, motionEvent) -> {
+                    if(motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                        showOrHideBlocks(null, -1);
+                        float rawX = motionEvent.getRawX()-(float)view.getWidth()/2;
+                        float rawY = motionEvent.getRawY()-(float)view.getHeight()/2;
+                        listener.onBlockDragged(view, rawX, rawY);
                     }
+                    return true;
                 });
             }
         }
         return v;
     }
-
-
-
-    /***
-     * !!!!!!!!!!!! EVERY BLOCK HAS TO MANUALLY BE ADDED HERE!!!!!!!!!!!
-     */
 
     public void addBlock(String name){
         BlockT[] myblocks = BlockT.class.getEnumConstants();
@@ -169,69 +152,6 @@ public class Fragment_Blocks_Tut extends Fragment {
                 return;
             }
         }
-        /*if(name.equals(BlockT.SELECT.getName())) //Key
-            blocks_of_categories[0].add(BlockT.SELECT.createView(context));
-        else if(name.equals(BlockT.FROM.getName()))
-            blocks_of_categories[0].add(BlockT.FROM.createView(context));
-        else if(name.equals(BlockT.WHERE.getName()))
-            blocks_of_categories[0].add(BlockT.WHERE.createView(context));
-        else if(name.equals(BlockT.ORDERBY.getName()))
-            blocks_of_categories[0].add(BlockT.ORDERBY.createView(context));
-        else if(name.equals(BlockT.GROUPBY.getName()))
-            blocks_of_categories[0].add(BlockT.GROUPBY.createView(context));
-        else if(name.equals(BlockT.LIMIT.getName()))
-            blocks_of_categories[0].add(BlockT.LIMIT.createView(context));
-        else if(name.equals(BlockT.DISTINCT.getName()))
-            blocks_of_categories[0].add(BlockT.DISTINCT.createView(context));
-        else if(name.equals(BlockT.HAVING.getName()))
-            blocks_of_categories[0].add(BlockT.HAVING.createView(context));
-
-        else if(name.equals(BlockT.AS.getName())) //DB
-            blocks_of_categories[1].add(BlockT.AS.createView(context));
-        else if(name.equals(BlockT.INNER_JOIN.getName())) //DB
-            blocks_of_categories[1].add(BlockT.INNER_JOIN.createView(context));
-        else if(name.equals(BlockT.LEFT_OUTER_JOIN.getName())) //DB
-            blocks_of_categories[1].add(BlockT.LEFT_OUTER_JOIN.createView(context));
-        else if(name.equals(BlockT.RIGHT_OUTER_JOIN.getName())) //DB
-            blocks_of_categories[1].add(BlockT.RIGHT_OUTER_JOIN.createView(context));
-        else if(name.equals(BlockT.FULL_OUTER_JOIN.getName())) //DB
-            blocks_of_categories[1].add(BlockT.FULL_OUTER_JOIN.createView(context));
-        else if(name.equals(BlockT.ON.getName())) //DB
-            blocks_of_categories[1].add(BlockT.ON.createView(context));
-
-        else if(name.equals(BlockT.AND.getName())) // Logic
-            blocks_of_categories[2].add(BlockT.AND.createView(context));//müsste hier nicht überall 2 in den eckigen Klammer stehen?
-        else if(name.equals(BlockT.NOT.getName()))
-            blocks_of_categories[2].add(BlockT.NOT.createView(context));
-        else if(name.equals(BlockT.IN.getName()))
-            blocks_of_categories[2].add(BlockT.IN.createView(context));
-        else if(name.equals(BlockT.ISNULL.getName()))
-            blocks_of_categories[2].add(BlockT.ISNULL.createView(context));
-        else if(name.equals(BlockT.LIKE.getName()))
-            blocks_of_categories[2].add(BlockT.LIKE.createView(context));
-        else if(name.equals(BlockT.GREATER.getName()))
-            blocks_of_categories[2].add(BlockT.GREATER.createView(context));
-        else if(name.equals(BlockT.SMALLER.getName()))
-            blocks_of_categories[2].add(BlockT.SMALLER.createView(context));
-        else if(name.equals(BlockT.EQUAL.getName()))
-            blocks_of_categories[2].add(BlockT.EQUAL.createView(context));
-        else if(name.equals(BlockT.NEQUAL.getName()))
-            blocks_of_categories[2].add(BlockT.NEQUAL.createView(context));
-        else if(name.equals(BlockT.OR.getName()))
-            blocks_of_categories[2].add(BlockT.OR.createView(context));
-        else if(name.equals(BlockT.XOR.getName()))
-            blocks_of_categories[2].add(BlockT.XOR.createView(context));
-
-        else if(name.equals(BlockT.COUNT.getName())) // Agg
-            blocks_of_categories[3].add(BlockT.COUNT.createView(context));
-        else if(name.equals(BlockT.MIN.getName()))
-            blocks_of_categories[3].add(BlockT.MIN.createView(context));
-        else if(name.equals(BlockT.MAX.getName()))
-            blocks_of_categories[3].add(BlockT.MAX.createView(context));
-        else if(name.equals(BlockT.AVERAGE.getName()))
-            blocks_of_categories[3].add(BlockT.AVERAGE.createView(context));
-        else if(name.equals(BlockT.SUM.getName()))
-            blocks_of_categories[3].add(BlockT.SUM.createView(context));**/
     }
 
 
@@ -326,7 +246,6 @@ public class Fragment_Blocks_Tut extends Fragment {
     //helper
     public int dp_to_int(int dp){
         float scale = getResources().getDisplayMetrics().density;
-        int pix = (int) (dp*scale+0.5f);
-        return pix;
+        return (int) (dp*scale+0.5f);
     }
 }
