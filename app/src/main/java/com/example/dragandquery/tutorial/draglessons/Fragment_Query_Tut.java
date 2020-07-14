@@ -219,7 +219,7 @@ public class Fragment_Query_Tut extends Fragment {
             Toast.makeText(context, SELECT_MISSING_ERROR, Toast.LENGTH_SHORT).show();
             return null;
         }
-        return select.getNode().toTreeString();
+        return select.getNode().toTreeString(false);
     }
 
     public String getExText(String lec_id){

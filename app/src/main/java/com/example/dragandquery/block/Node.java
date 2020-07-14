@@ -81,33 +81,43 @@ public class Node {
 
     /***
      * main parser from blocks to sql query
+     * :param in: true if IN has to be closed yet, false else
      * @return string to perform query on db
      */
-    public String toTreeString(){
+    public String toTreeString(boolean in){
+        boolean opening_in = this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.IN;
+        boolean closing_in = in &&this.getBlock()!=BlockT.EMPTY && this.getParent().getBlock()==BlockT.EMPTY;
         String s = "";
 
         //self
         if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.EMPTY ||
             this.getBlock().getCategory()==R.string.block_cat4 && this.getParent().getBlock()==BlockT.EMPTY)
             s += ", ";
-        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4)
-            //this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.IN)
+        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
+            opening_in)
             s += "(";
         s += this.getValue();
-        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4)
+        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
+            closing_in)
             s += ")";
 
 
         //right
         if(this.hasRight()) {
             s += " ";
-            s += this.getRightChild().toTreeString();
+            if(opening_in || closing_in)
+                s += this.getRightChild().toTreeString(!in);
+            else
+                s += this.getRightChild().toTreeString(in);
         }
 
         //down
         if(this.hasDown()) {
             s += " ";
-            s += this.getDownChild().toTreeString();
+            if(opening_in || closing_in)
+                s += this.getDownChild().toTreeString(!in);
+            else
+                s += this.getDownChild().toTreeString(in);
         }
         return s;
     }
