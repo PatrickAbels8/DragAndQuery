@@ -25,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/border_white_filled"
-        android:orientation="vertical">
+        android:orientation="vertical"
+       >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,57 +71,58 @@
 
     </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/c1l11_question"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/comfortaa"
-                    android:textColor="@color/textcolor_white"
-                    android:gravity="center_horizontal"
-                    android:layout_above="@id/rg_c1l11"/>
+        <TextView
+            android:id="@+id/tv_c1l11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/c1l11_question"
+            android:textSize="20dp"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/textcolor_white"
+            android:gravity="center_horizontal"
+            android:layout_above="@id/rg_c1l11"/>
 
-                <RadioGroup
-                    android:id="@+id/rg_c1l11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="50dp"
-                    android:paddingTop="8dp">
+        <RadioGroup
+            android:id="@+id/rg_c1l11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:paddingTop="8dp">
 
-                        <RadioButton
-                            android:id="@+id/rb1_c1l11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/c1l11_answer1"
-                            android:textSize="@dimen/radio_button_textSize"
-                            android:fontFamily="@font/comfortaa"
-                            android:textColor="@color/textcolor_white"
-                            android:buttonTint="@color/textcolor_white"
-                            />
-                        <RadioButton
-                            android:id="@+id/rb2_c1l11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/c1l11_answer2"
-                            android:textSize="@dimen/radio_button_textSize"
-                            android:fontFamily="@font/comfortaa"
-                            android:textColor="@color/textcolor_white"
-                            android:buttonTint="@color/textcolor_white"
-                            />
-                        <RadioButton
-                            android:id="@+id/rb3_c1l11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/c1l11_answer3"
-                            android:textSize="@dimen/radio_button_textSize"
-                            android:fontFamily="@font/comfortaa"
-                            android:textColor="@color/textcolor_white"
-                            android:buttonTint="@color/textcolor_white"
-                            />
+            <RadioButton
+                android:id="@+id/rb1_c1l11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/c1l11_answer1"
+                android:textSize="@dimen/radio_button_textSize"
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/textcolor_white"
+                android:buttonTint="@color/textcolor_white"
+                />
+            <RadioButton
+                android:id="@+id/rb2_c1l11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/c1l11_answer2"
+                android:textSize="@dimen/radio_button_textSize"
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/textcolor_white"
+                android:buttonTint="@color/textcolor_white"
+                />
+            <RadioButton
+                android:id="@+id/rb3_c1l11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/c1l11_answer3"
+                android:textSize="@dimen/radio_button_textSize"
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/textcolor_white"
+                android:buttonTint="@color/textcolor_white"
+                />
 
-                </RadioGroup>
+        </RadioGroup>
 
                 <Button
                     android:id="@+id/btn_lectioncontent_0111_go"

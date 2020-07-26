@@ -30,6 +30,7 @@ public class Fragment_LectionContent_0112 extends Fragment_Content {
     //coms
     private RelativeLayout rl_exercise;
     private Button btn_go;
+    private TextView text;
     private RadioGroup rg;
     private RadioButton rb1;
     private RadioButton rb2;
@@ -60,6 +61,7 @@ public class Fragment_LectionContent_0112 extends Fragment_Content {
         rl_exercise = v.findViewById(R.id.frag_lectioncontent_0112);
         btn_go = v.findViewById(R.id.btn_lectioncontent_0112_go);
         context = getContext();
+        text = v.findViewById(R.id.tv_c1l12);
         rg = v.findViewById(R.id.rg_c1l12);
         rb1 = v.findViewById(R.id.rb1_c1l12);
         rb2 = v.findViewById(R.id.rb2_c1l12);
@@ -152,11 +154,15 @@ public class Fragment_LectionContent_0112 extends Fragment_Content {
 
     public void showDB(){
         db_view.setVisibility(View.VISIBLE);
+        text.setVisibility(View.INVISIBLE);
+        rg.setVisibility(View.INVISIBLE);
         db_open = true;
     }
 
     public void hideDB(){
         db_view.setVisibility(View.GONE);
+        text.setVisibility(View.VISIBLE);
+        rg.setVisibility(View.VISIBLE);
         db_open = false;
     }
 }

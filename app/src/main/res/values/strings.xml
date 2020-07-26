@@ -264,7 +264,7 @@
         So bildet jede Tabelle ein „Relationenschema“.\n\n
         Man kann Tabellen auch in der Form Tabellenname (Attribut 1, …, Attribut n) darstellen, wenn man die Einträge nicht sehen will.
     </string>
-    <string name="c1l5_question">Orden den weißen Feldern die richtigen Begriffe zu.</string>
+    <string name="c1l5_question">Ordne den weißen Feldern die richtigen Begriffe zu.</string>
     <string name="c1l5_answer1">1 Spalte, 2 Tabelle, 3 Relation, 4 Zeile</string>
     <string name="c1l5_answer2">1 Eintrag, 2 Attribute, 3 Tabelle, 4Tupel</string>
     <string name="c1l5_answer3">1 Attribute, 2 Tabellenname, 3 Relationenschema, 4 Tupel</string>
@@ -292,9 +292,9 @@
         NULL passt zu jedem Attribut.
     </string>
     <string name="c1l7_question">Welcher Eintrag ist falsch?</string>
-    <string name="c1l7_answer1">tba</string>
-    <string name="c1l7_answer2">tba</string>
-    <string name="c1l7_answer3">tba</string>
+    <string name="c1l7_answer1">Oben</string>
+    <string name="c1l7_answer2">Mitte</string>
+    <string name="c1l7_answer3">Unten</string>
     <string name="c1l7_good">Super: Die Raumnummer ist, wie der Name schon sagt eine Zahl.
         Hier muss der Eintrag also 104 statt "hundertvier" sein.</string>
     <string name="c1l7_bad">Das ist leider falsch. Lies nochmal den Informationstext.</string>
@@ -337,7 +337,7 @@
         Hierbei muss man beachten, wie das Mengenverhältnis einer solchen Beziehung aussieht.\n\n
           \n\n
         Beispiel1: \n\n
-        <b>Ein*eSchüler*in</b> gehört genau <b>einer</b> Klasse an. <b>Eine</b> Klasse hat aber <b>mehrere</b>
+        <b>Ein*e Schüler*in</b> gehört genau <b>einer</b> Klasse an. <b>Eine</b> Klasse hat aber <b>mehrere</b>
         Schüler*innen. Man spricht also hier von einer <b>1:n-Beziehung</b> (n steht hierbei für beliebig viel). \n\n
         Schüler (n) — Klasse (1)\n\n
           \n\n
@@ -347,7 +347,7 @@
         Hier spricht man dann von einer <b>n:m-Beziehung</b> (m steht ebenfalls für eine beliebig große Zahl).
         Lehrkraft(n) — Fach(m)
     </string>
-    <string name="c1l10_question"> Welche Tabellen können ebenfalls eine n:m-Beziehung zueinander haben?</string>
+    <string name="c1l10_question">Welche Tabellen können ebenfalls eine n:m-Beziehung zueinander haben?</string>
     <string name="c1l10_answer1">Klasse — Klassenraum</string>
     <string name="c1l10_answer2">Schule — Lehrkraft</string>
     <string name="c1l10_answer3">Lehrer — Klasse</string>
@@ -358,7 +358,7 @@
     <string name="c1l11_input">
         Um im nächsten Kapitel des Tutorials deine ersten Anfragen an die Datenbank stellen zu können,
         musst du nun erstmal die Datenbank selbst kennenlernen. \n\n
-        Du kennst schon die Darstellung als Relationenschema, es gib aber auch eine andere Darstellung,
+        Du kennst schon die Darstellung als Relationenschema, es gibt aber auch eine andere Darstellung,
         in der einzelne Tabellen und ihre Beziehung zueinander dargestellt werden: das ER (Entity Relationship)-Diagramm. \n\n
         Hier werden auch die Kardinalitäten angezeigt. Um dir as ER-Diagramm anzeigen zu lassen,
         tippe auf das Symbol für Datenbank oben in der Mitte. Hier kannst du auswählen, ob du dir die
@@ -529,7 +529,7 @@
     <string name="c2l14_input">
         Es interessiert die Schulleitung, aus welchen Ortschaften die Lehrkräfte an der Schule kommen.
         Lässt sie sich alle Lehrkräfte mit Wohnort anzeigen, doppeln sich aber viele Orte. \n\n
-        Um das zu verhindern gibt es den Befehl <i>DISTINCT</i>. Wird <i>SELECT DISTINCT</i> verwendet,
+        Um das zu verhindern, gibt es den Befehl <i>DISTINCT</i>. Wird <i>SELECT DISTINCT</i> verwendet,
         wird jeder Attributwert nur höchstens ein mal angezeigt.\n\n
         Lasse jetzt die <b>Wohnorte</b> der Lehrkräfte anzeigen.
     </string>

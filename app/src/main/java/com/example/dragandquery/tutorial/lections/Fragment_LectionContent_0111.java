@@ -32,6 +32,7 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
     private RelativeLayout rl_exercise;
     private Button btn_go;
     private RadioGroup rg;
+    private TextView text;
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
@@ -62,6 +63,7 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
         rl_exercise = v.findViewById(R.id.frag_lectioncontent_0111);
         btn_go = v.findViewById(R.id.btn_lectioncontent_0111_go);
         context = getContext();
+        text = v.findViewById(R.id.tv_c1l11);
         rg = v.findViewById(R.id.rg_c1l11);
         rb1 = v.findViewById(R.id.rb1_c1l11);
         rb2 = v.findViewById(R.id.rb2_c1l11);
@@ -87,7 +89,7 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
     }
 
     public boolean verifyAnswer(){
-        return !rb1.isChecked() && rb2.isChecked() && !rb3.isChecked();
+        return !rb1.isChecked() && !rb2.isChecked() && rb3.isChecked();
     }
 
     public void pauseExercise(){
@@ -158,11 +160,15 @@ public class Fragment_LectionContent_0111 extends Fragment_Content {
 
     public void showDB(){
         db_view.setVisibility(View.VISIBLE);
+        text.setVisibility(View.INVISIBLE);
+        rg.setVisibility(View.INVISIBLE);
         db_open = true;
     }
 
     public void hideDB(){
         db_view.setVisibility(View.GONE);
+        text.setVisibility(View.VISIBLE);
+        rg.setVisibility(View.VISIBLE);
         db_open = false;
     }
 }

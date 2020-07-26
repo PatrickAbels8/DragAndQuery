@@ -96,7 +96,10 @@ public class Node {
         if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
             opening_in)
             s += "(";
-        s += this.getValue();
+        if(this.getBlock()==BlockT.NEQUAL)
+            s += "!=";
+        else
+            s += this.getValue();
         if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
             closing_in)
             s += ")";
