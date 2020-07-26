@@ -137,7 +137,7 @@
                     android:paddingBottom="8dp"
                     android:paddingRight="8dp"
                     android:paddingTop="8dp"
-                    android:src="@drawable/er_school"/>
+                    android:src="@drawable/er_cafeteria_colourfull_background"/>
 
 
         </LinearLayout>

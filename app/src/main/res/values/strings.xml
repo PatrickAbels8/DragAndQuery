@@ -423,9 +423,9 @@
     <string name="c2l4_input">
         Meistens willst du nicht alle Datensätze anzeigen lassen, sondern nur solche, die eine bestimmte
         Bedingung erfüllen. Diese Bedingung kannst du mit dem <i>WHERE</i>-Befehl stellen. \n\n
-        Versuche die <b>Vornamen</b> alle Schüler*innen (Tabelle <b>Schüler</b>) auszugeben, die
-        als <b>Ort Mainz</b> eingetragen haben. Hänge dazu den “=”-Block aus der Kategorie “<i>LOGIK</i>”
-        an den WHERE-Block, nutze dann den grauen Block. Der Vergleichstext (also “Mainz“) gehört in
+        Versuche die <b>Vornamen</b> aller Schüler*innen (Tabelle <b>Schüler</b>) auszugeben, die
+        als <b>Ort Mainz</b> eingetragen haben. Nutze dazu den “=”-Block aus der Kategorie “<i>LOGIK</i>”
+        sowie zwei graue Blöcke. Der Vergleichstext (also “Mainz“) gehört in
         obere Anführungszeichen: ““.
     </string>
     <string name="c2l4_good">Gut</string>
