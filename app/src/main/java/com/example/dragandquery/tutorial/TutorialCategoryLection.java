@@ -25,6 +25,9 @@ import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0111;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0301;
 import com.example.dragandquery.tutorial.lections.Fragment_LectionContent_0401;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
@@ -57,7 +60,22 @@ public class TutorialCategoryLection
     Fragment_Content curFrag;
     Fragment_Feedback fragFeedback;
     Fragment_Input fragInput;
-    Fragment_Content[] frags;
+    Map<String, Fragment_Content> frags = new HashMap<String, Fragment_Content>(){{
+        put("01_01", new Fragment_LectionContent_0101());
+        put("01_02", new Fragment_LectionContent_0102());
+        put("01_03", new Fragment_LectionContent_0103());
+        put("01_04", new Fragment_LectionContent_0104());
+        put("01_05", new Fragment_LectionContent_0105());
+        put("01_06", new Fragment_LectionContent_0106());
+        put("01_07", new Fragment_LectionContent_0107());
+        put("01_08", new Fragment_LectionContent_0108());
+        put("01_09", new Fragment_LectionContent_0109());
+        put("01_10", new Fragment_LectionContent_0110());
+        put("01_11", new Fragment_LectionContent_0111());
+        put("01_12", new Fragment_LectionContent_0112());
+        put("03_01", new Fragment_LectionContent_0301());
+        put("04_01", new Fragment_LectionContent_0401());
+    }};
 
     //vars
     private String lection_id; //of type "01_03_05" when its the 3rd out of 5 lections in cat 01
@@ -74,22 +92,6 @@ public class TutorialCategoryLection
         //init coms and vars
         fragFeedback = new Fragment_Feedback();
         fragInput = new Fragment_Input();
-        frags = new Fragment_Content[]{
-                new Fragment_LectionContent_0101(),
-                new Fragment_LectionContent_0102(),
-                new Fragment_LectionContent_0103(),
-                new Fragment_LectionContent_0104(),
-                new Fragment_LectionContent_0105(),
-                new Fragment_LectionContent_0106(),
-                new Fragment_LectionContent_0107(),
-                new Fragment_LectionContent_0108(),
-                new Fragment_LectionContent_0109(),
-                new Fragment_LectionContent_0110(),
-                new Fragment_LectionContent_0111(),
-                new Fragment_LectionContent_0112(),
-                new Fragment_LectionContent_0301(),
-                new Fragment_LectionContent_0401()
-        };
 
         //intent stuff
         Intent i = getIntent();
@@ -101,8 +103,8 @@ public class TutorialCategoryLection
             numLecs = Integer.parseInt(components[2]);
         }
 
-        //checkout current lection todo out of bounds
-        curFrag = frags[getFragIndex(numCat, numLec)];
+        //checkout current lection
+        curFrag = frags.get(lection_id.substring(0, 5));
 
         //send right text to input frag
         Bundle lec = new Bundle();
@@ -252,17 +254,5 @@ public class TutorialCategoryLection
         nextLectionID +=  newLec>9? Integer.toString(newLec): "0"+Integer.toString(newLec);
         nextLectionID += "_"+coms[2];
         return nextLectionID;
-    }
-
-    // change when lections changed
-    public int getFragIndex(int chapter, int lection){
-        int idx = 0;
-
-        idx += chapter>1? 12: 0;
-        idx += chapter>2? 16: 0;
-        idx += chapter>3? 8: 0;
-        idx += lection-1;
-
-        return idx;
     }
 }
