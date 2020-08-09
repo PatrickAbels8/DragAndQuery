@@ -49,7 +49,7 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         put("02_15", new String[]{BlockT.FROM.getName(), BlockT.SELECT.getName()});
         put("02_16", new String[]{BlockT.AS.getName(), BlockT.FROM.getName(), BlockT.ORDERBY.getName(), BlockT.SELECT.getName()});
         put("03_02", new String[]{BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(),});
-        put("03_03", new String[]{BlockT.FROM.getName(), BlockT.ISNULL.getName(), BlockT.SELECT.getName()});
+        put("03_03", new String[]{BlockT.WHERE.getName(), BlockT.FROM.getName(), BlockT.IFNULL.getName(), BlockT.SELECT.getName()});
         put("03_04", new String[]{BlockT.SUM.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName()});
         put("03_05", new String[]{BlockT.AS.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.GROUPBY.getName(), BlockT.SELECT.getName()});
         put("03_06", new String[]{BlockT.AVERAGE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName()});
