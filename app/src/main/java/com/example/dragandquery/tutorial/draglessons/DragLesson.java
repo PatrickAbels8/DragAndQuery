@@ -53,7 +53,7 @@ public class DragLesson extends AppCompatActivity implements Fragment_Table_Tut.
         put("03_04", new String[]{BlockT.SUM.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName()});
         put("03_05", new String[]{BlockT.AS.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.GROUPBY.getName(), BlockT.SELECT.getName()});
         put("03_06", new String[]{BlockT.AVERAGE.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName()});
-        put("03_07", new String[]{BlockT.MIN.getName(), BlockT.FROM.getName(), BlockT.IN.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
+        put("03_07", new String[]{BlockT.GROUPBY.getName(), BlockT.MIN.getName(), BlockT.FROM.getName(), BlockT.IN.getName(), BlockT.SELECT.getName(), BlockT.WHERE.getName()});
         put("03_08", new String[]{BlockT.GREATER.getName(), BlockT.SMALLER.getName(), BlockT.COUNT.getName(), BlockT.FROM.getName(), BlockT.GROUPBY.getName(), BlockT.HAVING.getName(), BlockT.SELECT.getName()});
         put("04_02", new String[]{BlockT.EQUAL.getName(), BlockT.FROM.getName(), BlockT.SELECT.getName(), BlockT.INNER_JOIN.getName(), BlockT.ON.getName()});
         put("04_03", new String[]{BlockT.GREATER.getName(), BlockT.SMALLER.getName(), BlockT.EQUAL.getName(), BlockT.ORDERBY.getName(), BlockT.FROM.getName(), BlockT.INNER_JOIN.getName(), BlockT.SELECT.getName(), BlockT.ON.getName(), BlockT.WHERE.getName()});
