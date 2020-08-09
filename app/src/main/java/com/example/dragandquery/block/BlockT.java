@@ -122,7 +122,7 @@ public enum BlockT {
             case IN:
                 return "IN";
             case IFNULL:
-                return "IF NULL";
+                return "IFNULL";
             case LIKE:
                 return "LIKE";
             case NOT:

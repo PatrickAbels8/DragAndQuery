@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import static com.example.dragandquery.block.BlockT.WHERE;
+
 /***
  * -
  */
@@ -64,7 +66,7 @@ public class Fragment_Table_Tut extends Fragment {
         put("02_15", "select Kürzel, Fahrzeit/60*50 FROM Lehrkraft");
         put("02_16", "SELECT Kürzel, Fahrzeit/60*50 AS Strecke FROM Lehrkraft ORDER BY Strecke ASC");
         put("03_02", "select count(kürzel) from lehrkraft");
-        put("03_03", "select lehrkraftid, ifnull(fahrzeit, \"-1\") from lehrkraft");
+        put("03_03", "select lehrkraftid, ifnull(fahrzeit, \"-1\") from lehrkraft WHERE Fahrzeit < 10");
         put("03_04", "select sum(fahrzeit*2) from lehrkraft");
         put("03_05", "select ort, count(schülerid) as Anzahl from schüler group by ort");
         put("03_06", "select avg(plätze) from raum");
