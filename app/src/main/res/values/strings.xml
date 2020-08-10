@@ -671,19 +671,20 @@
     <string name="c4l1_answer1">Raum und Lehrkraft</string>
     <string name="c4l1_answer2">Schüler und Klasse</string>
     <string name="c4l1_answer3">Fach und Raum</string>
-    <string name="c4l1_good">Gut</string>
-    <string name="c4l1_bad">Ungut</string>
+    <string name="c4l1_good">Sehr gut! Du hast die sinnvolle Verbindung gefunden. </string>
+    <string name="c4l1_bad">Das stimmt leider nicht, sieh im ER-Diagramm nach zwischen welchen Tabellen es sinnvolle Verbindungen gibt. </string>
 
     <string name="c4l2_input">
         Du hast in der letzten Lektion gelernt, dass ein Join über die Tabellen Schüler und Klasse sinnvoll ist.\n\n
-        Um nun diese beiden Tabellen zu verbinden, siehst du im Relationenmodell nach, wo ein Fremdschlüssel zu einem der beiden Tabellen in der jeweils anderen Tabelle enthalten ist.\n\n
-        Im FROM-Teil müssen beide Tabellen genannt sein.\n\n
-        Im WHERE-Teil müssen die beiden Schlüssel gleichgesetzt werden.\n\n
-        Beachte hierbei, dass vor dem (Fremd-)Schlüsselattribut immer der Name der Tabelle genannt werden muss.\n\n
+        Um nun diese beiden Tabellen zu verbinden, siehst du im Relationenmodell nach, wo ein
+        Fremdschlüssel zu einer der beiden Tabellen in der jeweils anderen Tabelle enthalten ist.\n
+        Diesen Fremdschlüssel werden wir nutzen, um zusammengehörige Datensätze zu finden. \n\n
+        Nach FROM gibst du die erste Tabelle an und verbindest sie über den inner join mit der zweiten.
+        Du hängst den on-Block an die zweite Tabelle und fügst Fremdschlüssel=Schlüssel hinzu, um klar zu machen wie Datensätze einander zugeordnet werden. \n\n
+        Wenn Attribute gleich heißen, musst der Name der Tabelle ebenfalls genannt werden. \n\n
         Es sieht also wie folgt aus:\n\n
         SELECT….\n
-        FROM Tabelle1, Tabelle2\n
-        WHERE Tabelle1.Primärschlüssel = Tabelle2.Fremdschlüssel\n\n
+        FROM Tabelle1 inner join Tabelle2 on Tabelle1.Primärschlüssel = Tabelle2.Fremdschlüssel\n\n
         Finde nun heraus, zu welcher Klasse alle Schüler gehören.\n\n
         Gib dabei Nachname der Schüler und Name der Klasse an.
     </string>
@@ -691,56 +692,101 @@
     <string name="c4l2_bad">Ungut</string>
 
     <string name="c4l3_input">
-        Die Schulleitung muss für die Raumplanung wissen, welche Klassen derzeit einen Klassenraum haben, der mehr als 20 Sitzplätze enthält.\n\n
-        Gib aus, welche Klassen das sind (Name), wie viele Plätze die Räume haben und sortiere das Ergebnis aufsteigend nach der Anzahl der Plätze.
+        Bisher haben wir als Ergebnis eines JOINS aus beiden Tabellen nur die Datensätze gesucht,
+        bei denen die (Fremd-)Schlüsselattribute auch wirklich übereinstimmen. Wir durchsuchen also
+        in der Schnittmenge der beiden Tabellen.\n\n
+        Daher kommt der Name inner join für diese Art des joins. \n\n
+        Nun zur nächsten Übung:\n
+        Die Schulleitung muss für die Raumplanung wissen, welche Klassen derzeit einen Klassenraum haben,
+        der mehr als 20 Sitzplätze enthält.\n\n
+        Gib aus, welche Klassen das sind (Name), wie viele Plätze die Räume haben und sortiere das
+        Ergebnis aufsteigend nach der Anzahl der Plätze.
     </string>
     <string name="c4l3_good">Gut</string>
     <string name="c4l3_bad">Ungut</string>
 
     <string name="c4l4_input">
-        Die Klasse mit der KlassenID 81 macht draußen Unfug.\n\n
-        Der Hausmeister erwischt sie und muss dem Klassenlehrer Bescheid geben.\n\n
-        An wen muss er sich wenden? (Gib den Vor- und Nachnamen des Lehrers aus)
+        Manchmal möchte man jedoch alle Informationen aus einer der beiden Tabellen haben, selbst wenn zur
+        ID dieses Datensatzes kein Eintrag in der 2. Tabelle vorhanden ist.
+        \n Dafür kann man OUTER JOINs verwenden. \n\n
+        Wenn die gesuchten Daten in der 1. Tabelle sind, nennt man dies LEFT OUTER JOIN,
+        wenn sie in der 2. Tabelle sind RIGHT OUTER JOIN.\n\n
+        Die Struktur der Anfrage erstellst du genauso wie bei einem INNER JOIN, nur dass du statt INNER JOIN
+        das Schlüsselwort LEFT/RIGHT OUTER JOIN, verwendest.\n\n
+        Gib nun alle Raumnummern aus und,
+        falls es ein Klassenraum ist, welche Klasse (Klassenname) dort drin unterrichtet wird
     </string>
+
     <string name="c4l4_good">Gut</string>
     <string name="c4l4_bad">Ungut</string>
 
     <string name="c4l5_input">
-        Du kannst nicht nur zwei Tabellen miteinander joinen sondern auch 3 Tabellen.\n\n
-        Dafür musst du im WHERE-Block beide Tabellen anhand der Fremdschlüssel miteinander verbinden.\n\n
-        Gib nun die Nachnamen der Schüler, ihren Klassennamen und die Raumnummer ihres Klassenraums an.
+        Wir möchten nun eine Liste aller Lehrkräfte (das Kürzel reicht) und zusätzlich die Information,
+        in welchem Fach sie Fachleiter sind. Falls sie in keinem Fach Fachleiter sind,
+        sollen sie dennoch aufgeführt werden.\n\n
+        Wenn du in der vorherigen Übung den LEFT OUTER JOINbenutzt hast, versuche es doch nun mit dem
+        RIGHT OUTER JOIN und umgekehrt.\n\n
+        (Hinweis: Man kann in der ON-Klausel auch andere Attribute als nur Schlüssel und Fremdschlüssel
+        miteinander vergleichen. Benutze bei dieser Anfrage als Vergleichsattribut Kürzel.)
     </string>
+
     <string name="c4l5_good">Gut</string>
     <string name="c4l5_bad">Ungut</string>
 
     <string name="c4l6_input">
-        Um zu entscheiden, wer bald die Fachleitung der einzelnen Fächer übernimmt, muss die Schulleitung herausfinden, welcher Lehrer welche Fächer mindestens 10 Stunden unterrichtet.\n\n
+        Noch wurde nicht jeder Klasse eine Klassenlehrkraft zugeordnet. Die Schulleitung möchte dies nun
+        nachholen. \n Sie benötigt dafür eine Liste aller Klassen und aller Lehrkräfteund zusätzlich
+        die Information welche Klasse welche Lehrkraftals Klassenlehrkraft bereitszugeordnet bekommen hat.\n\n
+        Für diese Anfrage wird wieder ein JOIN verwendet. Jedoch benötigen wir sowohl aus „Klasse“,
+        als auch aus „Lehrkraft“ alle Datensätze, können also den LEFT/RIGHT OUTER JOIN nicht verwenden. \n
+        Wir benötigen den FULL OUTER JOIN\n\n
+        Die Struktur der Anfrage bleibt gleich, du muss lediglich das Schlüsselwort FULL OUTER JOIN
+        verwenden.\n\n
+        Gib nun die Namen und IDs aller Klassen und die Kürzel der Lehrkräfte aus, ordne dabei
+        den Klassen ihre Klassenlehrkräfte zu.
+
+
+<!--        Um zu entscheiden, wer bald die Fachleitung der einzelnen Fächer übernimmt, muss die Schulleitung herausfinden, welcher Lehrer welche Fächer mindestens 10 Stunden unterrichtet.\n\n
         Gib das Lehrerkürzel, den aktuellen Fachleiter, Fachname und die Stunden aus.\n\n
-        Sortiere aufsteigend nach den Stunden.
+        Sortiere aufsteigend nach den Stunden.-->
     </string>
     <string name="c4l6_good">Gut</string>
     <string name="c4l6_bad">Ungut</string>
 
     <string name="c4l7_input">
-        Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
+        Die Klasse mit der KlassenID 33 macht draußen Unfug.\n\n
+        Der Hausmeister erwischt sie und muss dem Klassenlehrer Bescheid geben.\n\n
+        An wen muss er sich wenden? (Gib den Vor- und Nachnamen des Lehrers aus)
+
+        <!--Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
         Willkommen zum Triple-Join.\n\n
-        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.
+        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.-->
     </string>
     <string name="c4l7_good">Gut</string>
     <string name="c4l7_bad">Ungut</string>
 
     <string name="c4l8_input">
-        Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
+        Du kannst nicht nur zwei Tabellen miteinander joinen sondern auch 3 Tabellen. Verwende dafür
+        einfach 2 join-Blöcke. \n\n
+        Gib nun die Nachnamen der Schüler, ihren Klassennamen und die Raumnummer ihres Klassenraums an.
+
+
+        <!--Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
         Willkommen zum Triple-Join.\n\n
-        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.
+        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.-->
     </string>
     <string name="c4l8_good">Gut</string>
     <string name="c4l8_bad">Ungut</string>
 
     <string name="c4l9_input">
-        Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
+        Um zu entscheiden, wer bald die Fachleitung der einzelnen Fächer übernimmt, muss die Schulleitung
+        herausfinden, welcher Lehrer welche Fächer mindestens 10 Stunden unterrichtet.\n\n
+        Gib das Lehrerkürzel, den aktuellen Fachleiter, Fachname und die Stundenaus. \n
+        Sortiere das Ergebnis aufsteigend nach der Anzahl der Stunden.
+
+        <!--Was zweimal funktioniert, geht natürlich auch dreimal.\n\n
         Willkommen zum Triple-Join.\n\n
-        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.
+        Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.-->
     </string>
     <string name="c4l9_good">Gut</string>
     <string name="c4l9_bad">Ungut</string>
