@@ -35,7 +35,6 @@ public class Fragment_LectionContent_0112 extends Fragment_Content {
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
-
     private ImageView btn_db;
     private LinearLayout db_view;
     private PhotoView db_img;

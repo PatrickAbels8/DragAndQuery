@@ -101,6 +101,18 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/scroll_img"
                             android:src="@drawable/tut4_3"/>
+
+                        <TextView
+                                android:id="@+id/tv_ex_ap"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/c1l1_input_ap"
+                            android:textSize="@dimen/tutorial_input_textSize"
+                            android:layout_centerInParent="true"
+                            android:ellipsize="marquee"
+                            android:scrollHorizontally="true"
+                            android:fontFamily="@font/comfortaa"
+                            android:textColor="@color/textcolor_white"/>
                         </LinearLayout>
 
                 </ScrollView>

@@ -8,7 +8,68 @@
     android:visibility="invisible"
     tools:visibility="visible">
 
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/frag_db"
+        android:src="@drawable/ic_menu_dbview"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:id="@+id/db_view"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_white_filled"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+
+        <TextView
+            android:id="@+id/db_title_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/db_title_school"
+            android:textColor="@color/textcolor_white"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/db_title_legend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/db_title_legend"
+            android:textColor="@color/textcolor_white"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="16dp"/>
+    </LinearLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/db_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:src="@drawable/er_school_colourful_background"/>
+    </LinearLayout>
                 <TextView
+                    android:id="@+id/tv_c4l1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/c4l1_question"

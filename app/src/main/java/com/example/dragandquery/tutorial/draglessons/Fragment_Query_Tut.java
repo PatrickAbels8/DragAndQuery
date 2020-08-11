@@ -54,6 +54,7 @@ public class Fragment_Query_Tut extends Fragment {
     private LinearLayout db_view;
     private LinearLayout exercise;
     private TextView exercise_text;
+    private TextView exercise_text_appendix;
     private Button acceptInput;
     private ImageView scroller_img;
     private PhotoView db_img;
@@ -94,6 +95,7 @@ public class Fragment_Query_Tut extends Fragment {
         context = getContext();
         exercise = (LinearLayout) v.findViewById(R.id.ll_ex);
         exercise_text = (TextView) v.findViewById(R.id.tv_ex);
+        exercise_text_appendix = v.findViewById(R.id.tv_ex_ap);
         acceptInput = (Button) v.findViewById(R.id.btn_input);
         scroller_img = (ImageView) v.findViewById(R.id.scroll_img);
         hint = (TextView) v.findViewById(R.id.tut_hint);
@@ -114,7 +116,9 @@ public class Fragment_Query_Tut extends Fragment {
         title_school.setOnClickListener(new Fragment_Query_Tut.SchoolListener());
 
         //set ex text
-        exercise_text.setText(getExText(this.getArguments().getString(DragLesson.ID_KEY)));
+        String[] texts = getExText(this.getArguments().getString(DragLesson.ID_KEY));
+        exercise_text.setText(texts[0]);
+        exercise_text_appendix.setText(texts[1]);
 
         //load lection id
         lec_id = this.getArguments().getString(DragLesson.ID_KEY);
@@ -222,9 +226,10 @@ public class Fragment_Query_Tut extends Fragment {
         return select.getNode().toTreeString(false);
     }
 
-    public String getExText(String lec_id){
+    public String[] getExText(String lec_id){
         scroller_img.setVisibility(View.INVISIBLE);
         String text = "";
+        String appendix = "";
         if(lec_id.substring(0,5).equals("01_01")){
             text = getString(R.string.c1l1_input);
         }else if(lec_id.substring(0,5).equals("01_02")){
@@ -305,16 +310,19 @@ public class Fragment_Query_Tut extends Fragment {
             text = getString(R.string.c4l3_input);
             scroller_img.setImageDrawable(getResources().getDrawable(R.drawable.tut4_3));
             scroller_img.setVisibility(View.VISIBLE);
+            appendix = getString(R.string.c4l3_input_ap);
         }else if(lec_id.substring(0,5).equals("04_04")){
             text = getString(R.string.c4l4_input);
             scroller_img.setImageDrawable(getResources().getDrawable(R.drawable.tut4_4));
             scroller_img.setVisibility(View.VISIBLE);
+            appendix = getString(R.string.c4l4_input_ap);
         }else if(lec_id.substring(0,5).equals("04_05")){
             text = getString(R.string.c4l5_input);
         }else if(lec_id.substring(0,5).equals("04_06")){
             text = getString(R.string.c4l6_input);
             scroller_img.setImageDrawable(getResources().getDrawable(R.drawable.tut4_6));
             scroller_img.setVisibility(View.VISIBLE);
+            appendix = getString(R.string.c4l6_input_ap);
         }else if(lec_id.substring(0,5).equals("04_07")){
             text = getString(R.string.c4l7_input);
         }else if(lec_id.substring(0,5).equals("04_08")){
@@ -322,7 +330,7 @@ public class Fragment_Query_Tut extends Fragment {
         }else if(lec_id.substring(0,5).equals("04_09")) {
             text = getString(R.string.c4l9_input);
         }
-        return text;
+        return new String[]{text, appendix};
     }
 
     @Override

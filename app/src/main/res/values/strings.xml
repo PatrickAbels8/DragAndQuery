@@ -676,14 +676,14 @@
 
     <string name="c4l2_input">
         Du hast in der letzten Lektion gelernt, dass ein Join über die Tabellen Schüler und Klasse sinnvoll ist.\n\n
-        Um nun diese beiden Tabellen zu verbinden, siehst du im Relationenmodell nach, wo ein
-        Fremdschlüssel zu einer der beiden Tabellen in der jeweils anderen Tabelle enthalten ist.\n
+        Um nun diese beiden Tabellen zu verbinden, siehst du im ER-Diagramm nach, wo ein
+        Fremdschlüssel zu einer der beiden Tabellen in der jeweils anderen Tabelle enthalten ist.\n\n
         Diesen Fremdschlüssel werden wir nutzen, um zusammengehörige Datensätze zu finden. \n\n
         Nach FROM gibst du die erste Tabelle an und verbindest sie über den inner join mit der zweiten.
         Du hängst den on-Block an die zweite Tabelle und fügst Fremdschlüssel=Schlüssel hinzu, um klar zu machen wie Datensätze einander zugeordnet werden. \n\n
-        Wenn Attribute gleich heißen, musst der Name der Tabelle ebenfalls genannt werden. \n\n
+        Wenn Attribute gleich heißen, muss der Name der Tabelle ebenfalls genannt werden. \n\n
         Es sieht also wie folgt aus:\n\n
-        SELECT….\n
+        SELECT….\n\n
         FROM Tabelle1 inner join Tabelle2 on Tabelle1.Primärschlüssel = Tabelle2.Fremdschlüssel\n\n
         Finde nun heraus, zu welcher Klasse alle Schüler gehören.\n\n
         Gib dabei Nachname der Schüler und Name der Klasse an.
@@ -695,7 +695,9 @@
         Bisher haben wir als Ergebnis eines JOINS aus beiden Tabellen nur die Datensätze gesucht,
         bei denen die (Fremd-)Schlüsselattribute auch wirklich übereinstimmen. Wir durchsuchen also
         in der Schnittmenge der beiden Tabellen.\n\n
-        Daher kommt der Name inner join für diese Art des joins. \n\n
+        Daher kommt der Name inner join für diese Art des joins.
+    </string>
+    <string name="c4l3_input_ap">
         Nun zur nächsten Übung:\n
         Die Schulleitung muss für die Raumplanung wissen, welche Klassen derzeit einen Klassenraum haben,
         der mehr als 20 Sitzplätze enthält.\n\n
@@ -712,7 +714,9 @@
         Wenn die gesuchten Daten in der 1. Tabelle sind, nennt man dies LEFT OUTER JOIN,
         wenn sie in der 2. Tabelle sind RIGHT OUTER JOIN.\n\n
         Die Struktur der Anfrage erstellst du genauso wie bei einem INNER JOIN, nur dass du statt INNER JOIN
-        das Schlüsselwort LEFT/RIGHT OUTER JOIN, verwendest.\n\n
+        das Schlüsselwort LEFT/RIGHT OUTER JOIN, verwendest.
+    </string>
+    <string name="c4l4_input_ap">
         Gib nun alle Raumnummern aus und,
         falls es ein Klassenraum ist, welche Klasse (Klassenname) dort drin unterrichtet wird
     </string>
@@ -741,7 +745,9 @@
         als auch aus „Lehrkraft“ alle Datensätze, können also den LEFT/RIGHT OUTER JOIN nicht verwenden. \n
         Wir benötigen den FULL OUTER JOIN\n\n
         Die Struktur der Anfrage bleibt gleich, du muss lediglich das Schlüsselwort FULL OUTER JOIN
-        verwenden.\n\n
+        verwenden.
+    </string>
+    <string name="c4l6_input_ap">
         Gib nun die Namen und IDs aller Klassen und die Kürzel der Lehrkräfte aus, ordne dabei
         den Klassen ihre Klassenlehrkräfte zu.
 
