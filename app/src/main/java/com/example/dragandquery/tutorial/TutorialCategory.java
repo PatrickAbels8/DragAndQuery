@@ -88,9 +88,9 @@ public class TutorialCategory extends AppCompatActivity {
                 if(level_of_achievement == UNLOCKED){
                     startLection(lection_id);
                 }else if(level_of_achievement == DONE){
-                    showLectionDone();
+                    startLection(lection_id);//showLectionDone();
                 }else if(level_of_achievement == LOCKED){
-                    showLectionLocked();
+                    startLection(lection_id);//showLectionLocked();
                 }
             });
         }

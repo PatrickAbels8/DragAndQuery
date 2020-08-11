@@ -70,7 +70,7 @@ public class Fragment_Table_Tut extends Fragment {
         put("03_04", "select sum(fahrzeit*2) from lehrkraft");
         put("03_05", "select ort, count(schülerid) as Anzahl from schüler group by ort");
         put("03_06", "select avg(plätze) from raum");
-        put("03_07", "select ort, min(fahrzeit), nachname from lehrkraft where ort in (\"Ingelheim\", \"Engelstadt\", \"Oppenheim\" group by ort");
+        put("03_07", "select ort, min(fahrzeit), nachname from lehrkraft where ort in (\"Ingelheim\", \"Engelstadt\", \"Oppenheim\") group by ort");
         put("03_08", "select count(schülerid), klassenid from schüler group by klassenid having count(schülerid) > 28");
         put("04_02", "select nachname, name from klasse inner join schüler on schüler.klassenid = klasse.klassenid");
         put("04_03", "select name, plätze from raum join klasse on klasse.raumnummer = raum.raumnummer where (plätze>20) order by plätze asc");
