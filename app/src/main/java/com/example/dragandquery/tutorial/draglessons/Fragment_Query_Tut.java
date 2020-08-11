@@ -503,6 +503,7 @@ public class Fragment_Query_Tut extends Fragment {
     public class MyGoListener implements ClearView.MyClearDragListener{
         @Override
         public void onMyDrag(ClearView me, BlockView him, float x, float y, int event) {
+            Log.d("+++", "0");
             boolean isInMe = me.getX()<x && x<me.getX()+me.getWidth() && me.getY()<y && y<me.getY()+me.getHeight();
             switch(event) {
                 case BlockView.MOVE:
@@ -512,10 +513,13 @@ public class Fragment_Query_Tut extends Fragment {
                         btn_go.setImageResource(R.drawable.go);
                     break;
                 case BlockView.UP:
+                    Log.d("+++", "1");
                     if(isInMe){
+                        Log.d("+++", "2");
                         btn_go.setImageResource(R.drawable.go);
+                        Log.d("+++", "3");
                         String query = interpret(him);
-                        Log.d("+++", query);
+                        Log.d("+++", "4");
                         if(query == null)
                             break;
                         long start = System.currentTimeMillis();
