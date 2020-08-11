@@ -365,6 +365,7 @@ public class Fragment_Query_Tut extends Fragment {
             databaseAccess.close();
             return response;
         }catch(Exception e){
+            Log.d("+++", e.toString());
             return null;
         }
     }
@@ -514,6 +515,7 @@ public class Fragment_Query_Tut extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
+                        Log.d("+++", query);
                         if(query == null)
                             break;
                         long start = System.currentTimeMillis();

@@ -590,8 +590,8 @@
     <string name="c3l2_bad">Ungut</string>
 
     <string name="c3l3_input">
-        Die Funktion IFNULL(Attribut, "Alternative") prüft ob der Attributwert NULL ist und ersetzt
-        ihn für den Ausdruck durch die (in Anführungszeichen gesetzte) Alternative.\n\n
+        Die Funktion IFNULL(Attribut, Alternative) prüft ob der Attributwert NULL ist und ersetzt
+        ihn in diesem Fall für den Ausdruck durch die Alternative.\n\n
         Besonders bei der Verwendung von Aggregatfunktionen kann dies nützlich sein, da mit NULL zum
         Beispiel nicht gerechnet werden kann.\n\n
         Lasse dir die IDs und Fahrtzeiten aller Lehrkräfte ausgeben, die weniger als 10 Minuten

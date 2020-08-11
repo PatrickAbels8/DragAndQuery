@@ -20,45 +20,45 @@ public enum BlockT {
     AS,
     AVERAGE,
     COUNT,
+    DISTINCT,
     EQUAL,
     EMPTY,
     FROM,
+    FULL_OUTER_JOIN,
     GREATER,
     GROUPBY,
     HAVING,
-    IN,
     IFNULL,
+    IN,
+    INNER_JOIN,
+    LEFT_OUTER_JOIN,
     LIKE,
     LIMIT,
     MAX,
     MIN,
     NEQUAL,
     NOT,
+    ON,
     OR,
     ORDERBY,
+    RIGHT_OUTER_JOIN,
     SELECT,
-    DISTINCT,
     SMALLER,
     SUM,
     WHERE,
-    XOR,
-    INNER_JOIN,
-    LEFT_OUTER_JOIN,
-    RIGHT_OUTER_JOIN,
-    FULL_OUTER_JOIN,
-    ON;
+    XOR;
 
     public int getCategory(){
         switch(this){
-            case SELECT:
+            case DISTINCT:
             case FROM:
             case GROUPBY:
             case HAVING:
             case LIMIT:
             case LIKE:
             case ORDERBY:
+            case SELECT:
             case WHERE:
-            case DISTINCT:
                 return R.string.block_cat1;
             case LEFT_OUTER_JOIN:
             case RIGHT_OUTER_JOIN:
