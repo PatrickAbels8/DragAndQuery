@@ -106,7 +106,7 @@
                                 android:id="@+id/tv_ex_ap"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/c1l1_input_ap"
+                            android:text="@string/c1l1_input"
                             android:textSize="@dimen/tutorial_input_textSize"
                             android:layout_centerInParent="true"
                             android:ellipsize="marquee"
