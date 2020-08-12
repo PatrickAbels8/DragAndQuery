@@ -199,7 +199,7 @@ public class Fragment_Query extends Fragment {
             Toast.makeText(context, NO_DB_CHOSEN_ERROR, Toast.LENGTH_SHORT).show();
             return null;
         }
-        return select.getNode().toTreeString(false);
+        return select.getNode().toTreeString();
     }
 
     //helper to start dragging view after inserting

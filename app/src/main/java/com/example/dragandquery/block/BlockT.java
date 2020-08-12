@@ -66,7 +66,6 @@ public enum BlockT {
             case ON:
             case INNER_JOIN:
             case AS:
-            case EMPTY:
                 return R.string.block_cat2;
             case AND:
             case OR:

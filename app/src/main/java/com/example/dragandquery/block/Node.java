@@ -81,46 +81,40 @@ public class Node {
 
     /***
      * main parser from blocks to sql query
-     * :param in: true if IN has to be closed yet, false else
      * @return string to perform query on db
      */
-    public String toTreeString(boolean in){
-        boolean opening_in = this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.IN;
-        boolean closing_in = in &&this.getBlock()!=BlockT.EMPTY && this.getParent().getBlock()==BlockT.EMPTY;
+    public String toTreeString(){
+        boolean brackets = this.getBlock()==BlockT.EMPTY && (
+                this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
+                this.getParent().getBlock()==BlockT.IN ||
+                this.getParent().getBlock()==BlockT.IFNULL);
+
         String s = "";
 
         //self
         if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock()==BlockT.EMPTY ||
             this.getBlock().getCategory()==R.string.block_cat4 && this.getParent().getBlock()==BlockT.EMPTY)
             s += ", ";
-        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
-            opening_in)
+        if(brackets)
             s += "(";
         if(this.getBlock()==BlockT.NEQUAL)
             s += "!=";
         else
             s += this.getValue();
-        if(this.getBlock()==BlockT.EMPTY && this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
-            closing_in)
+        if(brackets)
             s += ")";
 
 
         //right
         if(this.hasRight()) {
             s += " ";
-            if(opening_in || closing_in)
-                s += this.getRightChild().toTreeString(!in);
-            else
-                s += this.getRightChild().toTreeString(in);
+            s += this.getRightChild().toTreeString();
         }
 
         //down
         if(this.hasDown()) {
             s += " ";
-            if(opening_in || closing_in)
-                s += this.getDownChild().toTreeString(!in);
-            else
-                s += this.getDownChild().toTreeString(in);
+            s += this.getDownChild().toTreeString();
         }
         return s;
     }
