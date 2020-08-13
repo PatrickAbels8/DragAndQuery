@@ -531,7 +531,7 @@ public enum BlockT {
         /*float scale = getResources().getDisplayMetrics().density;
         int pix = (int) (dp*scale+0.5f);
         return pix;*/
-        return dp+5; //todo
+        return dp+5;
     }
 
 }

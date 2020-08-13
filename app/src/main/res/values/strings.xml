@@ -152,6 +152,8 @@
     <string name="title_activity_tutorial_category">Tutorial Category</string>
     <string name="title_activity_tutorial">Tutorial</string>
 
+    <string name="num_lecs">12_16_8_9</string>
+
     <string name="cat1_lec1">Intro</string>
     <string name="cat1_lec2">Einsatzmöglichkeiten für Datenbanken </string>
     <string name="cat1_lec3">Von Datenbanken und Tabellen</string>

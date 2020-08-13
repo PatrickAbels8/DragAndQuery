@@ -12,6 +12,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -235,11 +236,12 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
         saveDataInt(getString(R.string.tutScore2_key), 1);
         saveDataInt(getString(R.string.tutScore3_key), 1);
         saveDataInt(getString(R.string.tutScore4_key), 1);
-        //reset unlocked lections todo hard
-        saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/12f+1));
-        saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/16f+1));
-        saveDataInt(getString(R.string.tutScore3_unlocked_key), (int)(100f/8f+1));
-        saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/9f+1));
+        //reset unlocked lections
+        String[] num_lecs = getString(R.string.num_lecs).split("_");
+        saveDataInt(getString(R.string.tutScore1_unlocked_key), (int)(100f/Float.parseFloat(num_lecs[0])+1));
+        saveDataInt(getString(R.string.tutScore2_unlocked_key), (int)(100f/Float.parseFloat(num_lecs[1])+1));
+        saveDataInt(getString(R.string.tutScore3_unlocked_key), (int)(100f/Float.parseFloat(num_lecs[2])+1));
+        saveDataInt(getString(R.string.tutScore4_unlocked_key), (int)(100f/Float.parseFloat(num_lecs[3])+1));
         //reset done exercises
         saveDataString(getString(R.string.prac_easy_key), Practices.DEFAULT_EASY);
         saveDataString(getString(R.string.prac_medium_key), Practices.DEFAULT_MEDIUM);

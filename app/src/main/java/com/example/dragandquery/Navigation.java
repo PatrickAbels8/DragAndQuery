@@ -118,7 +118,7 @@ public class Navigation extends AppCompatActivity
         mail.setOnClickListener(new Navigation.OnSettingsClickListener());
 
         //change profile image
-        if(loadDataBoolean(getString(R.string.userImageBool_key), false)){ //todo stays true when reinstalling
+        if(loadDataBoolean(getString(R.string.userImageBool_key), false)){
             image.setImageURI(Uri.parse(loadDataString(getString(R.string.userImage_key), "")));
         } else{
             image.setImageResource(R.drawable.profile_image);
@@ -259,7 +259,6 @@ public class Navigation extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    //TODO add all the navi stuff to the other main activities after creating the main activities each
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 

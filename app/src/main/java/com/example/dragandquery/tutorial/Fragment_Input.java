@@ -108,7 +108,6 @@ public class Fragment_Input extends Fragment {
         bird.setClickable(true);
     }
 
-    //todo make global (just test in category class and intent)
     public void setText(){
         String text = "";
         switch (lection_id.substring(0, 5)) {

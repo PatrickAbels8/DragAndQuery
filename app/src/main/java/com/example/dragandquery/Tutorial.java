@@ -25,9 +25,6 @@ import android.widget.TextView;
 import static com.example.dragandquery.Navigation.SHARED_PREFS;
 
 /***
- * TODO:
- * - add nd (copy navigation class, include nav layout but this layout, in nav layout include this layout)
- * -
  */
 
 public class Tutorial extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
