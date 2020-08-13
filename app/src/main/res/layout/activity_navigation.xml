@@ -8,10 +8,15 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/stub"
+        android:inflatedId="@+id/stub_inflated"/>
+    <!--<include
         layout="@layout/activity_profile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

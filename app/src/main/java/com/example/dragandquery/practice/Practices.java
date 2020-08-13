@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.view.View;
 import android.widget.Button;
@@ -162,8 +163,8 @@ public class Practices extends AppCompatActivity {
         l.setBackgroundColor(Color.parseColor("#00000000"));
         l.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-        Typeface face = Typeface.createFromAsset(getAssets(),
-                "font/comfortaa.ttf");
+        //Typeface face = Typeface.createFromAsset(getAssets(), "font/comfortaa.ttf");
+        Typeface face = ResourcesCompat.getFont(context, R.font.comfortaa);
         l.setTypeface(face);
 
         ll_v.addView(l, new LinearLayout.LayoutParams(

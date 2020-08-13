@@ -402,23 +402,23 @@
         Block etwas hineinschreiben. Die wichtigsten SQL-Befehle findest du alle bereits vorformuliert
         in den unterschiedlichen Kategorien.)
     </string>
-    <string name="c2l1_good">Gut</string>
-    <string name="c2l1_bad">Ungut</string>
+    <string name="c2l1_good">Richtig!</string>
+    <string name="c2l1_bad">Falsch!</string>
     <string name="c2l1_hint">SELECT * FROM Schüler</string>
 
     <string name="c2l2_input">
         Das Ergebnis eben war ganz schön groß, weil * für alles steht, was in der Tabelle gespeichert
         ist. Versuche jetzt, dir nur die Spalten <b>Vorname</b> und <b>Nachname</b> anzeigen zu lassen.
     </string>
-    <string name="c2l2_good">Gut</string>
-    <string name="c2l2_bad">Ungut</string>
+    <string name="c2l2_good">Richtig!</string>
+    <string name="c2l2_bad">Falsch!</string>
 
     <string name="c2l3_input">
         In dieser Schule sind ganz schön viele Schüler. Versuche mit dem <i>LIMIT</i> Befehl, der sich
         in der Kategorie <i>KEY</i> befindet, dir nur die ersten <b>10 Vornamen</b> anzeigen zu lassen.
     </string>
-    <string name="c2l3_good">Gut</string>
-    <string name="c2l3_bad">Ungut</string>
+    <string name="c2l3_good">Richtig!</string>
+    <string name="c2l3_bad">Falsch!</string>
 
     <string name="c2l4_input">
         Meistens willst du nicht alle Datensätze anzeigen lassen, sondern nur solche, die eine bestimmte
@@ -428,16 +428,16 @@
         sowie zwei graue Blöcke. Der Vergleichstext (also “Mainz“) gehört in
         obere Anführungszeichen: ““.
     </string>
-    <string name="c2l4_good">Gut</string>
-    <string name="c2l4_bad">Ungut</string>
+    <string name="c2l4_good">Richtig!</string>
+    <string name="c2l4_bad">Falsch!</string>
 
     <string name="c2l5_input">
         Du kannst dir auch alle <b>Orte</b> aus der Tabelle <b>Schüler</b> ausgeben lassen, außer Mainz,
         indem du statt des Gleichheitszeichens “≠” aus der Kategorie <i>LOGIK</i> auswählst.\n\n
         <b>Tipp</b>: Denke an die Anführungszeichen!
     </string>
-    <string name="c2l5_good">Gut</string>
-    <string name="c2l5_bad">Ungut</string>
+    <string name="c2l5_good">Richtig!</string>
+    <string name="c2l5_bad">Falsch!</string>
 
     <string name="c2l6_input">
         In der Tabelle <b>Lehrkräfte</b> wird auch für fast jede Lehrkraft die ungefähre <b>Fahrzeit</b>
@@ -445,8 +445,8 @@
         die <b>Kürzel</b> aller Lehrkräfte anzeigen zu lassen, die weniger als 30 Minuten zur Schule brauchen.\n\n
         <b>Tipp</b>: Da die Fahrzeit kein Text sondern nur eine Zahl ist, brauchst du hier keine Anführungszeichen.
     </string>
-    <string name="c2l6_good">Gut</string>
-    <string name="c2l6_bad">Ungut</string>
+    <string name="c2l6_good">Richtig!</string>
+    <string name="c2l6_bad">Falsch!</string>
 
     <string name="c2l7_input">
         Du hast dir eben aus der Tabelle <b>Lehrkraft</b> die <b>Kürzel</b> der Lehrkräfte anzeigen
@@ -458,8 +458,8 @@
         sortieren möchtest, benutze den grauen Block, hänge ihn an das zu sortierende Attribut und
         tippe <b>DSC</b> in den grauen Block.)
     </string>
-    <string name="c2l7_good">Gut</string>
-    <string name="c2l7_bad">Ungut</string>
+    <string name="c2l7_good">Richtig!</string>
+    <string name="c2l7_bad">Falsch!</string>
 
     <string name="c2l8_input">
         Alle Schüler*innen, die als <b>Ort</b> Budenheim oder Nackenheim haben, fahren mit dem Zug
@@ -467,8 +467,8 @@
         du die logischen Blöcke “=” und “OR” verwendest. \n\n
         (Ein Datensatz wird angezeigt, wenn mindestens eine der beiden Bedingungen erfüllt ist.)
     </string>
-    <string name="c2l8_good">Gut</string>
-    <string name="c2l8_bad">Ungut</string>
+    <string name="c2l8_good">Richtig!</string>
+    <string name="c2l8_bad">Falsch!</string>
 
     <string name="c2l9_input">
         Frau Müller hat den <b>Vornamen</b> ihres Kollegen Meier vergessen und weiß auch sein Kürzel
@@ -477,8 +477,8 @@
         indem du die logischen Blöcke “=” und “AND” verwendest.\n\n
         (Ein Datensatz wird angezeigt, wenn beide Bedingungen erfüllt sind.)
     </string>
-    <string name="c2l9_good">Gut</string>
-    <string name="c2l9_bad">Ungut</string>
+    <string name="c2l9_good">Richtig!</string>
+    <string name="c2l9_bad">Falsch!</string>
 
     <string name="c2l10_input">
         Die Schulleitung möchte wissen, welche Schüler*innen nicht in Mainz wohnen. Anstatt alle anderen
@@ -488,8 +488,8 @@
         aus, die nicht in Mainz wohnen.\n\n
         <b>Tipp</b>: Denke auch hier an die Anführungszeichen ““
     </string>
-    <string name="c2l10_good">Gut</string>
-    <string name="c2l10_bad">Ungut</string>
+    <string name="c2l10_good">Richtig!</string>
+    <string name="c2l10_bad">Falsch!</string>
 
     <string name="c2l11_input">
         In der Tabelle <b>Raum</b> ist ein Attribut <b>Beamer</b>, dessen Attributwert 1 (also <b>wahr</b>
@@ -497,8 +497,8 @@
         Verwende nach dem <i>WHERE</i>-Befehl den “=”-Block aus der Kategorie <i>LOGIK</i>, um dir
         die <b>Raumnummer</b> jedes Raums, in dem ein Beamer ist ausgeben zu lassen.
     </string>
-    <string name="c2l11_good">Gut</string>
-    <string name="c2l11_bad">Ungut</string>
+    <string name="c2l11_good">Richtig!</string>
+    <string name="c2l11_bad">Falsch!</string>
 
     <string name="c2l12_input">
         Für die Lehrkräfte aus den Ortschaften süd-östlich von Mainz würde sich eine Fahrgemeinschaft
@@ -508,8 +508,8 @@
         Versuche so alle <b>Nachnamen und Orte</b> der Lehrkräfte in der Tabelle <b>Lehrkraft</b> aufzulisten,
         deren <b>Ort “Mommenheim“, “Lörzweiler“, “Harxheim“</b> oder <b>“Gau-Bischofsheim“</b> ist.
     </string>
-    <string name="c2l12_good">Gut</string>
-    <string name="c2l12_bad">Ungut</string>
+    <string name="c2l12_good">Richtig!</string>
+    <string name="c2l12_bad">Falsch!</string>
 
     <string name="c2l13_input">
         Manchmal weiß man nicht genau, wie ein Eintrag in der Datenbank geschrieben wird, oder wie
@@ -523,8 +523,8 @@
         Suche jetzt alle <b>IDs</b> von Schüler*innen, die <b>6</b> an der <b>zweiten Stelle</b> und
         <b>0</b> an der <b>letzten Stelle</b> haben.
     </string>
-    <string name="c2l13_good">Gut</string>
-    <string name="c2l13_bad">Ungut</string>
+    <string name="c2l13_good">Richtig!</string>
+    <string name="c2l13_bad">Falsch!</string>
 
     <string name="c2l14_input">
         Es interessiert die Schulleitung, aus welchen Ortschaften die Lehrkräfte an der Schule kommen.
@@ -533,8 +533,8 @@
         wird jeder Attributwert nur höchstens ein mal angezeigt.\n\n
         Lasse jetzt die <b>Wohnorte</b> der Lehrkräfte anzeigen.
     </string>
-    <string name="c2l14_good">Gut</string>
-    <string name="c2l14_bad">Ungut</string>
+    <string name="c2l14_good">Richtig!</string>
+    <string name="c2l14_bad">Falsch!</string>
 
     <string name="c2l15_input">
         Wir haben in unserer Tabelle <b>Lehrkraft</b> leider nur die durchschnittliche Anfahrtszeit
@@ -545,8 +545,8 @@
         die <b>Kilometeranzahl</b> auszurechnen. Gib zusätzlich das <b>Kürzel</b> der Lehrkraft aus. \n\n
         (<b>Hinweis</b>: Die Fahrtzeit ist in Minuten gegeben!)
     </string>
-    <string name="c2l15_good">Gut</string>
-    <string name="c2l15_bad">Ungut</string>
+    <string name="c2l15_good">Richtig!</string>
+    <string name="c2l15_bad">Falsch!</string>
 
     <string name="c2l16_input">
         Wie du gerade bemerkt hast, ist der Spaltenname deiner Ergebnistabelle ziemlich unschön.\n\n
@@ -557,8 +557,8 @@
         “<b>Streck</b>e”.\n
         Gib zusätzlich das <b>Kürzel</b> an und <b>sortiere</b> deine Tabelle <b>aufsteigend</b> nach <b>Strecke</b>.
     </string>
-    <string name="c2l16_good">Gut</string>
-    <string name="c2l16_bad">Ungut</string>
+    <string name="c2l16_good">Richtig!</string>
+    <string name="c2l16_bad">Falsch!</string>
 
     <!-- cat 3 -->
 
@@ -575,7 +575,7 @@
         können aber auf beliebige Attribute angewendet werden. \n
         Beispielsweise kann man alle Nachnamen zählen.
     </string>
-    <string name="c3l1_bad">Ungut</string>
+    <string name="c3l1_bad">Falsch!</string>
 
     <string name="c3l2_input">
         Ein Beispiel für eine Aggregatfunktion ist <b>count</b>(Attribut). Diese zählt die Einträge
@@ -586,8 +586,8 @@
         Aggregatfunktionen werden, wie Rechenoperatoren, nach dem SELECT Befehl verwendet.\n\n
         Versuche anhand der <b>Kürzel</b> die <b>Lehrkräfte</b> der Schule zu <b>zählen</b>.
     </string>
-    <string name="c3l2_good">Gut</string>
-    <string name="c3l2_bad">Ungut</string>
+    <string name="c3l2_good">Richtig!</string>
+    <string name="c3l2_bad">Falsch!</string>
 
     <string name="c3l3_input">
         Die Funktion IFNULL(Attribut, Alternative) prüft ob der Attributwert NULL ist und ersetzt
@@ -597,8 +597,8 @@
         Lasse dir die IDs und Fahrtzeiten aller Lehrkräfte ausgeben, die weniger als 10 Minuten
         Fahrtzeit haben. Ersetze unbekannte Fahrtzeiten (NULL) durch -1.
     </string>
-    <string name="c3l3_good">Gut</string>
-    <string name="c3l3_bad">Ungut</string>
+    <string name="c3l3_good">Richtig!</string>
+    <string name="c3l3_bad">Falsch!</string>
 
     <string name="c3l4_input">
         Um die Lehrkräfte dazu zu bringen mehr Fahrgemeinschaften zu bilden, will die Schulleitung
@@ -607,8 +607,8 @@
         außerdem mit Hilfe der <b>sum</b>() Funktion aufsummiert werden.\n\n
         Wie lange fahren die Lehrkräfte täglich Auto?
     </string>
-    <string name="c3l4_good">Gut</string>
-    <string name="c3l4_bad">Ungut</string>
+    <string name="c3l4_good">Richtig!</string>
+    <string name="c3l4_bad">Falsch!</string>
 
     <string name="c3l5_input">
         Damit alle Schüler*innen in den Schulbus passen, will das Busunternehmen wissen, wie viele
@@ -622,8 +622,8 @@
         (zähle am besten die IDs) ausgeben. Benenne die entsprechende Aggregatsfunktion mittels
         AS-Befehl in <b>Anzahl</b> um.
     </string>
-    <string name="c3l5_good">Gut</string>
-    <string name="c3l5_bad">Ungut</string>
+    <string name="c3l5_good">Richtig!</string>
+    <string name="c3l5_bad">Falsch!</string>
 
     <string name="c3l6_input">
         Für die Schulhomepage soll die ungefähre Größe der Klassenräume herausgefunden werden.
@@ -631,8 +631,8 @@
         Auch hierfür gibt es eine passende Aggregatfunktion: <b>avg</b>().\n\n
         Berechne mit <b>avg</b>()die durchschnittliche Anzahl <b>Plätze</b> pro <b>Raum</b>.
     </string>
-    <string name="c3l6_good">Gut</string>
-    <string name="c3l6_bad">Ungut</string>
+    <string name="c3l6_good">Richtig!</string>
+    <string name="c3l6_bad">Falsch!</string>
 
     <string name="c3l7_input">
         Um die Fahrtzeiten möglichst kurz zu halten wollen einige Lehrkräfte wissen, wer aus ihrem
@@ -644,8 +644,8 @@
         Beschränke deine Anfrage mit Hilfe des <b>WHERE</b>-Befehls auf die drei genannten Orte.\n
         Vergiss nicht deine Ausgabe mit dem <b>GROUP BY</b>-Befehl zu gruppieren.
     </string>
-    <string name="c3l7_good">Gut</string>
-    <string name="c3l7_bad">Ungut</string>
+    <string name="c3l7_good">Richtig!</string>
+    <string name="c3l7_bad">Falsch!</string>
 
     <string name="c3l8_input">
         Die Schulleitung möchte wissen, welche Klassen mehr als 28 Schüler*innen haben.\n\n
@@ -656,8 +656,8 @@
         Verwende stattdessen den HAVING-Befehl um zu prüfen welche Klassen groß genug sind, nutze
         GROUP BY um die Schüler*innen klassenweise zu zählen und gib die betreffenden <b>KlassenID</b>s aus.
     </string>
-    <string name="c3l8_good">Gut</string>
-    <string name="c3l8_bad">Ungut</string>
+    <string name="c3l8_good">Richtig!</string>
+    <string name="c3l8_bad">Falsch!</string>
 
     <!-- cat 4 -->
     <string name="c4l1_input">
@@ -688,8 +688,8 @@
         Finde nun heraus, zu welcher Klasse alle Schüler gehören.\n\n
         Gib dabei Nachname der Schüler und Name der Klasse an.
     </string>
-    <string name="c4l2_good">Gut</string>
-    <string name="c4l2_bad">Ungut</string>
+    <string name="c4l2_good">Richtig!</string>
+    <string name="c4l2_bad">Falsch!</string>
 
     <string name="c4l3_input">
         Bisher haben wir als Ergebnis eines JOINS aus beiden Tabellen nur die Datensätze gesucht,
@@ -704,8 +704,8 @@
         Gib aus, welche Klassen das sind (Name), wie viele Plätze die Räume haben und sortiere das
         Ergebnis aufsteigend nach der Anzahl der Plätze.
     </string>
-    <string name="c4l3_good">Gut</string>
-    <string name="c4l3_bad">Ungut</string>
+    <string name="c4l3_good">Richtig!</string>
+    <string name="c4l3_bad">Falsch!</string>
 
     <string name="c4l4_input">
         Manchmal möchte man jedoch alle Informationen aus einer der beiden Tabellen haben, selbst wenn zur
@@ -721,8 +721,8 @@
         falls es ein Klassenraum ist, welche Klasse (Klassenname) dort drin unterrichtet wird
     </string>
 
-    <string name="c4l4_good">Gut</string>
-    <string name="c4l4_bad">Ungut</string>
+    <string name="c4l4_good">Richtig!</string>
+    <string name="c4l4_bad">Falsch!</string>
 
     <string name="c4l5_input">
         Wir möchten nun eine Liste aller Lehrkräfte (das Kürzel reicht) und zusätzlich die Information,
@@ -734,8 +734,8 @@
         miteinander vergleichen. Benutze bei dieser Anfrage als Vergleichsattribut Kürzel.)
     </string>
 
-    <string name="c4l5_good">Gut</string>
-    <string name="c4l5_bad">Ungut</string>
+    <string name="c4l5_good">Richtig!</string>
+    <string name="c4l5_bad">Falsch!</string>
 
     <string name="c4l6_input">
         Noch wurde nicht jeder Klasse eine Klassenlehrkraft zugeordnet. Die Schulleitung möchte dies nun
@@ -756,8 +756,8 @@
         Gib das Lehrerkürzel, den aktuellen Fachleiter, Fachname und die Stunden aus.\n\n
         Sortiere aufsteigend nach den Stunden.-->
     </string>
-    <string name="c4l6_good">Gut</string>
-    <string name="c4l6_bad">Ungut</string>
+    <string name="c4l6_good">Richtig!</string>
+    <string name="c4l6_bad">Falsch!</string>
 
     <string name="c4l7_input">
         Die Klasse mit der KlassenID 33 macht draußen Unfug.\n\n
@@ -768,8 +768,8 @@
         Willkommen zum Triple-Join.\n\n
         Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.-->
     </string>
-    <string name="c4l7_good">Gut</string>
-    <string name="c4l7_bad">Ungut</string>
+    <string name="c4l7_good">Richtig!</string>
+    <string name="c4l7_bad">Falsch!</string>
 
     <string name="c4l8_input">
         Du kannst nicht nur zwei Tabellen miteinander joinen sondern auch 3 Tabellen. Verwende dafür
@@ -781,8 +781,8 @@
         Willkommen zum Triple-Join.\n\n
         Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.-->
     </string>
-    <string name="c4l8_good">Gut</string>
-    <string name="c4l8_bad">Ungut</string>
+    <string name="c4l8_good">Richtig!</string>
+    <string name="c4l8_bad">Falsch!</string>
 
     <string name="c4l9_input">
         Um zu entscheiden, wer bald die Fachleitung der einzelnen Fächer übernimmt, muss die Schulleitung
@@ -794,8 +794,8 @@
         Willkommen zum Triple-Join.\n\n
         Die Klasse mit dem Namen 8a möchte herausfinden, welches Fach (Fachname) bei Ihnen von welchem Lehrer (Kürzel) wieviele Stunden unterrichtet wird.-->
     </string>
-    <string name="c4l9_good">Gut</string>
-    <string name="c4l9_bad">Ungut</string>
+    <string name="c4l9_good">Richtig!</string>
+    <string name="c4l9_bad">Falsch!</string>
 
     <!-- pop ups -->
     <string name="popup_accept">Ja!</string>
