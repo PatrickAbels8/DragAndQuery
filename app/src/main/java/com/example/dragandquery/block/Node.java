@@ -84,6 +84,7 @@ public class Node {
      * @return string to perform query on db
      */
     public String toTreeString(){
+        //todo full outer join: duplicate, second from joined table, union all in between
         boolean brackets = this.getBlock()==BlockT.EMPTY && (
                 this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
                 this.getParent().getBlock()==BlockT.IN ||
