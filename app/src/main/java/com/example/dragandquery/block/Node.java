@@ -80,11 +80,10 @@ public class Node {
     }
 
     /***
-     * main parser from blocks to sql query
+     * main parser from blocks to sql(ite) query
      * @return string to perform query on db
      */
     public String toTreeString(){
-        //todo full outer join: duplicate, second from joined table, union all in between
         boolean brackets = this.getBlock()==BlockT.EMPTY && (
                 this.getParent().getBlock().getCategory()==R.string.block_cat4 ||
                 this.getParent().getBlock()==BlockT.IN ||
@@ -118,6 +117,34 @@ public class Node {
             s += this.getDownChild().toTreeString();
         }
         return s;
+    }
+
+    /***
+     * parsing helper
+     * @param old
+     * @return
+     * select schüler.nachname, lehrkraft.nachnae
+     * from schüler full outer join lehrkraft
+     *      on schüler.vorname = lehrkraft.vorname
+     * ===>
+     * select schüler.nachname, lehrkraft.nachname
+     * from schüler left join lehrkraft
+     * 	    on schüler.vorname = lehrkraft.vorname
+     * union all
+     * select schüler.nachname, lehrkraft.nachname
+     * from lehrkraft left join schüler
+     * 	    on schüler.vorname = lehrkraft.vorname
+     * where schüler.vorname is null
+     */
+    public static String transform_foj(String old){
+        if(!old.contains(BlockT.FULL_OUTER_JOIN.getName()))
+            return old;
+        String replaced = old.replace("full outer join", "left join");
+        String left = " " + old.split(" from ")[1].split(" full ")[0].trim() + " ";
+        String right = " " + old.split(" join ")[1].split(" on ")[0].trim() + " ";
+        String condition = old.split(" on ")[1].split(" = ")[0];
+        String second = replaced.split(left)[0] + right + replaced.split(left)[1].split(right)[0] + left + replaced.split(left)[1].split(right)[1];
+        return replaced + " union all " + second + " where " + condition + " is null ";
     }
 
     public boolean hasRight(){

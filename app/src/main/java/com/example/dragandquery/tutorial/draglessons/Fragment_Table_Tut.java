@@ -76,7 +76,7 @@ public class Fragment_Table_Tut extends Fragment {
         put("04_03", "select name, plätze from raum join klasse on klasse.raumnummer = raum.raumnummer where (plätze>20) order by plätze asc");
         put("04_04", "select raum, raumnummer, klasse, name from raum left outer join klasse on raum.raumnummer = klasse.klassenraumnummer");
         put("04_05", "");
-        put("04_06", "Select Klasse.Name, Klasse.KlassenID, Lehrkraft.Kürzel From Klasse FULL OUTER JOIN Lehrkraft ON Klasse.KlassenlehrerID=Lehrkraft.LehrkraftID");
+        put("04_06", "Select Klasse.Name, Klasse.KlassenID, Lehrkraft.Kürzel From Klasse left join Lehrkraft ON Klasse.KlassenlehrerID=Lehrkraft.LehrkraftID union all Select Klasse.Name, Klasse.KlassenID, Lehrkraft.Kürzel From lehrkraft left join klasse ON Klasse.KlassenlehrerID=Lehrkraft.LehrkraftID where Klasse.KlassenlehrerID is null");
         put("04_07", "select Vorname, Nachname from Klasse join Lehrkrafton Klasse.KlassenlehrerID = Lehrkraft.LehrkraftID where (KlassenID = 33)");
         put("04_08", "select Nachname, Name, RaumNummer from Schüler join Klasse on Schüler.KlassenID = Klasse.KlassenID join Raum on Klasse.Klassenraumnummer = Raum.Raumnummer");
         put("04_09", "select Fach.Fachname, Kürzel, Fachleiterkürzel, Stunden from Lehrkraft join Lehren on Lehrkraft.LehrkraftID = Lehren.LehrkraftID Join Fach on Lehren.FachID = Fach.FachID where (Stunden >= 10) order by Stunden asc");
