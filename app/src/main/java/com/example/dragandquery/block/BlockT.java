@@ -354,7 +354,7 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList(BlockT.EMPTY));
                 break;
             case NOT:
-                sucs.addAll(Arrays.asList(BlockT.EMPTY));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));
                 break;
             case ORDERBY:
                 sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.AVERAGE, BlockT.COUNT, BlockT.MAX, BlockT.MIN, BlockT.SUM));

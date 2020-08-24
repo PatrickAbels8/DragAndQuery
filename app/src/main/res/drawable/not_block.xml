@@ -4,10 +4,16 @@
     android:viewportWidth="100.0"
     android:viewportHeight="100.0">
     <path
-        android:pathData="M 20 0 C 20 0 0 45 20 90 L 95 90 L 95 0 z"
-        android:fillColor="#72bb53"/>
+        android:pathData="M 0 0 L 0 90 L 90 90 L 90 0 z"
+        android:fillColor="#9b48dd"/>
+
     <path
-        android:pathData="M 95 0 L 95 90 L 100 90 L 100 0 z"
+        android:pathData="M 90 0 L 90 45 L 100 45 L 100 0 z"
         android:fillColor="#aaaaaa"/>
+
+    <path
+        android:pathData="M 90 45 L 90 90 L 100 90 L 100 45 z"
+        android:fillColor="#e93578"/>
+
 </vector>
     <!--M=Move, L=Line, C=circle (3 Punkte: oberhalb von mir, oben rechts, rechts von mir)-->

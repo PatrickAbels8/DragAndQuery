@@ -6,7 +6,37 @@
 
 
     <path
-        android:pathData="M 5 85 L 5 90 L 100 90 L 100 85 z
-                          M 5 5 L 5 0 L 100 0 L 100 5 z"
+        android:pathData="M 5 85 L 5 90 L 90 90 L 90 85 z
+                          M 5 5 L 5 0 L 90 0 L 90 5 z"
         android:fillColor="#aaaaaa"/>
+
+    <path
+        android:pathData="M 90 0 L90 12.8 L 100 12.8 L100 0 z"
+        android:fillColor="#88d268"/>
+
+    <path
+        android:pathData="M 90 25.6 L90 12.8 L 100 12.8 L100 25.6 z"
+        android:fillColor="#72bb53"/>
+
+    <path
+        android:pathData="M 90 25.6 L90 38.4 L 100 38.4 L100 25.6 z"
+        android:fillColor="#9f9f9f"/>
+
+    <path
+        android:pathData="M 90 51.6 L90 38.4 L 100 38.4 L100 51.6 z"
+        android:fillColor="#aaaaaa"/>
+
+    <path
+        android:pathData="M 90 51.6 L90 64.4 L 100 64.4 L100 51.6 z"
+        android:fillColor="#1b0eff"/>
+
+    <path
+        android:pathData="M 90 77.2 L90 64.4 L 100 64.4 L100 77.2 z"
+        android:fillColor="#9b48dd"/>
+
+    <path
+        android:pathData="M 90 77.2 L90 90 L 100 90 L100 77.2 z"
+        android:fillColor="#e93578"/>
 </vector>
+
+    72bb53, 9f9f9f, 1b0eff, 88d268, 9b48dd, e93578, aaaaaa
