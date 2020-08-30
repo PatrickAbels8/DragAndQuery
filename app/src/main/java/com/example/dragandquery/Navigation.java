@@ -148,9 +148,8 @@ public class Navigation extends AppCompatActivity
     public void saveData(String key, String data){
         SharedPreferences sharedPref = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(key, data);
         editor.apply();
-        //Toast.makeText(getApplicationContext(), "saved _"+data+"_ under _"+key, Toast.LENGTH_LONG).show();
+        editor.putString(key, data);
     }
 
     //key value store
