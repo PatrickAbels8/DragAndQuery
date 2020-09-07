@@ -200,7 +200,7 @@ public class Fragment_Query_Ex extends Fragment {
             return null;
 
         }
-        return Node.transform_foj(select.getNode().toTreeString());
+        return Node.transform_roj(Node.transform_foj(select.getNode().toTreeString()));
     }
 
     public String getExText(int ex_id){

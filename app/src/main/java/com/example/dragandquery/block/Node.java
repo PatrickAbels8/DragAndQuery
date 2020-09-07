@@ -147,6 +147,15 @@ public class Node {
         return replaced + " union all " + second + " where " + condition + " is null ";
     }
 
+    public static String transform_roj(String old){
+        if(!old.contains(BlockT.RIGHT_OUTER_JOIN.getName()))
+            return old;
+        String replaced = old.replace("right outer join", "left outer join");
+        String left = " " + old.split(" from ")[1].split(" left ")[0].trim() + " ";
+        String right = " " + old.split(" join ")[1].split(" on ")[0].trim() + " ";
+        return replaced.split(left)[0] + right + replaced.split(left)[1].split(right)[0] + left + replaced.split(left)[1].split(right)[1];
+    }
+
     public boolean hasRight(){
         return rightChild != null;
     }
