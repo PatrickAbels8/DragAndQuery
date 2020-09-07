@@ -55,7 +55,6 @@ public enum BlockT {
             case GROUPBY:
             case HAVING:
             case LIMIT:
-            case LIKE:
             case ORDERBY:
             case SELECT:
             case WHERE:
@@ -77,6 +76,7 @@ public enum BlockT {
             case IN:
             case IFNULL:
             case NOT:
+            case LIKE:
                 return R.string.block_cat3;
             case SUM:
             case AVERAGE:

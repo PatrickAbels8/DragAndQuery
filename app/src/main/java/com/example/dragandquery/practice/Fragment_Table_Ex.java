@@ -147,7 +147,7 @@ public class Fragment_Table_Ex extends Fragment {
         for(int i=0; i<col_names.length; i++){
             TextView entry = new TextView(context);
             entry.setText(col_names[i]);
-            entry.setPadding(dp_to_int(2), 0, dp_to_int(2), 0);
+            entry.setPadding(dp_to_int(2), dp_to_int(2), dp_to_int(2), 0);
             entry.setTextColor(getResources().getColor(R.color.textcolor_white));
             //entry.setTypeface(Typeface.createFromFile("font/comfortaa.ttf"));
             newRow.addView(entry);

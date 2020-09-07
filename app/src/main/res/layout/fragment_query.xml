@@ -57,16 +57,6 @@
 
 
                         <TextView
-                            android:id="@+id/db_title_school"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/db_title_school"
-                            android:textColor="@color/textcolor_white"
-                            android:fontFamily="@font/comfortaa"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
-
-                        <TextView
                             android:id="@+id/db_title_cafetaria"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -74,14 +64,24 @@
                             android:textColor="@color/textcolor_white"
                             android:fontFamily="@font/comfortaa"
                             android:textSize="16dp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="16dp"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/db_title_legend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/db_title_legend"
+                            android:textColor="@color/textcolor_white"
+                            android:fontFamily="@font/comfortaa"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <TextView
+                            android:id="@+id/db_title_school"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/db_title_school"
                             android:textColor="@color/textcolor_white"
                             android:fontFamily="@font/comfortaa"
                             android:textSize="16dp"
