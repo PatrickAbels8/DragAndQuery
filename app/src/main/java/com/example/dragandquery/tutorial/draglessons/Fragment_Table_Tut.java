@@ -74,7 +74,7 @@ public class Fragment_Table_Tut extends Fragment {
         put("03_08", "select count(schülerid), klassenid from schüler group by klassenid having count(schülerid) > 28");
         put("04_02", "select nachname, name from klasse inner join schüler on schüler.klassenid = klasse.klassenid");
         put("04_03", "select name, plätze from raum join klasse on klasse.raumnummer = raum.raumnummer where (plätze>20) order by plätze asc");
-        put("04_04", "select raum, raumnummer, klasse, name from raum left outer join klasse on raum.raumnummer = klasse.klassenraumnummer");
+        put("04_04", "select raum.raumnummer, klasse.name from raum left outer join klasse on raum.raumnummer = klasse.klassenraumnummer");
         put("04_05", "");
         put("04_06", "Select Klasse.Name, Klasse.KlassenID, Lehrkraft.Kürzel From Klasse left join Lehrkraft ON Klasse.KlassenlehrerID=Lehrkraft.LehrkraftID union all Select Klasse.Name, Klasse.KlassenID, Lehrkraft.Kürzel From lehrkraft left join klasse ON Klasse.KlassenlehrerID=Lehrkraft.LehrkraftID where Klasse.KlassenlehrerID is null");
         put("04_07", "select Vorname, Nachname from Klasse join Lehrkraft on Klasse.KlassenlehrerID = Lehrkraft.LehrkraftID where (KlassenID = 33)");
