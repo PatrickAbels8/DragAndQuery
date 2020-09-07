@@ -188,7 +188,8 @@ public class Fragment_Table_Ex extends Fragment {
 
         if (num_cols && num_rows){
             for(int i=0; i<response.get(0).length; i++){
-
+                if(response.size()<=1)
+                    return true;
                 int ran_row = (new Random().nextInt(response.size()-1))+1;
                 String ran_cell = response.get(ran_row)[i];
                 boolean is_in = false;
