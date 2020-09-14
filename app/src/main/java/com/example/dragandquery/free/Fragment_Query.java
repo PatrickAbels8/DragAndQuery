@@ -394,14 +394,16 @@ public class Fragment_Query extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        if(query == null)
+                        if(query == null) {
                             break;
-                        Log.d("#########", query);
+                        }
                         long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
                         long stop = System.currentTimeMillis();
-                        if(response != null)
+                        if(response != null){
+                            MediaPlayer.create(me.getContext(), R.raw.submit).start();
                             listener.onGo(query, response, (float)(stop-start)/1000);
+                        }
                         else
                             Toast.makeText(context, SQL_ERROR+": "+query, Toast.LENGTH_LONG).show();
                         hideDB();

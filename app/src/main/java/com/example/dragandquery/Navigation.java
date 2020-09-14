@@ -209,7 +209,9 @@ public class Navigation extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         //popup
         if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
-            super.onBackPressed();
+            //super.onBackPressed();
+            finishAffinity();
+            finish();
         }
     }
 

@@ -18,5 +18,5 @@
     <dimen name="block_width">50dp</dimen>
     <dimen name="block_height">30dp</dimen>
     <dimen name="block_ui_overlapping_h">0dp</dimen> <!-- 5dp -->
-    <dimen name="block_ui_overlapping_v">0dp</dimen> <!-- 4dp -->
+    <dimen name="block_ui_overlapping_v">4dp</dimen> <!-- 4dp -->
 </resources>

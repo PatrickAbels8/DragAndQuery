@@ -71,7 +71,6 @@ public class Node {
     }
 
     public void printTree(){
-        Log.d("############## tree ###############", this.getBlock().getName());
         if(this.hasRight()) {
             this.getRightChild().printTree();
         }

@@ -322,7 +322,7 @@ public class Fragment_Query_Ex extends Fragment {
             databaseAccess.close();
             return response;
         }catch(Exception e){
-            Log.d("database", e.toString());
+            Log.d("contodo", e.toString());
             return null;
         }
     }
@@ -472,13 +472,16 @@ public class Fragment_Query_Ex extends Fragment {
                     if(isInMe){
                         btn_go.setImageResource(R.drawable.go);
                         String query = interpret(him);
-                        if(query == null)
+                        if(query == null) {
                             break;
+                        }
                         long start = System.currentTimeMillis();
                         List<String[]> response = queryDB(query);
                         long stop = System.currentTimeMillis();
-                        if(response != null)
-                            listener.onGo(query, response, (float)(stop-start)/1000);
+                        if(response != null) {
+                            MediaPlayer.create(me.getContext(), R.raw.submit).start();
+                            listener.onGo(query, response, (float) (stop - start) / 1000);
+                        }
                         else
                             Toast.makeText(context, SQL_ERROR+": "+query, Toast.LENGTH_LONG).show();
                         hideBird();

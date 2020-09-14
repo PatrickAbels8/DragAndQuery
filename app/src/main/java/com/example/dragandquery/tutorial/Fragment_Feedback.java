@@ -1,6 +1,7 @@
 package com.example.dragandquery.tutorial;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -122,6 +123,7 @@ public class Fragment_Feedback extends Fragment {
     }
 
     public void startGoodFeedback(String good){
+        MediaPlayer.create(context, R.raw.right).start();
         tv_msg.setText(good);
         bird.setImageResource(R.drawable.happy_berry);
         btn_back.setVisibility(View.VISIBLE);
@@ -129,6 +131,7 @@ public class Fragment_Feedback extends Fragment {
     }
 
     public void startBadFeedback(String bad){
+        MediaPlayer.create(context, R.raw.wrong).start();
         tv_msg.setText(bad);
         bird.setImageResource(R.drawable.sad_berry);
         btn_back.setVisibility(View.VISIBLE);

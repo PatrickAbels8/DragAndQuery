@@ -2,8 +2,10 @@ package com.example.dragandquery.practice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     //vars
     int ex_id;
     public static final String ID_KEY = "com.example.dragandquery.practice.Exercise.ID_KEY";
+    private Context context;
 
     //fragments
     Fragment_Query_Ex fragQuery;
@@ -34,6 +37,8 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getApplicationContext();
+
         setContentView(R.layout.activity_exercise);
 
         //choose content match ex id 0-(n-1)+100/200/300
@@ -73,6 +78,7 @@ public class Exercise extends AppCompatActivity implements Fragment_Table_Ex.Fra
         fragTable.goVisible(query, response, runtime, isCorrect);
 
         if(isCorrect){
+            MediaPlayer.create(context, R.raw.right).start();
             int index = ex_id%100;
             String key = ex_id/100==1? getString(R.string.prac_easy_key): ex_id/100==2? getString(R.string.prac_medium_key): getString(R.string.prac_hard_key);
             String defalut = ex_id/100==1? Practices.DEFAULT_EASY: ex_id/100==2? Practices.DEFAULT_MEDIUM: Practices.DEFAULT_HARD;

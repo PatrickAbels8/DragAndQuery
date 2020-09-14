@@ -8,6 +8,7 @@ import com.example.dragandquery.practice.Complexity;
 import com.example.dragandquery.tutorial.TutorialCategory;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -122,6 +123,16 @@ public class Tutorial extends AppCompatActivity implements NavigationView.OnNavi
             int cat_id = Integer.parseInt(Character.toString(cat_name.charAt(cat_name.length()-1))); //1-4
             intent1.putExtra(CAT_ID, cat_id);
             startActivity(intent1);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //popup
+        if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
+            finishAffinity();
+            finish();
         }
     }
 

@@ -91,7 +91,7 @@ public class Free extends AppCompatActivity implements NavigationView.OnNavigati
         startActivity(getIntent());
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -101,7 +101,7 @@ public class Free extends AppCompatActivity implements NavigationView.OnNavigati
             i.putExtra(PopUp.KEY, PopUp.CLOSEAPP);
             startActivityForResult(i, PopUp.REQUEST_CODE);
         }
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

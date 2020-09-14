@@ -91,18 +91,6 @@ public class DbView extends AppCompatActivity implements NavigationView.OnNaviga
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-            //swipeHint.setVisibility(View.VISIBLE);
-        } else {
-            Intent i = new Intent(getApplicationContext(), PopUp.class);
-            i.putExtra(PopUp.KEY, PopUp.CLOSEAPP);
-            startActivityForResult(i, PopUp.REQUEST_CODE);
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.navigation, menu);
         //swipeHint.setVisibility(View.GONE);

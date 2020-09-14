@@ -1,5 +1,6 @@
 package com.example.dragandquery.practice;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -84,6 +85,16 @@ public class Complexity extends AppCompatActivity  implements NavigationView.OnN
             i.putExtra(COMPLEXITY, (int)view.getTag());
             startActivity(i);
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //popup
+        if (requestCode == PopUp.REQUEST_CODE && resultCode == RESULT_OK){
+            finishAffinity();
+            finish();
         }
     }
 

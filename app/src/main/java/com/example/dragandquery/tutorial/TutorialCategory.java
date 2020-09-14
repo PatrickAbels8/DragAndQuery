@@ -119,9 +119,9 @@ public class TutorialCategory extends AppCompatActivity implements NavigationVie
                 if(level_of_achievement == UNLOCKED){
                     startLection(lection_id);
                 }else if(level_of_achievement == DONE){
-                    startLection(lection_id);//showLectionDone();
+                    showLectionDone(); //startLection(lection_id); contodo
                 }else if(level_of_achievement == LOCKED){
-                    startLection(lection_id);//showLectionLocked();
+                    showLectionLocked();//startLection(lection_id); contodo
                 }
             });
         }
@@ -436,18 +436,6 @@ public class TutorialCategory extends AppCompatActivity implements NavigationVie
         super.onRestart();
         finish();
         startActivity(getIntent());
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-            //swipeHint.setVisibility(View.VISIBLE);
-        } else {
-            Intent i = new Intent(getApplicationContext(), PopUp.class);
-            i.putExtra(PopUp.KEY, PopUp.CLOSEAPP);
-            startActivityForResult(i, PopUp.REQUEST_CODE);
-        }
     }
 
     /*@Override
