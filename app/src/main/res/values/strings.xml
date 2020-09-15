@@ -211,7 +211,7 @@
         dann klicke auf Barry, um dir erneut den Informationstext anzusehen. \n\n
         Nun tippe unten auf "Verstanden", um zu deiner ersten Frage in diesem Tutorial zu gelangen.
     </string>
-    <string name="c1l1_question"> Tippe auf die richtige Aussage und dann auf (absenden oder so?)</string>
+    <string name="c1l1_question"> Tippe auf die richtige Aussage und dann auf GO!</string>
     <string name="c1l1_answer1">Der Flamingo heißt Bert.</string>
     <string name="c1l1_answer2">Der Flamingo heißt Berry.</string>
     <string name="c1l1_answer3">Der Flamingo heißt Barry.</string>
