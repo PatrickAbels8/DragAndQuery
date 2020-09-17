@@ -64,7 +64,7 @@
     <string name="ex_easy_8_text">Die Chefköchin erstellt den Speiseplan für die kommende Woche.
         Sie muss dazu wissen, wieviel Kartoffelsalat(ArtikelNr 117) und wieviel Nudelsalat (ArtikelNr 119) noch im Lager ist,
         da es einen Grilltag geben soll. \n\n
-        Lasse dir also den Lagerbestand für die beiden Artikel, sowie die LieferantenNr und die Liefereinheit ausgeben. </string>
+        Lasse dir also neben den Artikelnummern den Lagerbestand für die beiden Artikel, sowie die LieferantenNr und die Liefereinheit ausgeben. </string>
     <string name="ex_easy_9">Übung 9</string>
     <string name="ex_easy_9_text">Frau Blum vom Kartoffelhof hat angekündigt, dass sich die nächste Lieferung verspäten wird.
         Um den Speiseplan entsprechend anzupassen, wird eine Liste aller Artikel mit Name, Nummer und Lagerbestand benötigt,
@@ -84,7 +84,7 @@
     <string name="ex_medium_4">Übung 4</string>
     <string name="ex_medium_4_text">Was ist wohl beliebter: Spaghetti Bolognese (ArtikelNr 62) oder
         Spaghetti mit Gemüsebolognese (ArtikelNr88)? \n\n
-        Lasse dir ausgeben, wieviele Bestellungen mit Bolognese und wieviele mit Gemüsebolognesees es gab.</string>
+        Lasse dir ausgeben, wieviele Bestellungen mit Bolognese und wieviele mit Gemüsebolognese es gab.</string>
     <string name="ex_medium_5">Übung 5</string>
     <string name="ex_medium_5_text">Das Team für Qualitätsmanagement will das Speisenangebot der Cafeteria überprüfen.
         Dazu benötigen sie unter anderem eine Liste der verschiedenen Speisekategorien, sowie die Information,
@@ -93,15 +93,16 @@
     <string name="ex_medium_6">Übung 6</string>
     <string name="ex_medium_6_text">Lilli will sich von ihrem Mensageld heute Nachmittag noch ein Eis gönnen.
         Deshalb möchte sie heute Mittag möglichst günstig essen. \n\n
-        Findefür sie heraus, bei welcher Kategorie der Durchschnittspreis der Artikel günstiger als 1€ ist.</string>
+        Finde für sie heraus, bei welchen Kategorien der Durchschnittspreis der Artikel günstiger als 1€ ist.\n\n
+        <i>(Tipp: Group by und having verwenden)</i></string>
     <string name="ex_medium_7">Übung 7</string>
     <string name="ex_medium_7_text">Es muss festgestellt werden, wie abhängig die Cafeteria von einzelnen Lieferanten ist.
-        Finde dazu heraus, von welchen Lieferanten mehr als 1500 Artikel bei uns im Lager vorrätig sind. \n\n
-        Gib dazu sowohl die Summe der Lagerbestände als auch die jeweilige Lieferantennummer aus.(\n\n
-        <i>Tipp: Group by und having verwenden)</i></string>
+        Finde dazu heraus, von welchen Lieferanten mehr als 1500 Artikel im Lager vorrätig sind. \n\n
+        Gib dazu sowohl die Summe der Lagerbestände als auch die jeweilige Lieferantennummer aus.\n\n
+        </string>
     <string name="ex_medium_8">Übung 8</string>
-    <string name="ex_medium_8_text">Um herauszufinden, wie viele Angestellte nicht im Büro arbeiten, zähle einfach die
-        Personalnummern, die schon einmal eine Bestellung bearbeitet haben.\n\n
+    <string name="ex_medium_8_text">Um herauszufinden, wie viele Angestellte nicht im Büro arbeiten, muss man die
+        Personalnummern, die schon einmal eine Bestellung bearbeitet haben, zählen.\n\n
         Kannst du das? </string>
     <string name="ex_medium_9">Übung 9</string>
     <string name="ex_medium_9_text">Die Leitung der Cafeteria will versuchen einen Sonderrabatt mit der Metro (LieferantenNr2) auszuhandeln. \n\n

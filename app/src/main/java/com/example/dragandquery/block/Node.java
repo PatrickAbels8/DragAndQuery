@@ -122,7 +122,7 @@ public class Node {
      * parsing helper
      * @param old
      * @return
-     * select schüler.nachname, lehrkraft.nachnae
+     * select schüler.nachname, lehrkraft.nachname
      * from schüler full outer join lehrkraft
      *      on schüler.vorname = lehrkraft.vorname
      * ===>
