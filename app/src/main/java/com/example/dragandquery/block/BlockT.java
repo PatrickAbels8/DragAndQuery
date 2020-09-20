@@ -327,7 +327,7 @@ public enum BlockT {
                 sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.IFNULL));
                 break;
             case COUNT:
-                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.IFNULL));
+                sucs.addAll(Arrays.asList(BlockT.EMPTY, BlockT.IFNULL, BlockT.DISTINCT));
                 break;
             case FROM:
                 sucs.addAll(Arrays.asList(BlockT.EMPTY));
