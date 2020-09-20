@@ -30,8 +30,8 @@ public class DbView extends AppCompatActivity implements NavigationView.OnNaviga
     private TextView db_title_cafeteria;
     private TextView db_title_legend;
 
-    public static final int DB_SCHOOL_ER = R.drawable.er_school_colourful_background;
-    public static final int DB_CAFETERIA_ER = R.drawable.er_cafeteria_colourfull_background;
+    public static final int DB_SCHOOL_ER = R.drawable.schule_er_bunt;
+    public static final int DB_CAFETERIA_ER = R.drawable.cafeteria_er_bunt;
     public static final int DB_LEGEND = R.drawable.legende_er_bunt;
 
     @Override
